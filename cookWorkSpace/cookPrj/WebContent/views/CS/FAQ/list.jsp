@@ -1,0 +1,153 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 경로 체크 필수 -->
+<link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+</head>
+<style>
+#container>div{
+    box-sizing: border-box;
+}
+
+#container{
+    position: absolute;
+    padding-bottom: 50px;
+    top: 280px;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+
+/* 타이틀 글자 */
+.name{
+/*position: absolute;*/
+display: flex;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 50px;
+text-align: center;
+color: #000000;
+}
+
+/* 문의 리스트 */
+.title{
+	width: 60vw;
+	height: 5vh;
+	margin: 0px auto;
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	align-content: center;
+	text-align: center;
+	border-top: 3px solid black;
+	font-size: larger;
+	font-weight: bold;
+}
+.list{
+	width: 60vw;
+	height: 40vh;
+	margin: 0px auto;
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	grid-template-rows: repeat(10,30px);
+	align-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: larger;
+
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+}
+main>.list>div{
+	align-content: center;
+	height: 3vh;
+	margin: 1px;
+}
+
+#writebtn{
+	height: 20px;
+	display: flex;
+	flex-direction: row-reverse;
+}
+#page-area{
+	align-content: center;
+	text-align: center;
+	line-height: 30px;
+	height: 30px;
+}
+
+</style>
+
+<body>
+<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
+	<!-- 헤더는 컨테이너 밖에 -->
+	<div id="container"> <!-- 컨테이너 -->
+		<main>
+			<div class="name">
+				<!-- 게시판 이름 -->
+				<div id="faq">FAQ 자주묻는질문</div>
+			</div>
+
+			<div class="title">
+				<!-- 문의 게시판 목록 -->
+				<div>글번호</div>
+				<div>제목</div>
+			</div>
+			<div class="list">
+				<!-- 짜가 목록 나중에 지움 -->
+				<div>1</div>
+				<div>샬라샬라</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+
+			</div>
+			
+			<div id="page-area">
+				<a href="">이전</a>
+
+				<a href="">1</a>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+
+				<a href="">다음</a>
+			</div>
+
+		</main>
+		<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
+	</div>
+</body>
+</html>
