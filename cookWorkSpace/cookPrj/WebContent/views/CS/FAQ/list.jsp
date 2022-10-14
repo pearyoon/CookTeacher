@@ -40,7 +40,7 @@ color: #000000;
 /* 문의 리스트 */
 .title{
 	width: 60vw;
-	height: 5vh;
+	height: 35px;
 	margin: 0px auto;
 	display: grid;
 	grid-template-columns: 1fr 5fr;
@@ -52,23 +52,23 @@ color: #000000;
 }
 .list{
 	width: 60vw;
-	height: 40vh;
+	height: 350px;
 	margin: 0px auto;
 	display: grid;
 	grid-template-columns: 1fr 5fr;
-	grid-template-rows: repeat(10,30px);
+	grid-template-rows: repeat(10,10%);
 	align-content: center;
 	align-items: center;
 	text-align: center;
-	font-size: larger;
+	font-size: large;
 
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
 }
 main>.list>div{
 	align-content: center;
-	height: 3vh;
-	margin: 1px;
+	border-bottom: 1px dashed gray;
+	line-height: 35px
 }
 
 #writebtn{
@@ -102,8 +102,10 @@ main>.list>div{
 			</div>
 			<div class="list">
 				<!-- 짜가 목록 나중에 지움 -->
+		
 				<div>1</div>
 				<div>샬라샬라</div>
+
 
 				<div>1</div>
 				<div>샬라샬라</div>
