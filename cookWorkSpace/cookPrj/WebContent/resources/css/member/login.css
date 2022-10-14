@@ -70,3 +70,7 @@
     color: rgb(51, 51, 51);
     cursor: pointer;
 }
+
+#btn *:hover{
+    opacity: 0.8;
+}

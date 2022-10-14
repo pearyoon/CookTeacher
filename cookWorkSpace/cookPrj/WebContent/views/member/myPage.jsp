@@ -13,23 +13,53 @@
 	<%@include file="/views/common/header.jsp" %>
 	<div id="container">
         <div id="mypage-wrap">
-            <div id="main-top">
-                <div id="mem-info">
-                    <div id="mem-nick">
-                        <div>쿡선생회원님</div>
-                    </div>
-                    <div class="flex">
-                        <div>일반</div>
-                        <div>적립 1%</div>
-                    </div>
-                    <div class="flex">
-                        <div>포인트</div>
-                        <div>3000점</div>
+            <div id="mypage-area">
+                <div id="mypage-left">
+                    <h2 id="tit-aticle">마이쿡</h2>
+                    <div id="inner">
+                        <ul id="list-menu">
+                            <li>
+                                <a href="">
+                                    회원정보
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    주문내역
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    쿡스토리
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    리뷰조회
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    문의내역
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    문의하기
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div id="main-bottom">
+                <div id="mypage-right">
+                    <h2 id="head-aticle">
+                        회원정보
+                    </h2>
+                    <div id="line"></div>
+                    <div id="board-container">
 
+                    </div>
+                </div>
             </div>
         </div>
         <%@include file="/views/common/footer.jsp" %>

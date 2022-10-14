@@ -132,3 +132,13 @@ input[type=submit]{
     color: rgb(240, 63, 64);
     display: none;
 }
+
+/* 중복확인,주소검색 호버 시 */
+.join-items>div>button:hover{
+    background-color: #255D00;
+    color: white;
+}
+
+#join-btn>div>input:hover{
+    opacity: 0.8;
+}
