@@ -40,7 +40,7 @@ color: #000000;
 /* 문의 리스트 */
 .title{
 	width: 60vw;
-	height: 5vh;
+	height: 35px;
 	margin: 0px auto;
 	display: grid;
 	grid-template-columns: 1fr 5fr;
@@ -52,23 +52,22 @@ color: #000000;
 }
 .list{
 	width: 60vw;
-	height: 40vh;
+	height: 380px;
 	margin: 0px auto;
 	display: grid;
 	grid-template-columns: 1fr 5fr;
-	grid-template-rows: repeat(10,30px);
+	grid-template-rows: repeat(10,35px);
 	align-content: center;
 	align-items: center;
 	text-align: center;
-	font-size: larger;
+	font-size: large;
 
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
 }
 main>.list>div{
 	align-content: center;
-	height: 3vh;
-	margin: 1px;
+	height: 25px;
 }
 
 #writebtn{

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FAQ 작성</title>
 <!-- 경로 체크 필수 -->
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
@@ -38,28 +38,25 @@ color: #000000;
 
 /* 제목 영역 */
 .title-area{
-	width: 60vw;
-	height: 5vh;
+	width: 600px;
+	height: 50px;
 	margin: 0px auto;
-	display: grid;
-	grid-template-columns: 1fr 5fr 3fr;
-	align-content: center;
-	text-align: center;
 	border-top: 3px solid black;
+	text-align: center;
+	line-height: 50px;
 }
 #title{
-	grid-column: span 2;
-}
-.title-area>.write{
-	text-align: left;
-}
-.title-area>#a{
+	width: 500px
 }
 
 /* 내용 영역 */
 .content-area{
+	width: 600px;
+	height: 400px;
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
+	text-align: center;
+	padding: 10px;
 }
 /* 등록 버튼 */
 #writebtn{
@@ -74,30 +71,30 @@ color: #000000;
 <body>
 	<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
 	<!-- 헤더는 컨테이너 밖에 -->
+	
+	
+	<!-- 관리자만 가능한 기능 -->
+	
+	
 	<div id="container"> <!-- 컨테이너 -->
-		<main>
-			<div class="name">
-				<!-- 게시판 이름 -->
-				<div id="faq">FAQ</div>
-			</div>
+		<div class="name">
+			<!-- 게시판 이름 -->
+			<div id="qna">FAQ 자주묻는질문</div>
+		</div>
 
-			<div class="title-area">
-				<!-- 문의 작성 -->
-				<div id="a">제목</div>
-				<div class="write" id="title" name="title">자주묻는질문남기나요?</div> <!-- 제목 코드 작성-->
-			</div>
+		<div class="title-area">
+			<!-- 문의 작성 -->
+				제목 : <input type="text" id="title" name="title">
+		</div>
 
-			<div class="content-area">
-				<table>
-					<tr>
-							<th>내용</th>
-							<td><textarea name="content" rows="10" style="resize:none;" required></textarea></td>
-					</tr>
-				</table>
-			</div>
-			<div id="writebtn"><a href="">등록</a></div>
-		</main>
-		<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
+		<div class="content-area">
+		<br>
+			<textarea name="content" rows="20" cols="80" style="resize:none;" required></textarea>
+		<br><br>
+		</div>
+		<div id="writebtn"><a href="">등록</a></div>
+		
+		<%@include file="/views/common/footer.jsp" %>
 	</div>
 </body>
 </html>
