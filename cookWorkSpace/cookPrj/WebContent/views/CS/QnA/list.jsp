@@ -52,11 +52,11 @@ color: #000000;
 }
 .list{
 	width: 600px;
-	height: 380px;
+	height: 350px;
 	margin: 0px auto;
 	display: grid;
 	grid-template-columns: 1fr 5fr 2fr 2fr;
-	grid-template-rows: repeat(10,35px);
+	grid-template-rows: repeat(10,10%);
 	align-content: center;
 	align-items: center;
 	text-align: center;
@@ -67,7 +67,8 @@ color: #000000;
 }
 main>.list>div{
 	align-content: center;
-	height: 25px;
+	border-bottom: 1px dashed gray;
+	line-height: 35px
 }
 
 #writebtn{

@@ -20,7 +20,6 @@
     top: 280px;
     left: 50%;
     transform: translate(-50%);
-
 }
 /* 타이틀 글자 */
 .name{
@@ -33,7 +32,7 @@ font-weight: 600;
 font-size: 30px;
 line-height: 50px;
 text-align: center;
-color: #000000;
+color: black;
 }
 
 /* 제목 영역 */
@@ -57,6 +56,7 @@ color: #000000;
 	border-bottom: 3px solid black;
 	text-align: center;
 	padding: 10px;
+
 }
 /* 등록 버튼 */
 #writebtn{
@@ -89,7 +89,7 @@ color: #000000;
 
 		<div class="content-area">
 		<br>
-			<textarea name="content" rows="20" cols="80" style="resize:none;" required></textarea>
+			<textarea name="content" rows="22" cols="80" style="resize:none;" required></textarea>
 		<br><br>
 		</div>
 		<div id="writebtn"><a href="">등록</a></div>
