@@ -53,8 +53,9 @@ header{
 }
 /* 이름 */
 #header-logo>div{
-    margin-left: 10px;
+    margin-left: 20px;
     color: #255D00;
+    font-weight: 400;
     font-size: 2rem;
 }
 /* 검색 */

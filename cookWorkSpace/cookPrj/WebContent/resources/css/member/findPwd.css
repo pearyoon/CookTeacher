@@ -107,3 +107,7 @@ div[id^=hidden] {
     background-color: #255D00;
     border: 0 none;
 }
+
+#find-btn>input:hover{
+    opacity: 0.8;
+}
