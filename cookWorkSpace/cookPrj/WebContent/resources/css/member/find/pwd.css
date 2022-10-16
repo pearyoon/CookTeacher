@@ -30,6 +30,7 @@ main>div:first-child{
     padding: 0px 10px 6px;
     margin: auto;
     position: relative;
+
 }
 /* 이메일 인증 글씨 */
 #find-area>div:first-child{
@@ -105,9 +106,4 @@ div[id^=hidden] {
     color: #fff;
     background-color: #255D00;
     border: 0 none;
-}
-
-
-#find-btn>input:hover{
-    opacity: 0.8;
 }
