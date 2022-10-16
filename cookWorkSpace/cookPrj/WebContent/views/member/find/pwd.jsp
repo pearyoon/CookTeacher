@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>집밥쿡선생 :: 비밀번호찾기</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
-<link rel="stylesheet" href="/cookTeacher/resources/css/member/findId.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/member/find/id.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 </head>
 <body>

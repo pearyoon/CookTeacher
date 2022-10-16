@@ -47,18 +47,9 @@
     border: 1px solid #f2f2f2;
     border-bottom: 0;
 }
-#list-menu .non-clcik{
+#list-menu>li{
     border-bottom: 1px solid #f2f2f2;
 }
-
-/* a버튼 클릭시 스크립트 */
-
-#list-menu>.click>a{
-    background-color: rgb(250, 250, 250);
-    color: #255D00;
-    font-weight: 600;
-}
-
 
 #list-menu a:hover{
     background-color: rgb(250, 250, 250);
@@ -102,8 +93,8 @@
     margin-top: 28px;
 }
 
-
 #border-container{
     height: 540px;
 }
+
 
