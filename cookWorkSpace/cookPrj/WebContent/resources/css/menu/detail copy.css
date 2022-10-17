@@ -17,12 +17,13 @@ main div{
 main{
 
     overflow: hidden;
-    display: flex;
+
     align-self: center;
 }
 
 main div{
     box-sizing: border-box;
+    /* align-self: center; */
     /* border: 1px solid black; */
 }
 
@@ -63,7 +64,7 @@ main div{
 
 /* ================================== */
 #gap{
-    margin: 0;
+    margin-bottom: 10px;
     padding: 0px;
 
 }
@@ -81,15 +82,17 @@ main div{
 
 
 #grid{
-    display: grid;
+    /* display: grid; */
     place-items: center;
+    
 }
 
 #en{
     
+    margin: auto;
     width: 1000px;
-    height: 130vh;
-    border: 1px solid black;
+    height: 180vh;
+    /* border: 1px solid black; */
     display: grid;
     grid-template-columns: 2fr 0.5fr 2fr;
     grid-template-rows: 1fr 7fr 1fr 1fr 7fr;
@@ -98,7 +101,7 @@ main div{
 }
 
 #en>div{
-    border: 1px dashed blue;
+    /* border: 1px dashed blue; */
 }
 /* 그리드 , span .. */
 
@@ -113,7 +116,10 @@ main div{
 
 #re-img{
     grid-column: span 2;
+    
 }
+
+
 
 #prod-btn{
     grid-column: span 3;
@@ -121,11 +127,27 @@ main div{
     align-items: flex-end;
 }
 
+#btn-title{
+    width: 150px;
+    height: 50px;
+    justify-self: center;
+    margin-bottom: 10px;
+    border-radius: 10ex;
+    border: 0.1px solid #255D00;
+    background-color: #FFD335;
+}
+
+#b-like{
+    width: 40px;
+    height: 40px;
+}
+
 #btn{
     width: 150px;
     height: 50px;
-    justify-self: flex-start;
-    margin-bottom: 10px;
+    justify-self: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
     border-radius: 10ex;
     border: 0.1px solid #255D00;
     background-color: #FFD335;
@@ -152,7 +174,7 @@ pre{
 #prod-img{
     grid-column: span 3;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: first baseline;
     flex-wrap: wrap;
 }
 
@@ -162,10 +184,14 @@ pre{
     text-align: center;
     margin-left: 18px;
     margin-right: 18px;
-    /* display: flex;
-    /* display: flex;
-    justify-content: space-around; */
 }
 
+.prod-price{
+    text-align: center;
+}
 
+.prd-all{
+    margin-right: 5px;
+    margin-left: 6.5px;
+}
 

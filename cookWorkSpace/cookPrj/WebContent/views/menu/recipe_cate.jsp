@@ -22,11 +22,11 @@
                         <label for="">  |  </label>
                         <a href=""> 반찬 </a>
                         <label for="">  |  </label>
-                        <a href=""> 양식 </a>
+                        <a href=""> 일식 </a>
                         <label for="">  |  </label>
                         <a href=""> 중식 </a>
                         <label for="">  |  </label>
-                        <a href=""> 일식 </a>
+                        <a href=""> 양식 </a>
                         <label for="">  |  </label>
                         <a href=""> 디저트 </a>
                     </div>
@@ -148,21 +148,21 @@
                 <div class="recipe-menu-area">
                 <div>
                     <a href="">
-                        <img src="/cookTeacher/resources/img/돼지고기청경채볶음.jpg" alt="레시피게시판담당" width="100%" height="100%">
+                        <img src="/cookTeacher/resources/img/초코머핀.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>김치찌개</div>
+                    <div>초코머핀</div>
                 </div>
                 <div>
                     <a href="">
-                        <img src="/cookTeacher/resources/img/mapotofu.jpg" alt="레시피게시판담당" width="100%" height="100%">
+                        <img src="/cookTeacher/resources/img/식빵푸딩.jpg" alt="레시피게시판담당"  width="100%" height="100%">
                     </a>
-                    <div>김치볶음밥</div>
+                    <div>식빵푸딩</div>
                 </div>
                 <div>
                     <a href="">
-                        <img src="/cookTeacher/resources/img/마라샹궈.jpg" alt="레시피게시판담당"  width="100%" height="100%">
+                        <img src="/cookTeacher/resources/img/티라미수.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>갈치조림</div>
+                    <div>티라미수</div>
                 </div>
                 </div>
 
