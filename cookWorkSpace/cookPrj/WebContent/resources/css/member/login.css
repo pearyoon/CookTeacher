@@ -50,12 +50,14 @@
 #btn input{
     background-color: #255D00;
     color: white;
+    cursor: pointer;
 }
 
 #btn button{
     background-color: white;
     border-color: #255D00;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 
 #findMem{
