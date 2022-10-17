@@ -322,7 +322,7 @@ section.notice {
                             1.8L
                         </div>
                         <div class="inner-last">
-                           + 1 +
+                           + 1 +     
                         </div>
 
                     </div>
