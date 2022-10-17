@@ -105,5 +105,6 @@ div[id^=hidden] {
     color: #fff;
     background-color: #255D00;
     border: 0 none;
+    cursor: pointer;
 }
 

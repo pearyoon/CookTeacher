@@ -1,14 +1,28 @@
+<%@page import="com.kh.cook.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+%>
 
     <header>
         <div id="header-top">   
             <div>
-                <a href="/cookTeacher/member/join">회원가입</a>
+           	<%if(loginMember != null) {%>
+           		<a href="/cookTeacher/member/logout">로그아웃</a>
+           		<span>|</span>
+           		<a href="/cookTeacher/mypage/info">마이페이지</a>
+           		
+           	<%} else {%>
+            	<a href="/cookTeacher/member/join">회원가입</a>
                 <span>|</span>
                 <a href="/cookTeacher/member/login">로그인</a>
-                <span>|</span>
+           	<%} %>
+           		<span>|</span>
                 <a href="/cookTeacher/notice/list">공지사항</a>
+            
+
             </div>
             <div>
                 <div id="header-logo">
@@ -22,10 +36,16 @@
                     <button><img src="/cookTeacher/resources/img/search.png" alt="검색아이콘" width="100%" height="100%"></button>
                 </div>
                 <div id="header-member-area">
-                    <div>쿡선생회원님</div>
-                    <a href="">
-                        <img src="/cookTeacher/resources/img/cart.png" alt="장바구니" width="50px" height="50px">
-                    </a>
+                <%if(loginMember != null) {%>
+                	<div><%=loginMember.getNick() %> 회원님</div>
+                <%} else{%>
+                	<div></div>
+                <%} %>
+                	<div>
+                        <a href="">
+                            <img src="/cookTeacher/resources/img/cart.png" alt="장바구니" width="50px" height="50px">
+                        </a>
+                    </div>
                 </div>
                 
             </div>
