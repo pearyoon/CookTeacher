@@ -56,11 +56,12 @@
                 </div>
                 <div id="mypage-right">
                     <h2 id="head-aticle">
-                        쿡스토리
+                        회원정보
                     </h2>
                     <div id="line"></div>
                     <div id="board-container">
-                    	<!-- 여기에 내용 작성하기 -->
+                    	<!-- <%@include file="/views/member/mypage/check.jsp" %> -->
+                        <%@include file="/views/member/mypage/modify.jsp" %> 
                     </div>
                 </div>
             </div>
