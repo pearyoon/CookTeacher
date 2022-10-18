@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
                     <div id="inner">
                         <ul id="list-menu">
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/member/modify">
                                     회원정보
                                 </a>
                             </li>
@@ -60,8 +61,9 @@
                     </h2>
                     <div id="line"></div>
                     <div id="board-container">
-                    	<!-- <%@include file="/views/member/mypage/check.jsp" %> -->
-                        <%@include file="/views/member/mypage/modify.jsp" %> 
+                    	<%@include file="/views/member/mypage/check.jsp" %>
+                        <!-- <%@include file="/views/member/mypage/modify.jsp" %> -->
+                        
                     </div>
                 </div>
             </div>
