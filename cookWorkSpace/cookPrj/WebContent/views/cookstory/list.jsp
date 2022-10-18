@@ -9,15 +9,15 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <style>
-	.bob-main>div>a{
+	.cook-main>div>a{
 		margin-top: 10px;
 		margin-left: 10px;
 	}
-	.bob-main>div>h1{
+	.cook-main>div>h1{
 		margin-top: 10px;
 		margin-left: 10px;
 	}
-	.bob-main>div>img{
+	.cook-main>div>img{
 		margin-top: 10px;
 		margin-left: 10px;
 	}
@@ -26,7 +26,7 @@
 		flex-direction: row-reverse;
 	}
 
-	.bob-main{
+	.cook-main{
 		display: grid;
 		grid-template-columns: 0.3fr 2fr 0.3fr 0.3fr 0.3fr;
 	}
@@ -41,7 +41,7 @@
 		height: 500px;
 		text-align: center;
 	}
-	.bob-board-head{
+	.cook-board-head{
 		height: 30px;
 		vertical-align: middle;
 	}
@@ -78,13 +78,13 @@
 		font-weight: 900;
 	}
 
-	#bob-main>div{
+	#cook-main>div{
 		display: flex;
 	}
-	.bob-board-head{
+	.cook-board-head{
 		background-color: #999;
 	}
-	.bob-content{
+	.cook-content{
 		box-sizing: border-box;
 		margin: 0 auto;
 	}
@@ -92,32 +92,31 @@
 </style>
 </head>
 <body>
-		<!--<%@include file="/views/common/header.jsp" %> --> <!-- 헤더부분 가져오기-->
+		<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
 		<!-- 헤더는 컨테이너 밖에 -->
-		
-		<!--<div id="container">--> <!-- 컨테이너 -->
+		<div id="container"> <!-- 컨테이너 -->
 			<div id="main">
-				<div class="bob-main">
+				<div class="cook-main">
 					<div><img src="/cookTeacher/resources/img/bobstory.png" alt="밥책" width="50px" height="40px"></div>
-					<div class="bobstory"><h1>밥 스토리</h1></div>
+					<div class="cookstory"><h1>쿡 스토리</h1></div>
 				</div>
 				<div class="click">
 					<a href="">추천순</a>
 					<a href="">조회순</a>
 					<a href="">댓글순</a>
 				</div>
-				<table class="bob-board">
+				<table class="cook-board">
 				<thead>
-						<tr class="bob-board-head">
-							<th scope="col" class="bb-num">번호</th>
-							<th scope="col" class="bb-title">제목</th>
-							<th scope="col" class="bb-writer">글쓴이</th>
-							<th scope="col" class="bb-date">날짜</th>
-							<th scope="col" class="bb-like">추천</th>
+						<tr class="cook-board-head">
+							<th scope="col" class="cb-num">번호</th>
+							<th scope="col" class="cb-title">제목</th>
+							<th scope="col" class="cb-writer">글쓴이</th>
+							<th scope="col" class="cb-date">날짜</th>
+							<th scope="col" class="cb-like">추천</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="bob-content">
+						<tr class="cook-content">
 							<td>1</td>
 							<td>기름없이 튀겨먹는 감자튀김</td>
 							<td>소은덮밥</td>
@@ -169,8 +168,8 @@
 					</div>
 				</div>
 			</div>
-			<!--<%@include file="/views/common/footer.jsp" %>--> <!-- 푸터부분 파일 가져오기-->
-		<!--</div>-->
+			<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
+		</div>
 		
 </body>
 </html>
