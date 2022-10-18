@@ -132,7 +132,7 @@ input[type=submit]{
 .join-items p{
     font-size: 13px;
     color: rgb(240, 63, 64);
-    display: none;
+    /* display: none; */
 }
 
 /* 중복확인,주소검색 호버 시 */

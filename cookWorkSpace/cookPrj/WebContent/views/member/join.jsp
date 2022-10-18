@@ -29,8 +29,8 @@
                             <div class="input-area">
                                 <input id="memberId" type="text" name="memberId" placeholder="아이디를 입력해주세요.">
                             </div>
-                            <div id="hidden-id">
-                                <p>6자 이상 16자 이하의 영문 혹은 영문과 숫자 조합</p>
+                            <div>
+                                <p id="hidden-id"></p>
                             </div>
                         </div>
                         <div>
@@ -157,5 +157,29 @@
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
+    
+    <script>
+    	// 아이디 유효성 체크
+        const memberId = document.querySelector('input[name=memberId]');
+        console.log(memberId);
+    	memberId.addEventListener("blur" ,()=>{
+    		
+            const inputId = memberId.value;
+            const regExp = /^[a-z]+[a-z0-9]{5,19}$/g;
+
+    		if(inputId == ""){
+    			document.querySelector('#hidden-id').innerHTML = '아이디를 입력해주세요.';
+    		} else if(!regExp.test(inputId)){
+                document.querySelector('#hidden-id').innerHTML = '영문 숫자 조합의 6자 이상  20자 이하';
+            } else {
+                document.querySelector('#hidden-id').innerHTML = '';
+            }
+    	});
+        
+        // 비밀번호 유효성 체크
+        const memberPwd1 = document.querySelector('input[name=memberPwd1]');
+        const memberPwd2 = document.querySelector('input[name=memberPwd2]');
+        
+    </script>
 </body>
 </html>

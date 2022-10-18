@@ -15,5 +15,6 @@ public class MemberLogoutController extends HttpServlet{
 		HttpSession ss = req.getSession();
 		ss.invalidate();
 		resp.sendRedirect("/cookTeacher");
+		
 	}
 }
