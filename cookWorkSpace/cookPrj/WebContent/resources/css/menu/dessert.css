@@ -28,12 +28,12 @@ main div{
 /* ====================메인우======================== */
 
 /* 메인 이름 폰트 */
-#recipe-desert>div:first-child{
+#recipe-dessert>div:first-child{
     font-size: 2rem;
     padding: 50px;
 }
 /* 레시피 공간 */
-#recipe-desert{
+#recipe-dessert{
     
     position: relative;
     width: 1050px;
@@ -42,7 +42,7 @@ main div{
     margin-top: 30px;
 }
 
-.recipe-desert-area{
+.recipe-dessert-area{
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -51,14 +51,14 @@ main div{
     /*height: 400px;  */
 }
 /* 레시피 이미지 크기 */
-#recipe-desert>div>div {
+#recipe-dessert>div>div {
     margin-top: 30px;
     width: 330px;
     height: 240px;
 }
 
 
-.recipe-desert-area>div>div{
+.recipe-dessert-area>div>div{
     margin-top: 10px;
 }
 
@@ -67,7 +67,7 @@ main div{
 
 
 /* 이미지 호버 시 */
-#recipe-desert img:hover{
+#recipe-dessert img:hover{
     opacity: 0.6;
 }
 
@@ -93,7 +93,7 @@ main div{
     margin-bottom: 30px;
 }
 
-.desert-name{
+.dessert-name{
     margin-top: 5px;
     margin-bottom: 30px;
 }
