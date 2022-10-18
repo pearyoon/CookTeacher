@@ -50,39 +50,35 @@
  -->
  
             <div id="main-bottom">
-                <!-- <div id="main-menu-bar">
-                    <div class="main-menu-bar-items">
-                        <a href="">과일/채소</a>
-                    </div>
-                </div> -->
+
                 <hr><br><br>
                 <div id="category-name">과일 / 채소</div><br><br>
                 <hr>
                 <br><br>
                 <div class="main-prod-area">
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/banana.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>바나나 / 500g</div>
                         <div id="price">3,500원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/shine_muscat.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>샤인머스켓 / 2kg</div>
                         <div id="price">38,000원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>청도 반시 / 1.5kg</div>
                         <div id="price">8,400원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/grape.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                        
@@ -92,28 +88,28 @@
                 </div>
                 <div class="main-prod-area">
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/tangerine.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>하우스 감귤 / 500g</div>
                         <div id="price">7,300원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/kiwi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>키위 / 350g</div>
                         <div id="price">5,800원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/lemon.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>레몬 / 2kg</div>
                         <div id="price">31,900원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>청도 반시 / 1.5kg</div>
@@ -122,28 +118,28 @@
                 </div>  
                 <div class="main-prod-area">
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/banana.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>바나나 / 500g</div>
                         <div id="price">3,500원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/shine_muscat.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>샤인머스켓 / 2kg</div>
                         <div id="price">38,000원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>청도 반시 / 1.5kg</div>
                         <div id="price">8,400원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/grape.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>적포도 / 500g</div>
@@ -153,28 +149,28 @@
                 </div> 
                 <div class="main-prod-area">
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/tangerine.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>하우스 감귤 / 500g</div>
                         <div id="price">7,300원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/kiwi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>키위 / 350g</div>
                         <div id="price">5,800원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/lemon.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>레몬 / 2kg</div>
                         <div id="price">31,900원</div>
                     </div>
                     <div>
-                        <a href="">
+                        <a href="/cookTeacher/views/product/detail/dairy.jsp">
                             <img src="/cookTeacher/resources/img/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>청도 반시 / 1.5kg</div>
