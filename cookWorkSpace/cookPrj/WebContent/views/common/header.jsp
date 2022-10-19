@@ -62,7 +62,7 @@
         <div id="header-bottom">
             <div id="header-menu-bar">
                 <div class="header-menu-items">
-                    <a href="">쇼핑</a>
+                    <a href="<%= root %>/views/product/main/main.jsp">쇼핑</a>
                     
                 </div>
                 <div class="header-menu-items">
