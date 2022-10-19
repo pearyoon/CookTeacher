@@ -20,7 +20,7 @@
            	<%if(loginMember != null) {%>
            		<a href="<%=root %>/member/logout">로그아웃</a>
            		<span>|</span>
-           		<a href="<%=root %>/mypage/info">마이페이지</a>
+           		<a href="<%=root %>/login/mypage/member/check">마이페이지</a>
            		
            	<%} else {%>
             	<a href="<%=root %>/member/join">회원가입</a>

@@ -5,11 +5,11 @@
     <form action="" method="post">
         <div class="modify-items">
             <div>
-                <label for="userId">아이디</label>
+                <label for="memberId">아이디</label>
             </div>
             <div class="input-wrap">
                 <div>
-                    <input type="text" id="userId" name="userId" readonly value="cook1015">
+                    <input type="text" id="memberId" name="memberId" readonly value="cook1015">
                 </div>
                 <div></div>
             </div>
@@ -17,11 +17,11 @@
         </div>
         <div class="modify-items">
             <div>
-                <label for="newPwd">새 비밀번호</label>
+                <label for="memberPwd">새 비밀번호</label>
             </div>
             <div class="input-wrap">
                 <div>
-                    <input type="password" id="newPwd" name="newPwd" placeholder="비밀번호를 입력해주세요.">
+                    <input type="password" id="memberPwd" name="memberPwd" placeholder="비밀번호를 입력해주세요.">
                 </div>
                 <div>
                     <p>10자 이상 입력</p>
@@ -31,11 +31,11 @@
         </div>
         <div class="modify-items">
             <div>
-                <label for="newPwd2">새 비밀번호 확인</label>
+                <label for="memberPwd2">새 비밀번호 확인</label>
             </div>
             <div class="input-wrap">
                 <div>
-                    <input type="password" id="newPwd2" name="newPwd2" placeholder="비밀번호를 한번 더 입력해주세요.">
+                    <input type="password" id="memberPwd2" name="memberPwd2" placeholder="비밀번호를 한번 더 입력해주세요.">
                 </div>
                 <div>
                     <p>동일한 비밀번호를 입력해주세요.</p>
@@ -47,11 +47,11 @@
         </div>
         <div class="modify-items">
             <div>
-                <label for="userName">이름</label>
+                <label for="memberName">이름</label>
             </div>
             <div class="input-wrap">
                 <div>
-                    <input type="text" id="userName" name="userName" readonly value="쿡선생">
+                    <input type="text" id="memberName" name="memberName" readonly value="쿡선생">
                 </div>
                 <div></div>
             </div>
@@ -59,11 +59,11 @@
         </div>
         <div class="modify-items">
             <div>
-                <label for="userNick">닉네임</label>
+                <label for="memberNick">닉네임</label>
             </div>
             <div class="input-wrap">
                 <div>
-                    <input type="text" id="userNick" name="userNick" placeholder="닉네임을 입력해주세요." value="쿡선생">
+                    <input type="text" id="memberNick" name="memberNick" placeholder="닉네임을 입력해주세요." value="쿡선생">
                 </div>
                 <div>
                     <p>닉네임을 입력해주세요.</p>
@@ -95,7 +95,7 @@
         </div>
         <div class="modify-items">
             <div>
-                <label for="newPwd">휴대폰</label>
+                <label for="phone">휴대폰</label>
             </div>
             <div class="input-wrap">
                 <div>
