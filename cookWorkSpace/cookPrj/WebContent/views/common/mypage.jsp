@@ -23,7 +23,7 @@
                     <div id="inner">
                         <ul id="list-menu">
                             <li class="non-clcik">
-                                <a href="/member/modify">
+                                <a href="${root}/mypage/member/check">
                                     회원정보
                                 </a>
                             </li>
@@ -61,8 +61,10 @@
                     </h2>
                     <div id="line"></div>
                     <div id="board-container">
-                    	<%@include file="/views/member/mypage/check.jsp" %>
-                        <!-- <%@include file="/views/member/mypage/modify.jsp" %> -->
+
+
+
+
                         
                     </div>
                 </div>

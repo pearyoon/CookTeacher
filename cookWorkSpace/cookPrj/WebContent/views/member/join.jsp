@@ -316,6 +316,10 @@
                 return true;
             }
         });
+
+        function check(){
+            
+        }
     </script>
 </body>
 </html>
