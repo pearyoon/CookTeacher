@@ -35,13 +35,13 @@
             <div>
                 <div id="header-logo">
                     <a href="<%=root %>">                       
-                        <img src="<%=root %>/resources/img/logo.png" alt="쿡선생로고" width="105px" height="105px">
+                        <img src="<%=root %>/resources/img/icon/logo.png" alt="쿡선생로고" width="105px" height="105px">
                     </a> 
                     <div>집밥Cook선생</div>
                 </div>
                 <div id="header-search-area">
                     <input type="text" name="search" placeholder="검색어를 입력해주세요.">
-                    <button><img src="/cookTeacher/resources/img/search.png" alt="검색아이콘" width="100%" height="100%"></button>
+                    <button><img src="/cookTeacher/resources/img/icon/search.png" alt="검색아이콘" width="100%" height="100%"></button>
                 </div>
                 <div id="header-member-area">
                 <%if(loginMember != null) {%>
@@ -51,7 +51,7 @@
                 <%} %>
                 	<div>
                         <a href="">
-                            <img src="<%=root %>/resources/img/cart.png" alt="장바구니" width="50px" height="50px">
+                            <img src="<%=root %>/resources/img/icon/cart.png" alt="장바구니" width="50px" height="50px">
                         </a>
                     </div>
                 </div>
