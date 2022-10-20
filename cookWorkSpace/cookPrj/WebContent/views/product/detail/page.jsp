@@ -1,6 +1,7 @@
+<%@page import="com.kh.cook.product.vo.ProductVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -282,8 +283,6 @@ section.notice {
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
-          
-    
     
             <div id="main-middle">
                 <div id="product-name"></div>
@@ -294,7 +293,7 @@ section.notice {
                     </div>
                     <div class="outer">
                         <div class="inner" id="real-name">
-                            [서울우유] 나 100% 우유
+                           상품 이름
                         </div>
                         <div class="inner">
                             가격
@@ -405,6 +404,7 @@ section.notice {
                                 </div>
                             </div>
                         </div>
+                    
                         
                         <!-- board list area -->
                         <div id="board-list">
