@@ -24,4 +24,20 @@ public class MenuService {
 	
 	}
 
+	//
+	public MenuVo selectMenuOne(String no) {
+		//커넥션 준비
+		//sql
+		//트랜젝션, 자원반납
+		Connection conn = JDBCTemplate.getConnection();
+		
+		MenuVo vo = new MenuDao().selectMenuOne(conn, no);
+		
+		JDBCTemplate.close(conn);
+		
+		return vo;
+		
+		
+	}
+
 }

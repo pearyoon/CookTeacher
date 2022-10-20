@@ -1,3 +1,4 @@
+<%@page import="com.kh.cook.menu.vo.MenuVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>cookTeacher</title>
-
+<%
+	MenuVo vo = (MenuVo)request.getAttribute("vo");
+%>
 
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
@@ -23,9 +26,9 @@
         <main>
     
             <div id="recipe-detail">
-                <div id="resipe" >|&nbsp;&nbsp; 밤맛탕 &nbsp;&nbsp;|</div>
+                <div id="resipe" >|&nbsp;&nbsp; <%=vo.getMenuName() %> &nbsp;&nbsp;|</div>
                 <hr width="60%" style="margin-bottom: 20px; margin-top: 20px;">
-                <div id="ment"><label> 입이 심심할 때 간단하게 만들어 먹을 수 있는, 자꾸 손이 가는 밤맛탕 레시피! </label></div>
+                <div id="ment"><label> <%=vo.getMenuInfo() %> </label></div>
                     
                 <hr width="60%" style="margin-bottom: 20px; margin-top: 20px; margin-bottom: 50px;">
                 <div id="gap"></div>
@@ -37,7 +40,7 @@
                 <div id="en">
                     <!-- 1 -->
                     <div id="re-img">
-                        <img id="re-imgimg" src="/cookTeacher/resources/img/초코머핀.jpg" alt="" width="500px" height="500px">
+                        <img id="re-imgimg" src="/cookTeacher/resources/img/디저트레시피/초코머핀.jpg" alt="" width="500px" height="500px">
                     </div>
                     
                     <!-- 2 -->
@@ -52,7 +55,7 @@
                             
                             function ChnImg(){
                                 
-                                document.getElementById("imgId").src = "/cookTeacher/resources/img/좋아요(초).jpg";
+                                document.getElementById("imgId").src = "/cookTeacher/resources/img/icons/좋아요(초).jpg";
                                 
                             }
                             
@@ -81,7 +84,7 @@
                 <div id="middle">
                     <div class="middle" style="font-size: 1.3rem;" >
                         <label id="kcal">280 </label>
-                        <img alt="" src="/cookTeacher/resources/img/칼로리.jpg" alt="식재료게시판담당" id="imgid" width="35px" height="30px" onclick="ChnImg()">
+                        <img alt="" src="/cookTeacher/resources/img/icons/칼로리.jpg" alt="식재료게시판담당" id="imgid" width="35px" height="30px" onclick="ChnImg()">
                     </div>
                     <div class="middle" style="text-align: center; font-size: 0.8rem; font-weight: 700; line-height: 1rem; padding-left: 20px;">
                         <a href="">
@@ -90,7 +93,7 @@
                         </a>
                     </div>
                     <div class="middle" style="font-size: 1.5rem;" style="margin-right: 10px;">
-                        <img alt="" src="/cookTeacher/resources/img/좋(초).jpg" style="margin-right: 5px; margin-bottom: 13px;" alt="식재료게시판담당" id="imgid"  width="25px" height="25px" onclick="ChnImg()">
+                        <img alt="" src="/cookTeacher/resources/img/icons/좋(초).jpg" style="margin-right: 5px; margin-bottom: 13px;" alt="식재료게시판담당" id="imgid"  width="25px" height="25px" onclick="ChnImg()">
                         <label id="kcal">55</label>
                     </div>
                 </div>
