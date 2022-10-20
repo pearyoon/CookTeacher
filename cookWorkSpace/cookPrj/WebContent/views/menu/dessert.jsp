@@ -31,10 +31,10 @@
                     <div class="recipe-dessert-area">
                     
                     <%
-                    	for(int i = 0; i<4; ++i ){%>
+                    	for(int i = 0; i<3; i++){%>
 		                    <div>
 		                        <a href="">
-		                            <img src="/cookTeacher/resources/img/" + <%=voList.get(i).getImgPath() %> alt="레시피게시판담당" width="100%" height="100%">
+		                            <img src="/cookTeacher/resources/img/디저트레시피/<%=voList.get(i).getImgPath() %>"  alt="레시피게시판담당" width="100%" height="100%">
 			                        <div id="ment-detail">
 			                            <%=voList.get(i).getMenuInfo() %>
 			                        </div>
@@ -43,76 +43,68 @@
 		                    </div>
                     		
                     	<%} %>
-
-
-                <!-- ------------------------------ -->
-                <div class="recipe-dessert-area">
-                    <div>
+					</div>
+					
+					<!-- ---------------------------------- -->
+					
+					<div class="recipe-dessert-area">
                     
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/돼지고기청경채볶음.jpg" alt="레시피게시판담당" width="100%" height="100%">
-	                        <div id="ment-detail">
-                                김치찌개의 영원한 라이벌 구수한 된장찌개	                        
-                            </div>
-	                        <div class="dessert-name">된장찌개</div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/mapotofu.jpg" alt="레시피게시판담당" width="100%" height="100%">
-	                        <div id="ment-detail">
-	                            매콤하고 부드러운 입에서 살살 녹는 
-                                <br>매콤 돼지 갈비찜
-	                        </div>
-	                        <div class="dessert-name">매콤 돼지 갈비찜</div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/마라샹궈.jpg" alt="레시피게시판담당"  width="100%" height="100%">
-	                        <div id="ment-detail">
-	                            남녀노소 누구나 좋아하는 생선 요리
-	                        </div>
-	                        <div class="dessert-name">갈치조림</div>
-                        </a>
-                    </div>
-                   
-                </div>
-                
-                <!-- ------------------------------ -->
-                <div class="recipe-dessert-area">
-                    <div>
+                    <%
+                    	for(int i = 3; i<6; i++){%>
+		                    <div>
+		                        <a href="">
+		                            <img src="/cookTeacher/resources/img/디저트레시피/<%=voList.get(i).getImgPath() %>"  alt="레시피게시판담당" width="100%" height="100%">
+			                        <div id="ment-detail">
+			                            <%=voList.get(i).getMenuInfo() %>
+			                        </div>
+			                        <div class="dessert-name"><%=voList.get(i).getMenuName() %></div>
+		                        </a>
+		                    </div>
+                    		
+                    	<%} %>
+                    	
+					</div>
+					
+					<!-- -------------------------------------- -->
+					
+										
+					<div class="recipe-dessert-area">
                     
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/크림새우.jpg" alt="레시피게시판담당" width="100%" height="100%">
-	                        <div id="ment-detail">
-                                김치찌개의 영원한 라이벌 구수한 된장찌개	                        
-                            </div>
-	                        <div class="dessert-name">된장찌개</div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/mapotofu.jpg" alt="레시피게시판담당" width="100%" height="100%">
-	                        <div id="ment-detail">
-	                            매콤하고 부드러운 입에서 살살 녹는 
-                                <br>매콤 돼지 갈비찜
-	                        </div>
-	                        <div class="dessert-name">매콤 돼지 갈비찜</div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/friedrice.jpg" alt="레시피게시판담당"  width="100%" height="100%">
-	                        <div id="ment-detail">
-	                            남녀노소 누구나 좋아하는 생선 요리
-	                        </div>
-	                        <div class="dessert-name">갈치조림</div>
-                        </a>
-                    </div>
+                    <%
+                    	for(int i = 6; i<9; i++){%>
+		                    <div>
+		                        <a href="">
+		                            <img src="/cookTeacher/resources/img/디저트레시피/<%=voList.get(i).getImgPath() %>"  alt="레시피게시판담당" width="100%" height="100%">
+			                        <div id="ment-detail">
+			                            <%=voList.get(i).getMenuInfo() %>
+			                        </div>
+			                        <div class="dessert-name"><%=voList.get(i).getMenuName() %></div>
+		                        </a>
+		                    </div>
+                    		
+                    	<%} %>
+                    	
+					</div>
+					
+					<!-- ------------------------------------- -->
+					
+					<div class="recipe-dessert-area">
                     
-                   
-                </div>
+                    <%
+                    	for(int i = 9; i<10; i++){%>
+		                    <div>
+		                        <a href="">
+		                            <img src="/cookTeacher/resources/img/디저트레시피/<%=voList.get(i).getImgPath() %>"  alt="레시피게시판담당" width="100%" height="100%">
+			                        <div id="ment-detail">
+			                            <%=voList.get(i).getMenuInfo() %>
+			                        </div>
+			                        <div class="dessert-name"><%=voList.get(i).getMenuName() %></div>
+		                        </a>
+		                    </div>
+                    		
+                    	<%} %>
+                    	
+					</div>
                     
             </div>
             

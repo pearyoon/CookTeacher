@@ -28,7 +28,7 @@
                         <label for="">  |  </label>
                         <a href="/cookTeacher/views/menu/westren.jsp"> 양식 </a>
                         <label for="">  |  </label>
-                        <a href="/cookTeacher/views/menu/desert.jsp"> 디저트 </a>
+                        <a href="/cookTeacher/menu/dessert"> 디저트 </a>
                     </div>
                 
                     <div class="cate-name"><a href="/cookTeacher/views/menu/korean.jsp">< 한식 ></a></div>
@@ -144,7 +144,7 @@
                 </div>
                 </div>
 
-                <div class="cate-name"><a href="/cookTeacher/views/menu/desert.jsp">< 디저트 ></a></div>
+                <div class="cate-name"><a href="/cookTeacher/menu/dessert">< 디저트 ></a></div>
                 <div class="recipe-menu-area">
                 <div>
                     <a href="">

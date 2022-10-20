@@ -16,7 +16,7 @@ public class MenuDao {
 
 	//디저트 리스트 조회
 	public List<MenuVo> selectDessertList(Connection conn) {
-		String sql = "select * from menu where menu_cate_no = 6 order by no";
+		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 6 ORDER BY NO";
 		
 		
 		
@@ -62,6 +62,53 @@ public class MenuDao {
 		}
 		
 		return voList;
+	}
+
+	public MenuVo selectMenuOne(Connection conn, String no) {
+		
+		String sql = "SELECT RECIPE ,MENU_PROD ,CAL ,RECOMMEND ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,IMG_PATH FROM MENU WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MenuVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String recipe = rs.getString("RECIPE");
+				String menuProd = rs.getString("MENU_PROD");
+				String cal = rs.getString("CAL");
+				String recommend = rs.getString("RECOMMEND");
+				String menuCate_no = rs.getString("MENU_CATE_NO");
+				String menuName = rs.getString("MENU_NAME");
+				String menuInfo = rs.getString("MENU_INFO");
+				String imgPath = rs.getString("IMG_PATH");
+				
+				vo = new MenuVo();
+				vo.setRecipe(recipe);
+				vo.setMenuProd(menuProd);
+				vo.setCal(cal);
+				vo.setRecommend(recommend);
+				vo.setMenuCateNo(menuCate_no);
+				vo.setMenuName(menuName);
+				vo.setMenuInfo(menuInfo);
+				vo.setImgPath(imgPath);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+		}
+		
+		return vo;
 	}
 
 }
