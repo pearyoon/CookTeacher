@@ -10,7 +10,7 @@ import com.kh.cook.member.vo.MemberVo;
 public class MemberService {
 	
 	private static final MemberDao dao = new MemberDao();
-	
+	// 회원가입
 	public int join(MemberVo vo) {
 		
 		Connection conn = getConnection();
@@ -27,8 +27,8 @@ public class MemberService {
 		
 		return result;
 	}
-
-	public MemberVo login(MemberVo vo) {
+	// 로그인
+	public MemberVo selectOne(MemberVo vo) {
 		
 		Connection conn = getConnection();
 		
@@ -38,5 +38,36 @@ public class MemberService {
 		
 		return loginMember;
 	}
+
+	
+	public MemberVo modify(MemberVo vo) {
+		Connection conn = getConnection();
+		
+		int result = dao.updateOneByNo(vo,conn);
+		
+		MemberVo updateMember = null;
+	
+		if(result == 1) {
+			commit(conn);
+			updateMember = dao.selectOne(vo, conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateMember;
+	}
+	public String findId(MemberVo vo) {
+		Connection conn = getConnection();
+		
+		String findId = dao.findId(vo,conn);
+		
+		close(conn);
+		
+		return findId;
+	}
+
+
 
 }

@@ -1,7 +1,7 @@
 #modify-wrap{
     width: 820px;
     margin: 0px auto;
-    padding: 7px 60px 7px 120px;
+    padding: 7px 120px;
 }
 
 #modify-wrap{
@@ -27,12 +27,14 @@
 }
 /* 플렉스 두번째 박스 */
 .input-wrap{
-    flex: 1 1 0%;
+    /* flex: 1 1 0%; */
+    width: 280px;
 }
 
 .input-wrap>div:first-child{
     position: relative;
     height: 48px;
+    
 }
 
 .input-wrap input{
@@ -53,14 +55,13 @@
     font-size: 13px;
     color: rgb(240, 63, 64);
     padding: 5px;
-    display: none;
-    /* display: block; */
+
 }
 
 /* 플렉스 세번째 박스 */
 .modify-items>div:last-child{
     width: 120px;
-    margin-left: 8px;
+    margin-left: 10px;
 }
 
 .modify-items button{
@@ -83,11 +84,8 @@
 /* 버튼 */
 #btn{
     display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    margin-top: 20px;
-    padding-top: 40px;
     border-top: 1px solid rgb(244, 244, 244);
+    padding: 40px 120px;
 }
 
 #btn>button{
@@ -125,4 +123,10 @@
     color: rgb(255, 255, 255);
     background-color: #255D00;
     border: 0px none;
+}
+
+#list-menu>li:first-child{
+    background-color: rgb(250, 250, 250);
+    color: #255D00;
+    font-weight: 600;
 }

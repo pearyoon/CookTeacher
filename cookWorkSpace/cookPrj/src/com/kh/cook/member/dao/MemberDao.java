@@ -84,4 +84,60 @@ public class MemberDao {
 		return loginMember;
 	}
 
+	public int updateOneByNo(MemberVo vo, Connection conn) {
+		String sql = "UPDATE MEMBER SET PWD = ? ,EMAIL = ? ,PHONE = ? ,NICK = ? ,ADDR = ? WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getPwd());
+			pstmt.setString(2, vo.getEmail());
+			pstmt.setString(3, vo.getPhone());
+			pstmt.setString(4, vo.getNick());
+			pstmt.setString(5, vo.getAddr());
+			pstmt.setString(6, vo.getNo());
+			
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public String findId(MemberVo vo, Connection conn) {
+		String sql = "SELECT ID FROM MEMBER WHERE NAME = ? AND EMAIL = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String findId = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+		
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getEmail());
+			
+			
+			rs = pstmt.executeQuery();
+			
+			
+			if(rs.next()) {
+				findId = rs.getString("ID");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return findId;
+	}
+
 }

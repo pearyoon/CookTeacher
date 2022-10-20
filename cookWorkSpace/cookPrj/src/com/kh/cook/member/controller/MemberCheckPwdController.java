@@ -7,15 +7,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.cook.member.service.MemberService;
 import com.kh.cook.member.vo.MemberVo;
-@WebServlet(urlPatterns = "/member/login")
-public class MemberLoginController extends HttpServlet{
+@WebServlet(urlPatterns = "/login/mypage/member/check")
+public class MemberCheckPwdController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/views/member/login.jsp").forward(req, resp);
+		
+		req.getRequestDispatcher("/views/member/mypage/check.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -30,11 +30,10 @@ public class MemberLoginController extends HttpServlet{
 		MemberVo loginMember = new MemberService().selectOne(vo);
 		
 		if(loginMember != null) {
-			HttpSession ss = req.getSession();
-			ss.setAttribute("loginMember", loginMember);
-			resp.sendRedirect("/cookTeacher");
+			req.getSession().setAttribute("loginMember", loginMember);
+			resp.sendRedirect("/cookTeacher/login/mypage/member/modify");
 		} else {
-			req.setAttribute("errorMsg", "로그인 실패");
+			req.setAttribute("errorMsg", "비밀번호 재확인 실패");
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 	}

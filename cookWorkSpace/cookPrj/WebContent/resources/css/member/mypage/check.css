@@ -74,8 +74,9 @@
 }
 
 
-#check-btn>button{
-    
+#check-btn>input{
+    font-size: 16px;
+    font-weight: 500;
     display: block;
     padding: 0px 10px;
     text-align: center;
@@ -93,4 +94,11 @@
     display: inline-block;
     font-size: 16px;
     font-weight: 500;
+}
+
+
+#list-menu>li:first-child>a{
+    background-color: rgb(250, 250, 250);
+    color: #255D00;
+    font-weight: 600;
 }

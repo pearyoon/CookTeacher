@@ -5,6 +5,7 @@
 <%
 	String root = request.getContextPath();
 	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+	
 	String alertMsg = (String)session.getAttribute("alertMsg");
 	session.removeAttribute("alertMsg");
 %>
