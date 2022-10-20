@@ -4,6 +4,10 @@ div{
     box-sizing: border-box;
 }
 
+button{
+	cursor: pointer;
+}
+
 header{
     width: 1050px;
     height: 200px;

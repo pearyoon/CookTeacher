@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
-<link rel="stylesheet" href="/cookTeacher/resources/css/mypage/check.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/check.css">
 
 </head>
 <body>
@@ -23,7 +23,7 @@
                     <div id="inner">
                         <ul id="list-menu">
                             <li class="non-clcik">
-                                <a href="${root}/mypage/member/check">
+                                <a href="<%=root%>/login/mypage/member/check">
                                     회원정보
                                 </a>
                             </li>
@@ -60,54 +60,45 @@
                         회원정보
                     </h2>
                     <div id="line"></div>
-                    <div id="board-container">
+                    <div id="board-container"> --%> --%>
 
 
 							<div id="check-wrap">
 							    <h4>비밀번호 재확인</h4>
 							    <p>회원님의 정보를 보호하기 위해 비밀번호를 다시 한번 확인해주세요.</p>
-							    <form action="" method="post">
+							    <form action="/cookTeacher/login/mypage/member/check" method="post">
 							        <div id="check-area">
 							            <div class="check-flex">
 							                <div>
-							                    <label for="userId">아이디</label>
+							                    <label for="memberId">아이디</label>
 							                </div>
 							                <div>
-							                    <input type="text" id="userId" name="userId" value="cook1015" readonly>
+							                    <input type="text" id="memberId" name="memberId" value="${loginMember.id}" readonly>
 							                </div>
 							                <div></div>
 							            </div>
 							            <div class="check-flex">
 							                <div>
-							                    <label for="userPwd">비밀번호</label>
+							                    <label for="memberPwd">비밀번호</label>
 							                </div>
 							                <div>
-							                    <input type="password" id="userPwd" name="userPwd">
+							                    <input type="password" id="memberPwd" name="memberPwd">
 							                </div>
 							                <div></div>
 							            </div>
 							        </div>
 							        <div id="check-btn">
-							            <button>
-							                <span>확인</span>
-							            </button>
+                                        <input type="submit" value="확인">
 							        </div>
 							    </form>
 							</div>
 
 
 
-                        
-                    </div>
+                      </div>
                 </div>
             </div>
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
 
-    <script>
-
-
-    </script>
-</body>
-</html>

@@ -24,9 +24,9 @@
                     </div>
                 </div>
                 <div id="findMem">
-                    <a href="/cookTeacher/member/findId">아이디 찾기 </a>
+                    <a href="/cookTeacher/member/find/id">아이디 찾기 </a>
                     <span> | </span>
-                    <a href="/cookTeacher/member/findPwd"> 비밀번호 찾기</a>
+                    <a href="/cookTeacher/member/find/pwd"> 비밀번호 찾기</a>
                 </div>
                 <div id="btn">
                     <div>

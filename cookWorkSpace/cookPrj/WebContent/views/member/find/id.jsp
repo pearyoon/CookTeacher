@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,20 +17,20 @@
             <div>아이디 찾기</div>
             <div id="find-area">
                 <div>이메일 인증</div>
-                <form action="/cookTeacher/member/findId" method="post">
+                <form action="/cookTeacher/member/find/id" method="post">
                     <div class="find-items">
-                        <label for="find-name">이름</label>
+                        <label for="memberName">이름</label>
                         <div>
-                            <input id="find-name" type="text" name="memberName" placeholder="이름을 입력해주세요.">
+                            <input id="memberName" type="text" name="memberName" placeholder="이름을 입력해주세요.">
                         </div>
                     </div>
                         <div id="hidden-name">
                             <p>가입 시 등록한 이름을 입력해주세요.</p>
                         </div>
                     <div class="find-items">
-                        <label for="find-email">이메일</label>
+                        <label for="memberEmail">이메일</label>
                         <div>
-                            <input id="find-email" type="text" name="memberEmail" placeholder="이메일을 입력해주세요.">
+                            <input id="memberEmail" type="text" name="memberEmail" placeholder="이메일을 입력해주세요.">
                         </div>
                     </div>
                     <div id="hidden-email">
