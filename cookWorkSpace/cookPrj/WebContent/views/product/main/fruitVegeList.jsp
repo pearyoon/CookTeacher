@@ -1,5 +1,10 @@
+<%@page import="com.kh.cook.product.vo.ProductVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	List<ProductVo> voList = (List<ProductVo>)request.getAttribute("voList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,13 +55,9 @@
  -->
  
             <div id="main-bottom">
-                <!-- <div id="main-menu-bar">
-                    <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/views/product/detail/dairy.jsp">과일/채소</a>
-                    </div>
-                </div> -->
+
                 <hr><br><br>
-                <div id="category-name">면류 / 빵류</div><br><br>
+                <div id="category-name">과일 / 채소</div><br><br>
                 <hr>
                 <br><br>
                 <div class="main-prod-area">
