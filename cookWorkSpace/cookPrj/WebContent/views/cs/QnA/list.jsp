@@ -1,5 +1,11 @@
+<%@page import="com.kh.cook.cs.vo.CSVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    List<CSVo> QNAList = (List<CSVo>)request.getAttribute("QNAList");
+    /* 페이징처리 코드 추가하기 */
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,11 +45,11 @@ color: #000000;
 
 /* 문의 리스트 */
 .title{
-	width: 60vw;
+	width: 600px;
 	height: 35px;
 	margin: 0px auto;
 	display: grid;
-	grid-template-columns: 1fr 5fr;
+	grid-template-columns: 1fr 5fr 2fr 2fr;
 	align-content: center;
 	text-align: center;
 	border-top: 3px solid black;
@@ -51,11 +57,11 @@ color: #000000;
 	font-weight: bold;
 }
 .list{
-	width: 60vw;
+	width: 600px;
 	height: 350px;
 	margin: 0px auto;
 	display: grid;
-	grid-template-columns: 1fr 5fr;
+	grid-template-columns: 1fr 5fr 2fr 2fr;
 	grid-template-rows: repeat(10,10%);
 	align-content: center;
 	align-items: center;
@@ -92,47 +98,70 @@ main>.list>div{
 		<main>
 			<div class="name">
 				<!-- 게시판 이름 -->
-				<div id="faq">FAQ 자주묻는질문</div>
+				<div id="qna">QnA</div>
 			</div>
 
 			<div class="title">
 				<!-- 문의 게시판 목록 -->
 				<div>글번호</div>
 				<div>제목</div>
+				<div>작성자</div>
+				<div>작성일시</div>
 			</div>
 			<div class="list">
 				<!-- 짜가 목록 나중에 지움 -->
-		
-				<div>1</div>
-				<div>샬라샬라</div>
-
-
-				<div>1</div>
-				<div>샬라샬라</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
+				
+				<%for(int i = 0; i<QNAList.size(); i++){ %>
+					<div><%= QNAList.get(i).getQnaNo() %></div>
+					<div><a hrdf="<%%>"><%= QNAList.get(i).getTitle() %></a></div>
+					<div><%= QNAList.get(i).getWriter() %></div>
+					<div><%= QNAList.get(i).getQnaDate() %></div>
+				<%} %>
 
 				<div>1</div>
 				<div>샬라샬라</div>
+				<div>치킨</div>
+				<div>22/10/12</div>
 
 				<div>1</div>
 				<div>샬라샬라</div>
+				<div>치킨</div>
+				<div>22/10/12</div>
 
 				<div>1</div>
 				<div>샬라샬라</div>
+				<div>치킨</div>
+				<div>22/10/12</div>
 
 				<div>1</div>
 				<div>샬라샬라</div>
+				<div>치킨</div>
+				<div>22/10/12</div>
 
 				<div>1</div>
 				<div>샬라샬라</div>
+				<div>치킨</div>
+				<div>22/10/12</div>
 
 				<div>1</div>
 				<div>샬라샬라</div>
+				<div>치킨</div>
+				<div>22/10/12</div>
 
 				<div>1</div>
 				<div>샬라샬라</div>
+				<div>치킨</div>
+				<div>22/10/12</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+				<div>치킨</div>
+				<div>22/10/12</div>
+
+				<div>1</div>
+				<div>샬라샬라</div>
+				<div>치킨</div>
+				<div>22/10/12</div>
 
 			</div>
 			
@@ -147,6 +176,10 @@ main>.list>div{
 
 				<a href="">다음</a>
 			</div>
+			
+			<%if(session.getAttribute("loginMember") != null){ %>
+				<div id="writebtn"><a href="/cookTeacher/cs/QnA/write">글쓰기</a></div>
+			<%} %>
 
 		</main>
 		<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
