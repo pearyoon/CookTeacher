@@ -1,6 +1,7 @@
 package com.kh.cook.cart;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.kh.cook.member.vo.MemberVo;
 
-@WebServlet(urlPatterns = "/cookTeacher/cart")
-public class CartController extends HttpServlet{
+@WebServlet(urlPatterns = "/cart/list")
+public class CartListController extends HttpServlet{
 
 	// 장바구니 담기 작성(화면)
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -20,40 +21,22 @@ public class CartController extends HttpServlet{
 		// 회원 불러오기
 		HttpSession member = req.getSession();
 		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
-		
-		if(loginMember != null) {
-			// 회원일 경우
-			req.getRequestDispatcher("/views/cart/list.jsp").forward(req, resp);
-		}else{
-			// 회원이 아닐 경우
-			req.setAttribute("loginMsg", "로그인을 해주세요");
-			req.getRequestDispatcher("/views/member/login.jsp").forward(req, resp);
+
+		if(loginMember == null) {
+			resp.sendRedirect("/member/login");
+			return;
 		}
+		
+		// 회원일 경우
+		String no = loginMember.getNo();
+		
+		List<CartItemVo> cartList = new CartService().selectList(no);
+		req.setAttribute("cartList", cartList);
+		req.getRequestDispatcher("/views/cart/list.jsp").forward(req, resp);
+	
 		
 	}// doGet
 	
-	// 장바구니 담기
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		//인코딩
-		req.setCharacterEncoding("UTF-8");
-		
-		// 회원 불러오기
-		HttpSession member = req.getSession();
-		MemberVo loginMember = (MemberVo) member.getAttribute("loginMemebr");
-		
-		// 데이터 꺼내오기
-		
-		
-		// 데이터 뭉치고
-		
-		// 디비 다녀오기
-		
-		// 화면 선택하기
-		
-		
-	}
 	
 }//class
 
