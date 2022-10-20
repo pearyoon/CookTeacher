@@ -58,28 +58,28 @@
                 <div class="main-prod-area">
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/milk.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/milk.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>우유 / 1.8L</div>
                         <div id="price">4,740원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/milk2.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/milk2.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>유기농 우유 / 1L</div>
                         <div id="price">4,480원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/yogurt.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/yogurt.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>그릭요거트 플레인 맛 / 320g</div>
                         <div id="price">3,980원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/greekday.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/greekday.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                        
                         <div>그릭요거트 시그니처 / 450g</div>
@@ -89,28 +89,28 @@
                 <div class="main-prod-area">
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/cheese.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/cheese.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>슈레드 치즈 / 210g</div>
                         <div id="price">6,820원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/cheese2.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/cheese2.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>어린이 치즈 / 180g</div>
                         <div id="price">4,600원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/butter.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/butter.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>무염 버터 / 200g</div>
                         <div id="price">12,580원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/butter2.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/butter2.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>메이플 버터 / 150g</div>
                         <div id="price">8,000원</div>
@@ -119,28 +119,28 @@
                 <div class="main-prod-area">
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/banana.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/banana.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>바나나 / 500g</div>
                         <div id="price">3,500원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/shine_muscat.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/shine_muscat.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>샤인머스켓 / 2kg</div>
                         <div id="price">38,000원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>청도 반시 / 1.5kg</div>
                         <div id="price">8,400원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/grape.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/grape.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>적포도 / 500g</div>
                         <div id="price">10,900원</div>
@@ -150,28 +150,28 @@
                 <div class="main-prod-area">
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/tangerine.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/tangerine.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>하우스 감귤 / 500g</div>
                         <div id="price">7,300원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/kiwi.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/kiwi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>키위 / 350g</div>
                         <div id="price">5,800원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/lemon.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/lemon.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>레몬 / 2kg</div>
                         <div id="price">31,900원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>청도 반시 / 1.5kg</div>
                         <div id="price">8,400원</div>

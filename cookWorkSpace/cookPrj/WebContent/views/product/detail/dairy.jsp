@@ -289,7 +289,7 @@ section.notice {
                 <div id="product-name"></div>
                 <div id="main-menu-area">
                     <div id="product-main-img">
-                            <img src="/cookTeacher/resources/img/milk.png" alt="레시피게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/식재료/milk.png" alt="레시피게시판담당" width="100%" height="100%">
                         <!-- <div>우유</div> -->
                     </div>
                     <div class="outer">
@@ -361,7 +361,7 @@ section.notice {
                 <!-- 상품 설명 -->
                 <a id="tag-detail" >
                     <div class="main-prod-area">
-                        <img src="/cookTeacher/resources/img/milk_big.jpg" alt="상품 이미지" width="80%" height="100%">
+                        <img src="/cookTeacher/resources/img/식재료/milk_big.jpg" alt="상품 이미지" width="80%" height="100%">
                     </div>
                     <br>
                     <div>
@@ -387,7 +387,7 @@ section.notice {
                 <a id="tag-detail2" >
                     <br>
                     <div>
-                        <img src="/cookTeacher/resources/img/milk_info.png" alt="상품 이미지" width="100%" height="100%">
+                        <img src="/cookTeacher/resources/img/식재료/milk_info.png" alt="상품 이미지" width="100%" height="100%">
                     </div>
                     <div>
                         *영양 정보
