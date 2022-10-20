@@ -81,28 +81,28 @@
                 <div class="main-prod-area">
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/olive_oil.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/olive_oil.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>올리브 오일 / 500g</div>
                         <div id="price">8,900원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/ggongchi.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/ggongchi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>꽁치 / 450g</div>
                         <div id="price">3,830원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/beef.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/beef.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>등심 / 400g</div>
                         <div id="price">23,900원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/baguette_cheese.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/baguette_cheese.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                        
                         <div>바게트 치즈 / 200g</div>
@@ -112,28 +112,28 @@
                 <div class="main-prod-area">
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/banana.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/banana.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>바나나 / 500g</div>
                         <div id="price">3,500원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/shine_muscat.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/shine_muscat.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>샤인머스켓 / 2kg</div>
                         <div id="price">38,000원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>청도 반시 / 1.5kg</div>
                         <div id="price">8,400원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/grape.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/grape.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                        
                         <div>적포도 / 500g</div>
@@ -143,28 +143,28 @@
                 <div class="main-prod-area">
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/olive_oil.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/olive_oil.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>올리브 오일 / 500g</div>
                         <div id="price">8,900원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/ggongchi.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/ggongchi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>꽁치 / 450g</div>
                         <div id="price">3,830원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/beef.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/beef.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>등심 / 400g</div>
                         <div id="price">23,900원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/baguette_cheese.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/baguette_cheese.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                        
                         <div>바게트 치즈 / 200g</div>
@@ -174,28 +174,28 @@
                 <div class="main-prod-area">
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/banana.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/banana.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>바나나 / 500g</div>
                         <div id="price">3,500원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/shine_muscat.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/shine_muscat.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>샤인머스켓 / 2kg</div>
                         <div id="price">38,000원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/bansi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>청도 반시 / 1.5kg</div>
                         <div id="price">8,400원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/grape.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/grape.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                        
                         <div>적포도 / 500g</div>
@@ -205,28 +205,28 @@
                 <div class="main-prod-area">
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/olive_oil.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/olive_oil.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>올리브 오일 / 500g</div>
                         <div id="price">8,900원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/ggongchi.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/ggongchi.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>꽁치 / 450g</div>
                         <div id="price">3,830원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/beef.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/beef.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>등심 / 400g</div>
                         <div id="price">23,900원</div>
                     </div>
                     <div>
                         <a href="/cookTeacher/views/product/detail/dairy.jsp">
-                            <img src="/cookTeacher/resources/img/baguette_cheese.png" alt="식재료게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/baguette_cheese.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                        
                         <div>바게트 치즈 / 200g</div>
