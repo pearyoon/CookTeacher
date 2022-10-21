@@ -5,9 +5,8 @@ import java.util.List;
 
 import static com.kh.cook.common.JDBCTemplate.*;
 
-import com.kh.cook.menu.dao.MenuDao;
-import com.kh.cook.menu.vo.MenuVo;
 import com.kh.cook.product.dao.ProductDao;
+import com.kh.cook.product.vo.PageVo;
 import com.kh.cook.product.vo.ProductVo;
 
 public class ProductService  {
@@ -16,7 +15,7 @@ public class ProductService  {
 
 
 	//식재료 목록 조회
-	public List<ProductVo> selectProductList() {
+	public List<ProductVo> selectProductList(PageVo pv) {
 
 		//커넥션 준비
 		//SQL
@@ -24,7 +23,7 @@ public class ProductService  {
 		
 		Connection conn = getConnection();
 		
-		List<ProductVo> voList = dao.selectProductList(conn);
+		List<ProductVo> voList = dao.selectProductList(conn , pv);
 		
 		close(conn);
 		
@@ -36,7 +35,7 @@ public class ProductService  {
 
 
 	//식재료 상세 조회
-	public ProductVo selectProductOne(String prodNo) {
+	public ProductVo selectProductOne(String no) {
 
 		//커넥션 준비
 		//SQL (조회수 증가, 상세조회)
@@ -44,11 +43,12 @@ public class ProductService  {
 		
 		Connection conn = getConnection();
 		
-		ProductVo vo = new ProductDao().selectProductOne(conn, prodNo);
+		ProductVo vo = new ProductDao().selectProductOne(conn, no);
 
 		close(conn);
 		
 		return vo;
+		
 		
 	}
 

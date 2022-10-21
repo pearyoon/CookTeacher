@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>cookTeacher</title>
+
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
@@ -292,12 +293,12 @@ section.notice {
                 <div id="product-name"></div>
                 <div id="main-menu-area">
                     <div id="product-main-img/product">
-                            <img src="/cookTeacher/resources/img/product/milk.png" alt="레시피게시판담당" width="100%" height="100%">
+                            <img src="/cookTeacher/resources/img/product/<%= vo.getImgPath() %>" alt="레시피게시판담당" width="100%" height="100%">
                         <!-- <div>우유</div> -->
                     </div>
                     <div class="outer">
                         <div class="inner" id="real-name">
-                            <%= vo %>
+                            <%= vo.getName() %>
                         </div>
                         <div class="inner">
                             가격
@@ -317,13 +318,13 @@ section.notice {
                         <div class="inner">
                         </div>
                         <div class="inner">
-                            4,990원
+                            <%= vo.getPrice() %>
                         </div>
                         <div class="inner">
                             국내산
                         </div>
                         <div class="inner">
-                            1.8L
+                            <%= vo.getWeight() %>
                         </div>
                         <div class="inner-last">
                            + 1 +     
