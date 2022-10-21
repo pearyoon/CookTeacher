@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.cook.common.JDBCTemplate;
+import com.kh.cook.product.vo.PageVo;
 import com.kh.cook.product.vo.ProductVo;
 
 public class ProductDao {
 
 	//식재료 목록 조회
-	public List<ProductVo> selectProductList(Connection conn) {
+	public List<ProductVo> selectProductList(Connection conn , PageVo pv) {
 		//SQL
 		
 		//String sql = "SELECT * FROM PRODUCT";
@@ -65,10 +66,10 @@ public class ProductDao {
 	}
 
 	//식재료 상세 조회
-	public ProductVo selectProductOne(Connection conn, String prodNo) {
+	public ProductVo selectProductOne(Connection conn, String no) {
 
 		//SQL (준비, 완성, 실행 및 결과저장)
-		String sql = "SELECT NAME, INFO, PRICE, WEIGHT, IMG_PATH FROM PRODUCT WHERE PROD_NO = ?";
+		String sql = "SELECT PROD_NO, NAME, INFO, PRICE, WEIGHT, IMG_PATH FROM PRODUCT WHERE PROD_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -76,12 +77,13 @@ public class ProductDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, prodNo);
+						
+			pstmt.setString(1, no);
 			
 			rs = pstmt.executeQuery();
-			
+						
 			if(rs.next()) {
+				String prodNo = rs.getString("PROD_NO");
 				String name = rs.getString("NAME");
 				String info = rs.getString("INFO");
 				String price = rs.getString("PRICE");
@@ -89,11 +91,13 @@ public class ProductDao {
 				String imgPath = rs.getString("IMG_PATH");
 				
 				vo = new ProductVo();
+				vo.setProdNo(prodNo);
 				vo.setName(name);
 				vo.setInfo(info);
 				vo.setPrice(price);
 				vo.setWeight(weight);
 				vo.setImgPath(imgPath);
+				
 				
 			}
 			
@@ -104,8 +108,9 @@ public class ProductDao {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		return vo;
+		System.out.println("dao 쪽 vo : " +vo);
 		
+		return vo;
 	
 	}
 

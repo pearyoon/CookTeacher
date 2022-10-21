@@ -1,5 +1,11 @@
+<%@page import="com.kh.cook.product.vo.PageVo"%>
+<%@page import="com.kh.cook.product.vo.ProductVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	ProductVo vo = (ProductVo)request.getAttribute("vo");
+%>
     
 <!DOCTYPE html>
 <html>
@@ -289,12 +295,12 @@ section.notice {
                 <div id="product-name"></div>
                 <div id="main-menu-area">
                     <div id="product-main-img/product">
-                            <img/product src="/cookTeacher/resources/img/product/milk.png" alt="레시피게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath()%>" alt="레시피게시판담당" width="100%" height="100%">
                         <!-- <div>우유</div> -->
                     </div>
                     <div class="outer">
                         <div class="inner" id="real-name">
-                            [서울우유] 나 100% 우유
+                            <%= vo.getName() %>
                         </div>
                         <div class="inner">
                             가격
@@ -314,13 +320,13 @@ section.notice {
                         <div class="inner">
                         </div>
                         <div class="inner">
-                            4,990원
+                            <%= vo.getPrice() %> 원
                         </div>
                         <div class="inner">
                             국내산
                         </div>
                         <div class="inner">
-                            1.8L
+                            <%= vo.getWeight() %>
                         </div>
                         <div class="inner-last">
                            + 1 +     
@@ -336,13 +342,12 @@ section.notice {
                 <div>
                     <br>
                     <p>
-                        신선하고 고소한 명품우유
+                        <%= vo.getInfo() %>
                         <br>
                     </p>
                     <br>
                     <div id="product-detail-info">
-                        서울우유는 1등급이 2개인 명품우유에요. 건강한 젖소일수록 체세포수가 적게 나오는데, 체세포수가 1등급인 우유입니다. 
-                        <br><br>여기에 세균수 1A로 세균수가 적은 신선한 우유랍니다. 영양 가득한 고소한 흰 우유 한 잔 어떠세요.<br><br><br><br>
+                        <%= vo.getInfo() %>
                     </div>
                 </div>
                 <hr>
@@ -361,7 +366,7 @@ section.notice {
                 <!-- 상품 설명 -->
                 <a id="tag-detail" >
                     <div class="main-prod-area">
-                        <img/product src="/cookTeacher/resources/img/product/milk_big.jpg" alt="상품 이미지" width="80%" height="100%">
+                        <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath() %>" alt="상품 이미지" width="80%" height="100%">
                     </div>
                     <br>
                     <div>
@@ -387,7 +392,7 @@ section.notice {
                 <a id="tag-detail2" >
                     <br>
                     <div>
-                        <img/product src="/cookTeacher/resources/img/product/milk_info.png" alt="상품 이미지" width="100%" height="100%">
+                        <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath() %>" alt="상품 이미지" width="100%" height="100%">
                     </div>
                     <div>
                         *영양 정보
