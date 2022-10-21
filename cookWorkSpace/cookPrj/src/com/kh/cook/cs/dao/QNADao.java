@@ -8,14 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.cook.common.JDBCTemplate;
+import com.kh.cook.common.PageVo;
 import com.kh.cook.cs.vo.CSVo;
 
 public class QNADao {
 
 	//QNA 리스트 조회
-	public List<CSVo> selectQNAList(Connection conn) {
+	public List<CSVo> selectQNAList(Connection conn, PageVo pv) {
 
-		String sql = "SELECT Q.QNA_NO ,M.NICK ,Q.TITLE ,Q.CONT ,Q.Q_DATE ,Q.DELETE_YN ,Q.EDIT_DATE ,Q.QNA_CATE FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE Q.DELETE_YN = 'N' AND Q.QNA_CATE = 'Q' ORDER BY Q.QNA_NO DESC";
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , T.* FROM (SELECT Q.QNA_NO ,M.NICK ,Q.TITLE ,Q.CONT ,Q.Q_DATE ,Q.DELETE_YN ,Q.EDIT_DATE ,Q.QNA_CATE FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE Q.DELETE_YN = 'N' AND Q.QNA_CATE = 'F' ORDER BY Q.QNA_NO DESC)T ) WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -25,6 +26,11 @@ public class QNADao {
 			pstmt = conn.prepareStatement(sql);
 			
 			//페이징처리..꼭하기. 페이징처리하면 쿼리문 마지막 수정해야함.
+			int start = (pv.getCurrentPage() -1 ) * pv.getBoardLimit() +1;
+			int end = start + pv.getBoardLimit() -1;
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -60,5 +66,32 @@ public class QNADao {
 		
 		return QNAList;
 	}
+
+	//페이지카운트
+		public int pageSelectCount(Connection conn) {
+			
+			String sql = "SELECT COUNT(*) AS CNT FROM QNA WHERE QNA_CATE = 'Q'";
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int result = 0;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					result = rs.getInt("CNT");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(rs);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
+		}
 
 }

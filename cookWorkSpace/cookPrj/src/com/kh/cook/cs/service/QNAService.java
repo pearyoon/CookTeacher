@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.kh.cook.common.JDBCTemplate;
+import com.kh.cook.common.PageVo;
 import com.kh.cook.cs.dao.QNADao;
 import com.kh.cook.cs.vo.CSVo;
 
@@ -12,16 +13,27 @@ public class QNAService {
 	private final QNADao dao = new QNADao();
 
 	//QNA 리스트 조회
-	public List<CSVo> selectQNAList() {
+	public List<CSVo> selectQNAList(PageVo pv) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 
-		List<CSVo> QNAList = dao.selectQNAList(conn);
+		List<CSVo> QNAList = dao.selectQNAList(conn, pv);
 		
 		JDBCTemplate.close(conn);
 		
 		return QNAList;
 	
+	}
+
+public int pageSelectCount() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.pageSelectCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 }
