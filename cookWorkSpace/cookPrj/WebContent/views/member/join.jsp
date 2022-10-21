@@ -23,7 +23,7 @@
           
             <div id="join-top">
                 
-                <form action="/cookTeacher/member/join" method="post" onsubmit="return checkJoin();">
+                <form action="/cookTeacher/member/join" method="post" onsubmit="return checkJoin()">
                     <div class="join-items">
                         <div>
                             <label for="memberId">아이디</label>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div>
-                            <button type="button" onclick="checkId();">중복확인</button>
+                            <button id="dupId-btn" class="non-check" type="button" onclick="checkId();">중복확인</button>
                         </div>
                     </div>
                     <div class="join-items">
@@ -99,7 +99,7 @@
 
                         </div>
                         <div>
-                            <button>중복확인</button>
+                            <button id="dupNick-btn" class="non-check" type="button" onclick="checkNick();" >중복확인</button>
                         </div>
                     </div>
                     <div class="join-items">
@@ -116,7 +116,7 @@
 
                         </div>
                         <div>
-                            <button>중복확인</button>
+                            <button id="dupEmail-btn" class="non-check" type="button" onclick="checkEmail();">중복확인</button>
                         </div>
                     </div>
                     <div class="join-items">
@@ -151,7 +151,7 @@
                     </div>
                     <div id="join-btn">
                         <div>
-                            <input type="submit" value="가입하기">
+                            <button type="submit">가입하기</button>
                         </div>
                     </div>
                 </form>
