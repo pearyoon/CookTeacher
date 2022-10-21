@@ -39,7 +39,7 @@ public class MemberService {
 		return loginMember;
 	}
 
-	
+	// 회원수정
 	public MemberVo modify(MemberVo vo) {
 		Connection conn = getConnection();
 		
@@ -58,6 +58,8 @@ public class MemberService {
 		
 		return updateMember;
 	}
+	
+	// 아이디 찾기
 	public String findId(MemberVo vo) {
 		Connection conn = getConnection();
 		
@@ -66,6 +68,18 @@ public class MemberService {
 		close(conn);
 		
 		return findId;
+	}
+	
+	// 아이디 중복검사
+	public String dupCheckId(String id) {
+		
+		Connection conn = getConnection();
+		
+		String result = dao.dupCheckId(id ,conn);
+		
+		close(conn);
+		
+		return result;
 	}
 
 

@@ -60,7 +60,7 @@
                         회원정보
                     </h2>
                     <div id="line"></div>
-                    <div id="board-container"> --%> --%>
+                    <div id="board-container">
 
 
 							<div id="check-wrap">

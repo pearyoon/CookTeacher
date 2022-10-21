@@ -140,4 +140,31 @@ public class MemberDao {
 		return findId;
 	}
 
+	public String dupCheckId(String id, Connection conn) {
+		
+		String sql = "SELECT ID FROM MEMBER WHERE ID = ? AND QUIT_YN = 'N'";
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		String result = "0";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			System.out.println(id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next() || id.equals("")) {
+				result = "1"; 
+			} 
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
 }
