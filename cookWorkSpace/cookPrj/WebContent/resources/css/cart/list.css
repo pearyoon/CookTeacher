@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
   box-sizing: border-box;
 }
@@ -37,6 +39,12 @@ input[type="checkbox"]{
   background-color: transparent;
   border: none;
   vertical-align: middle;
+  justify-content: space-between;
+}
+
+.choose-all>label{
+  vertical-align: top;
+  padding-left: 10px;
 }
 
 .all-btn>input[type="checkbox"]{
@@ -125,11 +133,11 @@ input[type="checkbox"]{
 }
 
 .minus{
-  background-image: url("../../img/icons/마이너스\ 버튼.svg 버튼.svg");
+  background-image: url("../../img/icons/마이너스\ 버튼.svg");
 }
 
 .plus{
-  background-image: url("../../img/icons/플러스\ 버튼.svg 버튼.svg");
+  background-image: url("../../img/icons/플러스\ 버튼.svg");
 }
 
 .count-wrapper>button{

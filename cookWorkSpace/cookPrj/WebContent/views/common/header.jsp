@@ -51,8 +51,8 @@
                 	<div></div>
                 <%} %>
                 	<div>
-                        <a href="">
-                            <img src="<%=root %>/resources/img/icons/cart.png" alt="장바구니" width="50px" height="50px">
+                        <a href="<%=root%>/cart/list">
+                            <img src="<%=root%>/resources/img/icons/cart.png" alt="장바구니" width="50px" height="50px">
                         </a>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
         <div id="header-bottom">
             <div id="header-menu-bar">
                 <div class="header-menu-items">
-                    <a href="<%= root %>/views/product/main/main.jsp">쇼핑</a>
+                    <a href="<%= root %>/product/main/productList">쇼핑</a>
                     
                 </div>
                 <div class="header-menu-items">
