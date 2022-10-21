@@ -9,14 +9,13 @@
 	int deliveryFee = 0;
 	int totalCnt = 0;
 	
-	for(int i = 0; i < cartList.size(); i++){
+	//for(int i = 0; i < cartList.size(); i++){
+		//String price = cartList.get(i).getPrice();
+		//totalPrice += Integer.parseInt(price);
 		
-		String price = cartList.get(i).getPrice();
-		totalPrice += Integer.parseInt(price);
-		
-		String cnt = cartList.get(i).getCnt();
-		totalCnt += Integer.parseInt(cnt);
-	}
+		//String cnt = cartList.get(i).getCnt();
+		//totalCnt += Integer.parseInt(cnt);
+	//}
 	
 	if(totalPrice <= 50000){
 		deliveryFee = 3000;
@@ -45,19 +44,27 @@
                 <main>
                     <div id="cart">
                         <h1>장바구니</h1>
-
+						
                         <div class="cart-container">
                             <div id="cart-wrapper">
 
                                 <div id="cart-header">
                                     <div class="all-btn">
-                                        <input id="all" type="checkbox"><label for="all">전체선택</label>
+                                            <input id="all" type="checkbox"><label for="all">전체선택</label>
+                                        <div class="delete">
+                                            <input type="button" value="삭제하기">
+                                        </div>
                                     </div>
                                 </div>
-
+								
+								<c:if test="${empty requstScope.cartList}"></c:if>
                                 <div id="product-area">
-                                    <div class="product-header">상품</div>
+                                    <div class="product-header"></div>
                                     <ul>
+                                        <c:if test="${empty cartList}">
+                                            <div class="none-cart">
+                                                <p>장바구니에 담긴 상품이 없습니다.</p></div>
+                                        </c:if>
                                    		<c:forEach items="${cartList}" var="cartItem">
                                         <li class="product">
                                             <input type="checkbox">
@@ -77,6 +84,7 @@
                                         </li>
                                    		</c:forEach>
                                     </ul>
+                                    
                                 </div>
                             </div>
 
