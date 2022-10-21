@@ -40,7 +40,11 @@
                 <div id="en">
                     <!-- 1 -->
                     <div id="re-img">
-                        <img id="re-imgimg" src="/cookTeacher/resources/img/디저트레시피/<%=vo.getImgPath()%>" alt="" width="500px" height="500px">
+                    
+                    <!-- 레시피 카테고리별로 이미지 폴더 어떻게 구분할지 -->
+
+                    
+                        <img id="re-imgimg" src="/cookTeacher/resources/img/<%=vo.getImgPath()%>" alt="" width="500px" height="500px">
                     </div>
                     
                     <!-- 2 -->
@@ -99,13 +103,44 @@
                         <button id="btn" type="button" class="btn btn-warning">
                             <label id="re-btn" style="font-size: large;">비법 퍼가기</label>
                         </button>
+                        
                     </div>
+                    
+                   	<div id="menu-prod">
+                        <div style="margin-bottom: 10px">* 이런 재료들이 필요해요 !</div>
+                        <div style="line-height: 1.2rem; margin-bottom: 20px"><%=vo.getMenuProd() %></div>
+                    </div>
+         
 
                     <div id="prod-img" style="width: 100%; height: 100%;">
                         <div class="prd-all">
                             <div class="product">
                                 <a href="">
-                                    <img src="/cookTeacher/resources/img/banana.png" alt="식재료게시판담당" width="100%" height="100%">
+                                    <img src="/cookTeacher/resources/img/product/banana.png" alt="식재료게시판담당" width="100%" height="100%">
+                                </a>
+                            </div>    
+                            <div class="prod-price">
+                                <input type="checkbox" width="50px" height="50px">바나나 / 500g
+                                <pre>3,500</pre>
+                            </div>
+                        </div>
+                        
+                        <div class="prd-all">
+                            <div class="product">
+                                <a href="">
+                                    <img src="/cookTeacher/resources/img/product/banana.png" alt="식재료게시판담당" width="100%" height="100%">
+                                </a>
+                            </div>    
+                            <div class="prod-price">
+                                <input type="checkbox" width="50px" height="50px">바나나 / 500g
+                                <pre>3,500</pre>
+                            </div>
+                        </div>
+                        
+                       <div class="prd-all">
+                            <div class="product">
+                                <a href="">
+                                    <img src="/cookTeacher/resources/img/product/banana.png" alt="식재료게시판담당" width="100%" height="100%">
                                 </a>
                             </div>    
                             <div class="prod-price">
@@ -114,29 +149,7 @@
                             </div>
                         </div>
 
-                        <div class="prd-all">
-                            <div class="product">
-                                <a href="">
-                                    <img src="/cookTeacher/resources/img/banana.png" alt="식재료게시판담당" width="100%" height="100%">
-                                </a>
-                            </div>    
-                            <div class="prod-price">
-                                <input type="checkbox" width="50px" height="50px">바나나 / 500g
-                                <pre>3,500</pre>
-                            </div>
-                        </div>
-
-                        <div class="prd-all">
-                            <div class="product">
-                                <a href="">
-                                    <img src="/cookTeacher/resources/img/banana.png" alt="식재료게시판담당" width="100%" height="100%">
-                                </a>
-                            </div>    
-                            <div class="prod-price">
-                                <input type="checkbox" width="50px" height="50px">바나나 / 500g
-                                <pre>3,500</pre>
-                            </div>
-                        </div>
+						<!-- -------- -->		
 
                         <div class="prd-all">
                             <div class="product">
