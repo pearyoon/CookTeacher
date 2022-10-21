@@ -95,7 +95,7 @@
 		<!--<%@include file="/views/common/header.jsp" %> --> <!-- 헤더부분 가져오기-->
 		<!-- 헤더는 컨테이너 밖에 -->
 		
-		<!--<div id="container">--> <!-- 컨테이너 -->
+		<div id="container"> <!-- 컨테이너 -->
 			<div id="main">
 				<div class="bob-main">
 					<div><img src="/cookTeacher/resources/img/bobstory.png" alt="밥책" width="50px" height="40px"></div>
@@ -169,8 +169,8 @@
 					</div>
 				</div>
 			</div>
-			<!--<%@include file="/views/common/footer.jsp" %>--> <!-- 푸터부분 파일 가져오기-->
-		<!--</div>-->
+			<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
+		<</div>
 		
 </body>
 </html>
