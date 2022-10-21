@@ -2,24 +2,24 @@
     	
 // 아이디 유효성 체크
 const memberId = document.querySelector('input[name=memberId]');
-
+let idck = false;
 memberId.addEventListener("keyup" ,()=>{
-    
+    idck = false;
     const inputId = memberId.value;
     const idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
 
+    $('#dupId-btn').attr('disabled',false);
+    $('#dupId-btn').addClass('non-check');
+    $('#dupId-btn').removeClass('check');
+
     if(!idReg.test(inputId)){
         document.querySelector('#hidden-id').innerHTML = '영문 숫자 조합의 6자 이상  20자 이하';
-        
-        return false;
     
     } else if(inputId == "") {
         document.querySelector('#hidden-id').innerHTML = '아이디를 입력해주세요.';
     
     } else {
         document.querySelector('#hidden-id').innerHTML = '';
-        
-        return true;
     }
 
 });
@@ -66,7 +66,9 @@ memberPwd2.addEventListener("keyup", ()=>{
 const memberName = document.querySelector('input[name=memberName]');
 let nameck = false;
 memberName.addEventListener("keyup",()=>{
+
     const inputName = memberName.value
+
 
     if(inputName == ""){
         document.querySelector("#hidden-name").innerHTML = "이름을 입력해주세요.";
@@ -77,24 +79,34 @@ memberName.addEventListener("keyup",()=>{
 });
 
 // 닉네임
-const memberNick = document.querySelector('input[name=memberNick]');
 let nickck = false;
+const memberNick = document.querySelector('input[name=memberNick]');
 memberNick.addEventListener("keyup",()=>{
+
+    $('#dupNick-btn').attr('disabled',false);
+    $('#dupNick-btn').addClass('non-check');
+    $('#dupNick-btn').removeClass('check');
+    nickck = false;
     const inputNick = memberNick.value
 
     if(inputNick == ""){
         document.querySelector("#hidden-nick").innerHTML = "닉네임을 입력해주세요.";
+    } else if(inputNick >= 2){
+        document.querySelector("#hidden-nick").innerHTML = '닉네임은 2자 이상 입력해주세요.';
     } else{
         document.querySelector("#hidden-nick").innerHTML = '';
-        nickck = true;
     }
 });
 
 // 이메일
 const email = document.querySelector('input[name=email]');
 let emailck = false;
-
 email.addEventListener('keyup',()=>{
+
+    $('#dupEmail-btn').attr('disabled',false);
+    $('#dupEmail-btn').addClass('non-check');
+    $('#dupEmail-btn').removeClass('check');
+    emailck = false;
     const inputEmail = email.value;
     const emailReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
@@ -104,7 +116,6 @@ email.addEventListener('keyup',()=>{
         document.querySelector("#hidden-email").innerHTML = "이메일을 입력해주세요.";
     } else{
         document.querySelector("#hidden-email").innerHTML = "";
-        emailck =  true;
     }
 
 });
@@ -148,30 +159,33 @@ addr.addEventListener('keyup',()=>{
     }
 });
 
+// 중복확인 검사
+// 아이디
 
-
-var idck = false;
 function checkId(){
-    let inputId = $('input[name="memberId"]').val();
-	
-	if(inputId != ""){
+    let inputId = $('#memberId').val();
+
+	if(inputId.length >= 6){
 		
 		    $.ajax({
-		        url : "/cookTeacher/member/dupCheck/id" ,
+		        url : "/cookTeacher/member/join/dupCheck/id" ,
 		        method : "POST" ,
 		        data : {"inputId" : inputId},
 		        success : function(result) {
 					console.log(result);
 		            if(result == 0){
+						$('#dupId-btn').addClass('check');
+                        $('#dupId-btn').attr('disabled',true);
+                        $('#dupId-btn').removeClass('non-check');
 		                alert("사용 가능한 아이디입니다.");
 		                idck = true;
 		            } else{
 		                alert("중복 아이디입니다.");
-		                $('input[name="memberId"]').val("");
+		                $('#memberId').val("");
 		            }
 		        } ,
 		        error : function() {
-		            alert('통신에러');
+		            alert('ajax ::: 서버 연결 중 에러');
 		        }
 		
 		    });
@@ -182,16 +196,100 @@ function checkId(){
 
 }
 
+
+
+// 닉네임
+
+function checkNick(){
+    let inputNick = $('#memberNick').val();
+    
+    if(inputNick.length >= 2){
+        $.ajax({
+			url : "/cookTeacher/member/join/dupCheck/nick",
+			method : "POST",
+			data : {"inputNick" : inputNick},
+			success : function(result){
+				if(result == 0){
+					$('#dupNick-btn').addClass('check');
+                    $('#dupNick-btn').attr('disabled',true);
+                    $('#dupNick-btn').removeClass('non-check');
+					alert("사용 가능한 닉네임입니다.");
+					nickck = true;
+				} else{
+					alert("중복 닉네임입니다.");
+					$("#inputNick").val("");
+				}
+			},
+			error : function() {
+				alert('ajax ::: 서버 연결 중 에러');
+			}
+		});
+
+    }else{
+        alert("2자 이상의 닉네임을 입력해주세요.");
+    }
+
+}
+
+// 이메일
+
+
+function checkEmail(){
+    let inputEmail = $('#email').val();
+    const emailReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    if(emailReg.test(inputEmail)){
+        
+        $.ajax({
+            url : "/cookTeacher/member/join/dupCheck/email",
+            method : "POST",
+            data : {"inputEmail" : inputEmail},
+            success : function(result){
+                if(result==0){
+                    $('#dupEmail-btn').addClass('check');
+                    $('#dupEmail-btn').attr('disabled',true);
+                    $('#dupEmail-btn').removeClass('non-check');
+					alert("사용 가능한 이메일입니다.");
+					emailck = true;
+
+                }else{
+					alert("사용 불가능한 이메일입니다.");
+					$("#email").val("");
+                }
+            },
+            error : function() {
+                alert('ajax ::: 서버 연결 중 에러');
+            }
+        });
+  
+    }else{
+        alert("이메일 형식을 맞춰주세요.");
+    }
+}
+
+
+
+// 찐 유효성 검사
 function checkJoin(){
     if(!idck){
-		alert();
+		alert("아이디 중복확인을 해주세요.");
         return false;
     }
     
     if(!pwd1ck){
+        alert("비밀번호는 영문 숫자 특수문자 조합의 8자이상입니다.");
 		return false;
 	}
 
+    if(!pwd2ck){
+        alert("비밀번호가 불일치합니다.");
+        return false;
+    }
+
+    if(!nameck){
+        alert("이름을 입력해주세요.");
+        return false;
+    }
 };
+
 
 

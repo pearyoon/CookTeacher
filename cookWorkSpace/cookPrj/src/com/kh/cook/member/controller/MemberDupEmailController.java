@@ -9,17 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.cook.member.service.MemberService;
-@WebServlet(urlPatterns = "/member/dupCheck/id")
-public class MemberDupCheckIdController extends HttpServlet{
+@WebServlet(urlPatterns = "/member/join/dupCheck/email")
+public class MemberDupEmailController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		resp.setContentType("text/plain; charset=UTF-8;");
+		String email = req.getParameter("inputEmail");
 		
-		String id = req.getParameter("inputId");
-		System.out.println(id);
+		int result = new MemberService().dupCheckEmail(email);
 		
-		String result = new MemberService().dupCheckId(id);
-		
-		resp.getWriter().write(result);
+		resp.getWriter().write(result + "");
 	}
 }

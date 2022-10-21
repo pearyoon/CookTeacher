@@ -114,7 +114,7 @@
     padding: 40px 0px;
 }
 
-input[type=submit]{
+button[type=submit]{
     display: block;
     padding: 0px 10px;
     text-align: center;
@@ -136,8 +136,13 @@ input[type=submit]{
 }
 
 /* 중복확인,주소검색 호버 시 */
-.join-items>div>button:hover{
+.join-items>div>.non-check:hover{
     background-color: #255D00;
     color: white;
+}
+
+.join-items>div:last-child>.check{
+    border-color: rgb(221, 221, 221);
+    color: rgb(221, 221, 221);
 }
 

@@ -71,11 +71,34 @@ public class MemberService {
 	}
 	
 	// 아이디 중복검사
-	public String dupCheckId(String id) {
+	public int dupCheckId(String id) {
 		
 		Connection conn = getConnection();
 		
-		String result = dao.dupCheckId(id ,conn);
+		int result = dao.dupCheckId(id ,conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	// 닉네임 중복검사
+	public int dupCheck(String nick) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.dupCheckNick(nick, conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	// 이메일 중복검사
+	public int dupCheckEmail(String email) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.dupCheckEmail(email, conn);
 		
 		close(conn);
 		

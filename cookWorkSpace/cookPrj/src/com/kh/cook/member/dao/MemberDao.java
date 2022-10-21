@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import com.kh.cook.member.vo.MemberVo;
 
 public class MemberDao {
-
+	// 회원가입
 	public int join(Connection conn, MemberVo vo) {
 		String sql = "INSERT INTO MEMBER (NO, ID, PWD, EMAIL, NAME, PHONE, NICK, ADDR, ADMIN_YN)VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, 'Y')";
 		
@@ -38,7 +38,7 @@ public class MemberDao {
 		}
 		return result;
 	}
-
+	
 	public MemberVo selectOne(MemberVo vo, Connection conn) {
 		String sql = "SELECT M.NO ,G.NAME AS GRADE ,ID ,PWD ,EMAIL ,M.NAME ,PHONE ,NICK ,ADDR ,ENROLL_DATE ,MODIFY_DATE ,QUIT_YN ,POINT ,ADMIN_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE ID = ? AND PWD = ? AND QUIT_YN = 'N'";
 	
@@ -83,7 +83,7 @@ public class MemberDao {
 		
 		return loginMember;
 	}
-
+	// 수정
 	public int updateOneByNo(MemberVo vo, Connection conn) {
 		String sql = "UPDATE MEMBER SET PWD = ? ,EMAIL = ? ,PHONE = ? ,NICK = ? ,ADDR = ? WHERE NO = ?";
 		
@@ -109,7 +109,7 @@ public class MemberDao {
 		
 		return result;
 	}
-
+	// 아이디 찾기
 	public String findId(MemberVo vo, Connection conn) {
 		String sql = "SELECT ID FROM MEMBER WHERE NAME = ? AND EMAIL = ?";
 		
@@ -139,13 +139,13 @@ public class MemberDao {
 		
 		return findId;
 	}
-
-	public String dupCheckId(String id, Connection conn) {
+	// 아이디 중복 검사
+	public int dupCheckId(String id, Connection conn) {
 		
 		String sql = "SELECT ID FROM MEMBER WHERE ID = ? AND QUIT_YN = 'N'";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
-		String result = "0";
+		int result = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -153,13 +153,63 @@ public class MemberDao {
 			System.out.println(id);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next() || id.equals("")) {
-				result = "1"; 
+			if(rs.next()) {
+				result = 1; 
 			} 
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	// 닉네임 중복검사
+	public int dupCheckNick(String nick, Connection conn) {
+		String sql = "SELECT NICK FROM MEMBER WHERE NICK = ? AND QUIT_YN = 'N'";
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nick);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = 1;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int dupCheckEmail(String email, Connection conn) {
+		String sql = "SELECT EMAIL FROM MEMBER WHERE EMAIL = ? AND QUIT_YN = 'N'";
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = 1;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} finally {
 			close(rs);
 			close(pstmt);
