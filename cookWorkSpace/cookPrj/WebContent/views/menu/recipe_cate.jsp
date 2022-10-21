@@ -30,6 +30,7 @@
                         <label for="">  |  </label>
                         <a href="/cookTeacher/menu/dessert"> 디저트 </a>
                     </div>
+                <hr width="60%" style="margin-top: 10px; margin-bottom: 50px">
                 
                     <div class="cate-name"><a href="/cookTeacher/views/menu/korean.jsp">< 한식 ></a></div>
                     <div class="recipe-menu-area">
@@ -37,19 +38,19 @@
                         <a href="">
                             <img src="/cookTeacher/resources/img/돼지고기청경채볶음.jpg" alt="레시피게시판담당" width="100%" height="100%">
                         </a>
-                        <div>김치찌개</div>
+                        <div class="re-title">김치찌개</div>
                     </div>
                     <div>
                         <a href="">
                             <img src="/cookTeacher/resources/img/mapotofu.jpg" alt="레시피게시판담당" width="100%" height="100%">
                         </a>
-                        <div>김치볶음밥</div>
+                        <div class="re-title">김치볶음밥</div>
                     </div>
                     <div>
                         <a href="">
                             <img src="/cookTeacher/resources/img/마라샹궈.jpg" alt="레시피게시판담당"  width="100%" height="100%">
                         </a>
-                        <div>갈치조림</div>
+                        <div class="re-title">갈치조림</div>
                     </div>
                     
                 </div>
@@ -61,19 +62,19 @@
                     <a href="">
                         <img src="/cookTeacher/resources/img/돼지고기청경채볶음.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>김치찌개</div>
+                    <div class="re-title">김치찌개</div>
                 </div>
                 <div>
                     <a href="">
                         <img src="/cookTeacher/resources/img/mapotofu.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>김치볶음밥</div>
+                    <div class="re-title">김치볶음밥</div>
                 </div>
                 <div>
                     <a href="">
                         <img src="/cookTeacher/resources/img/마라샹궈.jpg" alt="레시피게시판담당"  width="100%" height="100%">
                     </a>
-                    <div>갈치조림</div>
+                    <div class="re-title">갈치조림</div>
                 </div>
                 </div>
 
@@ -84,19 +85,19 @@
                     <a href="">
                         <img src="/cookTeacher/resources/img/돼지고기청경채볶음.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>김치찌개</div>
+                    <div class="re-title">김치찌개</div>
                 </div>
                 <div>
                     <a href="">
                         <img src="/cookTeacher/resources/img/mapotofu.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>김치볶음밥</div>
+                    <div class="re-title">김치볶음밥</div>
                 </div>
                 <div>
                     <a href="">
                         <img src="/cookTeacher/resources/img/마라샹궈.jpg" alt="레시피게시판담당"  width="100%" height="100%">
                     </a>
-                    <div>갈치조림</div>
+                    <div class="re-title">갈치조림</div>
                 </div>
                 </div>
                 <!-- ------- -->
@@ -106,19 +107,19 @@
                     <a href="">
                         <img src="/cookTeacher/resources/img/돼지고기청경채볶음.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>돼지고기청경채볶음</div>
+                    <div class="re-title">돼지고기청경채볶음</div>
                 </div>
                 <div>
                     <a href="">
                         <img src="/cookTeacher/resources/img/마라샹궈.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>마라샹궈</div>
+                    <div class="re-title">마라샹궈</div>
                 </div>
                 <div>
                     <a href="">
                         <img src="/cookTeacher/resources/img/동파육.jpg" alt="레시피게시판담당"  width="100%" height="100%">
                     </a>
-                    <div>동파육</div>
+                    <div class="re-title">동파육</div>
                 </div>
                 </div>
 
@@ -128,41 +129,42 @@
                     <a href="">
                         <img src="/cookTeacher/resources/img/일식 레시피 이미지/가츠동.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>가츠동</div>
+                    <div class="re-title">가츠동</div>
                 </div>
                 <div>
                     <a href="">
                         <img src="/cookTeacher/resources/img/일식 레시피 이미지/계란 초밥.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>계란 초밥</div>
+                    <div class="re-title">계란 초밥</div>
                 </div>
                 <div>
                     <a href="">
                         <img src="/cookTeacher/resources/img/일식 레시피 이미지/스키야끼.jpg" alt="레시피게시판담당"  width="100%" height="100%">
                     </a>
-                    <div>스키야끼</div>
+                    <div class="re-title">스키야끼</div>
                 </div>
                 </div>
 
                 <div class="cate-name"><a href="/cookTeacher/menu/dessert">< 디저트 ></a></div>
                 <div class="recipe-menu-area">
                 <div>
-                    <a href="">
-                        <img src="/cookTeacher/resources/img/초코머핀.jpg" alt="레시피게시판담당" width="100%" height="100%">
+                    <a href="/cookTeacher/menu/detail?no=49">
+                        <img src="/cookTeacher/resources/img/디저트레시피/초코머핀.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>초코머핀</div>
+                    <div class="re-title">초코머핀</div>
+                    <div class="re-ment">초코칩을 넣어 씹는 재미를 더해 달콤 촉촉한 초코머핀.</div>
                 </div>
                 <div>
-                    <a href="">
-                        <img src="/cookTeacher/resources/img/식빵푸딩.jpg" alt="레시피게시판담당"  width="100%" height="100%">
+                    <a href="/cookTeacher/menu/detail?no=44">
+                        <img src="/cookTeacher/resources/img/디저트레시피/식빵푸딩.jpg" alt="레시피게시판담당"  width="100%" height="100%">
                     </a>
-                    <div>식빵푸딩</div>
+                    <div class="re-title">식빵푸딩</div>
                 </div>
                 <div>
-                    <a href="">
-                        <img src="/cookTeacher/resources/img/티라미수.jpg" alt="레시피게시판담당" width="100%" height="100%">
+                    <a href="/cookTeacher/menu/detail?no=46">
+                        <img src="/cookTeacher/resources/img/디저트레시피/티라미수.jpg" alt="레시피게시판담당" width="100%" height="100%">
                     </a>
-                    <div>티라미수</div>
+                    <div class="re-title">티라미수</div>
                 </div>
                 </div>
 

@@ -44,7 +44,7 @@ main div{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 500px;
+    height: 550px;
 }
 /* 레시피 이미지 크기 */
 #recipe-middle>div>div {
@@ -90,7 +90,7 @@ main div{
 }
 
 .cate-name{
-    text-align: left;
+    text-align: center;
     font-size: medium;
     font-weight: 900;
     margin-bottom: 5px;
@@ -100,4 +100,15 @@ main div{
 
 #category>a{
     padding: 15px;
+}
+
+.re-title{
+	margin-top: 15px;
+	font-weight: 600;
+}
+
+.re-ment{
+	margin-top: 10px;
+	text-align: center;
+	font-size: small;
 }

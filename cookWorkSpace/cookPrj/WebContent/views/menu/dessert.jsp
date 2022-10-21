@@ -33,7 +33,7 @@
                     <%
                     	for(int i = 0; i<3; i++){%>
 		                    <div>
-		                        <a href="">
+		                        <a href="/cookTeacher/menu/detail?no=<%=voList.get(i).getNo() %>">
 		                            <img src="/cookTeacher/resources/img/디저트레시피/<%=voList.get(i).getImgPath() %>"  alt="레시피게시판담당" width="100%" height="100%">
 			                        <div id="ment-detail">
 			                            <%=voList.get(i).getMenuInfo() %>
@@ -52,7 +52,7 @@
                     <%
                     	for(int i = 3; i<6; i++){%>
 		                    <div>
-		                        <a href="">
+		                        <a href="/cookTeacher/menu/detail?no=<%=voList.get(i).getNo() %>">
 		                            <img src="/cookTeacher/resources/img/디저트레시피/<%=voList.get(i).getImgPath() %>"  alt="레시피게시판담당" width="100%" height="100%">
 			                        <div id="ment-detail">
 			                            <%=voList.get(i).getMenuInfo() %>
@@ -73,7 +73,7 @@
                     <%
                     	for(int i = 6; i<9; i++){%>
 		                    <div>
-		                        <a href="">
+		                        <a href="/cookTeacher/menu/detail?no=<%=voList.get(i).getNo() %>">
 		                            <img src="/cookTeacher/resources/img/디저트레시피/<%=voList.get(i).getImgPath() %>"  alt="레시피게시판담당" width="100%" height="100%">
 			                        <div id="ment-detail">
 			                            <%=voList.get(i).getMenuInfo() %>
@@ -93,7 +93,7 @@
                     <%
                     	for(int i = 9; i<10; i++){%>
 		                    <div>
-		                        <a href="">
+		                        <a href="/cookTeacher/menu/detail?no=<%=voList.get(i).getNo() %>">
 		                            <img src="/cookTeacher/resources/img/디저트레시피/<%=voList.get(i).getImgPath() %>"  alt="레시피게시판담당" width="100%" height="100%">
 			                        <div id="ment-detail">
 			                            <%=voList.get(i).getMenuInfo() %>
