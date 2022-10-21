@@ -23,7 +23,7 @@ public class CartListController extends HttpServlet{
 		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
 
 		if(loginMember == null) {
-			resp.sendRedirect("/member/login");
+			resp.sendRedirect("/cookTeacher/member/login");
 			return;
 		}
 		
@@ -34,7 +34,8 @@ public class CartListController extends HttpServlet{
 		
 		req.setAttribute("cartList", cartList);
 		req.getRequestDispatcher("/views/cart/list.jsp").forward(req, resp);
-	
+		
+		
 		
 	}// doGet
 	
