@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/join.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" defer src="/cookTeacher/resources/js/member/join.js"></script>
 </head>
 <body>
@@ -22,7 +22,8 @@
             </div>
           
             <div id="join-top">
-                <form action="/cookTeacher/member/join" method="post" onsubmit="return check();">
+                
+                <form action="/cookTeacher/member/join" method="post" onsubmit="return checkJoin();">
                     <div class="join-items">
                         <div>
                             <label for="memberId">아이디</label>
@@ -36,7 +37,7 @@
                             </div>
                         </div>
                         <div>
-                            <button>중복확인</button>
+                            <button type="button" onclick="checkId();">중복확인</button>
                         </div>
                     </div>
                     <div class="join-items">
@@ -155,6 +156,7 @@
                     </div>
                 </form>
             </div>
+
     
         </div>
         <%@include file="/views/common/footer.jsp" %>

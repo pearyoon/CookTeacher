@@ -15,6 +15,7 @@
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/check.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/modify.css">
+
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
