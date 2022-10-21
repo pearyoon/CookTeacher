@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.cook.bobstory.vo.BobstoryVo;
+import com.kh.cook.bobstory.vo.CategoryVo;
 import com.kh.cook.bobstory.vo.PageVo;
 import com.kh.cook.common.JDBCTemplate;
 
@@ -47,8 +48,7 @@ public class BobstoryDao {
 	public List<BobstoryVo> selectList(Connection conn, PageVo pv) {
 		//SQL
 		
-		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , T.* FROM ( SELECT B.NO ,B.WRITER ,B.CATEGORY ,B.TITLE ,B.CONTENT ,B.ENROLL_DATE ,B.DELETE_YN ,B.C_LIKE ,B.MODIFY_DATE ,B.VIEW_COUNT ,B.REPORT_YN ,M.NICK AS WRITER FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO WHERE B.DELETE_YN = 'N' ORDER BY B.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
-		//SQL 문 뭔가 이상함 일단 써놓고 다시 해야함.
+		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM , T.* FROM (SELECT B.NO ,B.WRITER ,B.CATEGORY ,B.TITLE ,B.CONTENT ,B.ENROLL_DATE ,B.DELETE_YN ,B.C_LIKE ,B.MODIFY_DATE ,B.VIEW_COUNT ,B.REPORT_YN ,M.NICK AS NICK FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO WHERE B.DELETE_YN = 'N' ORDER BY B.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -108,6 +108,73 @@ public class BobstoryDao {
 		
 		return voList;
 		
+	}
+
+	//카테고리 목록 조회
+	public List<CategoryVo> selectCategoryList(Connection conn) {
+		//SQL
+		
+		String sql = "SELECT MENU_CATE_NO, MENU_TYPE FROM MENU_CATE";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<CategoryVo> list = new ArrayList<CategoryVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			//rs -> var -> vo
+			while(rs.next()) {
+				//rs -> var
+				String no = rs.getString("MENU_CATE_NO");
+				String type = rs.getString("MENU_TYPE");
+				
+				//var -> vo
+				CategoryVo vo = new CategoryVo(no, type);
+				//2개밖에 없으니 만들어질 때 부터 값을 넣어줍니다.
+				
+				list.add(vo);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+		
+	}
+
+	//게시글 작성
+	public int insertStory(Connection conn, BobstoryVo vo) {
+		//SQL
+		
+		String sql = "INSERT INTO BOBSTORY (NO, WRITER, CATEGORY, TITLE, CONTENT) VALUES (SEQ_BOBSTORY_NO.NEXTVAL, ?, ?, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getWriter());
+			pstmt.setString(2, vo.getCategory());
+			pstmt.setString(3, vo.getTitle());
+			pstmt.setString(4, vo.getContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
 }

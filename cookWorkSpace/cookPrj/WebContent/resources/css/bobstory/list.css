@@ -1,0 +1,81 @@
+#container>div{
+    box-sizing: border-box;
+}
+
+#container{
+    position: absolute;
+    padding-bottom: 50px;
+    top: 280px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1040px;
+    height: 600px;
+}
+/*밥 스토리*/
+div>h1{
+    margin-bottom: 20px;
+    font-size: 28px;
+    line-height: 35px;
+    font-weight: 500;
+    text-align: left;
+    letter-spacing: -1px;
+    color: black
+}
+
+/*메인*/
+#main{
+    width: 1040px;
+    height: 600px;
+    margin: 0 auto;
+}
+.soon{
+    text-align: right;
+    margin-right: 40px;
+    margin-bottom: 10px;
+    word-spacing: 5px;
+}
+.bob-board-head{
+    display: grid;
+    grid-template-columns: 100px 600px 100px 140px 100px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+#bob-content{
+    border-top: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr 1.4fr 1fr;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#bob-content>.content-title{
+    text-align: left;
+    margin-left: 60px;
+}
+
+#bob-main{
+    width: 600px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+#page-area{
+    text-align: center;
+
+}
+
+.write-btn{
+    background-color: #255D00;
+    color: white;
+    border: 0px none; 
+    border-radius: 5px; 
+    margin-left: 800px;
+}
+
+.write-btn:hover{
+    background-color: #447d1e;
+}
