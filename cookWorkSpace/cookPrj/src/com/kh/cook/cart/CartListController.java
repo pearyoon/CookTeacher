@@ -31,6 +31,7 @@ public class CartListController extends HttpServlet{
 		String no = loginMember.getNo();
 		
 		List<CartItemVo> cartList = new CartService().selectList(no);
+		
 		req.setAttribute("cartList", cartList);
 		req.getRequestDispatcher("/views/cart/list.jsp").forward(req, resp);
 	
