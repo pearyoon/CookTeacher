@@ -112,57 +112,56 @@
 </style>
 </head>
 <body>
-
-                        <div id="board-list">
-                            <div class="container">
-                                <table class="board-table">
-                                    <thead>
-                                    <tr id="table-head">
-                                        <th scope="col" class="th-num">번호</th>
-                                        <th scope="col" class="th-title">제품명</th>
-                                        <th scope="col" class="th-title">내용</th>
-                                        <th scope="col" class="th-date">등록일</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                    
-                                    <tr>
-                                        <td>5</td>
-                                        <th>뉴질랜드 골드키위 1.2kg</th>
-                                        <td>뉴질랜드에 가보진 않았지만..</td>
-                                        <td>2022.10.19</td>
-                                    </tr>
-                    
-                                    <tr>
-                                        <td>4</td>
-                                        <th>스테비아 토마토 1.2kg</th>
-                                        <td>토마토에 꿀 바른 것처럼 달아요~</td>
-                                        <td>2022.10.18</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <th>유기농 당근</th>
-                                        <td>유기농이라 당근 싱싱하네요~!</td>
-                                        <td>2022.09.12</td>
-                                    </tr>
-                    
-                                    <tr>
-                                        <td>2</td>
-                                        <th>배추김치 1kg</th>
-                                        <td>김치가 똑 떨어져서 급하게 샀는데.. 맛있어요!</td>
-                                        <td>2022.07.25</td>
-                                    </tr>
-                    
-                                    <tr>
-                                        <td>1</td>
-                                        <th>서울우유 1L</th>
-                                        <td>우유는 역시 서울우유!</td>
-                                        <td>2022.05.20</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+        <div id="board-list">
+            <div class="container">
+                <table class="board-table">
+                    <thead>
+                    <tr id="table-head">
+                        <th scope="col" class="th-num">번호</th>
+                        <th scope="col" class="th-title">제품명</th>
+                        <th scope="col" class="th-title">내용</th>
+                        <th scope="col" class="th-date">등록일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+    
+                    <tr>
+                        <td>5</td>
+                        <th>뉴질랜드 골드키위 1.2kg</th>
+                        <td>뉴질랜드에 가보진 않았지만..</td>
+                        <td>2022.10.19</td>
+                    </tr>
+    
+                    <tr>
+                        <td>4</td>
+                        <th>스테비아 토마토 1.2kg</th>
+                        <td>토마토에 꿀 바른 것처럼 달아요~</td>
+                        <td>2022.10.18</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <th>유기농 당근</th>
+                        <td>유기농이라 당근 싱싱하네요~!</td>
+                        <td>2022.09.12</td>
+                    </tr>
+    
+                    <tr>
+                        <td>2</td>
+                        <th>배추김치 1kg</th>
+                        <td>김치가 똑 떨어져서 급하게 샀는데.. 맛있어요!</td>
+                        <td>2022.07.25</td>
+                    </tr>
+    
+                    <tr>
+                        <td>1</td>
+                        <th>서울우유 1L</th>
+                        <td>우유는 역시 서울우유!</td>
+                        <td>2022.05.20</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
 </body>
 </html>

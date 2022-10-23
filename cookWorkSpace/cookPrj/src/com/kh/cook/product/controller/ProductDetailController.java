@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.cook.product.service.ProductService;
 import com.kh.cook.product.vo.ProductVo;
 
-@WebServlet(urlPatterns = "/product/detail/dairy")
+@WebServlet(urlPatterns = "/product/detail/productDetail")
 public class ProductDetailController extends HttpServlet {
 
 	//식재료 상세 조회
@@ -28,7 +28,7 @@ public class ProductDetailController extends HttpServlet {
 		
 		//화면선택 (데이터 담아서)
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/views/product/detail/dairy.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/product/detail/productDetail.jsp").forward(req, resp);
 	
 	}
 

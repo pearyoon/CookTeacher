@@ -78,17 +78,17 @@ margin-bottom: 30px;
 	color: white;
 	
 }
-     
-
+    
 </style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
-            <hr>
+        <hr>
             <div id="main-bottom">
-            <div>과일 / 채소</div>
+            <div>기타</div>
+            <div>(조미료 , 양념 , 가루 , 곡식 , 견과 , 즉석제품, 김치, 기름)</div>
             
                 <hr>
                 <br><br>
