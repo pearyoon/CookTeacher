@@ -114,7 +114,7 @@ main>.list>div{
 		
 				<%for(int i = 0; i<FAQList.size(); i++){ %>
 					<div><%= FAQList.get(i).getQnaNo() %></div>
-					<div><a hrdf="<%%>"><%= FAQList.get(i).getTitle() %>어이</a></div>
+					<div><a hrdf="<%%>"><%= FAQList.get(i).getTitle() %></a></div>
 				<%} %>
 
 			</div>

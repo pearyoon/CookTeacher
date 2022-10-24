@@ -25,13 +25,30 @@ public class QNAService {
 	
 	}
 
-public int pageSelectCount() {
-		
+	public int pageSelectCount() {
+			
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int result = dao.pageSelectCount(conn);
 		
 		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+	
+	public int write(CSVo vo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.insertQNA(conn, vo);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.getConnection();
+		}
+		
+		JDBCTemplate.close(conn);		
 		
 		return result;
 	}

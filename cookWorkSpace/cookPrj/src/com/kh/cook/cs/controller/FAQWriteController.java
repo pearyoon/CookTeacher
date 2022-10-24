@@ -50,7 +50,7 @@ public class FAQWriteController extends HttpServlet{
 		CSVo vo = new CSVo();
 		vo.setTitle(title);
 		vo.setContent(content);
-		vo.setWriter(loginMember.getNo());
+		vo.setNo(loginMember.getNo());
 		
 		//디비
 		int result = new FAQService().write(vo);
@@ -61,7 +61,7 @@ public class FAQWriteController extends HttpServlet{
 		} else {
 			// 작성 실패 메세지, 에러페이지 포워딩
 			req.setAttribute("alertMsg", "FAQ 작성 실패!");
-			req.getRequestDispatcher("views/common/errorPage.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 	
 	}

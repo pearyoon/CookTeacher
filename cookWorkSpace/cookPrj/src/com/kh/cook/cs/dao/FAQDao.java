@@ -54,7 +54,6 @@ public class FAQDao {
 				vo.setQnaCategory(qnaCategory);
 				
 				FAQList.add(vo); 
-				System.out.println(vo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -70,7 +69,6 @@ public class FAQDao {
 	public int pageSelectCount(Connection conn) {
 		
 		String sql = "SELECT COUNT(*) AS CNT FROM QNA WHERE QNA_CATE = 'F'";
-		System.out.println("쿼리문작성");//삭제예정
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
@@ -79,11 +77,9 @@ public class FAQDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
-			System.out.println("쿼리문진행됨");//
 			
 			if(rs.next()) {
 				result = rs.getInt("CNT");
-				System.out.println("쿼리 진행 후 rs값 : " + result);//
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -104,12 +100,15 @@ public class FAQDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			System.out.println("sql문 실행됨");
 			
 			pstmt.setString(1, vo.getNo());
 			pstmt.setString(2, vo.getTitle());
 			pstmt.setString(3, vo.getContent());
+			System.out.println(vo);
 			
 			result = pstmt.executeUpdate();
+			System.out.println("sql추가됨");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

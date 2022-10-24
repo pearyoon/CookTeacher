@@ -81,19 +81,19 @@ color: black;
 			<!-- 게시판 이름 -->
 			<div id="qna">FAQ 자주묻는질문</div>
 		</div>
-
-		<div class="title-area">
-			<!-- 문의 작성 -->
-				제목 : <input type="text" id="title" name="title">
-		</div>
-
-		<div class="content-area">
-		<br>
-			<textarea name="content" rows="22" cols="80" style="resize:none;" required></textarea>
-		<br><br>
-		</div>
-		<div id="writebtn"><a href="">등록</a></div>
-		
+		<form action="" method="post">
+			<div class="title-area">
+				<!-- 문의 작성 -->
+					제목 : <input type="text" id="title" name="title">
+			</div>
+	
+			<div class="content-area">
+			<br>
+				<textarea name="content" rows="22" cols="80" style="resize:none;" required></textarea>
+			<br><br>
+			</div>
+			<div id="writebtn"><input type="submit" value="등록"></div>
+		</form>
 		<%@include file="/views/common/footer.jsp" %>
 	</div>
 </body>
