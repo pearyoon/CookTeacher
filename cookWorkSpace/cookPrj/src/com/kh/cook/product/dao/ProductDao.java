@@ -168,7 +168,7 @@ public class ProductDao {
 
 		//SQL (준비, 완성, 실행)
 		
-		String sql = "INSERT INTO PRODUCT_REVIEW(REVIEW_NO, NO, PROD_NO, ENROLL_DATE, MODIFY_DATE, DELETE_YN, CONTENT) VALUES(SEQ_PRODUCT_REVIEW_NO.NEXTVAL, ?, 1, SYSDATE, SYSDATE, 'N', ?)";
+		String sql = "INSERT INTO PRODUCT_REVIEW(REVIEW_NO, NO, PROD_NO, ENROLL_DATE, MODIFY_DATE, DELETE_YN, CONTENT) VALUES(SEQ_PRODUCT_REVIEW_NO.NEXTVAL, 1, 1, SYSDATE, SYSDATE, 'N', ?)";
 	
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -183,9 +183,10 @@ public class ProductDao {
 //			pstmt.setString(5, rvo.getDeleteYn());
 //			pstmt.setString(6, rvo.getContent());
 			
-			pstmt.setString(1, rvo.getNo());
-			pstmt.setString(2, rvo.getContent());
-
+			//pstmt.setString(1, rvo.getNo());
+			//pstmt.setString(2, rvo.getContent());
+			
+			pstmt.setString(1, rvo.getContent());
 
 
 			result = pstmt.executeUpdate();

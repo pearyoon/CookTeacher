@@ -510,11 +510,11 @@ button[disabled], input[disabled] {
                 <a id="tag-detail2" >
                     <br>
                     <div>
-                        <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath() %>" alt="상품 이미지" width="100%" height="100%">
+                        <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath() %>" alt="상품 이미지" width="80%" height="100%">
                     </div>
                     <div>
                     	<br>
-                        *영양 정보
+                        *상세 이미지
                         <br><br><br><br>
                     </div>
                 </a>

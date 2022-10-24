@@ -1,5 +1,12 @@
+<%@page import="com.kh.cook.product.vo.ReviewVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<% 
+	ReviewVo rvo = (ReviewVo)request.getAttribute("rvo");
+%>
+    	
+    
 <!DOCTYPE html>
 <html>
 <head>

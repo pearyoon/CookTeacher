@@ -1,3 +1,4 @@
+<%@page import="com.kh.cook.product.vo.ReviewVo"%>
 <%@page import="com.kh.cook.product.vo.ProductVo"%>
 <%@page import="com.kh.cook.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,6 +7,7 @@
 <%
 	ProductVo vo = (ProductVo)request.getAttribute("vo");
 	MemberVo mvo = (MemberVo)request.getAttribute("loginMember");
+	ReviewVo rvo = (ReviewVo)request.getAttribute("rvo");
 %>
     
 <!DOCTYPE html>
@@ -226,18 +228,16 @@ textarea {
 	                                <table class="board-table">
 	                                    <thead>
 	                                    <tr id="table-head">
-	                                        <th scope="col" class="th-num" name="reviewNo">번호</th>
 	                                      	<th scope="col" class="th-content" name="content">내용</th>
-	                                        <th scope="col" class="th-title" name="no">작성자</th>
+	                                        <!-- <th scope="col" class="th-title" name="no">작성자</th> -->
 	                                        <th scope="col" class="th-date" name="enrollDate">등록일</th>
 	                                    </tr>
 	                                    </thead>
 	                                    <tbody>
 	                                    <tr>
-	                                        <td>6</td>
 	                                        <td><textarea rows="" cols="" " name="content"></textarea></td>
-	                                        <td>강동원</td>
-	                                        <td>2022.10.04</td>
+	                                        <!-- <td>강동원</td> -->
+	                                        <td></td>
 	                                    </tr>
 	                                    </tbody>
 	                                </table>
