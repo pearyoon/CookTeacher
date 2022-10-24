@@ -27,6 +27,10 @@ div>h1{
     width: 1040px;
     height: 600px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 5fr 3fr 3fr 1fr;
+    grid-template-rows: repeat(10, 30px);
+    align-content: center;
 }
 .soon{
     text-align: right;
@@ -68,12 +72,19 @@ div>h1{
 
 }
 
+#board-search{
+    margin-right: 100px;
+}
+
 .write-btn{
     background-color: #255D00;
     color: white;
+    font-size: 15px;
     border: 0px none; 
     border-radius: 5px; 
-    margin-left: 800px;
+    margin-left: 660px;
+    width: 70px;
+    height: 30px;
 }
 
 .write-btn:hover{

@@ -3,6 +3,10 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	List<BobstoryVo> voList = (List<BobstoryVo>)request.getAttribute("voList");
+	PageVo pv = (PageVo)request.getAttribute("pv");
+%>    
 
 <!DOCTYPE html>
 <html>
@@ -32,29 +36,38 @@
 				</div>
 				<div class="bob-board-head">
 					<span class="bb-num">번호</span>
-					<span class="bb-title">제목</span>
-					<span class="bb-writer">글쓴이</span>
-					<span class="bb-date">날짜</span>
-					<span class="bb-like">추천</span>
+					<span class="bb-title">글제목</span>
+					<span class="bb-writer">작성자</span>
+					<span class="bb-date">작성일</span>
+					<span class="bb-like">추천수</span>
 				</div>
-					<div id="bob-content">
-						<div>1</div>
-						<div class="content-title">반복해서 나올 제목내용</div>
-						<div>글쓴놈</div>
-						<div>2201212</div>
-						<div>0</div>					
+				<div id="bob-content">
+				<%for(int i = 0; i < voList.size(); i++) {%>
+						<div><%=voList.get(i).getNo() %></div>
+						<div class="content-title"><a href="/cookTeacher/bobstory/detail?bno<%=voList.get(i).getNo()%>"><%=voList.get(i).getTitle() %></a></div>
+						<div><%=voList.get(i).getWriter() %></div>
+						<div><%=voList.get(i).getEnrollDate() %></div>
+						<div><%=voList.get(i).getcLike() %></div>					
+				<%} %>
 					</div>
 				<div class="board-footer">
 					<input type="text" name="search-board" id="board-search" placeholder="검색">
 					<input type="button" value="글쓰기" class="write-btn" onclick="location.href='/cookTeacher/views/write.jsp'">
 				</div>
-				<div id="page-area">
-					<a href="">1</a>
-					<a href="">2</a>
-					<a href="">3</a>
-					<a href="">4</a>           
-				</div>
 				<br>
+				<div id="page-area">
+					<%if(pv.getStartPage() != 1){%>
+	        	<a href="/cookTeacher/bobstory/list?pno=<%=pv.getStartPage()-1%>">이전</a>
+		        	<%}%>
+		        
+			        <%for(int i = pv.getStartPage(); i <= pv.getEndPage(); i++){%>
+				        <a href="/cookTeacher/bobstory/list?pno=<%=i%>"><%=i%></a>
+			        <%}%>
+			        
+			        <%if(pv.getEndPage() != pv.getMaxPage()){%>
+					        <a href="/cookTeacher/bobstory/list?pno=<%=pv.getEndPage()+1 %>">다음</a>
+			        <%}%>          
+				</div>
 			</div>
 			<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
 		</div>
