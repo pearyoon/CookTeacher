@@ -64,7 +64,7 @@
     margin-left: 10px;
 }
 
-.modify-items button{
+.modify-items .non-check{
     display: block;
     padding: 0px 10px;
     text-align: center;
@@ -72,6 +72,11 @@
     width: 100%;
     height: 46px;
     border-radius: 3px;
+    border: 1px solid rgb(221, 221, 221);
+    color: rgb(221, 221, 221);
+}
+
+.modify-items .check{
     color: #255D00;
     background-color: rgb(255, 255, 255);
     border: 1px solid #255D00;
@@ -125,8 +130,18 @@
     border: 0px none;
 }
 
-#list-menu>li:first-child{
+#list-menu>li:first-child>a{
     background-color: rgb(250, 250, 250);
     color: #255D00;
     font-weight: 600;
+}
+
+.modify-items>div>.check:hover{
+    background-color: #255D00;
+    color: white;
+}
+
+.modify-items>div:last-child>.check{
+    border-color: rgb(221, 221, 221);
+    color: rgb(221, 221, 221);
 }

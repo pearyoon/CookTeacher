@@ -24,7 +24,7 @@
 #login-wrap{
     width: 300px;
     margin: 0px auto;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 #login-top{
@@ -47,16 +47,15 @@
     margin-bottom: 10px;
 }
 
-#btn input{
+#btn #login-btn{
     background-color: #255D00;
     color: white;
     cursor: pointer;
 }
 
-#btn button{
+#btn>div>button:last-child{
     background-color: white;
     border-color: #255D00;
-    margin-bottom: 30px;
     cursor: pointer;
 }
 

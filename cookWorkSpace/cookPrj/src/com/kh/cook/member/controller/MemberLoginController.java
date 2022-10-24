@@ -20,22 +20,23 @@ public class MemberLoginController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		String id = req.getParameter("memberId");
 		String pwd = req.getParameter("memberPwd");
-		
+
 		MemberVo vo = new MemberVo();
 		vo.setId(id);
 		vo.setPwd(pwd);
 		
 		MemberVo loginMember = new MemberService().selectOne(vo);
-		
-		if(loginMember != null) {
-			HttpSession ss = req.getSession();
-			ss.setAttribute("loginMember", loginMember);
-			resp.sendRedirect("/cookTeacher");
+	
+		if(loginMember == null) {
+			//로그인 실패
+			System.out.println("로그인 실패");
+			resp.getWriter().write("loginFail");
 		} else {
-			req.setAttribute("errorMsg", "로그인 실패");
-			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+			//로그인 성공
+			req.getSession().setAttribute("loginMember", loginMember);
 		}
 	}
 }

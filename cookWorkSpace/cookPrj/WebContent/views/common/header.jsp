@@ -8,6 +8,7 @@
 	
 	String alertMsg = (String)session.getAttribute("alertMsg");
 	session.removeAttribute("alertMsg");
+	
 %>
 	<script>
 		<%if(alertMsg != null) {%>

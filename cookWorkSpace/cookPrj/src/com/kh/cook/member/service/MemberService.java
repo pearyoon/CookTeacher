@@ -60,14 +60,14 @@ public class MemberService {
 	}
 	
 	// 아이디 찾기
-	public String findId(MemberVo vo) {
+	public MemberVo findId(MemberVo vo) {
 		Connection conn = getConnection();
 		
-		String findId = dao.findId(vo,conn);
+		MemberVo findMember = dao.findId(vo,conn);
 		
 		close(conn);
 		
-		return findId;
+		return findMember;
 	}
 	
 	// 아이디 중복검사

@@ -27,15 +27,12 @@ public class MemberFindIdController extends HttpServlet{
 		vo.setName(name);
 		vo.setEmail(email);
 		
-		String findId = new MemberService().findId(vo);
+		MemberVo findMember = new MemberService().findId(vo);
 		
-		if(findId != null) {
-			
-			req.getSession().setAttribute("alertMsg", "찾으시는 아이디는 "+findId+"입니다.");
-			resp.sendRedirect("/cookTeacher/member/login");
+		if(findMember != null) {
+			req.getSession().setAttribute("findMember", findMember);
 		} else {
-			req.setAttribute("errorMsg", "아이디찾기 실패");
-			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+			resp.getWriter().write("findFail");
 		}
 	}
 }

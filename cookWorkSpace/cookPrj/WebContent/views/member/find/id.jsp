@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/find/id.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 <body>
     <%@ include file="/views/common/header.jsp" %>   
@@ -17,15 +20,15 @@
             <div>아이디 찾기</div>
             <div id="find-area">
                 <div>이메일 인증</div>
-                <form action="/cookTeacher/member/find/id" method="post">
+                <form method="post">
                     <div class="find-items">
                         <label for="memberName">이름</label>
                         <div>
                             <input id="memberName" type="text" name="memberName" placeholder="이름을 입력해주세요.">
                         </div>
                     </div>
-                        <div id="hidden-name">
-                            <p>가입 시 등록한 이름을 입력해주세요.</p>
+                        <div class="hidden-box">
+                            <p id="hidden-name"></p>
                         </div>
                     <div class="find-items">
                         <label for="memberEmail">이메일</label>
@@ -33,17 +36,84 @@
                             <input id="memberEmail" type="text" name="memberEmail" placeholder="이메일을 입력해주세요.">
                         </div>
                     </div>
-                    <div id="hidden-email">
-                        <p>가입 시 등록한 이메일을 입력해주세요.</p>
+                    <div class="hidden-box">
+                        <p id="hidden-email"></p>
                     </div>
                     
                     <div id="find-btn">
-                        <input type="submit" value="확인">
+                        <button type="button" onclick="findId();">
+                            <span>확인</span>
+                        </button>
                     </div>
                 </form>
             </div>
         </main>
         <%@include file="/views/common/footer.jsp" %>
     </div>
+
+    <script>
+        // 이름
+        $('#memberName').keyup(function(){
+            const memberName = $('#memberName').val();
+           
+            if(memberName.length < 2){
+                $('#hidden-name').text("가입 시 등록한 이름을 입력해주세요.");
+            } else{
+                $('#hidden-name').text("");
+            }
+        });
+
+        // 메일
+        $('#memberEmail').keyup(function(){
+            const memberEmail = $('#memberEmail').val();
+            const emailReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+            
+            
+            if(!emailReg.test(memberEmail)){
+                $('#hidden-email').text("가입 시 등록한 이메일을 입력해주세요.");
+            } else{
+                $('#hidden-email').text("");
+            }
+        });
+
+        // 확인하기
+        function findId(){
+            const memberName = $('#memberName').val();
+            const memberEmail = $('#memberEmail').val();
+            const emailReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+            
+            console.log(memberName);
+            console.log(memberEmail);
+            if(emailReg.test(memberEmail) && memberName.length >= 2){
+                $.ajax({
+                    url : "/cookTeacher/member/find/id",
+                    method : "POST",
+                    data : {
+                        "memberName" : memberName ,
+                        "memberEmail" : memberEmail
+                    },
+                    success : function(data){
+                        if(data == "findFail"){
+                            alert("가입시 입력하신 회원정보가 맞는지 다시 한번 확인해주세요.");
+                        }else{
+                           
+                           	window.location.href = "/cookTeacher/member/find/success/id"
+                           
+                        }
+                    },
+
+                    error : function(){
+                        alert("ajax오류");
+                    }
+                });
+
+            } else{
+                alert("이름과 이메일을 확인해주세요.");
+            }
+
+        }
+        
+
+    </script>
 </body>
 </html>

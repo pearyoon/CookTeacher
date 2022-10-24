@@ -94,7 +94,7 @@ div[id^=hidden] {
     margin-top: 18px;
 }
 
-#find-btn>input{
+#find-btn>button{
     
     display: block;
     padding: 0 10px;

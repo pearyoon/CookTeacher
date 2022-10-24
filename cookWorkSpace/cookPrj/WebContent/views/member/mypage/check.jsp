@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/check.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
@@ -66,7 +66,7 @@
 							<div id="check-wrap">
 							    <h4>비밀번호 재확인</h4>
 							    <p>회원님의 정보를 보호하기 위해 비밀번호를 다시 한번 확인해주세요.</p>
-							    <form action="/cookTeacher/login/mypage/member/check" method="post">
+							    <form method="post">
 							        <div id="check-area">
 							            <div class="check-flex">
 							                <div>
@@ -82,13 +82,15 @@
 							                    <label for="memberPwd">비밀번호</label>
 							                </div>
 							                <div>
-							                    <input type="password" id="memberPwd" name="memberPwd">
+							                    <input type="password" id="memberPwd" name="memberPwd" placeholder="비밀번호를 입력해주세요.">
 							                </div>
 							                <div></div>
 							            </div>
 							        </div>
 							        <div id="check-btn">
-                                        <input type="submit" value="확인">
+                                        <button type="button" onclick="loginCheck();">
+                                            <span>확인</span> 
+                                        </button> 
 							        </div>
 							    </form>
 							</div>
@@ -101,4 +103,38 @@
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
+	<script>
+        function loginCheck() {
+            let memberPwd = $('#memberPwd').val();
+            let pwdReg = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+            
+            if(pwdReg.test(memberPwd)){
 
+                $.ajax({
+                    url : "/cookTeacher/login/mypage/member/check",
+                    method : "POST",
+                    data : {
+                        "memberPwd" : memberPwd
+                    },
+                    success : function(data){
+                        if(data == "loginFail"){
+                            alert("아이디와 비밀번호를 확인해주세요.");
+                            
+      
+                        } else{ 
+                            window.location.href = "/cookTeacher/login/mypage/member/modify";
+                        }
+                    },
+                    error : function(){
+                        alert("통신에러");
+                    }
+                });
+
+            } else{
+                alert('아이디와 비밀번호를 확인해주세요.');
+            }
+        }
+
+    </script>
+</body>
+</html>
