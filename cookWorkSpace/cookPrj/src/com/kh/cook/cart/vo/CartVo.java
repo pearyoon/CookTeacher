@@ -1,4 +1,4 @@
-package com.kh.cook.cart;
+package com.kh.cook.cart.vo;
 
 public class CartVo {
 	
