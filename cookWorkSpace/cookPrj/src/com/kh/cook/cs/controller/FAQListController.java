@@ -30,12 +30,13 @@ public class FAQListController extends HttpServlet{
 		int endPage;		//현재페이지에서 보이는 마지막페이지 숫자
 		
 		listCount = new FAQService().pageSelectCount();
-		currentPage = Integer.parseInt(req.getParameter("pno"));
-		System.out.println(currentPage);//출력확인용
+		String pno = req.getParameter("pno");
+		if(pno == null) {
+			pno = "1";
+		}
+		currentPage = Integer.parseInt(pno);
 		pageLimit = 10;
 		boardLimit = 10;
-		
-		System.out.println(listCount);//출력확인용
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage-1) / pageLimit* pageLimit + 1;
@@ -55,7 +56,6 @@ public class FAQListController extends HttpServlet{
 		pv.setStartPage(startPage);
 		pv.setEndPage(endPage);
 		
-		System.out.println(pv);//출력확인용
 		
 		//디비다녀오기
 		List<CSVo> FAQList = new FAQService().selectFAQList(pv);

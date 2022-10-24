@@ -31,7 +31,11 @@ public class QNAListController extends HttpServlet {
 		int endPage;		//현재페이지에서 보이는 마지막페이지 숫자
 		
 		listCount = new QNAService().pageSelectCount();
-		currentPage = Integer.parseInt(req.getParameter("pno"));
+		String pno = req.getParameter("pno");
+		if(pno == null) {
+			pno = "1";
+		}
+		currentPage = Integer.parseInt(pno);
 		pageLimit = 10;
 		boardLimit = 10;
 		
@@ -55,10 +59,11 @@ public class QNAListController extends HttpServlet {
 		
 		// 디비 다녀오기
 		List<CSVo> QNAList = new QNAService().selectQNAList(pv);
+		
+		//화면선택
 		req.setAttribute("QNAList", QNAList);
 		req.setAttribute("pv", pv);
 		
-		//화면선택
 		req.getRequestDispatcher("/views/cs/QnA/list.jsp").forward(req, resp);
 
 	}

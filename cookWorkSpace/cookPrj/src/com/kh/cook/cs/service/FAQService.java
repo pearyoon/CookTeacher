@@ -30,16 +30,48 @@ public class FAQService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		System.out.println("conn연결중");
+		
 		int result = dao.pageSelectCount(conn);
-		System.out.println("Service에서 int값 담김. result : " + result);
+		
 		JDBCTemplate.close(conn);
 		
 		return result;
 	}
 
+	//FAQ글 작성(관리자용)
 	public int write(CSVo vo) {
-		return 0;
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.insertFAQ(conn,vo);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	//FAQ 상세글 조회
+	public CSVo selectFAQOne(String no) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		CSVo FAQvo = null;
+		
+		//int result = dao.increaseHit(conn, no);
+		//if(result ==1) {
+			//JDBCTemplate.commit(conn);
+			FAQvo = dao.selectFAQOne(conn, no);
+		//}
+				
+		JDBCTemplate.close(conn);
+		
+		return FAQvo;
 	}
 	
 
