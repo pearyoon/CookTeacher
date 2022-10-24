@@ -128,7 +128,7 @@ public class MemberDao {
 			
 			if(rs.next()) {
 				String id = rs.getString("ID");
-				String enrollDate = rs.getString("ENROLL_DATE");
+				String enrollDate =  rs.getString("ENROLL_DATE").substring(0, 11);
 				
 				findMember = new MemberVo();
 				

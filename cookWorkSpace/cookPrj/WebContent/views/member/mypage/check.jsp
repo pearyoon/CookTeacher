@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/check.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
@@ -118,7 +119,10 @@
                     },
                     success : function(data){
                         if(data == "loginFail"){
-                            alert("아이디와 비밀번호를 확인해주세요.");
+                            Swal.fire({
+                                icon: 'error',
+                                text: '아이디와 비밀번호를 확인해주세요.',
+                            });
                             
       
                         } else{ 
@@ -131,7 +135,10 @@
                 });
 
             } else{
-                alert('아이디와 비밀번호를 확인해주세요.');
+                Swal.fire({
+                    icon: 'error',
+                    text: '아이디와 비밀번호를 확인해주세요.',
+                });
             }
         }
 

@@ -83,11 +83,10 @@ main>div:first-child{
 }
 
 /* p태그 */
-div[id^=hidden] {
+.hidden-box {
     font-size: 13px;
     color: rgb(240, 63, 64);
     margin-top: -4px;
-    display: none;
 }
 
 #find-btn{

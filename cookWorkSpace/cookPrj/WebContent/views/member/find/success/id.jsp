@@ -30,10 +30,10 @@
 					<div>가입일 : <%=findMember.getEnrollDate() %></div>
 				</div>
 				<div class="bottom">
-					<button type="button">
+					<button type="button" onclick="findPwdBtn();">
 						<span>비밀번호 찾기</span>
 					</button>
-					<button type="button">
+					<button type="button" onclick="loginBtn();">
 						<span>로그인</span>
 					</button>
 				</div>
@@ -41,5 +41,17 @@
 		</main>
 		<%@include file="/views/common/footer.jsp" %>
 	</div>
+
+	<script>
+
+		function findPwdBtn(){
+			window.location.href="/cookTeacher/member/find/pwd";
+		};
+
+		function loginBtn(){
+			window.location.href="/cookTeacher/member/login";
+		};
+
+	</script>
 </body>
 </html>
