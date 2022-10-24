@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.cook.bobstory.vo.AttachmentVo;
 import com.kh.cook.bobstory.vo.BobstoryVo;
 import com.kh.cook.bobstory.vo.CategoryVo;
 import com.kh.cook.bobstory.vo.PageVo;
@@ -118,7 +119,7 @@ public class BobstoryDao {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<CategoryVo> list = new ArrayList<CategoryVo>();
+		List<CategoryVo> list = new ArrayList<CategoryVo>();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -138,7 +139,6 @@ public class BobstoryDao {
 				list.add(vo);
 				
 			}
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -175,6 +175,163 @@ public class BobstoryDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+	//파일 업로드(첨부파일 insert)
+	public int insertAttachment(Connection conn, AttachmentVo avo) {
+		//SQL
+		
+		String sql = "INSERT INTO BOBATTACHMENT ( NO ,BOARD_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_ATTACHMENT_NO.NEXTVAL , SEQ_BOBSTORY_NO.CURRVAL , ? , ? , ? )";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, avo.getOriginName());
+			pstmt.setString(2, avo.getChangeName());
+			pstmt.setString(3, avo.getFilePath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
+	//조회수 증가
+	public int increaseHit(Connection conn, String bno) {
+		//SQL
+		
+		String sql = "UPDATE BOBSTORY SET VIEW_COUNT = VIEW_COUNT + 1 WHERE NO = ? AND DELETE_YN = 'N'";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
+	//게시글 상세 조회
+	public BobstoryVo selectOne(Connection conn, String bno) {
+		//SQL
+		
+		String sql = "SELECT B.NO , B.WRITER , B.CATEGORY , B.TITLE , B.CONTENT , B.ENROLL_DATE , B.DELETE_YN , B.C_LIKE , B.MODIFY_DATE , B.VIEW_COUNT , B.REPORT_YN , M.NICK AS WRITER , C.MENU_TYPE AS CATEGORY FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO JOIN MENU_CATE C ON B.CATEGORY = C.MENU_CATE_NO WHERE B.NO = ? AND B.DELETE_YN ='N'";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BobstoryVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String no = rs.getString("NO");
+				String writer = rs.getString("WRITER");
+				String category = rs.getString("CATEGORY");
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONTENT");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				String deleteYn = rs.getString("DELETE_YN");
+				String cLike = rs.getString("C_LIKE");
+				String modifyDate = rs.getString("MODIFY_DATE");
+				String viewCount = rs.getString("VIEW_COUNT");
+				String reportYn = rs.getString("REPORT_YN");
+				
+				vo = new BobstoryVo();
+				vo.setNo(no);
+				vo.setWriter(writer);
+				vo.setCategory(category);
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setEnrollDate(enrollDate);
+				vo.setDeleteYn(deleteYn);
+				vo.setcLike(cLike);
+				vo.setModifyDate(modifyDate);
+				vo.setViewCount(viewCount);
+				vo.setReportYn(reportYn);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		return vo;
+	}
+
+	//첨부파일 조회
+	public AttachmentVo selectAttachment(Connection conn, String bno) {
+		//SQL
+		
+		String sql = "SELECT * FROM BOBATTACHMENT WHERE STATUS = 'O' AND BOARD_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		AttachmentVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String no = rs.getString("NO");
+				String boardNo = rs.getString("BOARD_NO");
+				String originName = rs.getString("ORIGIN_NAME");
+				String changeName = rs.getString("CHANGE_NAME");
+				String filePath = rs.getString("FILE_PATH");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				String thumbYn = rs.getString("THUMB_YN");
+				String status = rs.getString("STATUS");
+				
+				vo = new AttachmentVo();
+				vo.setNo(no);
+				vo.setNo(boardNo);
+				vo.setOriginName(originName);
+				vo.setChangeName(changeName);
+				vo.setFilePath(filePath);
+				vo.setEnrollDate(enrollDate);
+				vo.setThumbYn(thumbYn);
+				vo.setStatus(status);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+		}
+		
+		return vo;
+		
 	}
 
 }

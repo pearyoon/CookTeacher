@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cookTeacher</title>
+<title>밥이야기 글쓰기</title>
 <!-- 경로 체크 필수 -->
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
@@ -40,9 +40,9 @@
   		<div id="main">
 		      <div class="outer">
 		        <br>
-		        <h2 align="center">일반게시판 작성하기</h2>
+		        <h2 align="center">밥이야기 작성하기</h2>
 		        <br>
-		        <form id="enroll-form" action="/cookTeacher/bobstory/write" method="post" enctype="multipart/form-data">
+		        <form id="enroll-form" action="" method="post" enctype="multipart/form-data">
 		            <!-- 카테고리, 제목, 내용, 첨부파일 한개 -->
 		            <table>
 		                <tr>
@@ -50,9 +50,9 @@
 		                    <td width="500px">
 		                        <select name="category">
 		                            <!-- CATEGORY 테이블로부터 조회해오기 -->
-		                            <%for(int i = 0; i < cateList.size(); ++i){%>
-				                     	<option value="<%= cateList.get(i).getMenu_cate_no() %>"><%= cateList.get(i).getMenu_type() %></option>
-		                            <%}%>
+		                            <%for(int i = 0; i < cateList.size(); i++) {%>
+		                            	<option value="<%=cateList.get(i).getMenu_cate_no()%>"><%=cateList.get(i).getMenu_type() %></option>
+		                            <%} %>
 		                        </select>
 		                    </td>
 		                </tr>
