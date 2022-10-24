@@ -51,16 +51,6 @@ public class MenuService {
 		return prodList;
 	}
 	
-	//추천 순서대로
-	public List<MenuVo> selectRecommList() {
-		Connection conn = JDBCTemplate.getConnection();
-		
-		List<MenuVo> recommList = new MenuDao().selectRecommList(conn);
-		
-		JDBCTemplate.close(conn);
-		
-		return recommList;
-	}
 
 
 

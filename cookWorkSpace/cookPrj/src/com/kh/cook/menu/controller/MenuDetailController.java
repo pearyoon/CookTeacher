@@ -19,14 +19,22 @@ public class MenuDetailController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	//데이터 보내기
     	String no = req.getParameter("no");
+    	System.out.println(no);
     	//디비 다녀오기
     	MenuVo vo = new MenuService().selectMenuOne(no);
     	List<ProductVo> prodList = new MenuService().selectProdList(no);
     	
     	//화면선택
     	req.setAttribute("vo", vo);
-    	req.setAttribute("prodList", prodList);
-    	req.getRequestDispatcher("/views/menu/detail.jsp").forward(req, resp);
+    	if(prodList == null) {
+    		System.out.println("null");
+    	}else {
+    		
+    		req.setAttribute("prodList", prodList);
+    		req.getRequestDispatcher("/views/menu/detail.jsp").forward(req, resp);
+    		
+    	}
+    	
     }
     
 

@@ -126,35 +126,37 @@
                         <div id="prod-ment" >* 장바구니에 담을 재료를 선택해주세요. </div>
                     </div>
                     
-                    <script>
+<!--                     <script>
                     	function cartCheck() {
 							$.ajax({
 								url : "/cookTeacher/menu/detail"
 								method : "post"
 							})
 						}
-                    </script>
+                    </script> -->
          
 
                     <div id="prod-img" style="width: 100%; height: 650px;">
+                    
                     
                     <%for(int i = 0; i < prodList.size(); ++i ){%>
                     
                         <div class="prd-all">
                             <div class="product">
                                 <a href="">
-                                    <img src="/cookTeacher/resources/img/product/<%=prodList.get(i).getImgPath()%>" alt="식재료게시판담당" width="100%" height="100%">
+                                    <img src="/cookTeacher/resources/img/product/<%=prodList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
                                 </a>
+                                
                             </div>    
                             <div style="margin-top : 10px" class="prod-price">
-                                <input type="checkbox" width="50px" height="50px"><%=prodList.get(i).getName()%> / <%=prodList.get(i).getWeight()%>
-                                <pre style="margin-bottom: 10px"><%=prodList.get(i).getPrice()%>원</pre>
+                                <input type="checkbox" width="50px" height="50px"><%=prodList.get(i).getName() %> / <%=prodList.get(i).getWeight() %>
+                                <pre style="margin-bottom: 10px"><%=prodList.get(i).getPrice() %>원</pre>
                             </div>
                         </div>
                     		
                     <%} %>
 
-
+					
 
                 </div>
             </div>
