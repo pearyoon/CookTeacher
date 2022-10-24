@@ -113,8 +113,8 @@ public class MenuDao {
 	}
 
 	public List<ProductVo> selectProdList(Connection conn, String no) {
-		String sql = "SELECT PROD_NO ,CATE_NO ,STOCK ,PRICE ,WEIGHT ,INFO ,NAME ,IMG_PATH FROM PRODUCT WHERE PROD_NO IN( SELECT MP.PROD_NO FROM MENU M JOIN MENU_PROD MP ON M.NO = MP.NO WHERE MP.NO = ? )";
-		
+		String sql = "SELECT DETAIL, CATE_NO, PROD_NO, PRICE, STOCK, WEIGHT, INFO, IMG_PATH4, IMG_PATH3, IMG_PATH, IMG_PATH2, NAME FROM PRODUCT WHERE PROD_NO IN( SELECT MP.PROD_NO FROM MENU M JOIN MENU_PROD MP ON M.NO = MP.NO WHERE MP.NO = ?)";
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<ProductVo> prodList = new ArrayList<ProductVo>();
@@ -126,25 +126,35 @@ public class MenuDao {
 			
 			rs = pstmt.executeQuery();
 			
+			System.out.println(rs.next());
+			
 			while(rs.next()) {
+				String detail = rs.getString("DETAIL");
+				String cateNo = rs.getString("CATE_NO");
 				String prodNo = rs.getString("PROD_NO");
-				String cate_no = rs.getString("CATE_NO");
-				String stock = rs.getString("STOCK");
 				String price = rs.getString("PRICE");
+				String stock = rs.getString("STOCK");
 				String weight = rs.getString("WEIGHT");
 				String info = rs.getString("INFO");
+				String imgPath4 = rs.getString("IMG_PATH4");
+				String imgPath3 = rs.getString("IMG_PATH3");
+				String imgPath = rs.getString("IMG_PATH");
+				String imgPath2 = rs.getString("IMG_PATH2");
 				String name = rs.getString("NAME");
-				String img_path = rs.getString("IMG_PATH");
 				
 				ProductVo prodVo = new ProductVo();
+				prodVo.setDetail(detail);
+				prodVo.setCateNo(cateNo);
 				prodVo.setProdNo(prodNo);
-				prodVo.setCateNo(cate_no);
-				prodVo.setStock(stock);
 				prodVo.setPrice(price);
+				prodVo.setStock(stock);
 				prodVo.setWeight(weight);
 				prodVo.setInfo(info);
+				prodVo.setImgPath4(imgPath4);
+				prodVo.setImgPath3(imgPath3);
+				prodVo.setImgPath(imgPath);
+				prodVo.setImgPath2(imgPath2);
 				prodVo.setName(name);
-				prodVo.setImgPath(img_path);
 				
 				prodList.add(prodVo);
 			}
@@ -160,54 +170,6 @@ public class MenuDao {
 		
 	}
 
-
-	// 추천순
-	public List<MenuVo> selectRecommList(Connection conn) {
-		String sql = "SELECT * FROM MENU ORDER BY RECOMMEND DESC";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<MenuVo> recommList = new ArrayList<MenuVo>();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				String recipe = rs.getString("RECIPE");
-				String menuProd = rs.getString("MENU_PROD");
-				String cal = rs.getString("CAL");
-				String recommend = rs.getString("RECOMMEND");
-				String menuCateNo = rs.getString("MENU_CATE_NO");
-				String no = rs.getString("NO");
-				String menuName = rs.getString("MENU_NAME");
-				String menuInfo = rs.getString("MENU_INFO");
-				String imgPath = rs.getString("IMG_PATH");
-				
-				MenuVo vo = new MenuVo();
-				vo.setRecipe(recipe);
-				vo.setMenuProd(menuProd);
-				vo.setCal(cal);
-				vo.setRecommend(recommend);
-				vo.setMenuCateNo(menuCateNo);
-				vo.setNo(no);
-				vo.setMenuName(menuName);
-				vo.setMenuInfo(menuInfo);
-				vo.setImgPath(imgPath);
-				
-				recommList.add(vo);
-				
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(pstmt);
-			JDBCTemplate.close(rs);
-		}
-		
-		return recommList;
-		
-	}
 
 
 }
