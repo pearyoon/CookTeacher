@@ -12,6 +12,8 @@ import com.kh.cook.common.JDBCTemplate;
 
 public class BobstoryService {
 
+	private final BobstoryDao dao = new BobstoryDao();
+	
 	//게시글 갯수 조회
 	public int selectCount() {
 		//커넥션
@@ -20,7 +22,7 @@ public class BobstoryService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int result = new BobstoryDao().selectCount(conn);
+		int result = dao.selectCount(conn);
 		
 		JDBCTemplate.close(conn);
 		
@@ -37,7 +39,7 @@ public class BobstoryService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		List<BobstoryVo> list = new BobstoryDao().selectList(conn, pv);
+		List<BobstoryVo> list = dao.selectList(conn, pv);
 		
 		JDBCTemplate.close(conn);
 		
@@ -53,7 +55,7 @@ public class BobstoryService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		List<CategoryVo> list = new BobstoryDao().selectCategoryList(conn);
+		List<CategoryVo> list = dao.selectCategoryList(conn);
 		
 		JDBCTemplate.close(conn);
 		
@@ -69,12 +71,12 @@ public class BobstoryService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//게시글 insert
-		int result = new BobstoryDao().insertStory(conn, vo);
+		int result = dao.insertStory(conn, vo);
 		
 		//첨부파일 insert
 		int result2 = 1;
 		if(avo != null) {
-			result2 = new BobstoryDao().insertAttachment(conn, avo);
+			result2 = dao.insertAttachment(conn, avo);
 		}
 		
 		
@@ -99,12 +101,13 @@ public class BobstoryService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int result = new BobstoryDao().increaseHit(conn, bno);
-		
+		int result = dao.increaseHit(conn, bno);
+
 		BobstoryVo vo = null;
+		
 		if(result == 1) {
 			JDBCTemplate.commit(conn);
-			vo = new BobstoryDao().selectOne(conn, bno);
+			vo = dao.selectOne(conn, bno);
 		}
 		
 		JDBCTemplate.close(conn);
@@ -121,17 +124,37 @@ public class BobstoryService {
 		//트랜잭션, 자원반납
 		Connection conn = JDBCTemplate.getConnection();
 		
-		AttachmentVo vo = new BobstoryDao().selectAttachment(conn, bno);
+		AttachmentVo vo = dao.selectAttachment(conn, bno);
 		
 		JDBCTemplate.close(conn);
 		
 		return vo;
 	}
 
-	//신고게시글 조회
-	public BobstoryVo selectBoardOne(String no) {
+	//게시글 신고하기
+	public int report(String no) {
+		//커넥션 에스큐엘 트랜잭션 클로즈
 		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.report(conn, no);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
+
+	public BobstoryVo selectBoardOne(String no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 
 }

@@ -19,8 +19,8 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <style>
-	main{
-		width: 60vw;
+	#main{
+		width: 70vw;
 		height: 60vh;
 		border: 1px solid black;
 		margin: 0 auto;
@@ -29,7 +29,7 @@
 		grid-template-rows: 30px 300px 100px;
 		align-content: center;
 	}
-	main >div{
+	#main >div{
 		border: 1px solid black;
 
 	}
@@ -49,17 +49,16 @@
 <body>
 	<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
 		<!-- 헤더는 컨테이너 밖에 -->
-		<div id="container"> <!-- 컨테이너 -->
-				<main>
-					<div><%=vo.getCategory() %></div>
-					<div><%=vo.getTitle() %></div>
-					<div><%=vo.getWriter() %></div>
-					<div><%=vo.getViewCount() %></div>
-					<div><%=vo.getEnrollDate() %></div>
-					<div id="content-box"><%=vo.getContent() %></div>
-					<div id="img-box"><img alt="사진" src="/cookTeacher/<%=attVo.getFilePath() %>/<%=attVo.getChangeName() %>" width="100px" height="100px"></div>
-				</main>
+			<div id = "main">
+				<div><%=vo.getCategory() %></div>
+				<div><%=vo.getTitle() %></div>
+				<div><%=vo.getWriter() %></div>
+				<div><%=vo.getViewCount() %></div>
+				<div><%=vo.getEnrollDate() %></div>
+				<div id="content-box"><%=vo.getContent() %></div>
+				<div id="img-box"><img alt="사진" src="/cookTeacher/<%=attVo.getFilePath() %>/<%=attVo.getChangeName() %>" width="100px" height="100px"></div>
+			</div>
 	<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
-		</div>
+		
 </body>
 </html>

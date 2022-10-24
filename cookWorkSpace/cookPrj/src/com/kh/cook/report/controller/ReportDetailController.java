@@ -26,6 +26,7 @@ public class ReportDetailController extends HttpServlet{
 		//디비 다녀오기
 		ReportVo rvo = new ReportService().selectReportOne(no);
 		BobstoryVo bvo = new BobstoryService().selectBoardOne(no);
+		//이거 안만듬 아직
 		
 		//화면 선택
 		req.setAttribute("rvo", rvo);
