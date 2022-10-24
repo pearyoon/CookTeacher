@@ -16,7 +16,7 @@ public class QNADao {
 	//QNA 리스트 조회
 	public List<CSVo> selectQNAList(Connection conn, PageVo pv) {
 
-		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , T.* FROM (SELECT Q.QNA_NO ,M.NICK ,Q.TITLE ,Q.CONT ,Q.Q_DATE ,Q.DELETE_YN ,Q.EDIT_DATE ,Q.QNA_CATE FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE Q.DELETE_YN = 'N' AND Q.QNA_CATE = 'F' ORDER BY Q.QNA_NO DESC)T ) WHERE RNUM BETWEEN ? AND ?";
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , T.* FROM (SELECT Q.QNA_NO ,M.NICK ,Q.TITLE ,Q.CONT ,Q.Q_DATE ,Q.DELETE_YN ,Q.EDIT_DATE ,Q.QNA_CATE FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE Q.DELETE_YN = 'N' AND Q.QNA_CATE = 'Q' ORDER BY Q.QNA_NO DESC)T ) WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -88,6 +88,33 @@ public class QNADao {
 				e.printStackTrace();
 			} finally {
 				JDBCTemplate.close(rs);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
+		}
+
+		public int insertQNA(Connection conn, CSVo vo) {
+
+			String sql = "INSERT INTO QNA VALUES(SEQ_QNA_NO.NEXTVAL, ? , ?, ?, SYSDATE,'N',SYSDATE,'Q')";
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				System.out.println("sql문 실행됨");
+				
+				pstmt.setString(1, vo.getNo());
+				pstmt.setString(2, vo.getTitle());
+				pstmt.setString(3, vo.getContent());
+				System.out.println(vo);
+				
+				result = pstmt.executeUpdate();
+				System.out.println("sql추가됨");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
 				JDBCTemplate.close(pstmt);
 			}
 			

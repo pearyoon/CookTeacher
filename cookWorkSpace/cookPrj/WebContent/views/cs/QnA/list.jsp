@@ -118,51 +118,6 @@ main>.list>div{
 					<div><%= QNAList.get(i).getQnaDate() %></div>
 				<%} %>
 
-				<div>1</div>
-				<div>샬라샬라</div>
-				<div>치킨</div>
-				<div>22/10/12</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-				<div>치킨</div>
-				<div>22/10/12</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-				<div>치킨</div>
-				<div>22/10/12</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-				<div>치킨</div>
-				<div>22/10/12</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-				<div>치킨</div>
-				<div>22/10/12</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-				<div>치킨</div>
-				<div>22/10/12</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-				<div>치킨</div>
-				<div>22/10/12</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-				<div>치킨</div>
-				<div>22/10/12</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-				<div>치킨</div>
-				<div>22/10/12</div>
-
 			</div>
 			
 			<div id="page-area">

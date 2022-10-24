@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,22 +93,26 @@ color: #000000;
 			<div id="qna">QnA</div>
 		</div>
 
-		<div class="title-area">
-			<!-- 문의 작성 -->
-			<div id="a">
-				제목 : <input type="text" id="title" name="title">
+		<form action="" method="post">
+			<div class="title-area">
+				<!-- 문의 작성 -->
+				<div id="a">
+					제목 : <input type="text" id="title" name="title">
+				</div>
+				<div id="b">작성자 :</div>
+				<div class="write" id="b" name="writer"><%= loginMember.getNick()%></div> <!-- 작성자 코드 받기-->
+				<div id="b" name="enrollDate">
+					작성일시;
+				</div> <!-- 작성일시 코드 받기-->
 			</div>
-			<div id="b">작성자 :</div>
-			<div class="write" id="b" name="writer">민우볶음</div> <!-- 작성자 코드 받기-->
-			<div id="b" name="enrollDate">2022.10.15 16:55</div> <!-- 작성일시 코드 받기-->
-		</div>
-
-		<div class="content-area">
-		<br>
-			<textarea name="content" rows="22" cols="80" style="resize:none;" required></textarea>
-		<br>
-		</div>
-		<div id="writebtn"><input type="submit" value="등록"></div>
+		
+			<div class="content-area">
+			<br>
+				<textarea name="content" rows="22" cols="80" style="resize:none;" required></textarea>
+			<br>
+			</div>
+			<div id="writebtn"><input type="submit" value="등록"></div>
+		</form>
 		<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
 	</div>
 </body>
