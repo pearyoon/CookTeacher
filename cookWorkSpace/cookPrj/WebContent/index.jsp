@@ -1,5 +1,12 @@
+<%@page import="com.kh.cook.product.vo.ProductVo"%>
+<%@page import="java.util.List"%>
+<%@page import="com.kh.cook.menu.vo.MenuVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+	List<MenuVo> recommList = (List<MenuVo>)request.getAttribute("recommList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,18 +15,23 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
             <div id="slide-area">
-                <div class="slide-items">
-                    <a href="">
-                        <img src="/cookTeacher/resources/img/test.jpg" alt="조회수높은레시피띄어주기(레시피게시판담당)" width="1050px" height="400px">
-                    </a>
-                </div>
-                <div class="slide-items">
+<%--                  <%for(int i=0; i<3; i++ ){%>
+		                 <div class="slide-items">
+		                    <a href="cookTeacher/menu/detail?no=<%=recommList.get(i).getNo()%>">
+		                        <img src="/cookTeacher/resources/img/<%=recommList.get(i).getImgPath()%>" alt="조회수높은레시피띄어주기(레시피게시판담당)" width="1050px" height="400px">
+		                    </a>
+		                </div>
+                		
+                	<%}%> --%>
+                
+  				<div class="slide-items">
                     <a href="">
                         <img src="/cookTeacher/resources/img/test2.jpg" alt="조회수높은레시피띄어주기(레시피게시판담당)" width="1050px" height="400px">
                     </a>
@@ -28,7 +40,8 @@
                     <a href="">
                         <img src="/cookTeacher/resources/img/test3.jpg" alt="조회수높은레시피띄어주기(레시피게시판담당)" width="1050px" height="400px">
                     </a>
-                </div>
+                </div> 
+                
             </div>
             <div id="slide-btn-area">
                 <button id="slide-btn1"></button>
