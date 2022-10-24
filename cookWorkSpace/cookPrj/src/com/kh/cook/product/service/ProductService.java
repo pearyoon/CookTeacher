@@ -216,6 +216,24 @@ public class ProductService  {
 		System.out.println(voList);
 		return voList;
 	}
+
+	
+	//리뷰 조회
+	public List<ReviewVo> selectReview(String no) {
+
+		//커넥션 준비
+		//SQL
+		//트랜잭션 처리, 자원반납
+		
+		Connection conn = getConnection();
+		
+		List<ReviewVo> rvoList = dao.selectReviewList(conn, no);
+		
+		close(conn);
+		
+		System.out.println(rvoList);
+		return rvoList;
+	}
 	
 
 }
