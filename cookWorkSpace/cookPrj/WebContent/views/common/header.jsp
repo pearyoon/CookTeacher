@@ -12,7 +12,7 @@
 %>
 	<script>
 		<%if(alertMsg != null) {%>
-			alert('<%=alertMsg%>');
+			Swal.fire('<%=alertMsg%>')
 		<%} %>
 	</script>
 

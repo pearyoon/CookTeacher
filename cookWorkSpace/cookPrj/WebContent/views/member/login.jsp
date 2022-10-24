@@ -18,30 +18,30 @@
     <div id="container">
         <div>로그인</div>
         <div id="login-wrap">
-            <form method="post">
-                <div id="login-top">
-                    <div>
-                        <input id="memberId" type="text" name="memberId" placeholder="아이디를 입력해주세요.">
-                    </div>
-                    <div>
-                        <input id="memberPwd" type="password" name="memberPwd" placeholder="비밀번호를 입력해주세요.">
-                    </div>
-                </div>
-                <div id="findMem">
-                    <a href="/cookTeacher/member/find/id">아이디 찾기 </a>
-                    <span> | </span>
-                    <a href="/cookTeacher/member/find/pwd"> 비밀번호 찾기</a>
-                </div>
-                <div id="btn">
-                    <div>
-                        <button id="login-btn" type="button" onclick="loginCheck();">로그인</button> 
-                    </div>
-                    <div>
-                        <button>회원가입</button>
-                    </div>   
+			<form>
+               <div id="login-top">
+                   <div>
+                       <input id="memberId" type="text" name="memberId" placeholder="아이디를 입력해주세요.">
+                   </div>
+                   <div>
+                       <input id="memberPwd" type="password" name="memberPwd" placeholder="비밀번호를 입력해주세요.">
+                   </div>
+               </div>
+               <div id="findMem">
+                   <a href="/cookTeacher/member/find/id">아이디 찾기 </a>
+                   <span> | </span>
+                   <a href="/cookTeacher/member/find/pwd"> 비밀번호 찾기</a>
+               </div>
+               <div id="btn">
+                   <div>
+                       <button id="login-btn" type="button" onclick="loginCheck();">로그인</button> 
+                   </div>
+                   <div>
+                       <button onclick="joinBtn();">회원가입</button>
+                   </div>   
                     
                 </div>
-            </form>
+          	</form>
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
@@ -82,12 +82,16 @@
 
             } else{
                 Swal.fire({
-                icon: 'error',
-                text: '아이디와 비밀번호를 확인해주세요.',
-                });
+	                icon: 'error',
+	                text: '아이디와 비밀번호를 확인해주세요.',
+	            });
                             
             }
         }
+        
+        function joinBtn(){
+        	window.location.href = "/cookTeacher/member/join";
+        };
 
     </script>
 </body>
