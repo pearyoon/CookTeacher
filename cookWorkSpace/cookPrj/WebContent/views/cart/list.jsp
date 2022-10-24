@@ -44,7 +44,6 @@
                                 </div>
 								
                                 <form id="product-area" action="/cookTeacher/order/info" method="post">
-                                    <div class="product-header"></div>
                                     <ul>
                                         <c:if test="${empty cartList}">
                                             <div class="none-cart">
@@ -60,28 +59,35 @@
                                                 <a href="#">${cartItem.name}</a>
                                             </div>
                                             <div class="count-wrapper">
-                                                <button class="minus" onclick="changeCnt(${cartItem.prodNo}, -1)"></button>
+                                                <button type="button" class="minus" onclick="changeCnt(${cartItem.prodNo}, -1)"></button>
                                                 <div class="count">${cartItem.cnt}</div>
-                                                <button class="plus" onclick="changeCnt(${cartItem.prodNo}, 1)"></button>
+                                                <button type="button" class="plus" onclick="changeCnt(${cartItem.prodNo}, 1)"></button>
                                             </div>
                                             <div class="price"><fmt:formatNumber value="${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" pattern="#,###"/>원</div>
-                                            <button class="remove" onclick="deleteOne(${cartItem.prodNo})"></button>
+                                            <button type="button" class="remove" onclick="deleteOne(${cartItem.prodNo})"></button>
                                             <input type="hidden" name="prodNo" value="${cartItem.prodNo}">
                                             <input type="hidden" name="prodName" value="${cartItem.name}">
                                             <input type="hidden" name="cnt" value="${cartItem.cnt}">
                                             <input type="hidden" name="price" value="${cartItem.price}">
                                         </li>
-                                   		</c:forEach>
+                                    </c:forEach>
+                                       <c:set var="total" value="0" />
+			                            <c:set var="totalCnt" value="0"/>
+										<c:forEach var="cartItem" items="${cartList}">
+											<c:set var="total" value="${total + Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" />
+											<c:set var="totalCnt" value="${totalCnt + 1}"/>
+										</c:forEach>
+	                                    <c:set var="deliveryFee" value="0" />
+	                                    <c:if test="${total <= 30000}">
+		                                	<c:set var="deliveryFee" value="2500" />
+	                                    </c:if>
+                                        <div class="product-footer">
+                                            <span><fmt:formatNumber value="${total}" pattern="#,###"/>원 + 배송비 <fmt:formatNumber value="${deliveryFee}" pattern="#,###"/>원 = <fmt:formatNumber value="${total + deliveryFee}" pattern="#,###"/>원</span>
+                                            <span>(30,000원이상 무료배송)</span>
+                                        </div>
                                     </ul>
                                 </form>
                             </div>
-
-                            <c:set var="total" value="0" />
-                            <c:set var="totalCnt" value="0"/>
-							<c:forEach var="cartItem" items="${cartList}">
-								<c:set var="total" value="${total + Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" />
-								<c:set var="totalCnt" value="${totalCnt + 1}"/>
-							</c:forEach>
 
                             <div id="order-price">
                                 <div class="price-pay">
@@ -92,10 +98,6 @@
                                         <div>상품금액</div>
                                         <div><fmt:formatNumber value="${total}" pattern="#,###"/>원</div>
                                     </div>
-                                    <c:set var="deliveryFee" value="0" />
-                                    <c:if test="${total <= 50000}">
-	                                	<c:set var="deliveryFee" value="3000" />
-                                    </c:if>
                                     <div class="price">
                                         <div>배송비</div>
                                         <div><fmt:formatNumber value="${deliveryFee}" pattern="#,###"/>원</div>
@@ -105,10 +107,7 @@
                                     <div class="sum-cnt">총 ${totalCnt}건</div>
                                     <div class="sum-amt"><strong><fmt:formatNumber value="${total + deliveryFee}" pattern="#,###"/></strong>원</div>
                                 </div>
-                                <input type="submit" value="주문하기" onclick="order()">
-                            </div>
-                            <div class="cart-foot">
-                                
+                                <input type="submit" value="주문하기" onclick="order()" id="order">
                             </div>
                         </div>
 
@@ -118,11 +117,6 @@
             </div>
     <script src="../resources/js/cart/list.js"></script>
     <script>
-
-function order(){
-    <% session.setAttribute("cartList",cartList);%>
-    location.href = "/cookTeacher/order/info";
-}
 
     </script>        
     </body>

@@ -75,10 +75,12 @@ input[type="checkbox"]{
   border-radius: 15px;
 }
 
-.product-header{
-  padding: 16px 0;
-  padding-left: 48px;
-  font-size: 18px;
+.product-footer{
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 16px 20px 13px;
+  font-size: 14px;
 }
 
 .none-cart{
@@ -181,6 +183,8 @@ input[type="checkbox"]{
 }
 
 #order-price{
+  position: sticky;
+  top: 5px;
   width: 250px;
   height: 300px;
   border: 1px solid gray;
@@ -202,7 +206,6 @@ input[type="checkbox"]{
   border-bottom: 1px solid rgb(219, 211, 211);
   margin: 0 12px;
 }
-
 
 .price-pay{
   font-weight: bold;
@@ -248,4 +251,9 @@ input[type="checkbox"]{
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+}
+
+#order-price>input:hover{
+  background: #FFD335;
+  color: black;
 }
