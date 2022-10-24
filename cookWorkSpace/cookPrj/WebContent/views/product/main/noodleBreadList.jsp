@@ -78,8 +78,7 @@ margin-bottom: 30px;
 	color: white;
 	
 }
-     
-
+    
 </style>
 </head>
 <body>
@@ -88,7 +87,7 @@ margin-bottom: 30px;
         <main>
             <hr>
             <div id="main-bottom">
-            <div>과일 / 채소</div>
+            <div>면류 / 빵류</div>
             
                 <hr>
                 <br><br>

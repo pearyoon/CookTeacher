@@ -25,6 +25,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
+
 a {
 	color: black;
 }
@@ -84,43 +85,30 @@ margin-bottom: 30px;
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
-
-<!-- 
-- 해산물
-- 과일
-- 채소
-- 곡식, 견과
-- 육류, 계란
-- 유제품
-- 즉석 제품
-- 음료
-- 조미료, 양념, 가루 (튀김가루, 밀가루, 쌀가루)
-- 면류, 빵류
- -->
-            <hr>
+        <hr>
             <div id="main-bottom">
             <div>카테고리 선택</div>
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/views/product/main/fruit_vege.jsp">과일/채소</a>
+                        <a href="/cookTeacher/product/main/fruitVegeList">과일/채소</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/views/product/main/seafood.jsp">해산물</a>
+                        <a href="/cookTeacher/product/main/seafoodList">해산물</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/views/product/main/meat_egg.jsp">육류/계란</a>
+                        <a href="/cookTeacher/product/main/meatEggList">육류/계란</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/views/product/main/noodle_bread.jsp">면류/빵류</a>
+                        <a href="/cookTeacher/product/main/noodleBreadList">면류/빵류</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/views/product/main/dairy.jsp">유제품</a>
+                        <a href="/cookTeacher/product/main/dairyList">유제품</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/views/product/main/drink.jsp">음료</a>
+                        <a href="/cookTeacher/product/main/drinkList">음료</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/views/product/main/etc.jsp">기타</a>
+                        <a href="/cookTeacher/product/main/etcList">기타</a>
                     </div>
                 </div>
                 <hr>
@@ -128,7 +116,7 @@ margin-bottom: 30px;
                 <div class="main-prod-area">
                		<%for(int i = 1; i < 5; ++i){%>
                			<div>
-	            			<a href="/cookTeacher/product/detail/dairy?no=<%=voList.get(i).getProdNo() %>">
+	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
 		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
 					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
 					            <div><%= voList.get(i).getPrice() %> 원</div>
@@ -137,9 +125,9 @@ margin-bottom: 30px;
 					<%}%>
                 </div>
                 <div class="main-prod-area">
-               		<%for(int i = 6; i < 10; ++i){%>
+               		<%for(int i = 5; i < 9; ++i){%>
                			<div>
-	            			<a href="/cookTeacher/views/product/detail/dairy.jsp">
+	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
 		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
 					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
 					            <div><%= voList.get(i).getPrice() %> 원</div>
@@ -148,9 +136,9 @@ margin-bottom: 30px;
 					<%}%>
                 </div>
                 <div class="main-prod-area">
-               		<%for(int i = 11; i < 15; ++i){%>
+               		<%for(int i = 9; i < 13; ++i){%>
                			<div>
-	            			<a href="/cookTeacher/views/product/detail/dairy.jsp">
+	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
 		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
 					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
 					            <div><%= voList.get(i).getPrice() %> 원</div>
@@ -159,9 +147,9 @@ margin-bottom: 30px;
 					<%}%>
                 </div>
                 <div class="main-prod-area">
-               		<%for(int i = 16; i < 20; ++i){%>
+               		<%for(int i = 13; i < 17; ++i){%>
                			<div>
-	            			<a href="/cookTeacher/views/product/detail/dairy.jsp">
+	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
 		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
 					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
 					            <div><%= voList.get(i).getPrice() %> 원</div>

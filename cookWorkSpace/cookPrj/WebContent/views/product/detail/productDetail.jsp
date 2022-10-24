@@ -1,7 +1,13 @@
+<%@page import="com.kh.cook.product.vo.ReviewVo"%>
 <%@page import="com.kh.cook.product.vo.ProductVo"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	ProductVo vo = (ProductVo)request.getAttribute("vo");
+	ReviewVo rvo = (ReviewVo)request.getAttribute("rvo");
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,82 +17,99 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
+<!-- 수량 버튼 -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="./10-11.css">
+
 <style>
-    div{
-        --border: 1px solid black;
-    }
-	#product-name{
-		text-align: left;
 
-	}
-    #product-main-img/product{
-        width: 100px;
-    }
-    .inner{
-        width: 70%;
-        height: 15%;
-        display: flex;
-        margin: 0 auto;
-        font-size: 20px;
-    }
-    .inner-last{
-        width: 70%;
-        height: 30%;
-        line-height: 14rem;
-        display: flex;
-        margin: 0 auto;
-    }
-    .outer{
-        font-weight: 800;
-        font-size: 20px;
-    }
-    #real-name{
-        font-size: 24px;
-        display: flex;
-        margin: 0 auto;
+div{
+    --border: 1px solid black;
+}
+#product-name{
+	text-align: left;
 
-    }
-    #product-detail-info{
-        font-size: medium;
-    }
-    .main-menu-bar-items{
-        width: 30%;
-        font-weight: 700;
-    }
+}
+#product-main-img/product{
+    width: 100px;
+}
+.inner{
+    width: 70%;
+    height: 15%;
+    --display: flex;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.basketprice{
+    width: 70%;
+    height: 15%;
+    --display: flex;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.inner-last{
+    width: 70%;
+    height: 30%;
+    line-height: 14rem;
+    display: flex;
+    margin: 0 auto;
+}
+.outer{
+    font-weight: 800;
+    font-size: 20px;
+}
+#real-name{
+    font-size: 24px;
+    --display: flex;
+    margin: 0 auto;
+
+}
+#product-detail-info{
+    font-size: medium;
+}
+.main-menu-bar-items{
+    width: 30%;
+    font-weight: 700;
+    background-color: #255D00;
+    box-shadow: 3px 3px #FFD335;
+}
+.main-menu-bar-items > a{
+    color : white;
+}
 
 
-    #main{
-        width: 60vw;
-        height: 60vh;
-        display: grid;
-        grid-template-rows: repeat(11 , 30px);
-        grid-template-columns: 1fr 5fr 3fr 3fr;
-        margin: 0 auto;
-        border: 1px solid black;
-        align-content: center;
-        row-gap: 10px;
-    }
-    #big-name{
-        font-size: 30px;
-        font-weight: 500;
-    }
-    .review-outer, .review-inner{
-        border: 1px solid black;
-        box-sizing: border-box;
-        height: 30px;
-    }
-    #t1{
-        display: flex;
-        display: grid;
-        grid-template-columns: 6fr 1.5fr 1fr;
-    }
-    #t1 > div{
-        border: 1px solid black;
-        --display: grid;
-        --grid-template-columns: 5fr 4fr 3fr;
-    }
-    /* 리뷰 */
-    table {
+#main{
+    width: 60vw;
+    height: 60vh;
+    display: grid;
+    grid-template-rows: repeat(11 , 30px);
+    grid-template-columns: 1fr 5fr 3fr 3fr;
+    margin: 0 auto;
+    border: 1px solid black;
+    align-content: center;
+    row-gap: 10px;
+}
+#big-name{
+    font-size: 30px;
+    font-weight: 500;
+}
+.review-outer, .review-inner{
+    border: 1px solid black;
+    box-sizing: border-box;
+    height: 30px;
+}
+#t1{
+    display: flex;
+    display: grid;
+    grid-template-columns: 6fr 1.5fr 1fr;
+}
+#t1 > div{
+    border: 1px solid black;
+    --display: grid;
+    --grid-template-columns: 5fr 4fr 3fr;
+}
+/* 리뷰 */
+table {
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -273,30 +296,102 @@ section.notice {
 
 #write-bttn{
     text-align: center;
+    width: 100px;
 }
 #table-head{
     background-color: rgba(211, 211, 211, 0.566);
 }
+
+
+.css-1qirdbn {
+    --display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 80%;
+    height: 52px;
+    border-radius: 10px;
+    color: black;
+    background-color: #FFD335;
+    --border: 0px none;
+    border: 2px solid #255D00;
+    font-size: medium;
+    font-weight: 700;
+}
+
+
+button[disabled], input[disabled] {
+    cursor: default;
+}
+
+.css-1e90glc {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    border: none;
+    font-size: 1px;
+    color: transparent;
+    background-size: cover;
+    background-color: transparent;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0yMCAxNHYySDEwdi0yeiIgZmlsbD0iI0RERCIgZmlsbC1ydWxlPSJub256ZXJvIi8+Cjwvc3ZnPgo=);
+    vertical-align: top;
+}
+.css-18y6jr4 {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    border: none;
+    font-size: 1px;
+    color: transparent;
+    background-size: cover;
+    background-color: transparent;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNiAxMHY0aDR2MmgtNHY0aC0ydi00aC00di0yaDR2LTRoMnoiIGZpbGw9IiMzMzMiIGZpbGwtcnVsZT0ibm9uemVybyIvPgo8L3N2Zz4K);
+    vertical-align: top;
+}
+
+
+.fa-arrow-alt-circle-up:before {
+    content: "\f35b";
+}
+
+.fa-arrow-alt-circle-down:before {
+    content: "\f358";
+}
+
+#main-menu-area{
+	height: 550px;
+
+}
+
+#header-search-area>button {
+	width: 45px;
+	height: 45px;
+	background-color: white;
+	border-left: white;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
 </style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
+          
+    
     
             <div id="main-middle">
+            <hr><br><br>
                 <div id="product-name"></div>
                 <div id="main-menu-area">
                     <div id="product-main-img/product">
-                            <img/product src="/cookTeacher/resources/img/product/milk.png" alt="레시피게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath()%>" alt="레시피게시판담당" width="100%" height="100%">
                         <!-- <div>우유</div> -->
                     </div>
                     <div class="outer">
                         <div class="inner" id="real-name">
-                           상품 이름
-                        </div>
-                        <div class="inner">
-                            가격
+                            [&nbsp;<%= vo.getName() %>&nbsp;]
                         </div>
                     	<div class="inner">
                     		원산지
@@ -304,8 +399,18 @@ section.notice {
                     	<div class="inner">
                     		중량
                     	</div>
-                    	<div class="inner-last">
+                    	<div class="inner">
+                    		가격
+                    	</div>
+                    	<div class="inner">
                     		구매 수량
+                    	</div>
+                    	<div class="inner">
+                    		합계
+                    	</div>
+                        <div class="inner">
+                    	<!-- 구매하기 버튼 위치 -->
+                    	
                     	</div>
 
                     </div>
@@ -313,16 +418,39 @@ section.notice {
                         <div class="inner">
                         </div>
                         <div class="inner">
-                            4,990원
-                        </div>
-                        <div class="inner">
                             국내산
                         </div>
                         <div class="inner">
-                            1.8L
+                            <%= vo.getWeight() %>
                         </div>
-                        <div class="inner-last">
-                           + 1 +     
+                        <div class="inner">
+                    	<form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
+				            <input type="hidden" name="cmd" value="order">
+				                <div class="row data">
+				                    <div class="subdiv">
+				                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="<%= vo.getPrice() %>"><%= vo.getPrice() %>원</div>
+				                        <div class="num">
+				                            <div class="updown">
+				                            <br><br><br>
+				                                <input type="text" name="p_num1" id="p_num1" size="3" maxlength="3" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
+				                                <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
+				                                <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
+				                                <br><br><br>
+				                            </div>
+				                        </div>
+				                        <div class="sum"><br><%= vo.getPrice() %>원</div>
+				                    </div>
+				                </div>
+        				</form>
+        				</div>
+
+                        <br><br><br><br><br><br><br><br>
+                        
+                        <div class="inner">
+                        
+                            <button onclick="addCart();" class="cart-button css-1qirdbn e4nu7ef3" type="button" radius="3">
+                                <span class="css-ymwvow e4nu7ef1">장바구니 담기&nbsp;&nbsp;&nbsp;<img src="/cookTeacher/resources/img/icons/cart.png" alt="장바구니" width="20px" height="17px"></span>
+                            </button>
                         </div>
 
                     </div>
@@ -335,15 +463,15 @@ section.notice {
                 <div>
                     <br>
                     <p>
-                        신선하고 고소한 명품우유
+                        <%= vo.getInfo() %>
                         <br>
                     </p>
                     <br>
                     <div id="product-detail-info">
-                        서울우유는 1등급이 2개인 명품우유에요. 건강한 젖소일수록 체세포수가 적게 나오는데, 체세포수가 1등급인 우유입니다. 
-                        <br><br>여기에 세균수 1A로 세균수가 적은 신선한 우유랍니다. 영양 가득한 고소한 흰 우유 한 잔 어떠세요.<br><br><br><br>
+                        <%= vo.getDetail() %>
                     </div>
                 </div>
+                <br><br>
                 <hr>
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
@@ -360,7 +488,7 @@ section.notice {
                 <!-- 상품 설명 -->
                 <a id="tag-detail" >
                     <div class="main-prod-area">
-                        <img/product src="/cookTeacher/resources/img/product/milk_big.jpg" alt="상품 이미지" width="80%" height="100%">
+                        <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath() %>" alt="상품 이미지" width="80%" height="100%">
                     </div>
                     <br>
                     <div>
@@ -368,15 +496,11 @@ section.notice {
                         <br><br><br><br>
                     </div>
                     <div id="big-name">
-                        서울우유 1.8L
+                        <%= vo.getName() %>
                     </div>
                     <br>
                     <div>
-                        우유는 다 거기서 거기일까요. 전혀 아닙니다. 목장에서부터 다른 서울우유를 선택해보세요. <br><br>
-                        세균수 1A 등급과 체세포수 1등급인 좋은 우유니까요. 세균수는 오염의 지표이며, 적을수록 신선한 우유입니다. <br><br>
-                        체세포수는 건강한 젖소일수록 적게 나오고, 이는 곧 우유의 품질을 나타내요. <br><br>
-                        1등급이 2개나 있는 검증된 서울우유는 신선하고 고소한 맛과 향 그리고 먹음직스러운 흰색까지 갖추었어요. <br><br>
-                        1.8L 용량으로 온 가족이 즐길 수 있는 넉넉한 양입니다. 시원하게 한 잔 마시는 것도 좋고, 우유와 잘 어울리는 다양한 음식과 함께해도 좋은 서울우유를 즐겨보세요.
+                     <%= vo.getDetail() %>
                     </div>
                     <br><br><br><br><br>
                     
@@ -386,9 +510,10 @@ section.notice {
                 <a id="tag-detail2" >
                     <br>
                     <div>
-                        <img/product src="/cookTeacher/resources/img/product/milk_info.png" alt="상품 이미지" width="100%" height="100%">
+                        <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath() %>" alt="상품 이미지" width="100%" height="100%">
                     </div>
                     <div>
+                    	<br>
                         *영양 정보
                         <br><br><br><br>
                     </div>
@@ -404,7 +529,6 @@ section.notice {
                                 </div>
                             </div>
                         </div>
-                    
                         
                         <!-- board list area -->
                         <div id="board-list">
@@ -466,7 +590,7 @@ section.notice {
                                     </tbody>
                                 </table>
                                 <br>
-                                <input type="button" value="작성하기" id="write-bttn">
+                                <a href="/cookTeacher/views/product/detail/productReview.jsp"><input type="button" value="작성하기" id="write-bttn"></a>
                             </div>
                         </div>
                     
@@ -482,6 +606,98 @@ section.notice {
         </main>
 		<%@include file="/views/common/footer.jsp" %>
     </div>
+    
+    	<script>
+	
+    	function count(type)  {
+    		  // 결과를 표시할 element
+    		  const resultElement = document.getElementById("result");
+    		  
+    		  // 현재 화면에 표시된 값
+    		  let number = resultElement.innerText;
+    		  
+    		  // 더하기/빼기
+    		  if(type === 'plus') {
+    		    number = parseInt(number) + 1;
+    		  }else if(type === 'minus')  {
+    		    number = parseInt(number) - 1;
+    		  }
+    		  
+    		  // 결과 출력
+    		  resultElement.innerText = number;
+    		}
+    	
+    	function addCart(){
+    		alert("장바구니에 담겼습니다.");
+    	}
+    	
+    	//지우기
+    	let basket = {
+    		    totalCount: 0, 
+    		    totalPrice: 0,
+    		    //체크한 장바구니 상품 비우기
+
+    		    //장바구니 전체 비우기
+
+    		    //재계산
+    		    reCalc: function(){
+    		        this.totalCount = 0;
+    		        this.totalPrice = 0;
+    		        document.querySelectorAll(".p_num").forEach(function (item) {
+    		            if(item.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.checked == true){
+    		                var count = parseInt(item.getAttribute('value'));
+    		                this.totalCount += count;
+    		                var price = item.parentElement.parentElement.previousElementSibling.firstElementChild.getAttribute('value');
+    		                this.totalPrice += count * price;
+    		            }
+    		        }, this); // forEach 2번째 파라메터로 객체를 넘겨서 this 가 객체리터럴을 가리키도록 함. - thisArg
+    		    },
+    		    //화면 업데이트
+    		    updateUI: function () {
+    		        document.querySelector('#sum_p_num').textContent = '상품갯수: ' + this.totalCount.formatNumber() + '개';
+    		        document.querySelector('#sum_p_price').textContent = '합계금액: ' + this.totalPrice.formatNumber() + '원';
+    		    },
+    		    //개별 수량 변경
+    		    changePNum: function (pos) {
+    		        var item = document.querySelector('input[name=p_num'+pos+']');
+    		        var p_num = parseInt(item.getAttribute('value'));
+    		        var newval = event.target.classList.contains('up') ? p_num+1 : event.target.classList.contains('down') ? p_num-1 : event.target.value;
+    		        
+    		        if (parseInt(newval) < 1 || parseInt(newval) > 99) { return false; }
+
+    		        item.setAttribute('value', newval);
+    		        item.value = newval;
+
+    		        var price = item.parentElement.parentElement.previousElementSibling.firstElementChild.getAttribute('value');
+    		        item.parentElement.parentElement.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
+    		        //AJAX 업데이트 전송
+
+    		        //전송 처리 결과가 성공이면    
+    		        this.reCalc();
+    		        this.updateUI();
+    		    },
+    		    checkItem: function () {
+    		        this.reCalc();
+    		        this.updateUI();
+    		    },
+    		    delItem: function () {
+    		        event.target.parentElement.parentElement.parentElement.remove();
+    		        this.reCalc();
+    		        this.updateUI();
+    		    }
+    		}
+
+    		// 숫자 3자리 콤마찍기
+    		Number.prototype.formatNumber = function(){
+    		    if(this==0) return 0;
+    		    let regex = /(^[+-]?\d+)(\d{3})/;
+    		    let nstr = (this + '');
+    		    while (regex.test(nstr)) nstr = nstr.replace(regex, '$1' + ',' + '$2');
+    		    return nstr;
+    		};
+    	
+	
+	</script>
     
     
 

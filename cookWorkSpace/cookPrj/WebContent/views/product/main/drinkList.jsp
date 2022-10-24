@@ -78,17 +78,16 @@ margin-bottom: 30px;
 	color: white;
 	
 }
-     
-
+    
 </style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
-            <hr>
+         <hr>
             <div id="main-bottom">
-            <div>과일 / 채소</div>
+            <div>음료</div>
             
                 <hr>
                 <br><br>
