@@ -126,7 +126,7 @@ const autoHyphen = (target) => {
     target.value = target.value
     .replace(/[^0-9]/g, '')
     .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
-}
+};
 
 
 // 휴대폰 정규식
@@ -164,8 +164,8 @@ addr.addEventListener('keyup',()=>{
 
 function checkId(){
     let inputId = $('#memberId').val();
-
-	if(inputId.length >= 6){
+    const idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+	if(idReg.test(inputId)){
 		
 		    $.ajax({
 		        url : "/cookTeacher/member/join/dupCheck/id" ,
@@ -177,10 +177,16 @@ function checkId(){
 						$('#dupId-btn').addClass('check');
                         $('#dupId-btn').attr('disabled',true);
                         $('#dupId-btn').removeClass('non-check');
-		                alert("사용 가능한 아이디입니다.");
+                        Swal.fire({
+                            icon: 'success',
+                            text: '사용 가능한 아이디입니다.',
+                          });
 		                idck = true;
 		            } else{
-		                alert("중복 아이디입니다.");
+		                Swal.fire({
+                            icon: 'error',
+                            text: '중복 아이디입니다.',
+                          });
 		                $('#memberId').val("");
 		            }
 		        } ,
@@ -191,7 +197,10 @@ function checkId(){
 		    });
 	
 	}	else{
-		alert("영문 숫자 조합의 6자 이상 20자 이하의 아이디를 입력해주세요.");
+        Swal.fire({
+            icon: 'error',
+            text: '영문 숫자 조합의 6자 이상 20자 이하의 아이디를 입력해주세요.',
+          });
 	}
 
 }
@@ -213,10 +222,16 @@ function checkNick(){
 					$('#dupNick-btn').addClass('check');
                     $('#dupNick-btn').attr('disabled',true);
                     $('#dupNick-btn').removeClass('non-check');
-					alert("사용 가능한 닉네임입니다.");
+                    Swal.fire({
+                        icon: 'success',
+                        text: '사용 가능한 닉네임입니다.',
+                      });
 					nickck = true;
 				} else{
-					alert("중복 닉네임입니다.");
+                    Swal.fire({
+                        icon: 'error',
+                        text: '중복 닉네임입니다.',
+                      });
 					$("#inputNick").val("");
 				}
 			},
@@ -226,7 +241,10 @@ function checkNick(){
 		});
 
     }else{
-        alert("2자 이상의 닉네임을 입력해주세요.");
+        Swal.fire({
+            icon: 'error',
+            text: '2자 이상의 닉네임을 입력해주세요.',
+          });
     }
 
 }
@@ -248,11 +266,17 @@ function checkEmail(){
                     $('#dupEmail-btn').addClass('check');
                     $('#dupEmail-btn').attr('disabled',true);
                     $('#dupEmail-btn').removeClass('non-check');
-					alert("사용 가능한 이메일입니다.");
+                    Swal.fire({
+                        icon: 'success',
+                        text: '사용 가능한 이메일입니다.',
+                      });
 					emailck = true;
 
                 }else{
-					alert("사용 불가능한 이메일입니다.");
+                    Swal.fire({
+                        icon: 'error',
+                        text: '사용 불가능한 이메일입니다.',
+                      });
 					$("#email").val("");
                 }
             },
@@ -262,7 +286,10 @@ function checkEmail(){
         });
   
     }else{
-        alert("이메일 형식을 맞춰주세요.");
+        Swal.fire({
+            icon: 'error',
+            text: '이메일의 형식을 맞춰주세요.',
+          });
     }
 }
 
@@ -271,42 +298,66 @@ function checkEmail(){
 // 찐 유효성 검사
 function checkJoin(){
     if(!idck){
-		alert("아이디 중복확인을 해주세요.");
+        Swal.fire({
+            icon: 'error',
+            text: '아이디 중복 확인을 해주세요.',
+          });
         return false;
     }
     
     if(!pwd1ck){
-        alert("비밀번호는 영문 숫자 특수문자 조합의 8자이상입니다.");
+        Swal.fire({
+            icon: 'error',
+            text: '비밀번호는 영문 숫자 특수문자 조합의 8자 이상입니다.',
+          });
 		return false;
 	}
 
     if(!pwd2ck){
-        alert("비밀번호가 불일치합니다.");
+        Swal.fire({
+            icon: 'error',
+            text: '비밀번호가 불일치합니다.',
+          });
         return false;
     }
 
     if(!nameck){
-        alert("이름을 입력해주세요.");
+        Swal.fire({
+            icon: 'error',
+            text: '이름을 입력해주세요.',
+          });
         return false;
     }
 
     if(!nickck){
-        alert("닉네임 중복확인을 해주세요.");
+        Swal.fire({
+            icon: 'error',
+            text: '닉네임을 입력해주세요.',
+          });
         return false;
     }
 
     if(!emailck){
-        alert("이메일 중복확인을 해주세요.");
+        Swal.fire({
+            icon: 'error',
+            text: '이메일 중복확인을 해주세요.',
+          });
         return false;
     }
 
     if(!phoneck){
-        alert("휴대폰 번호를 입력해주세요.");
+        Swal.fire({
+            icon: 'error',
+            text: '휴대폰 번호를 입력해주세요.',
+          });
         return false;
     }
 
     if(!addrck){
-        alert("주소를 입력해주세요.");
+        Swal.fire({
+            icon: 'error',
+            text: '주소를 입력해주세요.',
+          });
         return false;
     }
     

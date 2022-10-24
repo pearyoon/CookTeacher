@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/find/id.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 </head>
@@ -94,7 +95,10 @@
                     },
                     success : function(data){
                         if(data == "findFail"){
-                            alert("가입시 입력하신 회원정보가 맞는지 다시 한번 확인해주세요.");
+                            Swal.fire({
+                                icon: 'error',
+                                text: '가입시 입력하신 회원정보가 맞는지 다시 한번 확인해주세요.',
+                            });
                         }else{
                            
                            	window.location.href = "/cookTeacher/member/find/success/id"
@@ -108,7 +112,10 @@
                 });
 
             } else{
-                alert("이름과 이메일을 확인해주세요.");
+                Swal.fire({
+                    icon: 'error',
+                    text: '이름과 이메일을 확인해주세요.',
+                });
             }
 
         }
