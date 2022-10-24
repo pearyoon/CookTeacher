@@ -1,4 +1,4 @@
-package com.kh.cook.cart;
+package com.kh.cook.cart.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.cook.cart.service.CartService;
+import com.kh.cook.cart.vo.CartItemVo;
 import com.kh.cook.member.vo.MemberVo;
 
 @WebServlet(urlPatterns = "/cart/list")
@@ -35,9 +37,18 @@ public class CartListController extends HttpServlet{
 		req.setAttribute("cartList", cartList);
 		req.getRequestDispatcher("/views/cart/list.jsp").forward(req, resp);
 		
-		
-		
 	}// doGet
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		HttpSession session = req.getSession();
+		
+		List<CartItemVo> cartInfo = (List<CartItemVo>) req.getAttribute("cartList");
+		
+		session.setAttribute("cartList", cartInfo);
+		
+	}
 	
 	
 }//class
