@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.cook.menu.service.MenuService;
 import com.kh.cook.menu.vo.MenuVo;
 
-@WebServlet(urlPatterns = "/")
+//@WebServlet(urlPatterns = "/")
 public class MenuRecommController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
