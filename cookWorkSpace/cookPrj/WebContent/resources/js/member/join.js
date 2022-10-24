@@ -289,6 +289,28 @@ function checkJoin(){
         alert("이름을 입력해주세요.");
         return false;
     }
+
+    if(!nickck){
+        alert("닉네임 중복확인을 해주세요.");
+        return false;
+    }
+
+    if(!emailck){
+        alert("이메일 중복확인을 해주세요.");
+        return false;
+    }
+
+    if(!phoneck){
+        alert("휴대폰 번호를 입력해주세요.");
+        return false;
+    }
+
+    if(!addrck){
+        alert("주소를 입력해주세요.");
+        return false;
+    }
+    
+    return true;
 };
 
 

@@ -110,12 +110,12 @@ public class MemberDao {
 		return result;
 	}
 	// 아이디 찾기
-	public String findId(MemberVo vo, Connection conn) {
-		String sql = "SELECT ID FROM MEMBER WHERE NAME = ? AND EMAIL = ?";
+	public MemberVo findId(MemberVo vo, Connection conn) {
+		String sql = "SELECT ID,ENROLL_DATE FROM MEMBER WHERE NAME = ? AND EMAIL = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String findId = null;
+		MemberVo findMember = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
 		
@@ -127,7 +127,13 @@ public class MemberDao {
 			
 			
 			if(rs.next()) {
-				findId = rs.getString("ID");
+				String id = rs.getString("ID");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				
+				findMember = new MemberVo();
+				
+				findMember.setId(id);
+				findMember.setEnrollDate(enrollDate);
 			}
 			
 		} catch (SQLException e) {
@@ -137,7 +143,7 @@ public class MemberDao {
 			close(pstmt);
 		}
 		
-		return findId;
+		return findMember;
 	}
 	// 아이디 중복 검사
 	public int dupCheckId(String id, Connection conn) {

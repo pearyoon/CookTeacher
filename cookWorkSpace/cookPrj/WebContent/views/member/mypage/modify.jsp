@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/modify.css">
 
-<script type="text/javascript" defer src="/cookTeacher/resources/js/member/join.js"></script>
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
@@ -64,7 +63,7 @@
 
 							
 						<div id="modify-wrap">
-						    <form action="<%=root %>/login/mypage/member/modify" method="post">
+						    <form action="<%=root %>/login/mypage/member/modify" method="post" onsubmit="return checkJoin()">
 						        <div class="modify-items">
 						            <div>
 						                <label for="memberId">아이디</label>
@@ -132,9 +131,9 @@
 						                </div>
 						            </div>
 						            <div>
-						                <button>
-						                    <span>중복확인</span>
-						                </button>
+										<button id="dupNick-btn" class="non-check" type="button" onclick="checkNick();" disabled>
+											<span>중복확인</span>
+										</button>
 						            </div>
 						        </div>
 						        <div class="modify-items">
@@ -150,9 +149,9 @@
 						                </div>
 						            </div>
 						            <div>
-						                <button>
-						                    <span>중복확인</span>
-						                </button>
+										<button id="dupEmail-btn" class="non-check" type="button" onclick="checkEmail();" disabled>
+											<span>중복확인</span>
+										</button>
 						            </div>
 						        </div>
 						        <div class="modify-items">
@@ -182,9 +181,9 @@
 						                </div>
 						            </div>
 						            <div>
-						                <button>
-						                    <span>주소검색</span>
-						                </button>
+										<button id="searchAddr-btn" class="non-check" type="button" disabled>
+											<span>주소검색</span>
+										</button>
 						            </div>
 						        </div>
 						        <div id="btn">
@@ -197,11 +196,8 @@
 						        </div>
 						    </form>
 						
-						</div>
-
-
-                        
-<%--                     </div>
+						</div>                  
+                   </div>
                 </div>
             </div>
         </div>
@@ -209,5 +205,5 @@
     </div>
 
 </body>
-</html> --%>
+</html> 
     

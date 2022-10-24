@@ -82,18 +82,17 @@ main>div:first-child{
 }
 
 /* p태그 */
-div[id^=hidden] {
+.hidden-box {
     font-size: 13px;
     color: rgb(240, 63, 64);
     margin-top: -4px;
-    display: none;
 }
 
 #find-btn{
     margin-top: 18px;
 }
 
-#find-btn>input{
+#find-btn>button{
     
     display: block;
     padding: 0 10px;
@@ -106,5 +105,11 @@ div[id^=hidden] {
     background-color: #255D00;
     border: 0 none;
     cursor: pointer;
+}
+
+#find-btn span{
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
 }
 

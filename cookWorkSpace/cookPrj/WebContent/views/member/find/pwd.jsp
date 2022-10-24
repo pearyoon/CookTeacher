@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/find/id.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
     <%@ include file="/views/common/header.jsp" %>   
@@ -46,12 +48,18 @@
                     </div>
                     
                     <div id="find-btn">
-                        <input type="submit" value="확인">
+                        <button type="submit" onclick="findPwd();">
+                            <span>확인</span>
+                        </button>
                     </div>
                 </form>
             </div>
         </main>
         <%@include file="/views/common/footer.jsp" %>
     </div>
+
+    <script>
+        
+    </script>
 </body>
 </html>
