@@ -94,6 +94,71 @@ public class FAQDao {
 		
 		return result;
 	}
+
+	public int insertFAQ(Connection conn, CSVo vo) {
+		
+		String sql = "INSERT INTO QNA VALUES(SEQ_QNA_NO.NEXTVAL, ? , ?, ?, SYSDATE,'N',SYSDATE,'F')";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getNo());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setString(3, vo.getContent());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	//FAQ 상세글조회
+	public CSVo selectFAQOne(Connection conn, String no) {
+String sql = "SELECT Q.QNA_NO, Q.TITLE, Q.CONTENT, Q.ENROLL_DATE, Q.MODIFY_DATE, Q.DELETE_YN, M.NICK AS WRITER FROM QNA A JOIN MEMBER M ON Q.NO = M.NO WHERE Q.NO = ? AND Q.DELETE_YN = 'N'";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		CSVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONTENT");
+				String writer = rs.getString("WRITER");
+				String hit = rs.getString("HIT");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				String modifyDate = rs.getString("MODIFY_DATE");
+				
+				vo = new CSVo();
+				vo.setNo(no);
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setWriter(writer);
+				vo.setQnaDate(enrollDate);
+				vo.setEditDate(modifyDate);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+		}
+		
+		return vo;
+	}
 	
 
 }

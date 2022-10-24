@@ -58,6 +58,10 @@ public class FAQWriteController extends HttpServlet{
 		//화면
 		if(result == 1) {
 			resp.sendRedirect("/cookTeacher/cs/FAQ/list");
+		} else {
+			// 작성 실패 메세지, 에러페이지 포워딩
+			req.setAttribute("alertMsg", "FAQ 작성 실패!");
+			req.getRequestDispatcher("views/common/errorPage.jsp").forward(req, resp);
 		}
 	
 	}

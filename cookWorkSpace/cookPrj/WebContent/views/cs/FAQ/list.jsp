@@ -1,12 +1,13 @@
+<%@page import="com.kh.cook.common.PageVo"%>
 <%@page import="com.kh.cook.cs.vo.CSVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    pageEncoding="UTF-8"%>
+   
     <%
     List<CSVo> FAQList = (List<CSVo>)request.getAttribute("FAQList");
     /* 페이징처리 코드 추가하기 */
+    PageVo pv = (PageVo)request.getAttribute("pv");
     %>
 <!DOCTYPE html>
 <html>
@@ -114,50 +115,23 @@ main>.list>div{
 				<%for(int i = 0; i<FAQList.size(); i++){ %>
 					<div><%= FAQList.get(i).getQnaNo() %></div>
 					<div><a hrdf="<%%>"><%= FAQList.get(i).getTitle() %>어이</a></div>
-					<div><%= FAQList.get(i).getWriter() %></div>
-					<div><%= FAQList.get(i).getQnaDate() %></div>
 				<%} %>
-
-
-				<div>1</div>
-				<div>샬라샬라</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
-
-				<div>1</div>
-				<div>샬라샬라</div>
 
 			</div>
 			
 			<div id="page-area">
-				<a href="">이전</a>
-
-				<a href="">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-
-				<a href="">다음</a>
+				<% if(pv.getStartPage() != 1){ %>
+		                 <a href="/cookTeacher/cs/FAQ/list?pno=<%=pv.getStartPage()-1 %>">이전</a>
+		        <%} %>
+		        
+		        <%for(int i = pv.getStartPage(); i<=pv.getEndPage(); ++i){ %>
+		            <a href="/cookTeacher/cs/FAQ/list?pno=<%=i %>"><%=i %></a>
+		            
+		        <%} %>
+		        
+		        <% if(pv.getEndPage() != pv.getMaxPage()){ %>
+		                 <a href="/cookTeacher/cs/FAQ/list?pno=<%=pv.getEndPage()+1 %>">다음</a>
+		        <%} %>
 			</div>
 			
 			<%if(session.getAttribute("loginMember") != null &&

@@ -107,7 +107,7 @@ color: #000000;
 			<textarea name="content" rows="22" cols="80" style="resize:none;" required></textarea>
 		<br>
 		</div>
-		<div id="writebtn"><a href="">등록</a></div>
+		<div id="writebtn"><input type="submit" value="등록"></div>
 		<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
 	</div>
 </body>
