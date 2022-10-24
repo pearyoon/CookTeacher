@@ -63,17 +63,33 @@ function changeCnt(prodNo, var_cnt){
   const changed_cnt = parseInt(cnt) + var_cnt;
   // cnt는 문자열이기 때문에 int로 변환 시켜 var_cnt를 계산 함.
 
-  $.ajax({
-      method: 'POST',
-      url: '/cookTeacher/cart/cnt',
-      traditional : true,     // 데이터 넘어가게 해주기
-      data : {
-          prodNo,
-          cnt: changed_cnt // 넘겨줄 데이터
-      },
-      success: function(result){    // 성공하면 실행할 함수
-          location.reload();
-      }
-  })
+  if(changed_cnt > 0){
+
+      $.ajax({
+          method: 'POST',
+          url: '/cookTeacher/cart/cnt',
+          traditional : true,     // 데이터 넘어가게 해주기
+          data : {
+              prodNo,
+              cnt: changed_cnt // 넘겨줄 데이터
+          },
+          success: function(result){    // 성공하면 실행할 함수
+              location.reload();
+          }
+      });
+  }
+
   
 }
+
+$(document).ready(function order(){
+    $("#order").click(function(){
+        let checkArr = [];
+        checkbox = $("[name=check]:checked");
+        for(var i = 0; i < checkbox.length; i++){
+            checkArr.push(checkbox.eq(i).val());
+        }
+        $("#checkArr").val(checkArr);
+        leftIniC
+    });
+});
