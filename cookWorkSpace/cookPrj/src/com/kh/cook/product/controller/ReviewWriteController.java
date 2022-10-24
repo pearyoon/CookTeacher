@@ -1,6 +1,7 @@
 package com.kh.cook.product.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +22,7 @@ public class ReviewWriteController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.getRequestDispatcher("/views/product/detail/productReview.jsp").forward(req, resp);
+		
 
 	}
 	
@@ -37,11 +39,15 @@ public class ReviewWriteController extends HttpServlet {
 		//데이터 꺼내기
 		String no = req.getParameter("no");
 		String content = req.getParameter("content");
+		String enrollDate = req.getParameter("enrollDate");
+		String prodNo = req.getParameter("prodNo");
 		
 		//데이터 뭉치기
 		ReviewVo rvo = new ReviewVo();
 		rvo.setNo(loginMember.getNo());
 		rvo.setContent(content);
+		rvo.setEnrollDate(enrollDate);
+		rvo.setProdNo(prodNo);
 		
 		//디비 다녀오기
 		int result = new ProductService().write(rvo);
