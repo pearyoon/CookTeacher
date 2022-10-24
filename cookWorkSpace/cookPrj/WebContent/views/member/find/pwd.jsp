@@ -20,7 +20,7 @@
             <div>비밀번호 찾기</div>
             <div id="find-area">
                 <div>휴대폰/이메일 인증</div>
-                <form method="post">
+                <form>
                     <div class="find-items">
                         <label for="memberId">아이디</label>
                         <div>
@@ -69,7 +69,7 @@
             const memberId = $('#memberId').val();
             const idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
             
-            if(idReg.test(memberId)){
+            if(!idReg.test(memberId)){
                 $('#hidden-name').text("가입시 등록한 아이디를 입력해주세요.");
             } else{
                 $('#hidden-name').text("");
@@ -87,7 +87,7 @@
             const phone = $('#phone').val();
             const phoneReg = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}/;
             
-            if(phoneReg.test(phone)){
+            if(!phoneReg.test(phone)){
                 $('#hidden-phone').text("가입시 등록한 휴대폰을 입력해주세요.");
             } else{
                 $('#hidden-phone').text("");
@@ -102,6 +102,11 @@
             const email = $('#email').val();
             const emailReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
+            if(!emailReg.test(email)){
+                $('#hidden-email').text("가입시 등록한 이메일을 입력해주세요.");
+            } else{
+                $('#hidden-email').text("");
+            }
         });
 
 

@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>

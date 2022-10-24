@@ -21,7 +21,7 @@
             <div>아이디 찾기</div>
             <div id="find-area">
                 <div>이메일 인증</div>
-                <form method="post">
+                <form>
                     <div class="find-items">
                         <label for="memberName">이름</label>
                         <div>
