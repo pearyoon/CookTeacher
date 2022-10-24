@@ -16,20 +16,22 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <style>
-   .outer{
-      background: black;
-      color: white;
-      width: 60%;
-      height: 550px;
-      margin: auto;
-      padding-top: 50px;
-   }
 
-   #enroll-form table{border: 1px solid white; margin:auto;}
-   #enroll-form input, #enroll-form textarea{
-      width: 100%;
-      box-sizing: border-box;
-   }
+
+.outer{
+    color: black;
+    width: 60%;
+    height: 550px;
+    margin: auto;
+    padding-top: 50px;
+ }
+
+ #enroll-form table{border: 1px solid black; margin:auto;}
+
+ #enroll-form input, #enroll-form textarea{
+    width: 100%;
+    box-sizing: border-box;
+ }
 
 </style>
 </head>
@@ -61,16 +63,18 @@
 		                    <td><input type="text" name="title" required></td>
 		                </tr>
 		                <tr>
-		                    <th>내용</th>
-		                    <td><textarea name="content" rows="10" style="resize:none;" required></textarea></td>
+							<th></th>
+		                    <td><textarea name="content" rows="20" cols="70" style="resize:none;" required></textarea></td>
 		                </tr>
 		                <tr>
 		                    <th>첨부파일</th>
-		                    <td><input type="file" name="file"></td>
+		                    <td><input type="file" name="file" id="file"></td>
 		                </tr>
 		            </table>
+					<br>
 		            <div align="center">
-		                <button type="submit">작성하기</button>
+		                <button type="submit">레시피 쓰기</button>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		                <button type="reset">취소하기</button>
 		            </div>
 		        </form>

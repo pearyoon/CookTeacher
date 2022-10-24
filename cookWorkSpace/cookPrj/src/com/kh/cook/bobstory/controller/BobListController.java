@@ -31,9 +31,13 @@ public class BobListController extends HttpServlet{
 		int endPage;
 		
 		listCount = new BobstoryService().selectCount();
-		currentPage = Integer.parseInt(req.getParameter("pno"));
+		String pno = req.getParameter("pno");
+		if(pno == null) {
+			pno = "1";
+		}
+		currentPage = Integer.parseInt(pno);
 		pageLimit  = 5;
-		boardLimit = 5;
+		boardLimit = 10;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		

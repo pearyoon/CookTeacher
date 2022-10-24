@@ -58,8 +58,8 @@ public class BobstoryDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			int start = (pv.getCurrentPage() -1) * pv.getBoardLimit() + 1;
-			int end = start + pv.getBoardLimit() +1;
+			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
+			int end = start + pv.getBoardLimit() + 1;
 			
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
@@ -92,7 +92,7 @@ public class BobstoryDao {
 				vo.setcLike(cLike);
 				vo.setModifyDate(modifyDate);
 				vo.setViewCount(viewCount);
-				vo.setViewCount(viewCount);
+				vo.setReportYn(reportYn);
 				
 				voList.add(vo);
 				
@@ -331,6 +331,32 @@ public class BobstoryDao {
 		}
 		
 		return vo;
+		
+	}
+
+	//게시글 신고하기
+	public int report(Connection conn, String no) {
+		//sql
+		
+		String sql = "UPDATE BOBSTORY SET REPORT_YN = 'Y' WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 		
 	}
 

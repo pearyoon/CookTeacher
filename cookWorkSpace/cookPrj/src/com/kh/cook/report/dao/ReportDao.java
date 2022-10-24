@@ -16,7 +16,7 @@ public class ReportDao {
 	public List<ReportVo> selectReportList(Connection conn) {
 		//SQL
 		
-		String sql = "SELECT * FROM REPORT WHERE STATUS ='O' ORDER BY NO DESC";
+		String sql = "SELECT * FROM BOBSTORY WHERE REPORT_YN = 'Y' ORDER BY NO DESC";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

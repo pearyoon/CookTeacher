@@ -71,7 +71,7 @@
                     <a href="<%= root %>/views/menu/recipe_cate.jsp">레시피</a>
                 </div>
                 <div class="header-menu-items">
-                    <a href="">밥이야기</a>
+                    <a href="<%= root %>/bobstory/list">쿡스토리</a>
                 </div>
                 <div class="header-menu-items">
                     <a href="">고객센터</a>
