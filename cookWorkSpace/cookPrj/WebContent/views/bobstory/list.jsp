@@ -23,7 +23,7 @@
 		<div id="container"> <!-- 컨테이너 -->
 			<br>
 			<br>
-			<h1 align="center">쿡 스토리</h1>
+			<p>쿡 스토리</p>
 			<br>
 			<br>
 			<table class="table table-striped">
@@ -33,15 +33,17 @@
 					<th scope="col">제목</th>
 					<th scope="col">조회수</th>
 					<th scope="col">작성일시</th>
+					<th scope="col">추천</th>
 				</thead>
 				<tbody>
 				<%for(int i = 0; i < voList.size(); i++){%>
 					<tr align="center">
-						<td style="width: 150px;"><%=voList.get(i).getNo() %></td>
+						<td style="width: 80px;"><%=voList.get(i).getNo() %></td>
 						<td style="width: 180px;"><%=voList.get(i).getWriter() %></td>
-						<td><a href="<%=root%>/board/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getTitle() %></a></td>
+						<td><a href="<%=root%>/bobstory/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getTitle() %></a></td>
 						<td style="width: 100px;"><%=voList.get(i).getViewCount() %></td>
 						<td style="width: 180px;"><%=voList.get(i).getEnrollDate() %></td>
+						<td style="width: 80px;"><%=voList.get(i).getcLike()%></td>
 					</tr>
 				<%} %>	
 				</tbody>
@@ -51,7 +53,7 @@
 					<button id="write-btn"><a href="/cookTeacher/bobstory/write">글쓰기</a></button>
 				</div>
 			<%}%>
-
+				<br>
 			<div id="page-area">
 			        	
 				<%if(pv.getStartPage() != 1){%>
@@ -69,7 +71,8 @@
 				
 				
 			</div>
-
+			<br>
+			<br>
 			<!-- <div id="main">
 				<%if(loginMember != null){%>
 			        <div id="main-top">

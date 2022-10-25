@@ -18,47 +18,52 @@
 <!-- 경로 체크 필수 -->
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
-<style>
-	#main{
-		width: 70vw;
-		height: 60vh;
-		border: 1px solid black;
-		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 1fr 5fr 3fr 1fr 3fr;
-		grid-template-rows: 30px 300px 100px;
-		align-content: center;
-	}
-	#main >div{
-		border: 1px solid black;
-
-	}
-
-	#content-box{
-		grid-column: span 5;
-	}
-
-	#img-box{
-		grid-column: span 5;
-		display: flex;
-		justify-content: center;
-	}
-
-</style>
+<link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/detail.css">
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
 		<!-- 헤더는 컨테이너 밖에 -->
 		<div id="container">
-			<div id = "main">
+			<br>
+			<br>
+			<p>쿡 스토리</p>
+			<br>
+			<hr>
+			<br>
+			<table class="table">
+				<thead>
+					<th scope="col"><%=vo.getTitle()%></th>
+					<th scope="col"><%=vo.getViewCount()%></th>
+					<th scope="col"><%=vo.getWriter()%></th>
+					<th scope="col"><%=vo.getEnrollDate()%></th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%=vo.getContent()%></td>
+					</tr>
+				</tbody>
+			</table>
+			<hr>
+			<div class="vote_btn">
+				<input type="button" value="좋아요">
+				<input type="button" value="신고">
+			</div>
+			<!-- <div id = "main">
 				<div><%=vo.getCategory() %></div>
 				<div><%=vo.getTitle() %></div>
 				<div><%=vo.getWriter() %></div>
 				<div><%=vo.getViewCount() %></div>
 				<div><%=vo.getEnrollDate() %></div>
+				<div><%=vo.getcLike()%></div>
 				<div id="content-box"><%=vo.getContent() %></div>
 				<div id="img-box"><img alt="사진" src="/cookTeacher/<%=attVo.getFilePath() %>/<%=attVo.getChangeName() %>" width="100px" height="100px"></div>
-			</div>
+			</div> -->
+			<%if(loginMember != null && loginMember.getNick() == vo.getWriter()){%>
+			<div id="main-bot">
+				<a href="/cookTeacher/bobstory/edit?no=<%=vo.getNo()%>">수정하기</a>
+				<a href="/cookTeacher/bobstory/delete?no=<%=vo.getNo()%>">삭제하기</a>
+			<%}%>
+		</div>
 	<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
 		</div>
 		
