@@ -28,6 +28,7 @@ public class MemberJoinController extends HttpServlet{
 		String email = req.getParameter("email");
 		String phone = req.getParameter("phone");
 		String addr = req.getParameter("addr");
+		String detailAddr = req.getParameter("detailAddr");
 		
 		MemberVo vo = new MemberVo();
 		vo.setAddr(addr);
@@ -37,6 +38,7 @@ public class MemberJoinController extends HttpServlet{
 		vo.setNick(nick);
 		vo.setPhone(phone);
 		vo.setPwd(pwd);
+		vo.setDetailAddr(detailAddr);
 		
 		int result = new MemberService().join(vo);
 		
