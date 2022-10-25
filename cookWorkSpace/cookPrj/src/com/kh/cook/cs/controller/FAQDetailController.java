@@ -19,6 +19,7 @@ public class FAQDetailController  extends HttpServlet{
 
 		//꺼내기
 		String no = req.getParameter("no");
+		System.out.println(no);
 		
 		//뭉치기
 		
@@ -27,7 +28,7 @@ public class FAQDetailController  extends HttpServlet{
 		
 		//화면
 		req.setAttribute("FAQvo", FAQvo);
-		req.getRequestDispatcher("/views/notice/detail.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/cs/FAQ/detail.jsp").forward(req, resp);
 	
 	}
 

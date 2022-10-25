@@ -1,5 +1,9 @@
+<%@page import="com.kh.cook.cs.vo.CSVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    CSVo QNAvo = (CSVo)request.getAttribute("QNAvo");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,6 +82,9 @@ color: #000000;
 	font-size: small;
 	margin: 5px;
 }
+#writebtn>a{
+	margin: 10px;
+}
 </style>
 </head>
 <body>
@@ -94,19 +101,25 @@ color: #000000;
 			<!-- 문의 작성 -->
 			<div id="a">
 				제목 : 
-				작성 제목.
+				<%=QNAvo.getTitle() %>
 			</div>
 			<div id="b">작성자 :</div>
-			<div class="write" id="b" name="writer">민우볶음</div> <!-- 작성자 코드 받기-->
-			<div id="b" name="enrollDate">2022.10.15 16:55</div> <!-- 작성일시 코드 받기-->
+			<div class="write" id="b" name="writer"><%=QNAvo.getWriter() %></div>
+			<div id="b" name="enrollDate"><%=QNAvo.getQnaDate() %></div>
 		</div>
 
 		<div class="content-area">
 			<br>
-			작성 내용.
+			<%= QNAvo.getContent() %>
 			<br><br>
 		</div>
-		<div id="writebtn"><a href="">등록</a></div>
+		
+		<%	if(loginMember != null && loginMember.getNo().equals(QNAvo.getNo())){ %>
+		<div id=writebtn>
+			<a href="/cookTeacher/cs/QnA/edit?no=<%= QNAvo.getQnaNo() %>">수정</a>
+			<a href="/cookTeacher/cs/QnA/delete?no=<%= QNAvo.getQnaNo() %>">삭제</a>
+		</div>		
+		<% } %>
 		
 		<%@include file="/views/common/footer.jsp" %>
 	</div>

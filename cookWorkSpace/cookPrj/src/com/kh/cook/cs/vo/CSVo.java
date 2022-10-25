@@ -5,18 +5,19 @@ public class CSVo {
 	private String qnaNo;
 	private String no;
 	private String writer;
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
 	private String title;
 	private String content;
 	private String qnaDate;
 	private String deleteYN;
 	private String editDate;
 	private String qnaCategory;
+	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	
 	public String getQnaNo() {
 		return qnaNo;

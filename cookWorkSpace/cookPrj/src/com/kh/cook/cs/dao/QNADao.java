@@ -121,4 +121,80 @@ public class QNADao {
 			return result;
 		}
 
+		public CSVo selectQNAone(Connection conn, String qNo) {
+			
+			String sql = "SELECT Q.QNA_NO,Q.NO, Q.TITLE, Q.CONT, Q.Q_DATE, Q.EDIT_DATE, Q.DELETE_YN, Q.QNA_CATE, M.NICK AS WRITER FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE QNA_CATE = 'Q' AND Q.QNA_NO = ? AND Q.DELETE_YN = 'N'";
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			CSVo vo = null;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, qNo);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					String qnaNo = rs.getString("QNA_NO");
+					String no = rs.getString("NO");
+					String writer = rs.getString("WRITER");
+					String title = rs.getString("TITLE");
+					String content = rs.getString("CONT");
+					String qnaDate = rs.getString("Q_DATE").substring(0,10);
+					String deleteYN = rs.getString("DELETE_YN");
+					String editDate = rs.getString("EDIT_DATE");
+					String qnaCategory = rs.getString("QNA_CATE");
+					
+					vo = new CSVo();
+					vo.setQnaNo(qnaNo);
+					vo.setNo(no);
+					vo.setWriter(writer);
+					vo.setTitle(title);
+					vo.setContent(content);
+					vo.setQnaDate(qnaDate);
+					vo.setDeleteYN(deleteYN);
+					vo.setEditDate(editDate);
+					vo.setQnaCategory(qnaCategory);
+				}
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(pstmt);
+				JDBCTemplate.close(rs);
+			}
+			
+			return vo;
+		}
+
+		public int updateQNAone(Connection conn, CSVo QNAvo) {
+			
+			String sql = "UPDATE NOTICE SET TITLE = ?, CONT = ?, MODIFY_DATE = SYSDATE WHERE QNA_NO = ?";
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, QNAvo.getTitle());
+				pstmt.setString(2, QNAvo.getContent());
+				pstmt.setString(3, QNAvo.getQnaNo());
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			
+			return result;
+		}
+
+
 }
+;
