@@ -12,60 +12,87 @@
     left: 50%;
     transform: translate(-50%);
     width: 1050px; 
-    padding-bottom: 50px;
     
 }
 
 /*밥 스토리*/
 div>h1{
-    margin-bottom: 20px;
     font-size: 28px;
     line-height: 35px;
     font-weight: 500;
     text-align: center;
-    letter-spacing: -1px;
     color: black
 }
 
 /*메인*/
+#main-top{
+    display: flex;
+    flex-direction: row-reverse;
+}
 
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: var(--bs-table-color);
     vertical-align: top;
-    border-color: var(--bs-table-border-color);
 }
 
 table {
     border-collapse: collapse;
     border-spacing: 0;
+    margin: 0;
 }
 
 table {
-    display: table;
-    border-collapse: separate;
+    --display: table;
     box-sizing: border-box;
     text-indent: initial;
     border-spacing: 2px;
-    border-color: grey;
+}
+
+.table tr:nth-child(even){
+    background-color: #ddd;
+}
+
+.table thead th{
+   text-align: center;
+    background-color: #255D00;
+    color: #fff;
+    vertical-align: middle;
+}
+
+thead{
+    height: 31px;
+}
+
+tbody>tr{
+    height: 35px;
+}
+tbody>tr>td{
+    vertical-align: middle;
 }
 
 .table>tbody {
     vertical-align: inherit;
 }
 
-body {
-    margin: 0;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
-    line-height: 1;
-}
-
 tbody {
     display: table-row-group;
     vertical-align: middle;
     border-color: inherit;
+}
+
+#write-btn{
+    background-color: #255D00;
+    border-radius: 5px;
+    color: #fff;
+    border-style: none;
+    width: 70px;
+    height: 28px;
+    
+}
+
+#write-btn:hover{
+    background-color: #398209;
 }
 
 #page-area{

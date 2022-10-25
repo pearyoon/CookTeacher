@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/list.css">
-
 </head>
 <body>
 		<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
@@ -29,24 +28,29 @@
 			<br>
 			<table class="table table-striped">
 				<thead>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일시</th>
-					<th>조회수</th>
+					<th scope="col">번호</th>
+					<th scope="col">작성자</th>
+					<th scope="col">제목</th>
+					<th scope="col">조회수</th>
+					<th scope="col">작성일시</th>
 				</thead>
 				<tbody>
 				<%for(int i = 0; i < voList.size(); i++){%>
 					<tr align="center">
-						<th><%=voList.get(i).getNo() %></th>
-						<th><a href="<%=root%>/board/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getTitle() %></a></th>
-						<th><%=voList.get(i).getWriter() %></th>
-						<th><%=voList.get(i).getEnrollDate() %></th>
-						<th><%=voList.get(i).getViewCount() %></th>
+						<td style="width: 150px;"><%=voList.get(i).getNo() %></td>
+						<td style="width: 180px;"><%=voList.get(i).getWriter() %></td>
+						<td><a href="<%=root%>/board/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getTitle() %></a></td>
+						<td style="width: 100px;"><%=voList.get(i).getViewCount() %></td>
+						<td style="width: 180px;"><%=voList.get(i).getEnrollDate() %></td>
 					</tr>
 				<%} %>	
 				</tbody>
 			</table>
+			<%if(loginMember != null){%>
+				<div id="main-top">
+					<button id="write-btn"><a href="/cookTeacher/bobstory/write">글쓰기</a></button>
+				</div>
+			<%}%>
 
 			<div id="page-area">
 			        	

@@ -1,0 +1,21 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+#container>div{
+    box-sizing: border-box;
+}
+
+#container{
+    position: relative;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1050px; 
+    
+}
+
+/* 글쓰기 */
+table{
+    display: grid;
+}
