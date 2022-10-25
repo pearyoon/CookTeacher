@@ -129,7 +129,7 @@ public class ProductDao {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		System.out.println("dao 쪽 vo : " +vo);
+		//System.out.println("dao 쪽 vo : " +vo);
 		
 		return vo;
 	
@@ -165,7 +165,7 @@ public class ProductDao {
 	}
 
 	//식재료 리뷰 작성
-	public int insertReview(Connection conn, ReviewVo rvo) {
+	public int insertReview(Connection conn, ReviewVo rvo, String rno) {
 
 		//SQL (준비, 완성, 실행)
 		
@@ -176,17 +176,7 @@ public class ProductDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-//			pstmt.setString(1, rvo.getNo());
-//			pstmt.setString(2, rvo.getProdNo());
-//			pstmt.setString(3, rvo.getEnrollDate());
-//			pstmt.setString(4, rvo.getModifyDate());
-//			pstmt.setString(5, rvo.getDeleteYn());
-//			pstmt.setString(6, rvo.getContent());
-			
-			//pstmt.setString(1, rvo.getNo());
-			//pstmt.setString(2, rvo.getContent());
-			
+
 			pstmt.setString(1, rvo.getNo());
 			pstmt.setString(2, rvo.getProdNo());
 			pstmt.setString(3, rvo.getContent());
@@ -661,7 +651,7 @@ public class ProductDao {
 				rvo.setNick(nick);
 				rvo.setEnrollDate(enrollDate);
 				
-				System.out.println("rvo :" +rvo);
+				//System.out.println("rvo :" +rvo);
 				rvoList.add(rvo); 
 				
 			}

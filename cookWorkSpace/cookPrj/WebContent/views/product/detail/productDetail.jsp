@@ -561,22 +561,34 @@ button[disabled], input[disabled] {
                                     </tbody>
                                 </table>
                                 <br>
-                                <a href="/cookTeacher/views/product/detail/ReviewWrite.jsp"><input type="button" value="작성하기" id="write-bttn"></a>
+                            <%--     <%for(int i = 1; i < 5; ++i){%>
+			               			<div> --%>
+			               			
+				            			<a href="/cookTeacher/product/detail/ReviewWrite?rno=<%=vo.getProdNo() %>">
+				            				<input type="button" value="작성하기" id="write-bttn">
+				                        </a>
+			                        </div> 
+			                        
+								<%-- <%}%> --%>
+								<!-- 
+                                <a href="/cookTeacher/product/detail/ReviewWrite"><input type="button" value="작성하기" id="write-bttn"></a>
+                              -->
                             </div>
                         </div>
                     
                     </section>
                  
                   
-                    <br><br><br><br><br>
+                    <br><br>
                 </a>
                 
+        </main>
+        
+		<%@include file="/views/common/footer.jsp" %>
+    </div>
                 
             </div>
 
-        </main>
-		<%@include file="/views/common/footer.jsp" %>
-    </div>
     
     	<script>
 	

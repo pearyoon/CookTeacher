@@ -71,7 +71,7 @@ public class ProductService  {
 
 
 	//식재료 리뷰 작성
-	public int write(ReviewVo rvo) {
+	public int write(ReviewVo rvo, String rno) {
 
 		//커넥션 준비
 		//SQL
@@ -79,7 +79,7 @@ public class ProductService  {
 		
 		Connection conn = getConnection(); 
 		
-		int result = dao.insertReview(conn, rvo);
+		int result = dao.insertReview(conn, rvo, rno);
 		
 		if(result ==1) {
 			commit(conn);

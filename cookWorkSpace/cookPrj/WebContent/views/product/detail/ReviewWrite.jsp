@@ -6,8 +6,8 @@
     
 <%
 	ProductVo vo = (ProductVo)request.getAttribute("vo");
+
 	MemberVo mvo = (MemberVo)request.getAttribute("loginMember");
-	/* List<ReviewVo> rvoList = (List<ReviewVo>)request.getAttribute("rvoList"); */
 
 	ReviewVo rvo = (ReviewVo)request.getAttribute("rvo");
 %>
@@ -230,21 +230,16 @@ textarea {
 	                                <table class="board-table">
 	                                    <thead>
 	                                    <tr id="table-head">
-	                                      	<th scope="col" class="th-content" name="content">내용</th>
-	                                        <!-- <th scope="col" class="th-title" name="no">작성자</th> -->
-	                                        <th scope="col" class="th-date" name="enrollDate">등록일</th>
+	                                      	<th scope="col" class="th-prodNo" name="prodNo">식재료</th>
+	                                        <th scope="col" class="th-content" name="content">내용</th>
 	                                    </tr>
 	                                    </thead>
 	                                    <tbody>
-	                                    <tr>
-	                                        <td>리뷰 내용</td>
+	                                    </tr>
+	                                        <td><input name="prodNo" value="${reviewNo}"></td>
 	                                        <td><textarea rows="" cols="" name="content"></textarea></td>
-	                                    <tr>
+	                                    </tr>
 	                                        <!-- <td>강동원</td> -->
-	                                    </tr>
-	                                        <td>식재료 번호</td>
-	                                        <td><input rows="" cols="" name="prodNo"></input></td>
-	                                    </tr>
 	                                    </tbody>
 	                                </table>
 	                                <br>
@@ -255,7 +250,6 @@ textarea {
                             </div>
                      </div>
 			</form>
-    
     
 
 </body>
