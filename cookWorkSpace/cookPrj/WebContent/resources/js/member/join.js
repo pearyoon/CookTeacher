@@ -304,18 +304,21 @@ function searchAddr(){
 }
 
 
-
+$('#detailAddr').keyup(function(){
+    const detailAddr = $('#detailAddr').val();
+    if(detailAddr.length < 2){
+        $('#hidden-detailAddr').text('상세주소를 입력해주세요.');
+        addrck = false;
+        
+    } else{
+        $('#hidden-detailAddr').text('');
+        addrck = true;
+    }
+});
 
 
 // 찐 유효성 검사
 function checkJoin(){
-
-    const detailAddr = $('#detail-addr').val();
-    console.log(detailAddr);
-    if(detailAddr.length > 2){
-        addrck = true;
-    }
-
 
     if(!idck){
         Swal.fire({
@@ -381,6 +384,7 @@ function checkJoin(){
         return false;
     }
     
+
     return true;
 };
 

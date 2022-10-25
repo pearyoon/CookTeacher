@@ -5,11 +5,13 @@ public class MemberVo {
 		
 	}
 	
-	
-	
+
+
+
+
 	public MemberVo(String no, String grade, String id, String pwd, String email, String name, String phone,
-			String nick, String addr, String enrollDate, String modifyDate, String quitYn, String point,
-			String adminYn) {
+			String nick, String addr, String detailAddr, String enrollDate, String modifyDate, String quitYn,
+			String point, String adminYn) {
 		super();
 		this.no = no;
 		this.grade = grade;
@@ -20,12 +22,15 @@ public class MemberVo {
 		this.phone = phone;
 		this.nick = nick;
 		this.addr = addr;
+		this.detailAddr = detailAddr;
 		this.enrollDate = enrollDate;
 		this.modifyDate = modifyDate;
 		this.quitYn = quitYn;
 		this.point = point;
 		this.adminYn = adminYn;
 	}
+
+
 
 
 
@@ -38,11 +43,14 @@ public class MemberVo {
 	private String phone;
 	private String nick;
 	private String addr;
+	private String detailAddr;
 	private String enrollDate;
 	private String modifyDate;
 	private String quitYn;
 	private String point;
 	private String adminYn;
+	
+	
 	public String getNo() {
 		return no;
 	}
@@ -209,15 +217,30 @@ public class MemberVo {
 		this.adminYn = adminYn;
 	}
 
+	
+
+	public String getDetailAddr() {
+		return detailAddr;
+	}
+
+
+
+	public void setDetailAddr(String detailAddr) {
+		this.detailAddr = detailAddr;
+	}
+
 
 
 	@Override
 	public String toString() {
 		return "MemberVo [no=" + no + ", grade=" + grade + ", id=" + id + ", pwd=" + pwd + ", email=" + email
-				+ ", name=" + name + ", phone=" + phone + ", nick=" + nick + ", addr=" + addr + ", enrollDate="
-				+ enrollDate + ", modifyDate=" + modifyDate + ", quitYn=" + quitYn + ", point=" + point + ", adminYn="
-				+ adminYn + "]";
+				+ ", name=" + name + ", phone=" + phone + ", nick=" + nick + ", addr=" + addr + ", detailAddr="
+				+ detailAddr + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", quitYn=" + quitYn
+				+ ", point=" + point + ", adminYn=" + adminYn + "]";
 	}
+
+
+
 	
 	
 }

@@ -154,8 +154,13 @@
                     </div>
                     <div class="join-items hidden">
                         <div></div>
-                        <div class="input-area">
-                            <input id="detail-addr" type="text" type="text" name="detail-addr" placeholder="나머지 주소를 입력해주세요.">
+                        <div>
+                            <div class="input-area">
+                                <input id="detailAddr" type="text" type="text" name="detailAddr" placeholder="나머지 주소를 입력해주세요.">
+                            </div>
+                            <div>
+                                <p id="hidden-detailAddr"></p>
+                            </div>
                         </div>
                         <div></div>
                     </div>

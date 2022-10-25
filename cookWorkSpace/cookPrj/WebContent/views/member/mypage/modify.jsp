@@ -11,6 +11,10 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/modify.css">
 
+<script type="text/javascript" defer src="/cookTeacher/resources/js/member/modify.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
@@ -186,6 +190,18 @@
 										</button>
 						            </div>
 						        </div>
+								<div class="modify-items">
+									<div></div>
+									<div class="input-wrap">
+										<div>
+											<input type="text" id="detailAddr" name="detailAddr" placeholder="나머지 주소를 입력해주세요." value="${loginMember.detailAddr}">
+										</div>
+										<div>
+											<p id="hidden-detailAddr"></p>
+										</div>
+									</div>
+									<div></div>
+								</div>
 						        <div id="btn">
 						            <button id="quit" type="button">
 						                <span>탈퇴하기</span>

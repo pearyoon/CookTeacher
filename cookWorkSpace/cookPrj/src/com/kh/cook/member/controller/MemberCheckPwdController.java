@@ -35,13 +35,12 @@ public class MemberCheckPwdController extends HttpServlet{
 		
 		MemberVo loginCheck = new MemberService().selectOne(vo);
 	
-		if(loginCheck == null) {
-			//재확인 실패
-			System.out.println("재로그인 실패");
-			resp.getWriter().write("loginFail");
-		} else {
-			//로그인 성공
+		if(loginCheck != null) {
 			ss.setAttribute("loginMember", loginCheck);
+			resp.sendRedirect("/cookTeacher/login/mypage/member/modify");
+		} else {
+			req.setAttribute("loginFail", "loginFail");
+			req.getRequestDispatcher("/views/member/mypage/check.jsp").forward(req, resp);
 		}
 	}
 }

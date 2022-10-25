@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,9 +87,18 @@
 							                </div>
 							                <div></div>
 							            </div>
+                                        <div class="hidden-wrap">
+                                            <div></div>
+                                            <div class="hidden-box">
+                                                <i class="bi bi-exclamation-circle"></i>
+                                                <p>비밀번호를 잘못 입력했습니다.</p>
+                                            </div>
+                                            <div></div>
+                                        </div>
+
 							        </div>
 							        <div id="check-btn">
-                                        <button type="button" onclick="loginCheck();">
+                                        <button type="submit">
                                             <span>확인</span> 
                                         </button> 
 							        </div>
@@ -106,8 +115,21 @@
     </div>
 	<script>
       function checkLogin(){
-    	  const memberPwd = $().val();
+    	  const memberPwd = $('#memberPwd').val();
+          const pwdReg = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+          if(!pwdReg.test(memberPwd)){
+            $('.hidden-box').addClass('fail');
+            $('.hidden-box').removeClass('hidden-box');
+            return false;
+          } else{
+            return true;
+          }
       };
+	
+      <c:if test="${loginFail != null}">
+	      $('.hidden-box').addClass('fail');
+	      $('.hidden-box').removeClass('hidden-box');
+ 	 </c:if>
 
     </script>
 </body>
