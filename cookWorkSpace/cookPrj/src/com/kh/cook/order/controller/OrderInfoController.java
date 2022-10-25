@@ -16,35 +16,31 @@ import com.kh.cook.order.service.OrderService;
 import com.kh.cook.order.vo.OrderVo;
 
 @WebServlet(urlPatterns = "/order/info")
-public class OrderPageController extends HttpServlet {
+public class OrderInfoController extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		HttpSession session = req.getSession();
 		
 		// 회원 불러오기(session)
 		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
+		String no = loginMember.getNo();
 		
 		// 장바구니 목록 가져오기
 		List<CartItemVo> cartList = (List<CartItemVo>) session.getAttribute("cartList");
 		
-		System.out.println(cartList);
+		String[] check =req.getParameterValues("check");
+		
+		// 데이터 뭉치기
+		CartItemVo cartItemVo = new CartItemVo();
+		cartItemVo.setProdNo(no);
+		
+		// 디비 다녀오기
+		new OrderService().checkCartList();
 		
 		
 		
-		String no = req.getParameter("no");
-		String[] check = req.getParameterValues("check");
-		
-//		OrderVo vo = new OrderVo();
-		CartItemVo cartItem = new CartItemVo();
-		
-		loginMember.setNo(no);
-		cartItem.setProdNo(String.join(",", check));
-		
-		int result = new OrderService().orderInfo(no);
-		
-		req.getRequestDispatcher("/views/order/orderPage.jsp").forward(req, resp);		
 	}
 	
 }
