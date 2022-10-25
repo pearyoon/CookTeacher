@@ -12,6 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" defer src="/cookTeacher/resources/js/member/join.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 	<%@ include file="/views/common/header.jsp" %>
@@ -110,7 +111,7 @@
                         </div>
                         <div>
                             <div class="input-area">
-                                <input id="email" type="text" name="email" placeholder="이메일을 입력해주세요.">
+                                <input id="email" type="text" name="email" placeholder="예 : cook@teacher.com">
                             </div>
                             <div>
                                 <p id="hidden-email"></p>
@@ -141,15 +142,22 @@
                         </div>
                         <div>
                             <div class="input-area">
-                                <input id="addr" type="text" type="text" name="addr" placeholder="주소를 입력해주세요.">
+                                <input id="addr" type="text" type="text" name="addr" placeholder="주소를 입력해주세요." readonly>
                             </div>
                             <div>
                                 <p id="hidden-addr"></p>
                             </div>
                         </div>
                         <div>
-                            <button>주소 검색</button>
+                            <button id="search-addr" type="button" onclick="searchAddr();">주소 검색</button>
                         </div>
+                    </div>
+                    <div class="join-items hidden">
+                        <div></div>
+                        <div class="input-area">
+                            <input id="detail-addr" type="text" type="text" name="detail-addr" placeholder="나머지 주소를 입력해주세요.">
+                        </div>
+                        <div></div>
                     </div>
                     <div id="join-btn">
                         <div>

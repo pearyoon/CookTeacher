@@ -67,7 +67,7 @@
 							<div id="check-wrap">
 							    <h4>비밀번호 재확인</h4>
 							    <p>회원님의 정보를 보호하기 위해 비밀번호를 다시 한번 확인해주세요.</p>
-							    <form method="post">
+							    <form action="/cookTeacher/login/mypage/member/check" method="post" onsubmit="return checkLogin();">
 							        <div id="check-area">
 							            <div class="check-flex">
 							                <div>
@@ -105,42 +105,9 @@
         <%@include file="/views/common/footer.jsp" %>
     </div>
 	<script>
-        function loginCheck() {
-            let memberPwd = $('#memberPwd').val();
-            let pwdReg = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
-            
-            if(pwdReg.test(memberPwd)){
-
-                $.ajax({
-                    url : "/cookTeacher/login/mypage/member/check",
-                    method : "POST",
-                    data : {
-                        "memberPwd" : memberPwd
-                    },
-                    success : function(data){
-                        if(data == "loginFail"){
-                            Swal.fire({
-                                icon: 'error',
-                                text: '아이디와 비밀번호를 확인해주세요.',
-                            });
-                            
-      
-                        } else{ 
-                            window.location.href = "/cookTeacher/login/mypage/member/modify";
-                        }
-                    },
-                    error : function(){
-                        alert("통신에러");
-                    }
-                });
-
-            } else{
-                Swal.fire({
-                    icon: 'error',
-                    text: '아이디와 비밀번호를 확인해주세요.',
-                });
-            }
-        }
+      function checkLogin(){
+    	  const memberPwd = $().val();
+      };
 
     </script>
 </body>

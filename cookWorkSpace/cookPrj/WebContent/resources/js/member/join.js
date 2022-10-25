@@ -53,7 +53,7 @@ memberPwd2.addEventListener("keyup", ()=>{
         document.querySelector('#hidden-pwd2').innerHTML = "비밀번호를 한번 더 입력해주세요.";
 
     } else if(inputPwd2 != inputPwd){
-        document.querySelector('#hidden-pwd2').innerHTML = "비밀번호가 불일치합니다.";
+        document.querySelector('#hidden-pwd2').innerHTML = "동일한 비밀번호을 입력해주세요.";
 
     } else{
         document.querySelector('#hidden-pwd2').innerHTML = '';
@@ -155,7 +155,7 @@ addr.addEventListener('keyup',()=>{
         document.querySelector('#hidden-addr').innerHTML = '주소를 입력해주세요.';
     } else{
         document.querySelector('#hidden-addr').innerHTML = '';
-        addrck = true;
+        
     }
 });
 
@@ -292,11 +292,31 @@ function checkEmail(){
           });
     }
 }
+// 주소api
+function searchAddr(){
+    new daum.Postcode({
+        oncomplete: function(data) {
+            $('#addr').val(data.address);
+            $('.hidden').removeClass('hidden');
+            $('#search-addr').text('재검색');
+        }
+    }).open();
+}
+
+
 
 
 
 // 찐 유효성 검사
 function checkJoin(){
+
+    const detailAddr = $('#detail-addr').val();
+    console.log(detailAddr);
+    if(detailAddr.length > 2){
+        addrck = true;
+    }
+
+
     if(!idck){
         Swal.fire({
             icon: 'error',

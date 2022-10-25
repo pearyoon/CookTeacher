@@ -30,13 +30,14 @@ public class MemberLoginController extends HttpServlet{
 		
 		MemberVo loginMember = new MemberService().selectOne(vo);
 	
-		if(loginMember == null) {
-			//로그인 실패
-			System.out.println("로그인 실패");
-			resp.getWriter().write("loginFail");
-		} else {
+		if(loginMember != null) {
 			//로그인 성공
 			req.getSession().setAttribute("loginMember", loginMember);
+			resp.sendRedirect("/cookTeacher");
+		} else {
+			//로그인 실패
+			req.setAttribute("loginFail", "loginFail");
+			req.getRequestDispatcher("/views/member/login.jsp").forward(req, resp);
 		}
 	}
 }
