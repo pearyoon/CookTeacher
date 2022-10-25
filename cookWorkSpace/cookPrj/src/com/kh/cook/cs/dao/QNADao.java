@@ -39,7 +39,7 @@ public class QNADao {
 				String writer = rs.getString("NICK");
 				String title = rs.getString("TITLE");
 				String content = rs.getString("CONT");
-				String qnaDate = rs.getString("Q_DATE");
+				String qnaDate = rs.getString("Q_DATE").substring(0,10);
 				String deleteYN = rs.getString("DELETE_YN");
 				String editDate = rs.getString("EDIT_DATE");
 				String qnaCategory = rs.getString("QNA_CATE");

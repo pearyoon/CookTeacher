@@ -88,27 +88,28 @@ color: #000000;
 		<div class="name">
 			<!-- 게시판 이름 -->
 			<div id="qna">QnA</div>
-		</div>
-
-		<div class="title-area">
-			<!-- 문의 작성 -->
-			<div id="a">
-				제목 : <input type="text" id="title" name="title">
+		<form action="" method="post">
 			</div>
-			<div id="b">작성자 :</div>
-			<div class="write" id="b" name="writer">민우볶음</div> <!-- 작성자 코드 받기-->
-			<div id="b" name="enrollDate">2022.10.15 16:55</div> <!-- 수정일시 코드 받기-->
-		</div>
-
-		<div class="content-area">
-		<br>
-			<textarea name="content" rows="20" cols="80" style="resize:none;" required>
-			<!-- 수정 내용 받기 -->
-			</textarea>
-		<br><br>
-		</div>
-		<div id="writebtn"><a href="">수정</a></div>
-		
+	
+			<div class="title-area">
+				<!-- 문의 작성 -->
+				<div id="a">
+					제목 : <input type="text" id="title" name="title">
+				</div>
+				<div id="b">작성자 :</div>
+				<div class="write" id="b" name="writer">민우볶음</div> <!-- 작성자 코드 받기-->
+				<div id="b" name="enrollDate">2022.10.15 16:55</div> <!-- 수정일시 코드 받기-->
+			</div>
+	
+			<div class="content-area">
+			<br>
+				<textarea name="content" rows="20" cols="80" style="resize:none;" required>
+				<!-- 수정 내용 받기 -->
+				</textarea>
+			<br><br>
+			</div>
+			<div id="writebtn"><input type="submit" value="수정"></div>
+		</form>
 		<%@include file="/views/common/footer.jsp" %>
 	</div>
 </body>

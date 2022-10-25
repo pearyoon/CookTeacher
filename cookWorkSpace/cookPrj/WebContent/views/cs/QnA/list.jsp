@@ -113,7 +113,7 @@ main>.list>div{
 				
 				<%for(int i = 0; i<QNAList.size(); i++){ %>
 					<div><%= QNAList.get(i).getQnaNo() %></div>
-					<div><a hrdf="<%%>"><%= QNAList.get(i).getTitle() %></a></div>
+					<div><a hrdf="/cookTeacher/cs/QnA/detail?no=<%= QNAList.get(i).getNo() %>"><%= QNAList.get(i).getTitle() %></a></div>
 					<div><%= QNAList.get(i).getWriter() %></div>
 					<div><%= QNAList.get(i).getQnaDate() %></div>
 				<%} %>
