@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
     
 <!DOCTYPE html>
 <html>
@@ -116,11 +117,12 @@
                     
                     <div id="prod-btn" >
                         <div style="border-top: 1px solid black; "></div>
-	                    
-                   <button id="btn" type="button" class="btn btn-warning" onclick="cartCheck()">
-                        <label class="re-btn" style="font-size: large;">비법 퍼가기</label>
+	               <div>    
+                   <form action="/cookTeacher/menu/detail" method="post">
+                   <input id="btn" type="submit" class="btn btn-warning" style="font-size: 1.2rem; font-weight: 700;" value="비법퍼가기" onclick="cartCheck()">
+                        <!-- <label class="re-btn" style="font-size: large;">비법 퍼가기</label> -->
                         <label class="re-btn-click">퍼가요~♡</label>
-                   </button>
+                   </div> 
 
                         
                         <div id="prod-ment" >* 장바구니에 담을 재료를 선택해주세요. 
@@ -138,20 +140,54 @@
                     
                         <div class="prd-all">
                             <div class="product">
-                                <a href="">
+                                <a href="/cookTeacher/product/detail/productDetail?no=<%=prodList.get(i).getProdNo() %>">
                                     <img src="/cookTeacher/resources/img/product/<%=prodList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
                                 </a>
                                 
                             </div>    
                             <div style="margin-top : 10px" class="prod-price">
-                                <input type="checkbox" name="product"><%=prodList.get(i).getName() %> / <%=prodList.get(i).getWeight() %>
-                                <pre style="margin-bottom: 10px"><%=prodList.get(i).getPrice() %>원</pre>
+                                <input type="checkbox" name="prodNo" value="<%=prodList.get(i).getProdNo()%>"><%=prodList.get(i).getName() %> / <%=prodList.get(i).getWeight() %>
+                               	<br> <%=prodList.get(i).getName() %>
+                                <pre ><%=prodList.get(i).getPrice() %>원</pre>
+                                <!-- 데이터 넘길 때 produckCnt로 넘기면 될듯? -->
+                               	수량 : <input type="number" name="prodCnt" value="1" style="width: 20px; margin-bottom: 10px">
+                            	<!--  -->
+                            
                             </div>
+
+                            	
+                            </form>
                         </div>
                     		
                     <%} %>
 
-					
+				<!--  -->
+				
+				<tr style="text-align:center;">
+				    <td>
+				        <button type ="button" onclick="fnCalCount('p',this);">+</button>
+				        <input type="text" name="pop_out" value="1" readonly="readonly" style="text-align:center;"/>
+				        <button type="button" onclick="fnCalCount('m', this);">-</button>
+				    </td>
+				</tr>
+				
+				<script type="text/javascript">
+					function fnCalCount(type, ths){
+					    var $input = $(ths).parents("td").find("input[name='pop_out']");
+					    var tCount = Number($input.val());
+					    var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
+					    
+					    if(type=='p'){
+					        if(tCount < tEqCount) $input.val(Number(tCount)+1);
+					        
+					    }else{
+					        if(tCount >0) $input.val(Number(tCount)-1);    
+					        }
+					}
+				</script>
+				
+
+
 
                 </div>
             </div>

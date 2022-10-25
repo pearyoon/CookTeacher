@@ -97,7 +97,7 @@ main div{
     grid-template-columns: 2fr 0.5fr 2fr;
     /* grid-template-rows: 1fr 7fr 1fr 1fr 7fr; */
     grid-template-rows: 2.8fr 1fr 1fr 0.5fr 0.5fr 1fr ;
-    text-align: left;
+    text-align: center;
     
 }
 
@@ -295,3 +295,9 @@ pre{
     padding: auto;
     font-weight: 700;
 }
+
+.btn btn-warning{
+	display: flex;
+	justify-content: center;
+}
+

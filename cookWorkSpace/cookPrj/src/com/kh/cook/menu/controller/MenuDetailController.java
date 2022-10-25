@@ -37,6 +37,15 @@ public class MenuDetailController extends HttpServlet{
     	
     }
     
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	
+    	//일단 .prodNo 이랑 
+    	String prodNo[] = req.getParameterValues("prodNo");
+    	String prodCnt[] = req.getParameterValues("prodCnt");
 
+    	
+    
+    }
 
 }
