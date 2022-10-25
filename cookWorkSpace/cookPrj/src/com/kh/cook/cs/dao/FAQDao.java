@@ -119,8 +119,8 @@ public class FAQDao {
 	}
 
 	//FAQ 상세글조회
-	public CSVo selectFAQOne(Connection conn, String no) {
-String sql = "SELECT Q.QNA_NO, Q.TITLE, Q.CONTENT, Q.ENROLL_DATE, Q.MODIFY_DATE, Q.DELETE_YN, M.NICK AS WRITER FROM QNA A JOIN MEMBER M ON Q.NO = M.NO WHERE Q.NO = ? AND Q.DELETE_YN = 'N'";
+	public CSVo selectFAQOne(Connection conn, String Fno) {
+		String sql = "SELECT Q.QNA_NO,Q.NO, Q.TITLE, Q.CONT, Q.Q_DATE, Q.EDIT_DATE, Q.DELETE_YN, Q.QNA_CATE, M.NICK AS WRITER FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE QNA_CATE = 'F' AND Q.QNA_NO = ? AND Q.DELETE_YN = 'N'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -129,25 +129,31 @@ String sql = "SELECT Q.QNA_NO, Q.TITLE, Q.CONTENT, Q.ENROLL_DATE, Q.MODIFY_DATE,
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, no);
+			pstmt.setString(1, Fno);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				String title = rs.getString("TITLE");
-				String content = rs.getString("CONTENT");
+				String qnaNo = rs.getString("QNA_NO");
+				String no = rs.getString("NO");
 				String writer = rs.getString("WRITER");
-				String hit = rs.getString("HIT");
-				String enrollDate = rs.getString("ENROLL_DATE");
-				String modifyDate = rs.getString("MODIFY_DATE");
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONT");
+				String qnaDate = rs.getString("Q_DATE").substring(0,10);
+				String deleteYN = rs.getString("DELETE_YN");
+				String editDate = rs.getString("EDIT_DATE");
+				String qnaCategory = rs.getString("QNA_CATE");
 				
 				vo = new CSVo();
+				vo.setQnaNo(qnaNo);
 				vo.setNo(no);
+				vo.setWriter(writer);
 				vo.setTitle(title);
 				vo.setContent(content);
-				vo.setWriter(writer);
-				vo.setQnaDate(enrollDate);
-				vo.setEditDate(modifyDate);
+				vo.setQnaDate(qnaDate);
+				vo.setDeleteYN(deleteYN);
+				vo.setEditDate(editDate);
+				vo.setQnaCategory(qnaCategory);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

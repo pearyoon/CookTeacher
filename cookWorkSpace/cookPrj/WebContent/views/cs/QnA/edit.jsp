@@ -1,5 +1,9 @@
+<%@page import="com.kh.cook.cs.vo.CSVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	CSVo QNAvo = (CSVo)request.getAttribute("QNAvo");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,27 +92,40 @@ color: #000000;
 		<div class="name">
 			<!-- 게시판 이름 -->
 			<div id="qna">QnA</div>
-		<form action="" method="post">
 			</div>
+	
+		<form action="" method="post">
 	
 			<div class="title-area">
 				<!-- 문의 작성 -->
 				<div id="a">
-					제목 : <input type="text" id="title" name="title">
+					제목 : <input type="text" id="title" name="title" value="<%= QNAvo.getTitle() %>">
 				</div>
 				<div id="b">작성자 :</div>
-				<div class="write" id="b" name="writer">민우볶음</div> <!-- 작성자 코드 받기-->
-				<div id="b" name="enrollDate">2022.10.15 16:55</div> <!-- 수정일시 코드 받기-->
+				<div class="write" id="b" name="writer"><%= loginMember.getNick()%></div>
+				<div id="b" name="enrollDate">
+				<script>
+					const date = new Date;
+					const year = date.getFullYear();
+					const month = ('0' + (date.getMonth() +1)).slice(-2);
+					const day = ('0' + date.getDate()).slice(-2);
+					const dateStr = year + '-' + month + '-' + day;
+					
+					console.log(dateStr);
+					$(".date").text(dateStr);
+					</script>
+				</div>
 			</div>
 	
 			<div class="content-area">
 			<br>
 				<textarea name="content" rows="20" cols="80" style="resize:none;" required>
-				<!-- 수정 내용 받기 -->
+				<%= QNAvo.getContent() %>
 				</textarea>
 			<br><br>
 			</div>
 			<div id="writebtn"><input type="submit" value="수정"></div>
+			
 		</form>
 		<%@include file="/views/common/footer.jsp" %>
 	</div>

@@ -36,6 +36,7 @@ public class QNAService {
 		return result;
 	}
 	
+	//문의글 작성
 	public int write(CSVo vo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -50,6 +51,34 @@ public class QNAService {
 		
 		JDBCTemplate.close(conn);		
 		
+		return result;
+	}
+
+	public CSVo selectQNAone(String qnaNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		CSVo QNAvo = dao.selectQNAone(conn,qnaNo);
+		System.out.println(QNAvo);
+		
+		JDBCTemplate.close(conn);
+		
+		return QNAvo;
+	}
+
+	//문의글 수정
+	public int edit(CSVo QNAvo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.updateQNAone(conn, QNAvo);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+				
 		return result;
 	}
 

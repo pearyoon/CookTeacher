@@ -101,7 +101,7 @@ color: #000000;
 					제목 : <input type="text" id="title" name="title">
 				</div>
 				<div id="b">작성자 :</div>
-				<div class="write" id="b" name="writer"><%= loginMember.getNick()%></div> <!-- 작성자 코드 받기-->
+				<div class="write" id="b" name="writer"><%= loginMember.getNick()%></div>
 				<div id="b" class="date" name="enrollDate">
 					<script>
 					const date = new Date;
@@ -114,7 +114,7 @@ color: #000000;
 					$(".date").text(dateStr);
 					</script>
 					
-				</div> <!-- 작성일시 코드 받기-->
+				</div>
 			</div>
 		
 			<div class="content-area">

@@ -1,5 +1,9 @@
+<%@page import="com.kh.cook.cs.vo.CSVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	CSVo FAQvo = (CSVo)request.getAttribute("FAQvo");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,12 +86,14 @@ color: #000000;
 		<form action="" method="post">
 			<div class="title-area">
 				<!-- 문의 작성 -->
-					제목 : <input type="text" id="title" name="title">
+					제목 : <input type="text" id="title" name="title"  value="<%= FAQvo.getTitle() %>">
 			</div>
 	
 			<div class="content-area">
 			<br>
-				<textarea name="content" rows="20" cols="80" style="resize:none;" required></textarea>
+				<textarea name="content" rows="20" cols="80" style="resize:none;" required>
+				<%= FAQvo.getContent() %>
+				</textarea>
 			<br><br>
 			</div>
 			<div id="writebtn"><input type="submit" value="수정"></div>

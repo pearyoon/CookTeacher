@@ -1,5 +1,9 @@
+<%@page import="com.kh.cook.cs.vo.CSVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	CSVo FAQvo = (CSVo)request.getAttribute("FAQvo");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,6 +66,9 @@ color: #000000;
 	font-size: small;
 	margin: 5px;
 }
+#writebtn>a{
+	margin: 10px;
+}
 </style>
 </head>
 <body>
@@ -77,18 +84,22 @@ color: #000000;
 		</div>
 
 		<div class="title-area">
-				제목 : <!-- 제목 데이터 받아오기 -->
+				제목 : <%= FAQvo.getTitle() %>
 		</div>
 
 
 		<div class="content-area">
 			<br>
-			작성 내용.
-			<!-- 내용 데이터 받아오기 -->
+			<%=FAQvo.getContent() %>
 			<br><br>
 		</div>
 		
-		<div id="writebtn"><a href="">등록</a></div>
+	<%	if(loginMember != null && loginMember.getId().equals("admin")){ %>
+	<div id=writebtn>
+		<a href="/cookTeacher/cs/FAQ/edit?no=<%= FAQvo.getQnaNo() %>">수정</a>
+		<a href="/cookTeacher/cs/FAQ/delete?no=<%= FAQvo.getQnaNo() %>">삭제</a>
+	</div>		
+	<% } %>
 		
 	<%@include file="/views/common/footer.jsp" %>
 	</div>
