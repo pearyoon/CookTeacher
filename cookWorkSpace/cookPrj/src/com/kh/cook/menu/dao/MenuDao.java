@@ -126,7 +126,6 @@ public class MenuDao {
 			
 			rs = pstmt.executeQuery();
 			
-			System.out.println(rs.next());
 			
 			while(rs.next()) {
 				String detail = rs.getString("DETAIL");
@@ -156,7 +155,9 @@ public class MenuDao {
 				prodVo.setImgPath2(imgPath2);
 				prodVo.setName(name);
 				
+				
 				prodList.add(prodVo);
+				
 			}
 			
 		} catch (SQLException e) {
