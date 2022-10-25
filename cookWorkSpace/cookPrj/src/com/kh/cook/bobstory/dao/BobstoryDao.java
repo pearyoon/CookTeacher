@@ -49,7 +49,7 @@ public class BobstoryDao {
 	public List<BobstoryVo> selectList(Connection conn, PageVo pv) {
 		//SQL
 		
-		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM , T.* FROM (SELECT B.NO ,B.WRITER ,B.CATEGORY ,B.TITLE ,B.CONTENT ,B.ENROLL_DATE ,B.DELETE_YN ,B.C_LIKE ,B.MODIFY_DATE ,B.VIEW_COUNT ,B.REPORT_YN ,M.NICK AS NICK FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO WHERE B.DELETE_YN = 'N' ORDER BY B.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM , T.* FROM (SELECT B.NO ,B.CATEGORY ,B.TITLE ,B.CONTENT ,B.ENROLL_DATE ,B.DELETE_YN ,B.C_LIKE ,B.MODIFY_DATE ,B.VIEW_COUNT ,B.REPORT_YN ,M.NICK AS WRITER FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO WHERE B.DELETE_YN = 'N' ORDER BY B.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -93,6 +93,7 @@ public class BobstoryDao {
 				vo.setModifyDate(modifyDate);
 				vo.setViewCount(viewCount);
 				vo.setReportYn(reportYn);
+				
 				
 				voList.add(vo);
 				
@@ -235,7 +236,7 @@ public class BobstoryDao {
 	public BobstoryVo selectOne(Connection conn, String bno) {
 		//SQL
 		
-		String sql = "SELECT B.NO , B.WRITER , B.CATEGORY , B.TITLE , B.CONTENT , B.ENROLL_DATE , B.DELETE_YN , B.C_LIKE , B.MODIFY_DATE , B.VIEW_COUNT , B.REPORT_YN , M.NICK AS WRITER , C.MENU_TYPE AS CATEGORY FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO JOIN MENU_CATE C ON B.CATEGORY = C.MENU_CATE_NO WHERE B.NO = ? AND B.DELETE_YN ='N'";
+		String sql = "SELECT B.NO , B.CATEGORY , B.TITLE , B.CONTENT , B.ENROLL_DATE , B.DELETE_YN , B.C_LIKE , B.MODIFY_DATE , B.VIEW_COUNT , B.REPORT_YN , M.NICK AS WRITER , C.MENU_TYPE AS CATEGORY FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO JOIN MENU_CATE C ON B.CATEGORY = C.MENU_CATE_NO WHERE B.NO = ? AND B.DELETE_YN ='N'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

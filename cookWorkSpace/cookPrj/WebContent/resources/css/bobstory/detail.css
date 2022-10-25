@@ -1,0 +1,24 @@
+#main{
+    width: 70vw;
+    height: 60vh;
+    border: 1px solid black;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 5fr 3fr 1fr 3fr;
+    grid-template-rows: 30px 300px 100px;
+    align-content: center;
+}
+#main >div{
+    border: 1px solid black;
+
+}
+
+#content-box{
+    grid-column: span 5;
+}
+
+#img-box{
+    grid-column: span 5;
+    display: flex;
+    justify-content: center;
+}

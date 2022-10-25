@@ -15,63 +15,49 @@
 <!-- 경로 체크 필수 -->
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/write.css">
 </head>
 <body>
 
     <%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
     <!-- 헤더는 컨테이너 밖에 -->
     <div id="container"> <!-- 컨테이너 -->
-		<!-- <table class="cook-write">
-			<thead>
-				<th>카테고리</th>
-				<td>
-					<select name="category">
-						<%for(int i = 0; i < cateList.size(); i++) {%>
-							<option value="<%=cateList.get(i).getMenu_cate_no()%>"><%=cateList.get(i).getMenu_type() %></option>
-						<%} %>
+		<main>
+			<br>
+			<br>
+			<p align="center" class="cookstory">쿡 스토리</p>
+			<br>
+			<form class="write" action="" method="post" enctype="multipart/form-data">
+				<div id="cate">
+					카테고리&nbsp;<select name="category">
+						<!-- CATEGORY 테이블로부터 조회해오기 -->
+						<%for(int i = 0; i < cateList.size(); ++i){%>
+							 <option value="<%= cateList.get(i).getMenu_cate_no() %>"><%= cateList.get(i).getMenu_type() %></option>
+						<%}%>
 					</select>
-				</td>
-			</thead>
-		</table>
-		 -->
-		<div class="outer">
-			<br>
-			<h1 align="center">쿡스토리 글쓰기</h1>
-			<br>
-			<form id="enroll-form" action="" method="post" enctype="multipart/form-data">
-				<table class="table">
-					<thead>
-						<th width="70px">카테고리</th>
-						<td width="500px">
-							<select name="category">
-								CATEGORY 테이블로부터 조회해오기
-								<%for(int i = 0; i < cateList.size(); i++) {%>
-									<option value="<%=cateList.get(i).getMenu_cate_no()%>"><%=cateList.get(i).getMenu_type() %></option>
-								<%} %>
-							</select>
-						</td>
-					</thead>
-					<tr>
-						<th>제목</th>
-						<td><input type="text" name="title" required></td>
-					</tr>
-					<tr>
-						<th></th>
-						<td><textarea name="content" rows="20" cols="70" style="resize:none;" required></textarea></td>
-					</tr>
-					<tr>
-						<th>첨부파일</th>
-						<td><input type="file" name="file" id="file"></td>
-					</tr>
-				</table>
-				<br>
-				<div align="center">
-					<button type="submit">레시피 쓰기</button>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="reset">취소하기</button>
 				</div>
+				<input type="text" name="title" placeholder="레시피 제목을 입력해주세요." required>
+				<hr>
+				<textarea name="content" id="text" cols="10" rows="20" style="width: 676px; height: 270;" placeholder="레시피 내용을 입력해주세요" required resize="none"></textarea>
+				<div class="upfile">
+					<input type="file" name="file">
+				</div>
+				<div class="upload">
+					<input type="submit" id="btn-1" value="글쓰기" >
+					&nbsp;
+					&nbsp;
+					<input type="reset" name="" id="btn-1" value="취소">
+				</div>
+				<br>
 			</form>
-		</div>
+		</main>
+	
+		<footer>
+			<div>
+				<p>Copyright &copy; <a href="">집밥Cook선생</a>  all rights reserved</p>
+			</div>
+			<br>
+		</footer>
     <%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
     </div>
 </body>
