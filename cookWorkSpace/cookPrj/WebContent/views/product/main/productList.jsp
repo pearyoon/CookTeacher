@@ -87,19 +87,20 @@ margin-bottom: 30px;
         <main>
         <hr>
             <div id="main-bottom">
-            <div>카테고리 선택</div>
+            <img src="https://product-image.kurly.com/category/banner/pc/90da4c94-8cbf-4b9c-92c1-c6791a3f3c26.jpg">
+            <!-- <div id="main-title">카테고리 선택</div> -->
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/product/main/fruitVegeList">과일/채소</a>
+                        <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>
                     </div>
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/seafoodList">해산물</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/product/main/meatEggList">육류/계란</a>
+                        <a href="/cookTeacher/product/main/meatEggList">육류 / 계란</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/product/main/noodleBreadList">면류/빵류</a>
+                        <a href="/cookTeacher/product/main/noodleBreadList">면류 / 빵류</a>
                     </div>
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/dairyList">유제품</a>
@@ -110,7 +111,9 @@ margin-bottom: 30px;
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/etcList">기타</a>
                     </div>
+                    
                 </div>
+                   <hr><div style="font-size: 20px; font-weight: 700; ">[ 카테고리 선택 ]</div>
                 <hr>
                 <br><br>
                 <div class="main-prod-area">
@@ -124,6 +127,7 @@ margin-bottom: 30px;
                         </div>
 					<%}%>
                 </div>
+                
                 <div class="main-prod-area">
                		<%for(int i = 5; i < 9; ++i){%>
                			<div>
@@ -157,6 +161,7 @@ margin-bottom: 30px;
                         </div>
 					<%}%>
                 </div>
+
 
 		        <div id="page-area">
 		        	<!-- 이전 버튼 -->

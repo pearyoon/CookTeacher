@@ -1,6 +1,5 @@
 <%@page import="com.kh.cook.product.vo.ReviewVo"%>
 <%@page import="com.kh.cook.product.vo.ProductVo"%>
-<%@page import="com.kh.cook.member.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -189,7 +188,7 @@ section.notice {
 }
 
 textarea {
-    width: 500px;
+    width: 80%;
     height: 30px;
     resize: none;
 }
@@ -229,22 +228,20 @@ textarea {
                     	    	<br><h1 align="left">■ 리뷰 작성하기</h1><br>
 	                                <table class="board-table">
 	                                    <thead>
-	                                    <tr id="table-head">
-	                                      	<th scope="col" class="th-prodNo" name="prodNo">식재료</th>
-	                                        <th scope="col" class="th-content" name="content">내용</th>
-	                                    </tr>
+		                                    <tr id="table-head">
+		                                        <th colspan="2" scope="col" class="th-content" name="content">내용</th>
+		                                    </tr>
 	                                    </thead>
 	                                    <tbody>
-	                                    </tr>
-	                                        <td><input name="prodNo" value="${reviewNo}"></td>
-	                                        <td><textarea rows="" cols="" name="content"></textarea></td>
-	                                    </tr>
-	                                        <!-- <td>강동원</td> -->
+		                                    </tr>
+		                                        <td><input type="hidden"name="prodNo" value="${reviewNo}"></td>
+		                                        <td><textarea rows="" cols="" name="content"></textarea></td>
+		                                    </tr>
 	                                    </tbody>
 	                                </table>
 	                                <br>
 	                                <div id="bttn-wrapper" align="center">
-		                               	<a href="/cookTeacher"><input type="button" value="취소하기" id="write-bttn"></a>
+		                               	<a href="/cookTeacher/product/main/productList"><input type="button" value="취소하기" id="write-bttn"></a>
 		                               	<input type="submit" value="작성하기" id="write-bttn">
 	                                </div>
                             </div>

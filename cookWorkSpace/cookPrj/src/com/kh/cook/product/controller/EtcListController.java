@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.cook.bobstory.service.BobstoryService;
 import com.kh.cook.product.service.ProductService;
 import com.kh.cook.product.vo.PageVo;
 import com.kh.cook.product.vo.ProductVo;
@@ -20,7 +21,7 @@ public class EtcListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//페이징 처리
+		//페이징처리
 		int listCount;
 		int currentPage;
 		int pageLimit;
@@ -30,37 +31,34 @@ public class EtcListController extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		listCount = new ProductService().selectCount();
-		
-		currentPage = 0;	//추가
-		
-		try {	//추가
-			currentPage = Integer.parseInt(req.getParameter("pno"));
-			
-		} catch(NumberFormatException e) {	   //추가
-			System.out.println("pno 오류 ~!"); //추가
+		listCount = new BobstoryService().selectCount();
+		String pno = req.getParameter("pno");
+		if(pno == null) {
+			pno = "1";
 		}
-		
-		pageLimit = 5;
+		currentPage = Integer.parseInt(pno);
+		pageLimit  = 5;
 		boardLimit = 10;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
-		startPage = (currentPage-1) / pageLimit * pageLimit + 1;
-
-        endPage = startPage + pageLimit - 1;
-      
-        if(endPage > maxPage) {
-           endPage = maxPage;
-        }
-      
-        PageVo pv = new PageVo();
-        pv.setListCount(listCount);
-        pv.setCurrentPage(currentPage);
-        pv.setPageLimit(pageLimit);
-        pv.setBoardLimit(boardLimit);
-        pv.setMaxPage(maxPage);
-        pv.setStartPage(startPage);
-        pv.setEndPage(endPage);
+		
+		int n = (currentPage - 1) / pageLimit;
+		startPage = n * pageLimit + 1;
+		
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageVo pv = new PageVo();
+		pv.setListCount(listCount);
+		pv.setCurrentPage(currentPage);
+		pv.setPageLimit(pageLimit);
+		pv.setBoardLimit(boardLimit);
+		pv.setMaxPage(maxPage);
+		pv.setStartPage(startPage);
+		pv.setEndPage(endPage);
 		
 		//디비 다녀오기
 		List<ProductVo> voList = new ProductService().selectEtcList(pv);

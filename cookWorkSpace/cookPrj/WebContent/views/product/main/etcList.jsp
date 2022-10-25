@@ -79,6 +79,11 @@ margin-bottom: 30px;
 	
 }
     
+#main-title{
+	font-size: 1rem;
+	margin-top: 20px;
+}
+    
 </style>
 </head>
 <body>
@@ -87,9 +92,32 @@ margin-bottom: 30px;
         <main>
         <hr>
             <div id="main-bottom">
-            <div>기타</div>
-            <div>(조미료 , 양념 , 가루 , 곡식 , 견과 , 즉석제품, 김치, 기름)</div>
-            
+            <img src="https://product-image.kurly.com/category/banner/pc/8afe3b03-8beb-4563-b604-4748d61019d7.jpg">
+            <!-- <div>(조미료 , 양념 , 가루 , 곡식 , 견과 , 즉석제품, 김치, 기름)</div> -->
+                <div id="main-menu-bar">
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/seafoodList">해산물</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/meatEggList">육류 / 계란</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/noodleBreadList">면류 / 빵류</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/dairyList">유제품</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/drinkList">음료</a>
+                    </div>
+                    <div class="main-menu-bar-items" style="background-color: #255D00; box-shadow: 3px 3px #FFD335;">
+                        <a href="/cookTeacher/product/main/etcList">기타</a>
+                    </div>
+                </div>
+              <hr><div style="font-size: 20px; font-weight: 700; ">[ 기타 ]</div>
                 <hr>
                 <br><br>
                 <div class="main-prod-area">

@@ -13,9 +13,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    div{
-        --border: 1px solid black;
-    }
 
 #board-search .search-window {
   padding: 15px 0;
