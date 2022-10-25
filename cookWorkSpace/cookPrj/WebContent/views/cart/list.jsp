@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	List<CartItemVo> cartList = (List<CartItemVo>) request.getAttribute("cartList");
+
 %>
 
     <!DOCTYPE html>

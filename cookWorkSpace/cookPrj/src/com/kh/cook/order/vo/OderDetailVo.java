@@ -1,12 +1,12 @@
 package com.kh.cook.order.vo;
 
-public class oderDetailVo {
+public class OderDetailVo {
 	
-	public oderDetailVo() {
+	public OderDetailVo() {
 	
 	}
 	
-	public oderDetailVo(String no, String prod_no, String order_no, String cnt, String price) {
+	public OderDetailVo(String no, String prod_no, String order_no, String cnt, String price) {
 		this.no = no;
 		this.prod_no = prod_no;
 		this.order_no = order_no;

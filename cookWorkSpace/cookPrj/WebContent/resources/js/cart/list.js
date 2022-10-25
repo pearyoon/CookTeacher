@@ -30,13 +30,13 @@ function deleteList() {
           location.reload(); // 페이지 새로고침
       }  
   })
-      // success: function (x){
-      //     const resultList = JSON.parse(x);
+    //   success: function (x){
+    //       const resultList = JSON.parse(x);
 
-      //     for (let i = 0; i < resultList.length; i++) {
-      //         $(`input[value=`+ resultList[i] +`]`).parent().remove()
-      //     }
-      // }
+    //       for (let i = 0; i < resultList.length; i++) {
+    //           $(`input[value=`+ resultList[i] +`]`).parent().remove()
+    //       }
+    //   }
   
 }
 
@@ -90,6 +90,6 @@ $(document).ready(function order(){
             checkArr.push(checkbox.eq(i).val());
         }
         $("#checkArr").val(checkArr);
-        leftIniC
+        
     });
 });
