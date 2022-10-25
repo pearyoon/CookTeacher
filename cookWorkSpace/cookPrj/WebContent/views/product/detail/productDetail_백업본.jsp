@@ -1,4 +1,3 @@
-<%@page import="java.util.List"%>
 <%@page import="com.kh.cook.product.vo.ReviewVo"%>
 <%@page import="com.kh.cook.product.vo.ProductVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,7 +5,7 @@
     
 <%
 	ProductVo vo = (ProductVo)request.getAttribute("vo");
-	List<ReviewVo> rvoList = (List<ReviewVo>)request.getAttribute("rvoList");
+	ReviewVo rvo = (ReviewVo)request.getAttribute("rvo");
 %>
     
 <!DOCTYPE html>
@@ -533,7 +532,6 @@ button[disabled], input[disabled] {
                         </div>
                         
                         <!-- board list area -->
-                        
                         <div id="board-list">
                             <div class="container">
                                 <table class="board-table">
@@ -546,22 +544,54 @@ button[disabled], input[disabled] {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    	<%for(int i = 1; i < rvoList.size(); ++i){%>
-					               			<tr>
-						               			<td><%= i %></td>
-		                                        <th>
-		                                            <%= rvoList.get(i).getContent() %>
-		                                        </th>
-		                                        <td><%= rvoList.get(i).getNick() %></td>
-		                                        <td><%= rvoList.get(i).getEnrollDate() %></td>
-						            			
-					                        </tr>
-										<%}%>
+                                    <tr>
+                                        <td>6</td>
+                                        <th>
+                                            정말 맛있어요~
+                                        </th>
+                                        <td>김민우</td>
+                                        <td>2022.10.04</td>
+                                    </tr>
                     
+                                    <tr>
+                                        <td>5</td>
+                                        <th>늘 이것만 사먹어요 ^..^</th>
+                                        <td>문동주</td>
+                                        <td>2022.10.04</td>
+                                    </tr>
+                    
+                                    <tr>
+                                        <td>4</td>
+                                        <th>우유는 역시 서울우유!</th>
+                                        <td>박서연</td>
+                                        <td>2022.10.04</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <th>
+                                            꼭 추천합니다~!
+                                        </th>
+                                        <td>배윤아</td>
+                                        <td>2022.10.04</td>
+                                    </tr>
+                    
+                                    <tr>
+                                        <td>2</td>
+                                        <th>시리얼에는 역시 서울우유!</th>
+                                        <td>안연주</td>
+                                        <td>2022.10.04</td>
+                                    </tr>
+                    
+                                    <tr>
+                                        <td>1</td>
+                                        <th>가격도 착하고 맛도 좋아요~</th>
+                                        <td>이소은</td>
+                                        <td>2022.10.04</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                                 <br>
-                                <a href="/cookTeacher/views/product/detail/ReviewWrite.jsp"><input type="button" value="작성하기" id="write-bttn"></a>
+                                <a href="/cookTeacher/views/product/detail/productReview.jsp"><input type="button" value="작성하기" id="write-bttn"></a>
                             </div>
                         </div>
                     

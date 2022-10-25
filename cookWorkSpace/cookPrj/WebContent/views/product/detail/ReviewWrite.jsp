@@ -7,6 +7,8 @@
 <%
 	ProductVo vo = (ProductVo)request.getAttribute("vo");
 	MemberVo mvo = (MemberVo)request.getAttribute("loginMember");
+	/* List<ReviewVo> rvoList = (List<ReviewVo>)request.getAttribute("rvoList"); */
+
 	ReviewVo rvo = (ReviewVo)request.getAttribute("rvo");
 %>
     
@@ -221,7 +223,7 @@ textarea {
     	<br>
     	<div id="review-top">
     	</div>
-			<form action="/cookTeacher/product/detail/productReview" method="post">
+			<form action="/cookTeacher/product/detail/ReviewWrite" method="post">
 				  <div id="board-list">
                             <div class="container">
                     	    	<br><h1 align="left">■ 리뷰 작성하기</h1><br>
@@ -237,6 +239,10 @@ textarea {
 	                                    <tr>
 	                                        <td><textarea rows="" cols="" " name="content"></textarea></td>
 	                                        <!-- <td>강동원</td> -->
+	                                        <td></td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td><textarea rows="" cols="" " name="prodNo"></textarea></td>
 	                                        <td></td>
 	                                    </tr>
 	                                    </tbody>

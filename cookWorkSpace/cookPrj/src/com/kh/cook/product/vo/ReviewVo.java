@@ -2,12 +2,13 @@ package com.kh.cook.product.vo;
 
 public class ReviewVo {
 	
+
 	public ReviewVo() {
 		
 	}
-
+	
 	public ReviewVo(String reviewNo, String no, String prodNo, String enrollDate, String modifyDate, String deleteYn,
-			String content) {
+			String content, String name, String nick) {
 		super();
 		this.reviewNo = reviewNo;
 		this.no = no;
@@ -16,6 +17,8 @@ public class ReviewVo {
 		this.modifyDate = modifyDate;
 		this.deleteYn = deleteYn;
 		this.content = content;
+		this.name = name;
+		this.nick = nick;
 	}
 	
 	//field
@@ -26,8 +29,9 @@ public class ReviewVo {
 	private String modifyDate;
 	private String deleteYn;
 	private String content;
+	private String name;
+	private String nick;
 	
-	//getter, setter
 	public String getReviewNo() {
 		return reviewNo;
 	}
@@ -84,12 +88,32 @@ public class ReviewVo {
 		this.content = content;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getNick() {
+		return nick;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+
 	@Override
 	public String toString() {
 		return "ReviewVo [reviewNo=" + reviewNo + ", no=" + no + ", prodNo=" + prodNo + ", enrollDate=" + enrollDate
-				+ ", modifyDate=" + modifyDate + ", deleteYn=" + deleteYn + ", content=" + content + "]";
+				+ ", modifyDate=" + modifyDate + ", deleteYn=" + deleteYn + ", content=" + content + ", name=" + name
+				+ ", nick=" + nick + "]";
 	}
 	
+	
+	
+
 
 	
 

@@ -1,6 +1,7 @@
 package com.kh.cook.product.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.cook.product.service.ProductService;
 import com.kh.cook.product.vo.ProductVo;
+import com.kh.cook.product.vo.ReviewVo;
 
 @WebServlet(urlPatterns = "/product/detail/productDetail")
 public class ProductDetailController extends HttpServlet {
@@ -25,9 +27,11 @@ public class ProductDetailController extends HttpServlet {
 		
 		//디비 다녀오기
 		ProductVo vo = new ProductService().selectProductOne(no);
+		List<ReviewVo> rvoList = new ProductService().selectReview(no);
 		
 		//화면선택 (데이터 담아서)
 		req.setAttribute("vo", vo);
+		req.setAttribute("rvoList", rvoList);
 		req.getRequestDispatcher("/views/product/detail/productDetail.jsp").forward(req, resp);
 	
 	}

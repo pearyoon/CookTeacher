@@ -77,7 +77,8 @@ public class ProductDao {
 	public ProductVo selectProductOne(Connection conn, String no) {
 
 		//SQL (준비, 완성, 실행 및 결과저장)
-		String sql = "SELECT PROD_NO, CATE_NO, NAME, INFO, DETAIL, PRICE, WEIGHT, STOCK, IMG_PATH, IMG_PATH2, IMG_PATH3, IMG_PATH4 FROM PRODUCT WHERE PROD_NO = ?";
+		String sql = "SELECT  P.PROD_NO , P.CATE_NO , P.NAME , P.INFO , P.DETAIL , P.PRICE , P.WEIGHT , P.STOCK , P.IMG_PATH , P.IMG_PATH2 , P.IMG_PATH3 , P.IMG_PATH4  FROM PRODUCT P JOIN PRODUCT_REVIEW PR ON P.PROD_NO = PR.PROD_NO JOIN MEMBER M ON PR.NO = M.NO WHERE P.PROD_NO = ?";
+		//String sql = "SELECT  PROD_NO , CATE_NO , NAME , INFO , DETAIL , PRICE , WEIGHT , STOCK , IMG_PATH , IMG_PATH2 , IMG_PATH3 , IMG_PATH4  FROM PRODUCT WHERE PROD_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -168,7 +169,7 @@ public class ProductDao {
 
 		//SQL (준비, 완성, 실행)
 		
-		String sql = "INSERT INTO PRODUCT_REVIEW(REVIEW_NO, NO, PROD_NO, ENROLL_DATE, MODIFY_DATE, DELETE_YN, CONTENT) VALUES(SEQ_PRODUCT_REVIEW_NO.NEXTVAL, 1, 1, SYSDATE, SYSDATE, 'N', ?)";
+		String sql = "INSERT INTO PRODUCT_REVIEW(REVIEW_NO, NO, PROD_NO, ENROLL_DATE, MODIFY_DATE, DELETE_YN, CONTENT) VALUES(SEQ_PRODUCT_REVIEW_NO.NEXTVAL, ?, ?, SYSDATE, SYSDATE, 'N', ?)";
 	
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -186,8 +187,9 @@ public class ProductDao {
 			//pstmt.setString(1, rvo.getNo());
 			//pstmt.setString(2, rvo.getContent());
 			
-			pstmt.setString(1, rvo.getContent());
-
+			pstmt.setString(1, rvo.getNo());
+			pstmt.setString(2, rvo.getProdNo());
+			pstmt.setString(3, rvo.getContent());
 
 			result = pstmt.executeUpdate();
 			
@@ -566,6 +568,7 @@ public class ProductDao {
 		return voList;
 	}
 
+	//음료 목록 조회
 	public List<ProductVo> selectDrinkList(Connection conn, PageVo pv) {
 
 		//SQL
@@ -623,6 +626,54 @@ public class ProductDao {
 		}
 		
 		return voList;
+	}
+
+	//리뷰 목록 조회
+	public List<ReviewVo> selectReviewList(Connection conn, String no) {
+
+
+		//SQL
+		
+		String sql = "SELECT P.PROD_NO  ,P.NAME  , R.CONTENT , M.NICK , R.ENROLL_DATE  FROM PRODUCT_REVIEW R JOIN PRODUCT P ON P.PROD_NO = R.PROD_NO JOIN MEMBER M ON R.NO = M.NO WHERE R.PROD_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ReviewVo> rvoList = new ArrayList<ReviewVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String prodNo = rs.getString("PROD_NO");
+				String name = rs.getString("NAME");
+				String content = rs.getString("CONTENT");
+				String nick = rs.getString("NICK");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				
+				ReviewVo rvo = new ReviewVo();
+				rvo.setProdNo(prodNo);
+				rvo.setName(name);
+				rvo.setContent(content);
+				rvo.setNick(nick);
+				rvo.setEnrollDate(enrollDate);
+				
+				System.out.println("rvo :" +rvo);
+				rvoList.add(rvo); 
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return rvoList;
 	}
 
 	
