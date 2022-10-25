@@ -49,6 +49,7 @@
 <body>
 	<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
 		<!-- 헤더는 컨테이너 밖에 -->
+		<div id="container">
 			<div id = "main">
 				<div><%=vo.getCategory() %></div>
 				<div><%=vo.getTitle() %></div>
@@ -59,6 +60,7 @@
 				<div id="img-box"><img alt="사진" src="/cookTeacher/<%=attVo.getFilePath() %>/<%=attVo.getChangeName() %>" width="100px" height="100px"></div>
 			</div>
 	<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
+		</div>
 		
 </body>
 </html>
