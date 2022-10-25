@@ -22,6 +22,9 @@ public class ReviewWriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		String reviewNo = req.getParameter("rno");
+		
+		req.setAttribute("reviewNo", reviewNo);
 		req.getRequestDispatcher("/views/product/detail/ReviewWrite.jsp").forward(req, resp);
 		
 
@@ -38,30 +41,19 @@ public class ReviewWriteController extends HttpServlet {
 		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
 		
 		//데이터 꺼내기
-		String reviewNo = req.getParameter("reviewNo");
-		String no = req.getParameter("no");
 		String prodNo = req.getParameter("prodNo");
-		String enrollDate = req.getParameter("enrollDate");
-		String modifyDate = req.getParameter("modifyDate");
-		String deleteYn = req.getParameter("deleteYn");
 		String content = req.getParameter("content");
 		
-		
+		String rno = req.getParameter("rno");
 		
 		//데이터 뭉치기
 		ReviewVo rvo = new ReviewVo();
-		rvo.setReviewNo(reviewNo);
 		rvo.setNo(loginMember.getNo());
-		rvo.setProdNo(prodNo);
-		rvo.setEnrollDate(enrollDate);
-		rvo.setModifyDate(modifyDate);
-		rvo.setDeleteYn(deleteYn);
+		rvo.setProdNo(rno);
 		rvo.setContent(content);
 		
 		//디비 다녀오기
-		int result = new ProductService().write(rvo);
-		
-		System.out.println("rvo : "+ rvo);
+		int result = new ProductService().write(rvo, rno);
 		
 		//화면 선택
 		if(result == 1) {
@@ -72,7 +64,7 @@ public class ReviewWriteController extends HttpServlet {
 		}else {
 			//작성 실패 => 메세지, 에러 페이지 포워딩
 			req.setAttribute("msg", "리뷰 작성 실패 ...");
-			req.getRequestDispatcher("/cookTeacher/product/main/productList").forward(req, resp);
+			req.getRequestDispatcher("/product/main/productList").forward(req, resp);
 		}
 
 	
