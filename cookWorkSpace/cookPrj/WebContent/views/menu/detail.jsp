@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>cookTeacher</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
+<script type="text/javascript" defer src="/cookTeacher/resources/js/menu/detail.js"></script>
 <%
 	MenuVo vo = (MenuVo)request.getAttribute("vo");
 	List<ProductVo> prodList = (List<ProductVo>)request.getAttribute("prodList");
@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/menu/detail.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
-
+<script src=""></script>
 
 </head>
 <body>
@@ -123,23 +123,18 @@
                    </button>
 
                         
-                        <div id="prod-ment" >* 장바구니에 담을 재료를 선택해주세요. </div>
+                        <div id="prod-ment" >* 장바구니에 담을 재료를 선택해주세요. 
+                        <br> <br>
+                        <input type='checkbox' name='product' value='selectall' onclick='selectAll(this)' style="justify-content: ;">모두 선택
+                        </div>
                     </div>
                     
-<!--                     <script>
-                    	function cartCheck() {
-							$.ajax({
-								url : "/cookTeacher/menu/detail"
-								method : "post"
-							})
-						}
-                    </script> -->
          
 
                     <div id="prod-img" style="width: 100%; height: 650px;">
                     
                     
-                    <%for(int i = 0; i < prodList.size(); ++i ){%>
+                    <%for(int i = 0; i < prodList.size(); i++ ){%>
                     
                         <div class="prd-all">
                             <div class="product">
@@ -149,7 +144,7 @@
                                 
                             </div>    
                             <div style="margin-top : 10px" class="prod-price">
-                                <input type="checkbox" width="50px" height="50px"><%=prodList.get(i).getName() %> / <%=prodList.get(i).getWeight() %>
+                                <input type="checkbox" name="product"><%=prodList.get(i).getName() %> / <%=prodList.get(i).getWeight() %>
                                 <pre style="margin-bottom: 10px"><%=prodList.get(i).getPrice() %>원</pre>
                             </div>
                         </div>
