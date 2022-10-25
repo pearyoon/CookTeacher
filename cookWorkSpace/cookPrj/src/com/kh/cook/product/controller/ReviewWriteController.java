@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.product.service.ProductService;
+import com.kh.cook.product.vo.ProductVo;
 import com.kh.cook.product.vo.ReviewVo;
 
 @WebServlet(urlPatterns = "/product/detail/ReviewWrite")
@@ -46,6 +47,7 @@ public class ReviewWriteController extends HttpServlet {
 		String content = req.getParameter("content");
 		
 		
+		
 		//데이터 뭉치기
 		ReviewVo rvo = new ReviewVo();
 		rvo.setReviewNo(reviewNo);
@@ -59,7 +61,6 @@ public class ReviewWriteController extends HttpServlet {
 		//디비 다녀오기
 		int result = new ProductService().write(rvo);
 		
-		
 		System.out.println("rvo : "+ rvo);
 		
 		//화면 선택
@@ -71,7 +72,7 @@ public class ReviewWriteController extends HttpServlet {
 		}else {
 			//작성 실패 => 메세지, 에러 페이지 포워딩
 			req.setAttribute("msg", "리뷰 작성 실패 ...");
-			req.getRequestDispatcher("/cookTeacher").forward(req, resp);
+			req.getRequestDispatcher("/cookTeacher/product/main/productList").forward(req, resp);
 		}
 
 	

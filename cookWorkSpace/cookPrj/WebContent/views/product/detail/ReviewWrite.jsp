@@ -237,13 +237,13 @@ textarea {
 	                                    </thead>
 	                                    <tbody>
 	                                    <tr>
-	                                        <td><textarea rows="" cols="" " name="content"></textarea></td>
-	                                        <!-- <td>강동원</td> -->
-	                                        <td></td>
-	                                    </tr>
+	                                        <td>리뷰 내용</td>
+	                                        <td><textarea rows="" cols="" name="content"></textarea></td>
 	                                    <tr>
-	                                        <td><textarea rows="" cols="" " name="prodNo"></textarea></td>
-	                                        <td></td>
+	                                        <!-- <td>강동원</td> -->
+	                                    </tr>
+	                                        <td>식재료 번호</td>
+	                                        <td><input rows="" cols="" name="prodNo"></input></td>
 	                                    </tr>
 	                                    </tbody>
 	                                </table>
