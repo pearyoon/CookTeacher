@@ -1,12 +1,12 @@
 package com.kh.cook.order.vo;
 
-public class orderVo {
+public class OrderVo {
 	
-	public orderVo() {
+	public OrderVo() {
 
 	}
 	
-	public orderVo(String no, String memberNo, String point, String usePoint, String sum, String name, String addr,
+	public OrderVo(String no, String memberNo, String point, String usePoint, String sum, String name, String addr,
 			String phone) {
 		this.no = no;
 		this.memberNo = memberNo;
