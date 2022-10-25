@@ -9,6 +9,7 @@
 <!-- 경로 체크 필수 -->
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <style>
 #container>div{
 	box-sizing: border-box;
@@ -101,8 +102,18 @@ color: #000000;
 				</div>
 				<div id="b">작성자 :</div>
 				<div class="write" id="b" name="writer"><%= loginMember.getNick()%></div> <!-- 작성자 코드 받기-->
-				<div id="b" name="enrollDate">
-					작성일시;
+				<div id="b" class="date" name="enrollDate">
+					<script>
+					const date = new Date;
+					const year = date.getFullYear();
+					const month = ('0' + (date.getMonth() +1)).slice(-2);
+					const day = ('0' + date.getDate()).slice(-2);
+					const dateStr = year + '-' + month + '-' + day;
+					
+					console.log(dateStr);
+					$(".date").text(dateStr);
+					</script>
+					
 				</div> <!-- 작성일시 코드 받기-->
 			</div>
 		
