@@ -61,10 +61,12 @@
                 $('#hidden-name').text("가입 시 등록한 이름을 입력해주세요.");
             } else{
                 $('#hidden-name').text("");
+
             }
         });
 
         // 메일
+
         $('#memberEmail').keyup(function(){
             const memberEmail = $('#memberEmail').val();
             const emailReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -74,10 +76,12 @@
                 $('#hidden-email').text("가입 시 등록한 이메일을 입력해주세요.");
             } else{
                 $('#hidden-email').text("");
+
             }
         });
 
-        // 확인하기
+
+        확인하기
         function findId(){
             const memberName = $('#memberName').val();
             const memberEmail = $('#memberEmail').val();
@@ -99,6 +103,8 @@
                                 icon: 'error',
                                 text: '가입시 입력하신 회원정보가 맞는지 다시 한번 확인해주세요.',
                             });
+
+                       
                         }else{
                            
                            	window.location.href = "/cookTeacher/member/find/success/id"

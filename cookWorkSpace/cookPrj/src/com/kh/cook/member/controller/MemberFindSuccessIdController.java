@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kh.cook.member.vo.MemberVo;
 @WebServlet(urlPatterns = "/member/find/success/id")
-public class MemberSuccessFindIdController extends HttpServlet{
+public class MemberFindSuccessIdController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession ss = req.getSession();

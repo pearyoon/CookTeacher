@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +67,7 @@
 
 							
 						<div id="modify-wrap">
-						    <form action="<%=root %>/login/mypage/member/modify" method="post" onsubmit="return checkJoin()">
+						    <form action="<%=root %>/login/mypage/member/modify" method="post" onsubmit="return checkModify()">
 						        <div class="modify-items">
 						            <div>
 						                <label for="memberId">아이디</label>
@@ -164,7 +164,7 @@
 						            </div>
 						            <div class="input-wrap">
 						                <div>
-						                    <input type="text" id="phone" name="phone" placeholder="숫자만 입력해주세요." value="${loginMember.phone}">
+						                    <input type="text" id="phone" name="phone" placeholder="숫자만 입력해주세요." oninput="autoHyphen(this)"  value="${loginMember.phone}" maxlength="13" >
 						                </div>
 						                <div>
 						                    <p id="hidden-phone"></p>
@@ -178,14 +178,14 @@
 						            </div>
 						            <div class="input-wrap">
 						                <div>
-						                    <input type="text" id="addr" name="addr" placeholder="주소를 입력해주세요." value="${loginMember.addr}">
+						                    <input type="text" id="addr" name="addr" placeholder="주소를 입력해주세요." value="${loginMember.addr}" readonly>
 						                </div>
 						                <div>
 						                    <p id="hidden-addr"></p>
 						                </div>
 						            </div>
 						            <div>
-										<button id="searchAddr-btn" class="non-check" type="button" disabled>
+										<button id="searchAddr-btn" type="button" onclick="searchAddr();">
 											<span>주소검색</span>
 										</button>
 						            </div>
@@ -194,7 +194,7 @@
 									<div></div>
 									<div class="input-wrap">
 										<div>
-											<input type="text" id="detailAddr" name="detailAddr" placeholder="나머지 주소를 입력해주세요." value="${loginMember.detailAddr}">
+											<input type="text" id="detailAddr" name="detailAddr" placeholder="나머지 주소를 입력해주세요." value="${loginMember.detailAddr}" readonly>
 										</div>
 										<div>
 											<p id="hidden-detailAddr"></p>
@@ -219,7 +219,6 @@
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
-
 </body>
 </html> 
     

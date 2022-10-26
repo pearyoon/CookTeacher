@@ -33,6 +33,11 @@ public class MemberModifyController extends HttpServlet{
 		String email = req.getParameter("email");
 		String phone = req.getParameter("phone");
 		String addr = req.getParameter("addr");
+		String detailAddr = req.getParameter("detailAddr");
+		
+		if(pwd == null) {
+			pwd = loginMember.getPwd();
+		}
 		
 		MemberVo vo = new MemberVo();
 		
@@ -42,7 +47,8 @@ public class MemberModifyController extends HttpServlet{
 		vo.setNick(nick);
 		vo.setEmail(email);
 		vo.setPhone(phone);
-		vo.setAddr(addr);
+		vo.setAddr(addr+detailAddr);
+
 		
 		MemberVo updateMember = new MemberService().modify(vo);
 		

@@ -31,14 +31,13 @@ public class MemberJoinController extends HttpServlet{
 		String detailAddr = req.getParameter("detailAddr");
 		
 		MemberVo vo = new MemberVo();
-		vo.setAddr(addr);
+		vo.setAddr(addr+","+detailAddr);
 		vo.setEmail(email);
 		vo.setId(id);
 		vo.setName(name);
 		vo.setNick(nick);
 		vo.setPhone(phone);
 		vo.setPwd(pwd);
-		vo.setDetailAddr(detailAddr);
 		
 		int result = new MemberService().join(vo);
 		

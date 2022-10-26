@@ -12,7 +12,7 @@ import com.kh.cook.member.vo.MemberVo;
 public class MemberDao {
 	// 회원가입
 	public int join(Connection conn, MemberVo vo) {
-		String sql = "INSERT INTO MEMBER (NO, ID, PWD, EMAIL, NAME, PHONE, NICK, ADDR, DETAIL_ADDR, ADMIN_YN)VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?,?, 'Y')";
+		String sql = "INSERT INTO MEMBER (NO, ID, PWD, EMAIL, NAME, PHONE, NICK, ADDR, ADMIN_YN)VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, 'Y')";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -27,7 +27,6 @@ public class MemberDao {
 			pstmt.setString(5, vo.getPhone());
 			pstmt.setString(6, vo.getNick());
 			pstmt.setString(7, vo.getAddr());
-			pstmt.setString(8, vo.getDetailAddr());
 			
 			result = pstmt.executeUpdate();
 			
@@ -41,7 +40,7 @@ public class MemberDao {
 	}
 	
 	public MemberVo selectOne(MemberVo vo, Connection conn) {
-		String sql = "SELECT M.NO ,G.NAME AS GRADE ,ID ,PWD ,EMAIL ,M.NAME ,PHONE ,NICK ,ADDR ,DETAIL_ADDR ,ENROLL_DATE ,MODIFY_DATE ,QUIT_YN ,POINT ,ADMIN_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE ID = ? AND PWD = ? AND QUIT_YN = 'N'";
+		String sql = "SELECT M.NO ,G.NAME AS GRADE ,ID ,PWD ,EMAIL ,M.NAME ,PHONE ,NICK ,ADDR ,ENROLL_DATE ,MODIFY_DATE ,QUIT_YN ,POINT ,ADMIN_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE ID = ? AND PWD = ? AND QUIT_YN = 'N'";
 	
 		PreparedStatement pstmt = null;
 		MemberVo loginMember = null;
@@ -64,13 +63,18 @@ public class MemberDao {
 				String name = rs.getString("NAME");
 				String phone = rs.getString("PHONE");
 				String nick = rs.getString("NICK");
-				String addr = rs.getString("ADDR");
+				String dataAddr = rs.getString("ADDR");
 				String enroll_date = rs.getString("ENROLL_DATE");
 				String modify_date = rs.getString("MODIFY_DATE");
 				String quitYn = rs.getString("QUIT_YN");
 				String point = rs.getString("POINT");
 				String adminYn = rs.getString("ADMIN_YN");
-				String detailAddr = rs.getString("DETAIL_ADDR");
+				
+				int idx = dataAddr.indexOf(",");
+				
+				String addr = dataAddr.substring(0, idx);
+				String detailAddr = dataAddr.substring(idx+1);
+				
 				
 				loginMember = new MemberVo(no,grade,id,pwd,email,name,phone,nick,addr,detailAddr,enroll_date,modify_date,quitYn,point,adminYn);
 
@@ -99,7 +103,7 @@ public class MemberDao {
 			pstmt.setString(3, vo.getPhone());
 			pstmt.setString(4, vo.getNick());
 			pstmt.setString(5, vo.getAddr());
-			pstmt.setString(6, vo.getNo());
+			pstmt.setString(7, vo.getNo());
 			
 			
 			result = pstmt.executeUpdate();
@@ -223,6 +227,35 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public String findPwd(MemberVo vo, Connection conn) {
+		String sql = "SELECT ID FROM MEMBER WHERE ID = ? AND PHONE = ? AND EMAIL =?";
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		String memberId = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPhone());
+			pstmt.setString(3, vo.getEmail());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				memberId = rs.getString("ID");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return memberId;
+		
 	}
 
 }
