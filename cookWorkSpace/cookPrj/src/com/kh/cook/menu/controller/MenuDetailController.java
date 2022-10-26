@@ -19,9 +19,11 @@ public class MenuDetailController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	//데이터 보내기
     	String no = req.getParameter("no");
+    	String cntNo = req.getParameter("cntNo");
     	
     	//디비 다녀오기
     	MenuVo vo = new MenuService().selectMenuOne(no);
+    	int result = new MenuService().plusRecommOne(cntNo);
     	List<ProductVo> prodList = new MenuService().selectProdList(no);
     	
     	//화면선택
@@ -33,6 +35,12 @@ public class MenuDetailController extends HttpServlet{
     		req.setAttribute("prodList", prodList);
     		req.getRequestDispatcher("/views/menu/detail.jsp").forward(req, resp);
     		
+    	}
+    	
+    	if(result == 1) {
+    		resp.sendRedirect("/cookTeacher/menu/detail?cntNo=" + cntNo);
+    	}else {
+    		System.out.println("카운팅 실 패 !!");
     	}
     	
     }

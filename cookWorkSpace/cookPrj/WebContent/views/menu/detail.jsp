@@ -5,11 +5,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
     
 <!DOCTYPE html>
 <html>
 <head>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta charset="UTF-8">
 <title>cookTeacher</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -102,8 +102,9 @@
                         </a>
                     </div>
                     <div class="middle" style="font-size: 1.5rem;" style="margin-right: 10px;">
-                        <img alt="" src="/cookTeacher/resources/img/icons/좋(초).jpg" style="margin-right: 5px; margin-bottom: 13px;" alt="식재료게시판담당" id="imgid"  width="25px" height="25px" onclick="ChnImg()">
+                        <a href="/cookTeacher/menu/detail?cntNo=<%=vo.getNo()%>"><img alt="" src="/cookTeacher/resources/img/icons/좋(초).jpg"  alt="식재료게시판담당" id="imgid"  width="25px" height="25px" onclick="ChnImg()">
                         <label id="kcal"><%=vo.getRecommend()%></label>
+                        </a>
                     </div>
                 </div>
     
@@ -147,7 +148,6 @@
                             </div>    
                             <div style="margin-top : 10px" class="prod-price">
                                 <input type="checkbox" name="prodNo" value="<%=prodList.get(i).getProdNo()%>"><%=prodList.get(i).getName() %> / <%=prodList.get(i).getWeight() %>
-                               	<br> <%=prodList.get(i).getName() %>
                                 <pre ><%=prodList.get(i).getPrice() %>원</pre>
                                 <!-- 데이터 넘길 때 produckCnt로 넘기면 될듯? -->
                                	수량 : <input type="number" name="prodCnt" value="1" style="width: 20px; margin-bottom: 10px">
