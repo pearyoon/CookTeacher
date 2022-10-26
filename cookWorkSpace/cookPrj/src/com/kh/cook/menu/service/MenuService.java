@@ -12,18 +12,7 @@ import oracle.net.nt.ConnectDescription;
 
 public class MenuService {
 
-	//디저트 리스트 조회
-	public List<MenuVo> selectDessertList() {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		List<MenuVo> voList = new MenuDao().selectDessertList(conn);
-		
-		JDBCTemplate.close(conn);
-		
-		return voList;
-				
-	
-	}
+
 
 	//
 	public MenuVo selectMenuOne(String no) {
@@ -50,8 +39,87 @@ public class MenuService {
 		
 		return prodList;
 	}
-	
 
+	//디저트 리스트 조회
+	public List<MenuVo> selectDessertList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		List<MenuVo> voList = new MenuDao().selectDessertList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return voList;
+				
+	
+	}
+	
+	//한식 리스트 조회
+	public List<MenuVo> selectKoreanList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		List<MenuVo> voList = new MenuDao().selectKoreanList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return voList;
+				
+	
+	}
+	
+	//반찬 리스트 조회
+	public List<MenuVo> selectBanchanList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		List<MenuVo> voList = new MenuDao().selectBanchanList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return voList;
+	}
+	
+	//일식 리스트 조회
+	public List<MenuVo> selectJapaneseList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		List<MenuVo> voList = new MenuDao().selectJapaneseList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return voList;
+	}
+	
+	//즁삭 리스트 조회
+	public List<MenuVo> selectChineseList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		List<MenuVo> voList = new MenuDao().selectChineseList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return voList;
+	}
+	
+	//양식 리스트 조회
+	public List<MenuVo> selectWesternList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		List<MenuVo> voList = new MenuDao().selectWesternList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return voList;
+	}
+
+	public int plusRecommOne(String cntNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MenuDao().plusRecommOne(conn, cntNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 
 
 
