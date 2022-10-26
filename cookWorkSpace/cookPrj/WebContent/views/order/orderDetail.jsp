@@ -60,12 +60,32 @@
                     </div>
                 </div>
                 <div id="mypage-right">
-                    <h2 id="head-aticle">
-                        회원정보
-                    </h2>
+                    <div class="header">
+                        <h2 id="head-aticle">주문내역</h2>
+                        <span>최대 지난 1년간의 주문 내역까지 확인 할 수 있어요</span>
+                    </div>
+                    <div class="period">
+                        <select class="dropdown">
+                            <option>3개월</option>
+                            <option>6개월</option>
+                            <option>1년</option>
+                        </select>
+                    </div>
                     <div id="line"></div>
                     <div id="board-container">
-
+                        <div class="order-header">
+                            <span>2022.11.07</span>
+                            <a href="">주문내역 상세보기</a>
+                        </div>
+                        <div class="order-img">
+                            <img src="../../resources/img/product/apple.png" alt="사과">
+                        </div>
+                        <div class="order-info">
+                            <dl>
+                                <dt>상품명</dt>
+                                <dd>사과 외 2건</dd>
+                            </dl>
+                        </div>
                         
                     </div>
                 </div>
