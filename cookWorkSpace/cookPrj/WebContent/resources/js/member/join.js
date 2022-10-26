@@ -91,7 +91,7 @@ memberNick.addEventListener("keyup",()=>{
 
     if(inputNick == ""){
         document.querySelector("#hidden-nick").innerHTML = "닉네임을 입력해주세요.";
-    } else if(inputNick >= 2){
+    } else if(inputNick < 2){
         document.querySelector("#hidden-nick").innerHTML = '닉네임은 2자 이상 입력해주세요.';
     } else{
         document.querySelector("#hidden-nick").innerHTML = '';

@@ -104,6 +104,15 @@ public class MemberService {
 		
 		return result;
 	}
+	public String findPwd(MemberVo vo) {
+		Connection conn = getConnection();
+		
+		String memberId = dao.findPwd(vo, conn);
+		
+		close(conn);
+		
+		return memberId;
+	}
 
 
 

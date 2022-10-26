@@ -50,7 +50,7 @@
                     </div>
                     
                     <div id="find-btn">
-                        <button type="button" onclick="findPwd();">
+                        <button type="button" onclick="findPwd();" >
                             <span>확인</span>
                         </button>
                     </div>
@@ -106,10 +106,59 @@
                 $('#hidden-email').text("가입시 등록한 이메일을 입력해주세요.");
             } else{
                 $('#hidden-email').text("");
+                
             }
         });
 
 
+        function findPwd(){
+            const memberId = $('#memberId').val();
+            const idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+
+            const phone = $('#phone').val();
+            const phoneReg = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}/;
+            
+            const email = $('#email').val();
+            const emailReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+            if(idReg.test(memberId) && phoneReg.test(phone) && emailReg.test(email)){
+
+                $.ajax({
+                    url : "/cookTeacher/member/find/pwd",
+                    method : "POST",
+                    data : {
+                        "memberId" : memberId,
+                        "phone" : phone,
+                        "email" : email
+                    },
+                    success : function(data){
+                        if(data == "findFail"){
+                            Swal.fire({
+                                icon: 'error',
+                                text: '가입시 입력하신 회원정보가 맞는지 다시 한번 확인해주세요.',
+                            });
+
+                       
+                        }else{
+                           
+                           	window.location.href = "/cookTeacher/member/find/modify/pwd"
+                           
+                        }
+                    },
+                    error : function(){
+                        alert('ajax 오류');
+                    }
+                    
+                });
+
+            } else{
+                Swal.fire({
+                    icon: 'error',
+                    text: '입력하신 정보를 다시 확인해주세요.',
+                });
+            }
+
+        };
     </script>
 </body>
 </html>

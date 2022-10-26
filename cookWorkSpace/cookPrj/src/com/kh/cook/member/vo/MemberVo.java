@@ -5,9 +5,7 @@ public class MemberVo {
 		
 	}
 	
-
-
-
+	
 
 	public MemberVo(String no, String grade, String id, String pwd, String email, String name, String phone,
 			String nick, String addr, String detailAddr, String enrollDate, String modifyDate, String quitYn,
@@ -29,8 +27,6 @@ public class MemberVo {
 		this.point = point;
 		this.adminYn = adminYn;
 	}
-
-
 
 
 
@@ -217,8 +213,8 @@ public class MemberVo {
 		this.adminYn = adminYn;
 	}
 
-	
 
+	
 	public String getDetailAddr() {
 		return detailAddr;
 	}
@@ -238,6 +234,14 @@ public class MemberVo {
 				+ detailAddr + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", quitYn=" + quitYn
 				+ ", point=" + point + ", adminYn=" + adminYn + "]";
 	}
+
+
+
+
+	
+	
+
+
 
 
 
