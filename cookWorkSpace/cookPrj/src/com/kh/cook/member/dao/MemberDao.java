@@ -12,7 +12,7 @@ import com.kh.cook.member.vo.MemberVo;
 public class MemberDao {
 	// 회원가입
 	public int join(Connection conn, MemberVo vo) {
-		String sql = "INSERT INTO MEMBER (NO, ID, PWD, EMAIL, NAME, PHONE, NICK, ADDR, ADMIN_YN)VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, 'Y')";
+		String sql = "INSERT INTO MEMBER (NO, ID, PWD, EMAIL, NAME, PHONE, NICK, ADDR, ADMIN_YN)VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, 'N')";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -103,7 +103,7 @@ public class MemberDao {
 			pstmt.setString(3, vo.getPhone());
 			pstmt.setString(4, vo.getNick());
 			pstmt.setString(5, vo.getAddr());
-			pstmt.setString(7, vo.getNo());
+			pstmt.setString(6, vo.getNo());
 			
 			
 			result = pstmt.executeUpdate();

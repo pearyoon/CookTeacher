@@ -47,7 +47,7 @@ public class MemberModifyController extends HttpServlet{
 		vo.setNick(nick);
 		vo.setEmail(email);
 		vo.setPhone(phone);
-		vo.setAddr(addr+detailAddr);
+		vo.setAddr(addr+","+detailAddr);
 
 		
 		MemberVo updateMember = new MemberService().modify(vo);

@@ -12,12 +12,14 @@ $('#memberPwd1').keyup(function(){
     if(!pwdReg.test(memberPwd1)){
         $('#hidden-pwd1').text('영문 숫자 특수문자 조합의 8자 이상');
         pwd1ck = false;
-    } else {
+
+    } else{
         $('#hidden-pwd1').text('');
         pwd1ck = true;
     }
 
 });
+
 
 // 비밀번호 확인
 let pwd2ck = true;
@@ -28,11 +30,10 @@ $('#memberPwd2').keyup(function(){
     if(memberPwd1 != memberPwd2){
         $('#hidden-pwd2').text('동일한 비밀번호를 입력해주세요.');
         pwd2ck = false;
-    } else {
+    } else{
         $('#hidden-pwd2').text('');
         pwd2ck = true;
     }
-
 });
 
 // 닉네임
