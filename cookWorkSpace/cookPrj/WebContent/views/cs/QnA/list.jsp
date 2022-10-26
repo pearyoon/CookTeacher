@@ -1,3 +1,4 @@
+<%@page import="com.kh.cook.common.PageVo"%>
 <%@page import="com.kh.cook.cs.vo.CSVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,7 @@
     <%
     List<CSVo> QNAList = (List<CSVo>)request.getAttribute("QNAList");
     /* 페이징처리 코드 추가하기 */
+    PageVo pv = (PageVo)request.getAttribute("pv");
     %>
 <!DOCTYPE html>
 <html>
@@ -99,7 +101,7 @@ main>.list>div{
 			<div class="name">
 				<!-- 게시판 이름 -->
 				<div id="qna">QnA</div>
-			</div>
+			</div><br><br><br><br><br>
 
 			<div class="title">
 				<!-- 문의 게시판 목록 -->
@@ -121,15 +123,17 @@ main>.list>div{
 			</div>
 			
 			<div id="page-area">
-				<a href="">이전</a>
-
-				<a href="">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-
-				<a href="">다음</a>
+				<% if(pv.getStartPage() != 1){ %>
+		            <a href="/cookTeacher/cs/QnA/list?pno=<%=pv.getStartPage()-1 %>">이전</a>
+		        <%} %>
+		        
+		        <%for(int i = pv.getStartPage(); i<=pv.getEndPage(); ++i){ %>
+		            <a href="/cookTeacher/cs/QnA/list?pno=<%=i %>"><%=i %></a>     
+		        <%} %>
+		        
+		        <% if(pv.getEndPage() != pv.getMaxPage()){ %>
+		            <a href="/cookTeacher/cs/QnA/list?pno=<%=pv.getEndPage()+1 %>">다음</a>
+		        <%} %>
 			</div>
 			
 			<%if(session.getAttribute("loginMember") != null){ %>

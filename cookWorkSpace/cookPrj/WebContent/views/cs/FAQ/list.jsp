@@ -121,16 +121,15 @@ main>.list>div{
 			
 			<div id="page-area">
 				<% if(pv.getStartPage() != 1){ %>
-		                 <a href="/cookTeacher/cs/FAQ/list?pno=<%=pv.getStartPage()-1 %>">이전</a>
+		            <a href="/cookTeacher/cs/FAQ/list?pno=<%=pv.getStartPage()-1 %>">이전</a>
 		        <%} %>
 		        
 		        <%for(int i = pv.getStartPage(); i<=pv.getEndPage(); ++i){ %>
-		            <a href="/cookTeacher/cs/FAQ/list?pno=<%=i %>"><%=i %></a>
-		            
+		            <a href="/cookTeacher/cs/FAQ/list?pno=<%=i %>"><%=i %></a>     
 		        <%} %>
 		        
 		        <% if(pv.getEndPage() != pv.getMaxPage()){ %>
-		                 <a href="/cookTeacher/cs/FAQ/list?pno=<%=pv.getEndPage()+1 %>">다음</a>
+		            <a href="/cookTeacher/cs/FAQ/list?pno=<%=pv.getEndPage()+1 %>">다음</a>
 		        <%} %>
 			</div>
 			

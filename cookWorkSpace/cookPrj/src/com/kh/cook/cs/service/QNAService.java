@@ -78,6 +78,8 @@ public class QNAService {
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
+		
+		JDBCTemplate.close(conn);
 				
 		return result;
 	}
