@@ -90,65 +90,90 @@
                     </div>
                 </div>
             </div>
+            <br><hr>
             <div id="main-bottom">
-                <div>식재료</div>
+                <div>식재료</div><br><hr>
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
-                        <a href="">과일/채소</a>
+                        <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="">해산물/육류</a>
+                        <a href="/cookTeacher/product/main/seafoodList">해산물</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="">유제품</a>
+                        <a href="/cookTeacher/product/main/meatEggList">육류 / 계란</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="">조미료/양념</a>
+                        <a href="/cookTeacher/product/main/noodleBreadList">면류/빵류</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="">면류/빵류</a>
+                        <a href="/cookTeacher/product/main/dairyList">유제품</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/etcList">기타</a>
                     </div>
                 </div>
                 <div class="main-prod-area">
                     <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/마늘.jpg" alt="식재료게시판담당" width="100%" height="100%">
+                        <a href="/cookTeacher/product/detail/productDetail?no=143">
+                            <img src="/cookTeacher/resources/img/product/p_토마토주스.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
-                        <div>식재료이름</div>
+                        <div>토마토주스</div>
+                        <div id="prod_price">3,500원</div>
                     </div>
                     <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/마늘.jpg" alt="식재료게시판담당" width="100%" height="100%">
+                        <a href="/cookTeacher/product/detail/productDetail?no=119">
+                            <img src="/cookTeacher/resources/img/product/p_오렌지주스.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
-                        <div>식재료이름</div>
+                        <div>오렌지주스</div>
+                        <div id="prod_price">2,880원</div>
                     </div>
                     <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/마늘.jpg" alt="식재료게시판담당" width="100%" height="100%">
+                        <a href="cookTeacher/product/detail/productDetail?no=95">
+                            <img src="/cookTeacher/resources/img/product/p_초코우유.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
-                        <div>식재료이름</div>
+                        <div>초코우유</div>
+                        <div id="prod_price">2,640원</div>
+                    </div>
+                    <div>
+                        <a href="/cookTeacher/product/detail/productDetail?no=91">
+                            <img src="/cookTeacher/resources/img/product/p_바나나우유.png" alt="식재료게시판담당" width="100%" height="100%">
+                        </a>
+                        <div>바나나우유</div>
+                        <div id="prod_price">4,900원</div>
                     </div>
                 </div>
                 <div class="main-prod-area">
                     <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/마늘.jpg" alt="식재료게시판담당" width="100%" height="100%">
+                        <a href="/cookTeacher/product/detail/productDetail?no=149">
+                            <img src="/cookTeacher/resources/img/product/prod_pepper.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
-                        <div>식재료이름</div>
+                        <div>후추</div>
+                        <div id="prod_price">3,800원</div>
                     </div>
                     <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/마늘.jpg" alt="식재료게시판담당" width="100%" height="100%">
+                        <a href="/cookTeacher/product/detail/productDetail?no=152">
+                            <img src="/cookTeacher/resources/img/product/초코스프레드.jpg" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
-                        <div>식재료이름</div>
+                        <div>초코스프레드</div>
+                        <div id="prod_price">5,900원</div>
                     </div>
                     <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/마늘.jpg" alt="식재료게시판담당" width="100%" height="100%">
+                        <a href="/cookTeacher/product/detail/productDetail?no=154">
+                            <img src="/cookTeacher/resources/img/product/소금.jpg" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
-                        <div>식재료이름</div>
+                        <div>소금</div>
+                        <div id="prod_price">3,900원</div>
                     </div>
-                </div>      
+                    <div>
+                        <a href="/cookTeacher/product/detail/productDetail?no=150">
+                            <img src="/cookTeacher/resources/img/product/밀가루.jpg" alt="식재료게시판담당" width="100%" height="100%">
+                        </a>
+                        <div>밀가루</div>
+                        <div id="prod_price">5,200원</div>
+                    </div>
+                </div>
+                     
             </div>
 
         </main>
