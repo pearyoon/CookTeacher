@@ -8,7 +8,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쿡스토리</title>
+<link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/edit.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<title>글 수정하기</title>
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
@@ -16,36 +21,34 @@
 		<div id="container">
 			<br>
 			<br>
-			<p>쿡 스토리</p>
+			<p>쿡 스토리 수정하기</p>
 			<br>
 			<br>
-			<table class="table">
-				<thead>
-					<tr class="ta-1">
-					<td class="t-ti" ><%=vo.getTitle()%></td>
-					</tr>
-					<tr class="ta-2">
-					<td class="t-wr"><p><%=vo.getWriter()%></p></td>
-					<td class="t-da"><%=vo.getEnrollDate()%></td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><%=vo.getContent()%></td>
-					</tr>
-				</tbody>
-			</table>
-			<hr>
-			<div class="vote_btn">
-				<input type="button" id="like_btn" value="좋아요">
-				<input type="button" id="report_btn" value="신고">
-			</div>
-			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter())){%>
-			<div id="main-bot">
-				<a href="/cookTeacher/bobstory/edit?no=<%=vo.getNo()%>">수정하기</a>
-				<a href="/cookTeacher/bobstory/delete?no=<%=vo.getNo()%>" class="check-d" onclick="delete_b();">삭제하기</a>
-			<%}%>
-		</div>
+			<form action="" method="post">
+				<table class="table">
+					<thead>
+						<tr class="ta-1">
+						<td class="t-ti" ><input type="text" name="title" value="<%=vo.getTitle()%>" style="width: 400px; height: 26px;"></td>
+						</tr>
+						<tr class="ta-2">
+						<td class="t-wr"><p><%=vo.getWriter()%></p></td>
+						<td class="t-da"><%=vo.getEnrollDate()%></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><textarea name="content" cols="110" rows="25"><%=vo.getContent()%></textarea></td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+			
+				<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter())){%>
+				<div id="main-bot">
+					<input type="submit" value="수정하기">
+				<%}%>
+				</div>
+			</form>
 	<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
 		</div>
 </body>

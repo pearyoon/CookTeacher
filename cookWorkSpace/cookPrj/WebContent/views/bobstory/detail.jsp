@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/detail.css">
+<script type="text/javascript" defer src="/cookTeacher/resources/js/bobstory/detail.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
@@ -51,7 +52,7 @@
 			</table>
 			<hr>
 			<div class="vote_btn">
-				<input type="button" id="like_btn" value="좋아요">
+				<input type="button" id="like_btn" value="좋아요" onclick="location.href='/cookTeacher/bobstory/boblike'">
 				<input type="button" id="report_btn" value="신고">
 			</div>
 			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter())){%>

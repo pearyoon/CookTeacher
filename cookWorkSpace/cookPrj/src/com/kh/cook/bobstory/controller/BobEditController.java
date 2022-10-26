@@ -52,7 +52,7 @@ public class BobEditController extends HttpServlet{
 		if(result == 1) {
 			//수정 성공
 			req.getSession().setAttribute("alertMsg", "게시글 수정 성공 !!!");
-			resp.sendRedirect("/cookTeacher/bobstory/detail?no=" + no);
+			resp.sendRedirect("/cookTeacher/bobstory/detail?bno=" + no);
 		}else {
 			//수정 실패
 			req.setAttribute("msg", "게시글 수정 실패 ...");
