@@ -320,8 +320,15 @@ section.notice {
     border: 2px solid #255D00;
     font-size: medium;
     font-weight: 700;
+   	font-size: 17px;
 }
 
+.css-1qirdbn:hover {
+    background: #255D00;
+    border: 2px solid #FFD335;
+    color: white;
+    
+}
 
 button[disabled], input[disabled] {
     cursor: default;
