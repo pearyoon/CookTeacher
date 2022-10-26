@@ -3,8 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	List<CategoryVo> cateList =  (List<CategoryVo>)request.getAttribute("cateList");
-	
+	List<CategoryVo> cateList =  (List<CategoryVo>)request.getAttribute("cateList");	
 %>    
     
 <!DOCTYPE html>
@@ -16,6 +15,9 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/write.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="/cookTeacher/resources/js/bobstory/write.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -36,14 +38,14 @@
 						<%}%>
 					</select>
 				</div>
-				<input type="text" name="title" placeholder="레시피 제목을 입력해주세요." required>
+				<input type="text" name="title" placeholder="제목을 입력해주세요." required>
 				<hr>
-				<textarea name="content" id="text" cols="10" rows="20" style="width: 676px; height: 270;" placeholder="레시피 내용을 입력해주세요" required resize="none"></textarea>
+				<textarea name="content" id="text" cols="10" rows="20" style="width: 676px; height: 270;" placeholder="내용을 입력해주세요" required resize="none"></textarea>
 				<div class="upfile">
 					<input type="file" name="file">
 				</div>
 				<div class="upload">
-					<input type="submit" id="btn-1" value="글쓰기" >
+					<input type="submit" id="btn-1" value="글쓰기" onclick="up_ok();">
 					&nbsp;
 					&nbsp;
 					<input type="reset" name="" id="btn-1" value="취소">

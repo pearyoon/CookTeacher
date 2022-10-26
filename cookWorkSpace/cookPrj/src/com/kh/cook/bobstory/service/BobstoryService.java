@@ -149,9 +149,45 @@ public class BobstoryService {
 		return result;
 	}
 
-	public BobstoryVo selectBoardOne(String no) {
-		// TODO Auto-generated method stub
-		return null;
+
+	//게시글 삭제하기
+	public int delete(String no) {
+		//커넥션
+		//SQL
+		//트랜잭션 자원반납
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.delete(conn, no);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	//게시글 수정하기
+	public int edit(BobstoryVo vo) {
+		//커넥션준비
+				//SQL
+				//트랜잭션 , 자원반납
+				
+				Connection conn = JDBCTemplate.getConnection();
+				
+				int result =dao.updateOne(conn, vo);
+				
+				if(result == 1) {
+					JDBCTemplate.commit(conn);
+				}else {
+					JDBCTemplate.rollback(conn);
+				}
+				
+				JDBCTemplate.close(conn);
+				
+				return result;
 	}
 
 	
