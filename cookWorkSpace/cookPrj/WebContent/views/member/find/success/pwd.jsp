@@ -20,7 +20,7 @@
             <div class="modify-wrap">
                 <form action="" method="post" onsubmit="return checkPwd();">
                     <div class="modify-items">
-                        <label for="memberName">새 비밀번호</label>
+                        <label for="memberPwd1">새 비밀번호</label>
                         <div>
                             <input id="memberPwd1" type="text" name="memberPwd1" placeholder="비밀번호을 입력해주세요.">
                         </div>
@@ -51,7 +51,8 @@
 	<script>
         let pwd1ck = false
         $('#memberPwd1').keyup(function(){
-            
+            const memberPwd1 = $('#memberPwd1').val();
+            const pwdReg = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
         });
     </script>
 </body>

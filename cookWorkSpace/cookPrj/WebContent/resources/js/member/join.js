@@ -165,6 +165,7 @@ addr.addEventListener('keyup',()=>{
 function checkId(){
     let inputId = $('#memberId').val();
     const idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+
 	if(idReg.test(inputId)){
 		
 		    $.ajax({
