@@ -430,7 +430,7 @@ public class MenuDao {
 	}
 
 	// 좋아요 추가
-	public int plusRecommOne(Connection conn, String cntNo) {
+	public int plusRecommOne(Connection conn, String no) {
 		String sql = "UPDATE MENU SET RECOMMEND = RECOMMEND + 1 WHERE NO = ?";
 		
 		PreparedStatement pstmt = null;
@@ -439,7 +439,7 @@ public class MenuDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, cntNo);
+			pstmt.setString(1, no);
 			
 			result = pstmt.executeUpdate();
 			
@@ -450,6 +450,37 @@ public class MenuDao {
 		}
 		
 		return result;
+	}
+
+	public String selectRecommOne(Connection conn, String no) {
+
+		String sql = "SELECT RECOMMEND\r\n"
+				+ "FROM MENU\r\n"
+				+ "WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String plusRecomm = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			if(rs.next()) {
+				plusRecomm = rs.getString("RECOMMEND");
+				
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+		}
+		
+		return plusRecomm;
 	}
 
 

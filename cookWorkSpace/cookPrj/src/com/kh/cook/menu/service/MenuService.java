@@ -110,15 +110,23 @@ public class MenuService {
 		return voList;
 	}
 
-	public int plusRecommOne(String cntNo) {
+	public String plusRecommOne(String no) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int result = new MenuDao().plusRecommOne(conn, cntNo);
+		int result = new MenuDao().plusRecommOne(conn, no);
+		String recomm = null;
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+			recomm = new MenuDao().selectRecommOne(conn,no);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
 		
 		JDBCTemplate.close(conn);
 		
-		return result;
+		return recomm;
 	}
 
 
