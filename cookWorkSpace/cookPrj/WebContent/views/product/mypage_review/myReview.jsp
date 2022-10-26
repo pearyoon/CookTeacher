@@ -183,23 +183,30 @@
 				                    </tr>
 				                    </thead>
 				                    <tbody>
-				                    <%-- 
+				                    
 					                   <%for(int i = 1; i < rvoList.size(); ++i){%>
 					               			<tr>
-						               			<td><%= rvoList.get(i).getName() %></td>
+						               			<td>
+						               				<%= rvoList.get(i).getReviewNo() %>
+						               			</td>
 		                                        <th>
-		                                            <%= rvoList.get(i).getReviewNo() %>
+		                                            <%= rvoList.get(i).getName() %>
 		                                        </th>
-		                                        <td><%= rvoList.get(i).getContent() %></td>
-		                                        <td><%= rvoList.get(i).getEnrollDate() %></td>
+		                                        <td>
+		                                        	<%= rvoList.get(i).getContent() %>
+		                                        </td>
+		                                        <td>
+		                                        	<%= rvoList.get(i).getEnrollDate() %>
+		                                        </td>
 					                        </tr>
 										<%}%>
-										 --%>
+										
+										<%--  
 										<tr>
 											<td>${review.reviewNo}</td>
 											<td>${rvoList.reviewNo}</td>
 										</tr>
-										
+										 --%>
 				                    </tbody>
 				                </table>
 				            </div>

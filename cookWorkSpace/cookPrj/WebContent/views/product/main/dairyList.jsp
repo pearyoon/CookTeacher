@@ -183,7 +183,6 @@ margin-bottom: 30px;
 		        </div>
   
 
-                 
             </div>
 		<%@include file="/views/common/footer.jsp" %>
 

@@ -415,6 +415,7 @@ button[disabled], input[disabled] {
                         </div>
                         <div class="outer2">
                             <div class="inner">
+                            
                             </div>
                             <div class="inner">
                                 국내산
@@ -423,7 +424,7 @@ button[disabled], input[disabled] {
                                 <%= vo.getWeight() %>
                             </div>
                             <div class="inner">
-                                <form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
+                                <form name="orderform" id="orderform" method="post" class="orderform" action="/cookTeacher/views/product/detail/productCart.jsp" onsubmit="return false;">
                                     <input type="hidden" name="cmd" value="order">
                                         <div class="row data">
                                             <div class="subdiv">
@@ -437,16 +438,17 @@ button[disabled], input[disabled] {
                                                         <br><br><br>
                                                     </div>
                                                 </div>
-                                                <div class="sum"><br><%= vo.getPrice() %>원</div>
+                                                <div class="sum" name="totalSum"><br><%= vo.getPrice() %>원</div>
                                             </div>
                                         </div>
                                 </form>
                             </div>
                             <br><br><br><br><br><br><br><br>
                             <div class="inner">
-                                <button onclick="addCart();" class="cart-button css-1qirdbn e4nu7ef3" type="button" radius="3">
-                                    <span class="css-ymwvow e4nu7ef1">장바구니 담기&nbsp;&nbsp;&nbsp;<img src="/cookTeacher/resources/img/icons/cart.png" alt="장바구니" width="20px" height="17px"></span>
-                                </button>
+                            	<form action="/cookTeacher/product/detail/productCart" method="get">
+                            		<input type="submit" onclick="addCart();" class="cart-button css-1qirdbn e4nu7ef3" radius="3" value="장바구니 담기">
+                            	</form>
+                            	
                             </div>
                         </div>
                     </div>
