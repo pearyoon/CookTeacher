@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.cook.common.JDBCTemplate;
+import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.product.vo.PageVo;
 import com.kh.cook.product.vo.ProductVo;
 import com.kh.cook.product.vo.ReviewVo;
@@ -27,6 +28,12 @@ public class ProductDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+//			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
+//			int end = start + pv.getBoardLimit() + 1;
+//			
+//			pstmt.setInt(1, start);
+//			pstmt.setInt(2, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -165,11 +172,11 @@ public class ProductDao {
 	}
 
 	//식재료 리뷰 작성
-	public int insertReview(Connection conn, ReviewVo rvo, String rno) {
+	public int insertReview(Connection conn, ReviewVo rvo) {
 
 		//SQL (준비, 완성, 실행)
 		
-		String sql = "INSERT INTO PRODUCT_REVIEW(REVIEW_NO, NO, PROD_NO, ENROLL_DATE, MODIFY_DATE, DELETE_YN, CONTENT) VALUES(SEQ_PRODUCT_REVIEW_NO.NEXTVAL, ?, ?, SYSDATE, SYSDATE, 'N', ?)";
+		String sql = "INSERT INTO PRODUCT_REVIEW(REVIEW_NO, NO, PROD_NO,  CONTENT) VALUES(SEQ_PRODUCT_REVIEW_NO.NEXTVAL, ?, ?,  ?)";
 	
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -642,7 +649,7 @@ public class ProductDao {
 				String name = rs.getString("NAME");
 				String content = rs.getString("CONTENT");
 				String nick = rs.getString("NICK");
-				String enrollDate = rs.getString("ENROLL_DATE");
+				String enrollDate = rs.getString("ENROLL_DATE").substring(0,10);
 				
 				ReviewVo rvo = new ReviewVo();
 				rvo.setProdNo(prodNo);
@@ -664,6 +671,54 @@ public class ProductDao {
 		}
 		
 		return rvoList;
+	}
+
+
+	//내가 쓴 리뷰 조회
+	public List<ReviewVo> selectMyReviewList(Connection conn, String no) {
+
+
+		//SQL
+		
+		String sql = "SELECT R.REVIEW_NO, P.NAME  , R.CONTENT , R.ENROLL_DATE  FROM PRODUCT_REVIEW R JOIN PRODUCT P ON P.PROD_NO = R.PROD_NO JOIN MEMBER M ON R.NO = M.NO WHERE M.NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ReviewVo> rvoList = new ArrayList<ReviewVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String reviewNo = rs.getString("REVIEW_NO");
+				String name = rs.getString("NAME");
+				String content = rs.getString("CONTENT");
+				String enrollDate = rs.getString("ENROLL_DATE").substring(0,10);
+				
+				ReviewVo rvo = new ReviewVo();
+				rvo.setReviewNo(reviewNo);
+				rvo.setName(name);
+				rvo.setContent(content);
+				rvo.setEnrollDate(enrollDate);
+				
+				//System.out.println("rvo :" +rvo);
+				rvoList.add(rvo); 
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return rvoList;
+	
 	}
 
 	

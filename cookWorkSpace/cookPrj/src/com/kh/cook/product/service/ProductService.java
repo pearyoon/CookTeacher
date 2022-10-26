@@ -5,6 +5,7 @@ import java.util.List;
 
 import static com.kh.cook.common.JDBCTemplate.*;
 
+import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.product.dao.ProductDao;
 import com.kh.cook.product.vo.PageVo;
 import com.kh.cook.product.vo.ProductVo;
@@ -37,10 +38,6 @@ public class ProductService  {
 
 	//식재료 상세 조회
 	public ProductVo selectProductOne(String no) {
-
-		//커넥션 준비
-		//SQL (조회수 증가, 상세조회)
-		//트랜잭션 처리, 자원반납
 		
 		Connection conn = getConnection();
 		
@@ -56,9 +53,6 @@ public class ProductService  {
 
 	//식재료 갯수 조회
 	public int selectCount() {
-		//커넥션 준비
-		//SQL
-		//트랜잭션, 자원반납
 		
 		Connection conn = getConnection();
 
@@ -71,15 +65,11 @@ public class ProductService  {
 
 
 	//식재료 리뷰 작성
-	public int write(ReviewVo rvo, String rno) {
+	public int write(ReviewVo rvo) {
 
-		//커넥션 준비
-		//SQL
-		//트랜잭션, 자원반납
-		
 		Connection conn = getConnection(); 
 		
-		int result = dao.insertReview(conn, rvo, rno);
+		int result = dao.insertReview(conn, rvo);
 		
 		if(result ==1) {
 			commit(conn);
@@ -96,10 +86,6 @@ public class ProductService  {
 	//과일채소 목록 조회
 	public List<ProductVo> selectFruitVegeList(PageVo pv) {
 
-		//커넥션 준비
-		//SQL
-		//트랜잭션 처리, 자원반납
-		
 		Connection conn = getConnection();
 		
 		List<ProductVo> voList = dao.selectFruitVegeList(conn , pv);
@@ -114,10 +100,6 @@ public class ProductService  {
 	
 	//해산물 목록 조회
 	public List<ProductVo> selectseafoodList(PageVo pv) {
-
-		//커넥션 준비
-		//SQL
-		//트랜잭션 처리, 자원반납
 		
 		Connection conn = getConnection();
 		
@@ -132,9 +114,6 @@ public class ProductService  {
 
 	//기타 목록 조회
 	public List<ProductVo> selectEtcList(PageVo pv) {
-		//커넥션 준비
-		//SQL
-		//트랜잭션 처리, 자원반납
 		
 		Connection conn = getConnection();
 		
@@ -150,10 +129,6 @@ public class ProductService  {
 	//육류계란 목록 조회
 	public List<ProductVo> selectMeatEggList(PageVo pv) {
 
-		//커넥션 준비
-		//SQL
-		//트랜잭션 처리, 자원반납
-		
 		Connection conn = getConnection();
 		
 		List<ProductVo> voList = dao.selectMeatEggList(conn , pv);
@@ -168,10 +143,6 @@ public class ProductService  {
 	//면류빵류 목록 조회
 	public List<ProductVo> selectNoodleBreadList(PageVo pv) {
 
-		//커넥션 준비
-		//SQL
-		//트랜잭션 처리, 자원반납
-		
 		Connection conn = getConnection();
 		
 		List<ProductVo> voList = dao.selectNoodleBreadList(conn , pv);
@@ -186,10 +157,6 @@ public class ProductService  {
 	//유제품 목록 조회
 	public List<ProductVo> selectDairyList(PageVo pv) {
 
-		//커넥션 준비
-		//SQL
-		//트랜잭션 처리, 자원반납
-		
 		Connection conn = getConnection();
 		
 		List<ProductVo> voList = dao.selectDairyList(conn , pv);
@@ -203,10 +170,6 @@ public class ProductService  {
 	//음료 목록 조회
 	public List<ProductVo> selectDrinkList(PageVo pv) {
 
-		//커넥션 준비
-		//SQL
-		//트랜잭션 처리, 자원반납
-		
 		Connection conn = getConnection();
 		
 		List<ProductVo> voList = dao.selectDrinkList(conn , pv);
@@ -221,13 +184,23 @@ public class ProductService  {
 	//리뷰 조회
 	public List<ReviewVo> selectReview(String no) {
 
-		//커넥션 준비
-		//SQL
-		//트랜잭션 처리, 자원반납
-		
 		Connection conn = getConnection();
 		
 		List<ReviewVo> rvoList = dao.selectReviewList(conn, no);
+		
+		close(conn);
+		
+		System.out.println(rvoList);
+		return rvoList;
+	}
+
+
+	//내가 쓴 리뷰 조회
+	public List<ReviewVo> selectMyReview(String no) {
+
+		Connection conn = getConnection();
+		
+		List<ReviewVo> rvoList = dao.selectMyReviewList(conn, no);
 		
 		close(conn);
 		

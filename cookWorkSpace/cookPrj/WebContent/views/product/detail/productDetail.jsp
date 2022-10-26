@@ -22,6 +22,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link rel="stylesheet" href="./10-11.css">
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
 
 div{
@@ -190,7 +192,7 @@ section.notice {
 }
 
 .board-table .th-date {
-  width: 200px;
+  width: 250px;
 }
 
 .board-table th, .board-table td {
@@ -379,85 +381,75 @@ button[disabled], input[disabled] {
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
-          
-    
-    
             <div id="main-middle">
             <hr><br><br>
                 <div id="product-name"></div>
-                <div id="main-menu-area">
-                    <div id="product-main-img/product">
+                    <div id="main-menu-area">
+                        <div id="product-main-img/product">
                             <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath()%>" alt="레시피게시판담당" width="100%" height="100%">
-                        <!-- <div>우유</div> -->
+                        </div>
+                        <div class="outer">
+                            <div class="inner" id="real-name">
+                                [&nbsp;<%= vo.getName() %>&nbsp;]
+                            </div>
+                            <div class="inner">
+                                원산지
+                            </div>
+                            <div class="inner">
+                                중량
+                            </div>
+                            <div class="inner">
+                                가격
+                            </div>
+                            <div class="inner">
+                                구매 수량
+                            </div>
+                            <div class="inner">
+                                합계
+                            </div>
+                            <div class="inner">
+                            <!-- 구매하기 버튼 위치 -->
+                            
+                            </div>
+
+                        </div>
+                        <div class="outer2">
+                            <div class="inner">
+                            </div>
+                            <div class="inner">
+                                국내산
+                            </div>
+                            <div class="inner">
+                                <%= vo.getWeight() %>
+                            </div>
+                            <div class="inner">
+                                <form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
+                                    <input type="hidden" name="cmd" value="order">
+                                        <div class="row data">
+                                            <div class="subdiv">
+                                                <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="<%= vo.getPrice() %>"><%= vo.getPrice() %>원</div>
+                                                <div class="num">
+                                                    <div class="updown">
+                                                    <br><br><br>
+                                                        <input type="text" name="p_num1" id="p_num1" size="3" maxlength="3" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
+                                                        <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
+                                                        <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
+                                                        <br><br><br>
+                                                    </div>
+                                                </div>
+                                                <div class="sum"><br><%= vo.getPrice() %>원</div>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
+                            <br><br><br><br><br><br><br><br>
+                            <div class="inner">
+                                <button onclick="addCart();" class="cart-button css-1qirdbn e4nu7ef3" type="button" radius="3">
+                                    <span class="css-ymwvow e4nu7ef1">장바구니 담기&nbsp;&nbsp;&nbsp;<img src="/cookTeacher/resources/img/icons/cart.png" alt="장바구니" width="20px" height="17px"></span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="outer">
-                        <div class="inner" id="real-name">
-                            [&nbsp;<%= vo.getName() %>&nbsp;]
-                        </div>
-                    	<div class="inner">
-                    		원산지
-                    	</div>
-                    	<div class="inner">
-                    		중량
-                    	</div>
-                    	<div class="inner">
-                    		가격
-                    	</div>
-                    	<div class="inner">
-                    		구매 수량
-                    	</div>
-                    	<div class="inner">
-                    		합계
-                    	</div>
-                        <div class="inner">
-                    	<!-- 구매하기 버튼 위치 -->
-                    	
-                    	</div>
-
-                    </div>
-                    <div class="outer2">
-                        <div class="inner">
-                        </div>
-                        <div class="inner">
-                            국내산
-                        </div>
-                        <div class="inner">
-                            <%= vo.getWeight() %>
-                        </div>
-                        <div class="inner">
-                    	<form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
-				            <input type="hidden" name="cmd" value="order">
-				                <div class="row data">
-				                    <div class="subdiv">
-				                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="<%= vo.getPrice() %>"><%= vo.getPrice() %>원</div>
-				                        <div class="num">
-				                            <div class="updown">
-				                            <br><br><br>
-				                                <input type="text" name="p_num1" id="p_num1" size="3" maxlength="3" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
-				                                <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
-				                                <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
-				                                <br><br><br>
-				                            </div>
-				                        </div>
-				                        <div class="sum"><br><%= vo.getPrice() %>원</div>
-				                    </div>
-				                </div>
-        				</form>
-        				</div>
-
-                        <br><br><br><br><br><br><br><br>
-                        
-                        <div class="inner">
-                        
-                            <button onclick="addCart();" class="cart-button css-1qirdbn e4nu7ef3" type="button" radius="3">
-                                <span class="css-ymwvow e4nu7ef1">장바구니 담기&nbsp;&nbsp;&nbsp;<img src="/cookTeacher/resources/img/icons/cart.png" alt="장바구니" width="20px" height="17px"></span>
-                            </button>
-                        </div>
-
-                    </div>
-                    
-
-                </div>
             </div>
             <hr>
             <div id="main-bottom">
@@ -484,7 +476,6 @@ button[disabled], input[disabled] {
                     <div class="main-menu-bar-items">
                         <a href="#tag-review">리뷰</a>
                     </div>
-                    
                 </div>
                 <!-- 상품 설명 -->
                 <a id="tag-detail" >
@@ -504,7 +495,6 @@ button[disabled], input[disabled] {
                      <%= vo.getDetail() %>
                     </div>
                     <br><br><br><br><br>
-                    
                     <hr><br><br>
                 </a>
                 <!-- 영양 정보 -->
@@ -538,12 +528,12 @@ button[disabled], input[disabled] {
                             <div class="container">
                                 <table class="board-table">
                                     <thead>
-                                    <tr id="table-head">
-                                        <th scope="col" class="th-num">번호</th>
-                                        <th scope="col" class="th-title">내용</th>
-                                        <th scope="col" class="th-title">작성자</th>
-                                        <th scope="col" class="th-date">등록일</th>
-                                    </tr>
+                                        <tr id="table-head">
+                                            <th scope="col" class="th-num">번호</th>
+                                            <th scope="col" class="th-title">내용</th>
+                                            <th scope="col" class="th-title">작성자</th>
+                                            <th scope="col" class="th-date">등록일</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     	<%for(int i = 1; i < rvoList.size(); ++i){%>
@@ -557,40 +547,34 @@ button[disabled], input[disabled] {
 						            			
 					                        </tr>
 										<%}%>
-                    
                                     </tbody>
                                 </table>
                                 <br>
-                            <%--     <%for(int i = 1; i < 5; ++i){%>
-			               			<div> --%>
-			               			
-				            			<a href="/cookTeacher/product/detail/ReviewWrite?rno=<%=vo.getProdNo() %>">
-				            				<input type="button" value="작성하기" id="write-bttn">
-				                        </a>
-			                        </div> 
-			                        
-								<%-- <%}%> --%>
-								<!-- 
-                                <a href="/cookTeacher/product/detail/ReviewWrite"><input type="button" value="작성하기" id="write-bttn"></a>
-                              -->
-                            </div>
+                                <a href="/cookTeacher/product/detail/ReviewWrite?rno=<%=vo.getProdNo() %>">
+                                    <input type="button" value="작성하기" id="write-bttn">
+                                </a>
+                            </div> 
                         </div>
-                    
-                    </section>
-                 
-                  
-                    <br><br>
-                </a>
-                
+            </div>
+            <br><br>
         </main>
-        
 		<%@include file="/views/common/footer.jsp" %>
     </div>
                 
-            </div>
-
+ 	<script>
+		<%if(alertMsg != null) {%>
+			Swal.fire({
+			  text: '<%=alertMsg%>',
+			  imageUrl: 'http://appdata.hungryapp.co.kr/data_file/data_img/201712/04/W151239560734116232.gif',
+			  //imageUrl: 'https://static.lotteon.com/p/common/foCommon/assets/img/icon_cart_black.svg',
+			  imageWidth: 300,
+			  imageHeight: 200,
+			  imageAlt: 'Custom image',
+			})
+		<%} %>
+	</script>
     
-    	<script>
+    <script>
 	
     	function count(type)  {
     		  // 결과를 표시할 element
@@ -611,16 +595,21 @@ button[disabled], input[disabled] {
     		}
     	
     	function addCart(){
-    		alert("장바구니에 담겼습니다.");
+    		/* alert("장바구니에 담겼습니다."); */
+			Swal.fire({
+			  text: '장바구니에 담겼습니다.',
+			  imageUrl: 'https://static.lotteon.com/p/common/foCommon/assets/img/icon_cart_black.svg',
+			  imageWidth: 200,
+			  imageHeight: 100,
+			  imageAlt: 'Custom image',
+			})
+
     	}
     	
     	//지우기
     	let basket = {
     		    totalCount: 0, 
     		    totalPrice: 0,
-    		    //체크한 장바구니 상품 비우기
-
-    		    //장바구니 전체 비우기
 
     		    //재계산
     		    reCalc: function(){

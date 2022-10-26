@@ -78,6 +78,11 @@ margin-bottom: 30px;
 	color: white;
 	
 }
+ 
+#main-title{
+	font-size: 1rem;
+	margin-top: 20px;
+}
     
 </style>
 </head>
@@ -87,9 +92,31 @@ margin-bottom: 30px;
         <main>
          <hr>
             <div id="main-bottom">
-            <div>음료</div>
-            
-                <hr>
+            <img src="https://product-image.kurly.com/category/banner/pc/defc39cd-47b3-4eeb-86bc-b5714130975d.jpg">
+                <div id="main-menu-bar">
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/seafoodList">해산물</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/meatEggList">육류 / 계란</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/noodleBreadList">면류 / 빵류</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/dairyList">유제품</a>
+                    </div>
+                    <div class="main-menu-bar-items" style="background-color: #255D00; box-shadow: 3px 3px #FFD335;">
+                        <a href="/cookTeacher/product/main/drinkList">음료</a>
+                    </div>
+                    <div class="main-menu-bar-items">
+                        <a href="/cookTeacher/product/main/etcList">기타</a>
+                    </div>
+                </div>
+               <hr><div style="font-size: 20px; font-weight: 700; ">[ 음료 ]</div><hr>
                 <br><br>
                 <div class="main-prod-area">
                		<%for(int i = 1; i < 5; ++i){%>

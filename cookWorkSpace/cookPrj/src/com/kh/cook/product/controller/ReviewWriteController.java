@@ -23,8 +23,8 @@ public class ReviewWriteController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String reviewNo = req.getParameter("rno");
-		
 		req.setAttribute("reviewNo", reviewNo);
+		
 		req.getRequestDispatcher("/views/product/detail/ReviewWrite.jsp").forward(req, resp);
 		
 
@@ -44,27 +44,29 @@ public class ReviewWriteController extends HttpServlet {
 		String prodNo = req.getParameter("prodNo");
 		String content = req.getParameter("content");
 		
-		String rno = req.getParameter("rno");
+		
+		System.out.println(prodNo);
+		System.out.println(content);
 		
 		//데이터 뭉치기
 		ReviewVo rvo = new ReviewVo();
 		rvo.setNo(loginMember.getNo());
-		rvo.setProdNo(rno);
 		rvo.setContent(content);
+		rvo.setProdNo(prodNo);
 		
 		//디비 다녀오기
-		int result = new ProductService().write(rvo, rno);
+		int result = new ProductService().write(rvo);
 		
 		//화면 선택
 		if(result == 1) {
 			//작성 성공 => 알람 메세지, 리스트 화면으로 리다이렉트
 			s.setAttribute("alertMsg", "리뷰 작성 완료 !");
 			req.setAttribute("rvo", rvo);
-			resp.sendRedirect("/cookTeacher/product/main/productList");
+			resp.sendRedirect("/cookTeacher/product/detail/productDetail?no="+ prodNo);
 		}else {
 			//작성 실패 => 메세지, 에러 페이지 포워딩
 			req.setAttribute("msg", "리뷰 작성 실패 ...");
-			req.getRequestDispatcher("/product/main/productList").forward(req, resp);
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 
 	
