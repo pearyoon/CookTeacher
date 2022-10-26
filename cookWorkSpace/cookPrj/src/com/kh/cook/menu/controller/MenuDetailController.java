@@ -19,11 +19,11 @@ public class MenuDetailController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	//데이터 보내기
     	String no = req.getParameter("no");
-    	String cntNo = req.getParameter("cntNo");
+//    	String cntNo = req.getParameter("cntNo");
     	
     	//디비 다녀오기
     	MenuVo vo = new MenuService().selectMenuOne(no);
-    	int result = new MenuService().plusRecommOne(cntNo);
+//    	int result = new MenuService().plusRecommOne(no);
     	List<ProductVo> prodList = new MenuService().selectProdList(no);
     	
     	//화면선택
@@ -31,29 +31,29 @@ public class MenuDetailController extends HttpServlet{
     	if(prodList == null) {
     		System.out.println("null");
     	}else {
-    		
+    		req.setAttribute("no", no);
     		req.setAttribute("prodList", prodList);
     		req.getRequestDispatcher("/views/menu/detail.jsp").forward(req, resp);
     		
     	}
     	
-    	if(result == 1) {
-    		resp.sendRedirect("/cookTeacher/menu/detail?cntNo=" + cntNo);
-    	}else {
-    		System.out.println("카운팅 실 패 !!");
-    	}
+//    	if(result == 1) {
+//    		resp.sendRedirect("/cookTeacher/menu/detail?no="+ no +"cntNo=" + cntNo);
+//    	}else {
+//    		System.out.println("카운팅 실 패 !!");
+//    	}
     	
     }
     
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	
-    	//일단 .prodNo 이랑 
-    	String prodNo[] = req.getParameterValues("prodNo");
-    	String prodCnt[] = req.getParameterValues("prodCnt");
-
-    	
-    
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//    	
+//    	//일단 .prodNo 이랑 
+//    	String prodNo[] = req.getParameterValues("prodNo");
+//    	String prodCnt[] = req.getParameterValues("prodCnt");
+//
+//    	
+//    
+//    }
 
 }

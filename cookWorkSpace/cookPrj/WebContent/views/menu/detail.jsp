@@ -101,13 +101,32 @@
                             <br>궁금하다면?
                         </a>
                     </div>
-                    <div class="middle" style="font-size: 1.5rem;" style="margin-right: 10px;">
-                        <a href="/cookTeacher/menu/detail?cntNo=<%=vo.getNo()%>"><img alt="" src="/cookTeacher/resources/img/icons/좋(초).jpg"  alt="식재료게시판담당" id="imgid"  width="25px" height="25px" onclick="ChnImg()">
-                        <label id="kcal"><%=vo.getRecommend()%></label>
-                        </a>
+                    <div class="middle" style="font-size: 1.5rem;" style="margin-right: 10px;" onclick="plusRecomm();">
+                        <img alt="" src="/cookTeacher/resources/img/icons/좋(초).jpg"  alt="식재료게시판담당" id="imgid"  width="25px" height="25px">
+                        <label id="recomm" for="imgid"><%=vo.getRecommend()%></label>
                     </div>
                 </div>
     
+    				<script type="text/javascript">
+    					function plusRecomm() {
+                            console.log('${no}')
+                            let cnt = '${vo.recommend}';
+                            let no = '${no}';
+							$.ajax({
+                                url : "/cookTeacher/menu/plusRecomm",
+                                type : "post",
+                                data : {"no" : no } ,
+                                success : function(result){
+                                    if(result != ""){
+										$('#')
+                                    }
+                                },
+                                error : function(){
+                                    
+                                }
+                            })
+						}
+    				</script>
 
                     <!-- 3 -->
                    	<div id="menu-prod">
