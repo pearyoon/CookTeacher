@@ -19,3 +19,25 @@ function delete_b(){
         }
       })
 }
+
+// function bLike(){
+  
+//   let cnt = '${vo.cLike}';
+//   let num = '${vo.no}';
+//   let cnt1 = $('#좋아요아이디').text(plusCnt);
+  
+//   $.ajax({
+//     url : "/cookTeacher/bobstory/boblike",
+//     type : "get",
+//     data : {"no" : no},
+//     success : function(result){
+//       if(result == 1){
+//         let plusCnt = cnt+1;
+//         $('#좋아요아이디').text(plusCnt);
+//       }
+//     },
+//     error : function(){
+
+//     }
+//   });
+// }

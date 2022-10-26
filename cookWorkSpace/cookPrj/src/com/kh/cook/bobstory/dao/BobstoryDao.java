@@ -413,4 +413,29 @@ public class BobstoryDao {
 		return result;
 	}
 
+	//좋아요 증가
+	public int plusLikeOne(Connection conn, String no) {
+		//sql
+		
+		String sql = "UPDATE BOBSTORY SET C_LIKE = C_LIKE + 1 WHERE NO = ? AND DELETE_YN = 'N'";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+		
+	}
+
 }
