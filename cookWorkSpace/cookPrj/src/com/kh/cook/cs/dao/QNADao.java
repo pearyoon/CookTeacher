@@ -172,7 +172,7 @@ public class QNADao {
 
 		public int updateQNAone(Connection conn, CSVo QNAvo) {
 			
-			String sql = "UPDATE NOTICE SET TITLE = ?, CONT = ?, MODIFY_DATE = SYSDATE WHERE QNA_NO = ?";
+			String sql = "UPDATE QNA SET TITLE = ?, CONT = ?, MODIFY_DATE = SYSDATE WHERE QNA_NO = ?";
 			
 			PreparedStatement pstmt = null;
 			int result = 0;

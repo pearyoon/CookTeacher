@@ -74,7 +74,7 @@
                     <a href="<%= root %>/bobstory/list">쿡스토리</a>
                 </div>
                 <div class="header-menu-items">
-                    <a href="">고객센터</a>
+                    <a href="<%= root %>/cs/FAQ/list">고객센터</a>
                 </div>
             </div>
         </div>

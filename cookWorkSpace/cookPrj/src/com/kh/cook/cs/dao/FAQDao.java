@@ -164,6 +164,32 @@ public class FAQDao {
 		
 		return vo;
 	}
+
+	public int updateFAQone(Connection conn, CSVo FAQvo) {
+		
+		String sql = "UPDATE QNA SET TITLE = ?, CONT = ?, MODIFY_DATE = SYSDATE WHERE QNA_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, FAQvo.getTitle());
+			pstmt.setString(2, FAQvo.getContent());
+			pstmt.setString(3, FAQvo.getQnaNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return result;
+		
+	}
 	
 
 }
