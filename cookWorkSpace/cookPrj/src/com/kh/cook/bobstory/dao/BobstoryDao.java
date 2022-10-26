@@ -361,4 +361,56 @@ public class BobstoryDao {
 		
 	}
 
+	//게시글 삭제
+	public int delete(Connection conn, String no) {
+		//sql
+		
+		String sql = "UPDATE BOBSTORY SET DELETE_YN = 'Y' WHERE NO = ?";
+		
+		PreparedStatement pstmt  = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result; 
+	}
+
+	//게시글 수정하기
+	public int updateOne(Connection conn, BobstoryVo vo) {
+		//SQL
+		
+		String sql = "UPDATE BOBSTORY SET TITLE = ? , CONTENT = ? , MODIFY_DATE = SYSDATE WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setString(3, vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
 }
