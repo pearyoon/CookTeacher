@@ -92,7 +92,7 @@
             </div>
             <br><hr>
             <div id="main-bottom">
-                <div>식재료</div><br><hr>
+                <div>식재료 쇼핑</div><br><hr>
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>

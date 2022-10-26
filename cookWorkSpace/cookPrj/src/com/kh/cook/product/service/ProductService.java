@@ -92,7 +92,6 @@ public class ProductService  {
 		
 		close(conn);
 		
-		System.out.println(voList);
 		return voList;
 	
 	}
@@ -107,7 +106,6 @@ public class ProductService  {
 		
 		close(conn);
 		
-		System.out.println(voList);
 		return voList;
 	}
 
@@ -121,7 +119,6 @@ public class ProductService  {
 		
 		close(conn);
 		
-		System.out.println(voList);
 		return voList;
 			
 	}
@@ -135,7 +132,6 @@ public class ProductService  {
 		
 		close(conn);
 		
-		System.out.println(voList);
 		return voList;
 	}
 
@@ -149,7 +145,6 @@ public class ProductService  {
 		
 		close(conn);
 		
-		System.out.println(voList);
 		return voList;
 	}
 
@@ -163,7 +158,6 @@ public class ProductService  {
 		
 		close(conn);
 		
-		System.out.println(voList);
 		return voList;
 	}
 
@@ -176,7 +170,6 @@ public class ProductService  {
 		
 		close(conn);
 		
-		System.out.println(voList);
 		return voList;
 	}
 
@@ -190,7 +183,6 @@ public class ProductService  {
 		
 		close(conn);
 		
-		System.out.println(rvoList);
 		return rvoList;
 	}
 
@@ -204,7 +196,6 @@ public class ProductService  {
 		
 		close(conn);
 		
-		System.out.println(rvoList);
 		return rvoList;
 	}
 
