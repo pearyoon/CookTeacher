@@ -72,7 +72,6 @@ color: #000000;
 .content-area{
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
-	text-align: center;
 	padding: 10px;
 }
 /* 등록 버튼 */

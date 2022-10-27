@@ -94,6 +94,7 @@ public class QNADao {
 			return result;
 		}
 
+		//문의글 작성
 		public int insertQNA(Connection conn, CSVo vo) {
 
 			String sql = "INSERT INTO QNA VALUES(SEQ_QNA_NO.NEXTVAL, ? , ?, ?, SYSDATE,'N',SYSDATE,'Q')";
@@ -121,6 +122,7 @@ public class QNADao {
 			return result;
 		}
 
+		//문의글 상세보기
 		public CSVo selectQNAone(Connection conn, String qNo) {
 			
 			String sql = "SELECT Q.QNA_NO,Q.NO, Q.TITLE, Q.CONT, Q.Q_DATE, Q.EDIT_DATE, Q.DELETE_YN, Q.QNA_CATE, M.NICK AS WRITER FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE QNA_CATE = 'Q' AND Q.QNA_NO = ? AND Q.DELETE_YN = 'N'";
@@ -172,7 +174,7 @@ public class QNADao {
 
 		public int updateQNAone(Connection conn, CSVo QNAvo) {
 			
-			String sql = "UPDATE QNA SET TITLE = ?, CONT = ?, MODIFY_DATE = SYSDATE WHERE QNA_NO = ?";
+			String sql = "UPDATE QNA SET TITLE = ?, CONT = ?, EDIT_DATE = SYSDATE WHERE QNA_NO = ?";
 			
 			PreparedStatement pstmt = null;
 			int result = 0;
@@ -195,9 +197,10 @@ public class QNADao {
 			return result;
 		}
 
+		//문의글 삭제
 		public int delete(Connection conn, String qno) {
 
-			String sql = "UPDATE QNA SET DELETE_YN = 'Y' WHERE NO = ?";
+			String sql = "UPDATE QNA SET DELETE_YN = 'Y' WHERE QNA_NO = ?";
 			
 			PreparedStatement pstmt = null;
 			int result = 0;
@@ -216,6 +219,58 @@ public class QNADao {
 			}
 			
 			return result;
+		}
+
+		public List<CSVo> selectMyQNAList(Connection conn, String no2) {
+			
+			String sql = "SELECT Q.QNA_NO,Q.NO ,M.NICK ,Q.TITLE ,Q.CONT ,Q.Q_DATE ,Q.DELETE_YN ,Q.EDIT_DATE ,Q.QNA_CATE FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE Q.DELETE_YN = 'N' AND Q.QNA_CATE = 'Q' AND Q.NO = ? ORDER BY Q.QNA_NO DESC";
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<CSVo> voList = new ArrayList<CSVo>();
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, no2);
+				System.out.println(no2);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					String qnaNo = rs.getString("QNA_NO");
+					String no = rs.getString("NO");
+					String writer = rs.getString("NICK");
+					String title = rs.getString("TITLE");
+					String content = rs.getString("CONT");
+					String qnaDate = rs.getString("Q_DATE").substring(0,10);
+					String deleteYN = rs.getString("DELETE_YN");
+					String editDate = rs.getString("EDIT_DATE");
+					String qnaCategory = rs.getString("QNA_CATE");
+					
+					CSVo vo = new CSVo();
+					vo.setQnaNo(qnaNo);
+					vo.setNo(no);
+					vo.setWriter(writer);
+					vo.setTitle(title);
+					vo.setContent(content);
+					vo.setQnaDate(qnaDate);
+					vo.setDeleteYN(deleteYN);
+					vo.setEditDate(editDate);
+					vo.setQnaCategory(qnaCategory);
+					
+					voList.add(vo);
+					System.out.println(vo);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+				JDBCTemplate.close(rs);
+			}
+			
+			
+			return voList;
 		}
 
 

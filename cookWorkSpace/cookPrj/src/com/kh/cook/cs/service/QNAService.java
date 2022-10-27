@@ -83,7 +83,8 @@ public class QNAService {
 				
 		return result;
 	}
-
+	
+	//문의 삭제
 	public int delete(String qno) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -99,6 +100,18 @@ public class QNAService {
 		JDBCTemplate.close(conn);
 		
 		return result;
+	}
+	
+	//내가 쓴 문의 조회
+	public List<CSVo> selectMyQNAList(String no) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<CSVo> voList = dao.selectMyQNAList(conn, no);
+		
+		JDBCTemplate.close(conn);
+		
+		return voList;
 	}
 
 }
