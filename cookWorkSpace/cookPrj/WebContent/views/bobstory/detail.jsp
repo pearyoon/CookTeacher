@@ -2,7 +2,8 @@
 <%@page import="com.kh.cook.bobstory.vo.BobstoryVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	BobstoryVo vo = (BobstoryVo)request.getAttribute("vo");
 	AttachmentVo attVo = (AttachmentVo)request.getAttribute("attachmentVo");
@@ -19,9 +20,57 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/detail.css">
-<script type="text/javascript" defer src="/cookTeacher/resources/js/bobstory/detail.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" defer src="/cookTeacher/resources/js/bobstory/detail.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+	function bLike(){
+		let cnt = '${vo.cLike}';
+		let no = '${vo.no}';
+		
+		$.ajax({
+			url : "/cookTeacher/bobstory/boblike",
+			type : "post",
+			data : {"no" : no },
+			success : function(result){
+				if(result != ""){
+					cnt + 1
+					$('#likeView').text(result);
+				}
+			},
+			error : function(){
+				alert('안올라갓지롱');
+			}
+		});
+	}
+	
+	function delete_b(){
+		console.log('${vo.no}');
+	    Swal.fire({
+	        title: '삭제 하시겠습니까?',
+	        text: "삭제하면 돌이킬 수없습니다",
+	        icon: 'warning',
+	        showCancelButton: true,
+	        confirmButtonColor: '#3085d6',
+	        cancelButtonColor: '#d33',
+	        confirmButtonText: '삭제',
+	        cancelButtonText: '취소'
+	      }).then((result) => {
+	        if (result.isConfirmed) {
+	      window.location.href="/cookTeacher/bobstory/delete?no='${vo.no}'";
+	          Swal.fire(
+	            '삭제 완료 !',
+	            '게시글 삭제가 완료되었습니다.',
+	            'success'
+	          )
+	          console.log('${vo.no}');
+	        }
+	      })
+	}
+	
+
+	
+</script>
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
@@ -36,8 +85,8 @@
 				<thead>
 					<tr class="ta-1">
 					<td class="t-ti" ><%=vo.getTitle()%></td>
-					<td class="t-cl"><p>추천수</p><br><%=vo.getcLike()%></td>
-					<td class="t-vc"><p>조회수</p><br><%=vo.getViewCount()%></td>
+					<td class="t-cl"><p>추천수</p><span id="likeView"><%=vo.getcLike()%></span></td>
+					<td class="t-vc"><p>조회수</p><%=vo.getViewCount()%></td>
 					</tr>
 					<tr class="ta-2">
 					<td class="t-wr"><p><%=vo.getWriter()%></p></td>
@@ -50,6 +99,7 @@
 						<tr>
 							<td id="img-box"><img alt="사진" src="<%=root %>/<%=attVo.getFilePath() %>/<%=attVo.getChangeName() %>"></td>
 						</tr>
+					<%}else{%>
 					<%}%>
 					<tr>
 						<td><%=vo.getContent()%></td>
@@ -59,14 +109,16 @@
 			<hr>
 			<div class="vote_btn">
 				<button id="like_btn" onclick="bLike();">좋아요</button>
-				<button id="report_btn" onclick="location.href='/cookTeacher/bobstory/report'">신고</button>
+				<button id="report_btn" onclick="location.href='/cookTeacher/bobstory/report?no=<%=vo.getNo()%>'">신고</button>
 				<!-- <input type="button" id="like_btn" value="좋아요" onclick="bLike();"> -->
 				<!-- <input type="button" id="report_btn" value="신고" onclick="location.hred='/cookTeacher/bobstory/report'"> -->
 			</div>
-			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter())){%>
+			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter()) && loginMember.getName().equals("관리자")){%>
 			<div id="main-bot">
 				<a href="/cookTeacher/bobstory/edit?no=<%=vo.getNo()%>">수정하기</a>
-				<a href="/cookTeacher/bobstory/delete?no=<%=vo.getNo()%>" class="check-d" onclick="delete_b();">삭제하기</a>
+				<button type="button" onclick="delete_b()">삭제하기</button>
+				<!-- <input type="submit" class="check-d" onclick="delete_b()" value="삭제하기"> -->
+				<!-- <a href="/cookTeacher/bobstory/delete?no=<%=vo.getNo()%>" class="check-d" onclick="delete_b();">삭제하기</a> -->
 			<%}%>
 		</div>
 		<div class="bob_cmt">

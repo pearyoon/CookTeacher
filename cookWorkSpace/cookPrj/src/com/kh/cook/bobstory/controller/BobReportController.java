@@ -24,7 +24,7 @@ public class BobReportController extends HttpServlet{
 		//화면 선택
 		if(result == 1) {
 			//신고 성공
-			req.getSession().setAttribute("alertMsg", "신고하였습니다.");
+			req.getSession().setAttribute("alertMsg", "신고 되었습니다.");
 			resp.sendRedirect("/cookTeacher/bobstory/list");
 		}else {
 			//신고 실패

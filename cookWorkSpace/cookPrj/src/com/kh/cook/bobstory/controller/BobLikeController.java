@@ -17,8 +17,6 @@ public class BobLikeController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String no = req.getParameter("no");
 		
-		System.out.println(no);
-		
 		String result = new BobstoryService().plusLikeOne(no);
 		
 		resp.getWriter().write(result);
