@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.cook.bobstory.vo.AttachmentVo;
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.product.vo.PageVo;
@@ -758,6 +759,71 @@ public class ProductDao {
 		}
 		
 		return result;
+	}
+
+	//관리자 식재료 등록
+	public int insertProduct(Connection conn, ProductVo vo) {
+
+		//SQL (준비, 완성, 실행)
+		String sql = "INSERT INTO PRODUCT (PROD_NO, CATE_NO, NAME, INFO, DETAIL, PRICE, WEIGHT, STOCK ) VALUES(SEQ_PRODUCT_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getCateNo());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getInfo());
+			pstmt.setString(4, vo.getDetail());
+			pstmt.setString(5, vo.getPrice());
+			pstmt.setString(6, vo.getWeight());
+			pstmt.setString(7, vo.getStock());
+			
+			System.out.println("vo.getName : " + vo.getName());
+			
+
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		System.out.println("DAO 쪽 리뷰 인서트 결과" + result);
+		return result;
+	}
+
+	//관리자 식재료 첨부파일 등록
+	public int insertAttachment(Connection conn, AttachmentVo avo) {
+		//SQL
+		
+		String sql = "INSERT INTO PRODUCTATTACHMENT ( NO ,PRODUCT_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_PRODUCTATTACHMENT_NO.NEXTVAL , SEQ_PRODUCT_NO.CURRVAL , ? , ? , ? )";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, avo.getOriginName());
+			pstmt.setString(2, avo.getChangeName());
+			pstmt.setString(3, avo.getFilePath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+
+	
 	}
 	
 

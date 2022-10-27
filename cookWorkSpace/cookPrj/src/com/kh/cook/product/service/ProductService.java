@@ -5,6 +5,7 @@ import java.util.List;
 
 import static com.kh.cook.common.JDBCTemplate.*;
 
+import com.kh.cook.bobstory.vo.AttachmentVo;
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.product.dao.ProductDao;
 import com.kh.cook.product.vo.PageVo;
@@ -206,9 +207,39 @@ public class ProductService  {
 
 		int result = dao.selecMyReviewCount(conn, no);
 		
-		JDBCTemplate.close(conn);
+		close(conn);
 		
 		return result;
+	}
+
+
+	//관리자 식재료 등록
+	public int insertProduct(ProductVo vo, AttachmentVo avo) {
+		Connection conn = getConnection(); 
+		
+		System.out.println(vo.getCateNo());
+		
+		//식재료 등록
+		int result = dao.insertProduct(conn, vo);
+		
+		//첨부파일 insert
+		int result2 = 1;
+		if(avo != null) {
+			result2 = dao.insertAttachment(conn, avo);
+		}
+		
+		
+		if(result * result2 == 1) {
+			//성공
+			commit(conn);
+		}else {
+			//실패
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result * result2 ;
+
 	}
 
 

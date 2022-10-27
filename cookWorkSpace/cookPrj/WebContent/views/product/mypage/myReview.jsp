@@ -24,6 +24,14 @@
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/product/myReview.css">
 
+<style>
+#list-menu>li:nth-child(4)>a{
+    background-color: rgb(250, 250, 250);
+    color: #255D00;
+    font-weight: 600;
+}
+</style>
+
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
