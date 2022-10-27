@@ -21,12 +21,22 @@ public class ReviewWriteController extends HttpServlet {
 	//리뷰 작성 화면 보여주기
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		String reviewNo = req.getParameter("rno");
-		req.setAttribute("reviewNo", reviewNo);
 		
-		req.getRequestDispatcher("/views/product/detail/ReviewWrite.jsp").forward(req, resp);
+		//세션 꺼내기
+		HttpSession s = req.getSession();
 		
+		//로그인 멤버 꺼내기
+		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
+		
+		if(loginMember == null) {
+			req.getRequestDispatcher("/member/login").forward(req, resp);
+		}else {
+			String reviewNo = req.getParameter("rno");
+			req.setAttribute("reviewNo", reviewNo);
+			
+			req.getRequestDispatcher("/views/product/detail/ReviewWrite.jsp").forward(req, resp);
+			
+		}
 
 	}
 	

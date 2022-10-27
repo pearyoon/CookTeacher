@@ -14,7 +14,7 @@ import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.product.service.ProductService;
 import com.kh.cook.product.vo.ReviewVo;
 
-@WebServlet(urlPatterns = "/product/mypage_review/myReview")
+@WebServlet(urlPatterns = "/product/mypage/myReview")
 public class MyReviewController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class MyReviewController extends HttpServlet {
 		//화면선택 (데이터 담아서)
 		req.setAttribute("loginMember", loginMember);
 		req.setAttribute("rvoList", rvoList);
-		req.getRequestDispatcher("/views/product/mypage_review/myReview.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/product/mypage/myReview.jsp").forward(req, resp);
 		
 
 	}
