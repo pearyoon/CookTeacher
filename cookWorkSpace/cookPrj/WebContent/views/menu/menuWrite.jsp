@@ -92,17 +92,12 @@
                 <tr>
                     <th>식재료 등록</th>
                     <td >
-                        <form action="<%=root%>/menu/prodInput" method="get">
-                        <input type="text" name="write-prod" placeholder="식재료 입력 후 등록 버튼 누르기.">
-                        <input type="submit" value="식재료를 입력하세요."  style="height: 20px;" >
+                        <%-- <form action="<%=root%>/menu/prodInput" method="get"> --%>
+                        <input type="text" name="write-prod" placeholder="식재료를 입력해주세요.(구분자는 , 입니다.)">
+                 <!-- <input type="submit" value="식재료를 입력하세요."  style="height: 20px;" onclick=""> -->
                         </form>
-                    </td>
-                </tr>
-                <tr>
-                    <th>식재료 확인</th>
-                    <td >
-                    <!-- 에이젝스로 도전해보기! -->
-                    	<input><%=changeInput.getName() %></input>
+                        
+                        
                     </td>
                 </tr>
 

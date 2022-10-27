@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
 <!DOCTYPE html>
 <html>
@@ -109,7 +110,7 @@
     
     				<script type="text/javascript">
     					function plusRecomm() {
-                            console.log('${no}')
+                            // console.log('${no}')
                             let cnt = '${vo.recommend}';
                             let no = '${no}';
 							$.ajax({
@@ -156,18 +157,19 @@
                     <div id="prod-img" style="width: 100%; height: 650px;">
                     
                     
-                    <%for(int i = 0; i < prodList.size(); i++ ){%>
+
                     
+                        <c:forEach items="${prodList}" var="prodList">
                         <div class="prd-all">
                             <div class="product">
-                                <a href="/cookTeacher/product/detail/productDetail?no=<%=prodList.get(i).getProdNo() %>">
-                                    <img src="/cookTeacher/resources/img/product/<%=prodList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
+                                <a href="/cookTeacher/product/detail/productDetail?no=${prodList.prodNo}}">
+                                    <img src =" <c:url value = "/resources/img/product/"></c:url>${prodList.imgPath}" alt="식재료게시판담당" width="100%" height="100%">
                                 </a>
                                 
                             </div>    
                             <div style="margin-top : 10px" class="prod-price">
-                                <input type="checkbox" name="prodNo" value="<%=prodList.get(i).getProdNo()%>"><%=prodList.get(i).getName() %> / <%=prodList.get(i).getWeight() %>
-                                <pre ><%=prodList.get(i).getPrice() %>원</pre>
+                                <input type="checkbox" name="prodNo" value="${prodList.prodNo}">${prodList.name} / ${prodList.weight}
+                                <pre ><fmt:formatNumber value="${prodList.price}" pattern="#,###"/>원</pre>
                                 <!-- 데이터 넘길 때 produckCnt로 넘기면 될듯? -->
                                	수량 : <input type="number" name="prodCnt" value="1" style="width: 20px; margin-bottom: 10px">
                             	<!--  -->
@@ -177,12 +179,11 @@
                             	
                             </form>
                         </div>
-                    		
-                    <%} %>
+                    </c:forEach>		
 
 				<!--  -->
 				
-				<tr style="text-align:center;">
+<!-- 				<tr style="text-align:center;">
 				    <td>
 				        <button type ="button" onclick="fnCalCount('p',this);">+</button>
 				        <input type="text" name="pop_out" value="1" readonly="readonly" style="text-align:center;"/>
@@ -203,7 +204,7 @@
 					        if(tCount >0) $input.val(Number(tCount)-1);    
 					        }
 					}
-				</script>
+				</script> -->
 				
 
 
