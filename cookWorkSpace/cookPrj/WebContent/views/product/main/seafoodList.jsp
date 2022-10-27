@@ -132,7 +132,7 @@ margin-bottom: 30px;
                		<%for(int i = 0; i < voList.size(); ++i){%>
                			<div>
 	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
-		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
+		                        <img src="/cookTeacher/upload/img/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
 					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
 					            <div><%= voList.get(i).getPrice() %> 원</div>
 	                        </a>
@@ -141,40 +141,6 @@ margin-bottom: 30px;
 					<%}%>
                 </div>
                 
-                <%-- <div class="main-prod-area">
-               		<%for(int i = 5; i < 9; ++i){%>
-               			<div>
-	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
-		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
-					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
-					            <div><%= voList.get(i).getPrice() %> 원</div>
-	                        </a>
-                        </div>
-					<%}%>
-                </div>
-                <div class="main-prod-area">
-               		<%for(int i = 9; i < 13; ++i){%>
-               			<div>
-	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
-		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
-					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
-					            <div><%= voList.get(i).getPrice() %> 원</div>
-	                        </a>
-                        </div>
-					<%}%>
-                </div>
-                <div class="main-prod-area">
-               		<%for(int i = 13; i < 17; ++i){%>
-               			<div>
-	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
-		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
-					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
-					            <div><%= voList.get(i).getPrice() %> 원</div>
-	                        </a>
-                        </div>
-					<%}%>
-                </div> --%>
-
 		        <div id="page-area">
 		        	<!-- 이전 버튼 -->
 		        	<%if(pv.getStartPage() != 1){%>

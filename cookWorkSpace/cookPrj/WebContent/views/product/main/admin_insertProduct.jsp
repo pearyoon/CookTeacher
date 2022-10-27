@@ -115,7 +115,7 @@ table {
 	        		<div id="admin_insert">
 		        		<form id="enroll-form" action="/cookTeacher/product/main/admin_insertProduct" method="post" enctype="multipart/form-data">
 		        		<table>
-		        	<!-- 	<tr>
+		        		<tr>
 		        			<th >카테고리&nbsp;:&nbsp;&nbsp;</th>
 	                    	<td >
 			        		<select id="option" name="cateNo">
@@ -128,12 +128,12 @@ table {
 			        			<option value="6">음료</option>
 			        			<option value="7">기타</option>
 			        		</select>
-		        		</tr> -->
-		        		
+		        		</tr> 
+		        		<!-- 
 		                <tr>
 		                    <th>카테고리 번호&nbsp;:&nbsp;&nbsp;</th>
 		                    <td><input type="text" name="cateNo" ></td>
-		                </tr>
+		                </tr> -->
 		                <tr>
 		                    <th>이름&nbsp;:&nbsp;&nbsp;</th>
 		                    <td><input type="text" name="name" ></td>

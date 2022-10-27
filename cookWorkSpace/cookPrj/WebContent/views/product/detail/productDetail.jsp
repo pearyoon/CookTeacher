@@ -393,7 +393,7 @@ button[disabled], input[disabled] {
                 <div id="product-name"></div>
                     <div id="main-menu-area">
                         <div id="product-main-img/product">
-                            <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath()%>" alt="레시피게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/upload/img/<%= vo.getImgPath()%>" alt="레시피게시판담당" width="100%" height="100%">
                         </div>
                         <div class="outer">
                             <div class="inner" id="real-name">
@@ -489,7 +489,7 @@ button[disabled], input[disabled] {
                 <!-- 상품 설명 -->
                 <a id="tag-detail" >
                     <div class="main-prod-area">
-                        <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath() %>" alt="상품 이미지" width="80%" height="100%">
+                        <img/product src="/cookTeacher/upload/img/<%= vo.getImgPath() %>" alt="상품 이미지" width="80%" height="100%">
                     </div>
                     <br>
                     <div>
@@ -510,7 +510,7 @@ button[disabled], input[disabled] {
                 <a id="tag-detail2" >
                     <br>
                     <div>
-                        <img/product src="/cookTeacher/resources/img/product/<%= vo.getImgPath() %>" alt="상품 이미지" width="80%" height="100%">
+                        <img/product src="/cookTeacher/upload/img/<%= vo.getImgPath() %>" alt="상품 이미지" width="80%" height="100%">
                     </div>
                     <div>
                     	<br>
@@ -575,7 +575,6 @@ button[disabled], input[disabled] {
 			Swal.fire({
 			  text: '<%=alertMsg%>',
 			  imageUrl: 'http://appdata.hungryapp.co.kr/data_file/data_img/201712/04/W151239560734116232.gif',
-			  //imageUrl: 'https://static.lotteon.com/p/common/foCommon/assets/img/icon_cart_black.svg',
 			  imageWidth: 300,
 			  imageHeight: 200,
 			  imageAlt: 'Custom image',

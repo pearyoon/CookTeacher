@@ -131,7 +131,7 @@ margin-bottom: 30px;
                		<%for(int i = 0; i < voList.size(); ++i){%>
                			<div>
 	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
-		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
+		                        <img src="/cookTeacher/upload/img/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
 					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
 					            <div><%= voList.get(i).getPrice() %> 원</div>
 	                        </a>
