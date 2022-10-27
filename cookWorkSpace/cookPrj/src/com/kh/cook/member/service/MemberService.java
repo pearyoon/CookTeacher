@@ -154,6 +154,23 @@ public class MemberService {
 		
 		return result;
 	}
+	public MemberVo gradeCheck(MemberVo vo) {
+		Connection conn = getConnection();
+		
+		int result = dao.updateGrade(vo, conn);
+		
+		MemberVo checkGrade = null;
+		if(result == 1) {
+			commit(conn);
+			checkGrade = dao.selectGrade(vo.getNo(), conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return checkGrade;
+	}
 
 
 

@@ -67,7 +67,7 @@ public class MemberDao {
 				String enroll_date = rs.getString("ENROLL_DATE");
 				String modify_date = rs.getString("MODIFY_DATE");
 				String quitYn = rs.getString("QUIT_YN");
-				String point = rs.getString("POINT");
+				int point = rs.getInt("POINT");
 				String adminYn = rs.getString("ADMIN_YN");
 				
 				int idx = dataAddr.indexOf(",");
@@ -298,6 +298,59 @@ public class MemberDao {
 		
 		return result;
 		
+	}
+
+	public int updateGrade(MemberVo vo, Connection conn) {
+		String sql = "UPDATE MEMBER SET GRADE = ? WHERE NO = ? AND QUIT_YN = 'N'";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getGrade());
+			pstmt.setString(2, vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
+	public MemberVo selectGrade(String no, Connection conn) {
+		String sql = "SELECT G.NAME AS GRADE, G.SAVE FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE M.NO = ? AND QUIT_YN = 'N'";
+		PreparedStatement pstmt = null;
+		MemberVo vo  = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+		
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String grade = rs.getString("GRADE");
+				String save = rs.getString("SAVE");
+				
+				vo = new MemberVo();
+				
+				vo.setGrade(grade);
+				vo.setSave(save);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return vo;
 	}
 
 }

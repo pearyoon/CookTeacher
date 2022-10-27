@@ -6,10 +6,10 @@ public class MemberVo {
 	}
 	
 	
-
+	
 	public MemberVo(String no, String grade, String id, String pwd, String email, String name, String phone,
-			String nick, String addr, String detailAddr, String enrollDate, String modifyDate, String quitYn,
-			String point, String adminYn) {
+			String nick, String addr, String detailAddr, String enrollDate, String modifyDate, String quitYn, int point,
+			String adminYn) {
 		super();
 		this.no = no;
 		this.grade = grade;
@@ -43,10 +43,9 @@ public class MemberVo {
 	private String enrollDate;
 	private String modifyDate;
 	private String quitYn;
-	private String point;
+	private int point;
 	private String adminYn;
-	
-	
+	private String save;
 	public String getNo() {
 		return no;
 	}
@@ -155,6 +154,18 @@ public class MemberVo {
 
 
 
+	public String getDetailAddr() {
+		return detailAddr;
+	}
+
+
+
+	public void setDetailAddr(String detailAddr) {
+		this.detailAddr = detailAddr;
+	}
+
+
+
 	public String getEnrollDate() {
 		return enrollDate;
 	}
@@ -191,13 +202,13 @@ public class MemberVo {
 
 
 
-	public String getPoint() {
+	public int getPoint() {
 		return point;
 	}
 
 
 
-	public void setPoint(String point) {
+	public void setPoint(int point) {
 		this.point = point;
 	}
 
@@ -214,15 +225,15 @@ public class MemberVo {
 	}
 
 
-	
-	public String getDetailAddr() {
-		return detailAddr;
+
+	public String getSave() {
+		return save;
 	}
 
 
 
-	public void setDetailAddr(String detailAddr) {
-		this.detailAddr = detailAddr;
+	public void setSave(String save) {
+		this.save = save;
 	}
 
 
@@ -232,19 +243,14 @@ public class MemberVo {
 		return "MemberVo [no=" + no + ", grade=" + grade + ", id=" + id + ", pwd=" + pwd + ", email=" + email
 				+ ", name=" + name + ", phone=" + phone + ", nick=" + nick + ", addr=" + addr + ", detailAddr="
 				+ detailAddr + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", quitYn=" + quitYn
-				+ ", point=" + point + ", adminYn=" + adminYn + "]";
+				+ ", point=" + point + ", adminYn=" + adminYn + ", save=" + save + "]";
 	}
 
 
 
-
 	
 	
-
-
-
-
-
+	
 	
 	
 }
