@@ -78,7 +78,11 @@ margin-bottom: 30px;
 	color: white;
 	
 }
-    
+button.btnMain {
+  position: absolute;
+  top: 90px;
+  left : 440px; 
+}
 </style>
 </head>
 <body>
@@ -87,7 +91,8 @@ margin-bottom: 30px;
         <main>
         <hr>
             <div id="main-bottom">
-            <img src="https://product-image.kurly.com/category/banner/pc/90da4c94-8cbf-4b9c-92c1-c6791a3f3c26.jpg">
+            <img src="/cookTeacher/resources/img/product/admin_gray.png" height="200px" width="1050px">
+            <button class="btnMain" type="button" onclick="location.href='/cookTeacher/product/main/admin_insertProduct'">식재료 등록하기</button>
             <!-- <div id="main-title">카테고리 선택</div> -->
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">

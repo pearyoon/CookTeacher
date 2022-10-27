@@ -675,12 +675,12 @@ public class ProductDao {
 
 
 	//내가 쓴 리뷰 조회
-	public List<ReviewVo> selectMyReviewList(Connection conn, String no) {
+	public List<ReviewVo> selectMyReviewList(Connection conn, String no, PageVo pv) {
 
 
 		//SQL
 		
-		String sql = "SELECT R.REVIEW_NO, M.NO, P.NAME  , R.CONTENT , R.ENROLL_DATE  FROM PRODUCT_REVIEW R JOIN PRODUCT P ON P.PROD_NO = R.PROD_NO JOIN MEMBER M ON R.NO = M.NO WHERE M.NO = ? ORDER BY R.REVIEW_NO DESC";
+		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT R.REVIEW_NO, M.NO, P.NAME  , R.CONTENT , R.ENROLL_DATE  FROM PRODUCT_REVIEW R JOIN PRODUCT P ON P.PROD_NO = R.PROD_NO JOIN MEMBER M ON R.NO = M.NO WHERE M.NO = ? ORDER BY R.REVIEW_NO DESC)T) WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -689,7 +689,12 @@ public class ProductDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
+			int end = start + pv.getBoardLimit() + 1;
+			
 			pstmt.setString(1, no);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -722,6 +727,37 @@ public class ProductDao {
 		//System.out.println("rvoList" + rvoList);
 		return rvoList;
 	
+	}
+
+	//내가 쓴 리뷰 수 조회
+	public int selecMyReviewCount(Connection conn, String no) {
+				
+		//SQL
+		String sql = "SELECT COUNT (*) AS CNT FROM PRODUCT_REVIEW WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 	
 

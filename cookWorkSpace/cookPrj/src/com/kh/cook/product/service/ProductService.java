@@ -5,7 +5,7 @@ import java.util.List;
 
 import static com.kh.cook.common.JDBCTemplate.*;
 
-import com.kh.cook.member.vo.MemberVo;
+import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.product.dao.ProductDao;
 import com.kh.cook.product.vo.PageVo;
 import com.kh.cook.product.vo.ProductVo;
@@ -188,15 +188,27 @@ public class ProductService  {
 
 
 	//내가 쓴 리뷰 조회
-	public List<ReviewVo> selectMyReview(String no) {
+	public List<ReviewVo> selectMyReview(String no, PageVo pv) {
 
 		Connection conn = getConnection();
 		
-		List<ReviewVo> rvoList = dao.selectMyReviewList(conn, no);
+		List<ReviewVo> rvoList = dao.selectMyReviewList(conn, no, pv);
 		
 		close(conn);
 		
 		return rvoList;
+	}
+
+	//내가 쓴 리뷰 갯수 조회
+	public int selectMyReviewCount(String no) {
+
+		Connection conn = getConnection();
+
+		int result = dao.selecMyReviewCount(conn, no);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 

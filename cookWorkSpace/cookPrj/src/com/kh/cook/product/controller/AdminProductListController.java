@@ -17,18 +17,12 @@ import com.kh.cook.product.vo.PageVo;
 import com.kh.cook.product.vo.ProductVo;
 
 
-@WebServlet(urlPatterns = "/product/main/productList")
-public class ProductListController extends HttpServlet {
+@WebServlet(urlPatterns = "/product/main/admin_productList")
+public class AdminProductListController extends HttpServlet {
 
 	//화면 보여주기
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		//세션 꺼내기
-		HttpSession s = req.getSession();
-		
-		//로그인 멤버 꺼내기
-		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
 		
 		//페이징처리
 		int listCount;
@@ -69,6 +63,12 @@ public class ProductListController extends HttpServlet {
 		pv.setStartPage(startPage);
 		pv.setEndPage(endPage);	
 		
+		//세션 꺼내기
+		HttpSession s = req.getSession();
+		
+		//로그인 멤버 꺼내기
+		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
+		
 		
 		//디비 다녀오기
 		List<ProductVo> voList = new ProductService().selectProductList(pv);
@@ -76,14 +76,11 @@ public class ProductListController extends HttpServlet {
 		//화면선택
 		req.setAttribute("voList", voList);
 		req.setAttribute("pv", pv);
-		
-		if(loginMember == null){
-			req.getRequestDispatcher("/views/product/main/productList.jsp").forward(req, resp);
-		}else if(loginMember.getNick().equals("관리자")){
+
+		if(loginMember.getNick().equals("관리자")) {
 			req.getRequestDispatcher("/views/product/main/admin_productList.jsp").forward(req, resp);
-		} else {
+		}else {
 			req.getRequestDispatcher("/views/product/main/productList.jsp").forward(req, resp);
 		}
-		
 	}
 }

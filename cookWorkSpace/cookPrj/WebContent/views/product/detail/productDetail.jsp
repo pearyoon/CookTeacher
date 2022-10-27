@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cookTeacher</title>
+<title>집밥쿡선생 :: 쇼핑</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
@@ -545,9 +545,9 @@ button[disabled], input[disabled] {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    	<%for(int i = 1; i < rvoList.size(); ++i){%>
+                                    	<%for(int i = 0; i < rvoList.size(); ++i){%>
 					               			<tr>
-						               			<td><%= i %></td>
+						               			<td><%= i+1 %></td>
 		                                        <th>
 		                                            <%= rvoList.get(i).getContent() %>
 		                                        </th>
