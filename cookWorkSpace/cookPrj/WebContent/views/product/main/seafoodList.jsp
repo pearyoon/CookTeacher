@@ -83,6 +83,14 @@ margin-bottom: 30px;
 	font-size: 1rem;
 	margin-top: 20px;
 }
+
+.main-prod-area{
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
     
 </style>
 </head>
@@ -121,7 +129,7 @@ margin-bottom: 30px;
                 <hr><div style="font-size: 20px; font-weight: 700; ">[ 해산물 ]</div><hr>
                 <br><br>
                 <div class="main-prod-area">
-               		<%for(int i = 1; i < 5; ++i){%>
+               		<%for(int i = 0; i < voList.size(); ++i){%>
                			<div>
 	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
 		                        <img src="/cookTeacher/resources/img/product/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
@@ -129,9 +137,11 @@ margin-bottom: 30px;
 					            <div><%= voList.get(i).getPrice() %> 원</div>
 	                        </a>
                         </div>
+                        <br><br><br><br><br><br><br><br><br><br><br><br> 
 					<%}%>
                 </div>
-                <div class="main-prod-area">
+                
+                <%-- <div class="main-prod-area">
                		<%for(int i = 5; i < 9; ++i){%>
                			<div>
 	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
@@ -163,22 +173,22 @@ margin-bottom: 30px;
 	                        </a>
                         </div>
 					<%}%>
-                </div>
+                </div> --%>
 
 		        <div id="page-area">
 		        	<!-- 이전 버튼 -->
 		        	<%if(pv.getStartPage() != 1){%>
-			        	<a href="/cookTeacher/product/main/productList?pno=<%= pv.getStartPage()-1 %>" class="btn btn-primary btn-sm">이전</a>
+			        	<a href="/cookTeacher/product/main/seafoodList?pno=<%= pv.getStartPage()-1 %>" class="btn btn-primary btn-sm">이전</a>
 		        	<%}%>
 		        	
 		            <!-- 페이지 버튼 -->
 		        	<%for(int i = pv.getStartPage(); i<= pv.getEndPage(); ++i){%>
-			            <a href="/cookTeacher/product/main/productList?pno=<%= i %>" class="btn btn-primary btn-sm"><%= i %></a>
+			            <a href="/cookTeacher/product/main/seafoodList?pno=<%= i %>" class="btn btn-primary btn-sm"><%= i %></a>
 		        	<%}%>
 		        	
 		        	<!-- 다음 버튼 -->
 		        	<%if(pv.getEndPage() != pv.getMaxPage()){%>
-					    <a href="/cookTeacher/product/main/productList?pno=<%= pv.getEndPage()+1 %>" class="btn btn-primary btn-sm">다음</a>
+					    <a href="/cookTeacher/product/main/seafoodList?pno=<%= pv.getEndPage()+1 %>" class="btn btn-primary btn-sm">다음</a>
 		       		<%}%>
 		        	
 		        </div>

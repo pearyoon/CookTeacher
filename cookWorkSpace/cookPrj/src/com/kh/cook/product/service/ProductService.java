@@ -63,7 +63,80 @@ public class ProductService  {
 		
 		return result;
 	}
+	
+	//과일채소 갯수 조회
+	public int selectFruitVegeCount() {
+		Connection conn = getConnection();
 
+		int result = dao.selectFruitVegeCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	//해산물 식재료 갯수 조회
+	public int selectSeafoodCount() {
+		Connection conn = getConnection();
+
+		int result = dao.selectSeafoodCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//육류계란 식재료 갯수 조회
+	public int selectMeatEggCount() {
+		Connection conn = getConnection();
+
+		int result = dao.selectSeafoodCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//면류빵류 식재료 갯수 조회
+	public int selectNoodleBreadCount() {
+		Connection conn = getConnection();
+		
+		int result = dao.selectNoodleBreadCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//유제품 식재료 갯수 조회
+	public int selectDairyCount() {
+		Connection conn = getConnection();
+		
+		int result = dao.selectDairyCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//음료 식재료 갯수 조회
+	public int selectDrinkCount() {
+		Connection conn = getConnection();
+		
+		int result = dao.selectDrinkCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//기타 식재료 갯수 조회
+	public int selectEtcCount() {
+		Connection conn = getConnection();
+		
+		int result = dao.selectEtcCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	
 
 	//식재료 리뷰 작성
 	public int write(ReviewVo rvo) {
@@ -241,6 +314,11 @@ public class ProductService  {
 		return result * result2 ;
 
 	}
+
+
+	
+
+
 
 
 

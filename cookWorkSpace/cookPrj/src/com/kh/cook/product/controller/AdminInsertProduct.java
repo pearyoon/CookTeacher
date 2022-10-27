@@ -1,7 +1,7 @@
 package com.kh.cook.product.controller;
 
 import java.io.IOException;
-
+import java.util.List;
 import java.io.File;
 
 import javax.servlet.ServletException;
@@ -17,6 +17,7 @@ import com.kh.cook.bobstory.controller.FileUploader;
 import com.kh.cook.bobstory.vo.AttachmentVo;
 import com.kh.cook.product.service.ProductService;
 import com.kh.cook.product.vo.ProductVo;
+import com.kh.cook.product.vo.ReviewVo;
 
 @WebServlet(urlPatterns = "/product/main/admin_insertProduct")
 @MultipartConfig(
@@ -42,6 +43,8 @@ public class AdminInsertProduct extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 
 		//데이터 꺼내기
+		String no = req.getParameter("no");
+		
 		String cateNo = req.getParameter("cateNo");
 		String name = req.getParameter("name");
 		String info = req.getParameter("info");
@@ -70,15 +73,20 @@ public class AdminInsertProduct extends HttpServlet {
 		vo.setPrice(price);
 		vo.setWeight(weight);
 		vo.setStock(stock);
+		vo.setImgPath(avo.getChangeName());
 		
 		//디비 다녀오기
 		int result = new ProductService().insertProduct(vo,avo);
+		List<ReviewVo> rvoList = new ProductService().selectReview(no);
 		
 		//화면 선택
 		if(result == 1) {
 			//작성 성공 => 알람 메세지, 리스트 화면으로 리다이렉트
 			s.setAttribute("alertMsg", "상품 등록 완료 !");
-			resp.sendRedirect("/cookTeacher/product/main/productList");
+			req.setAttribute("vo", vo);
+			req.setAttribute("rvoList", rvoList);
+			req.getRequestDispatcher("/views/product/detail/productDetail.jsp").forward(req, resp);
+			//resp.sendRedirect("/product/detail/productDetail?no="+no);
 		}else {
 			//게시글 작성 실패
 			if(avo != null) {
