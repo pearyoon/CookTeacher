@@ -28,6 +28,7 @@ public class MenuDetailController extends HttpServlet{
     	
     	//화면선택
     	req.setAttribute("vo", vo);
+    	
     	if(prodList == null) {
     		System.out.println("null");
     	}else {

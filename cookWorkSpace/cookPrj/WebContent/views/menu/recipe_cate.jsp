@@ -15,6 +15,7 @@
         <%@include file="/views/common/header.jsp" %>
        <div id="container">
         	<main>
+                <div><a href="<%=root %>/menu/write" >(관리자)레시피 추가</a></div>
     
             <div id="recipe-middle">
                 <div id="resipe" >레시피</div>

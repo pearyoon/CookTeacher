@@ -1,0 +1,32 @@
+.outer{
+   
+   /* color: black; */
+   width: 800px;
+   height: 1000px;
+   margin: auto;
+   padding-top: 50px;
+}
+
+#enroll-form table{border: 1px solid white; margin:auto;}
+#enroll-form input, #enroll-form textarea{
+   width: 600px;
+   box-sizing: border-box;
+}
+
+#enroll-form input{
+   height: 50px;
+}
+
+#enroll-form textarea{
+   height: 300px;
+
+}
+
+th{
+   border: 1px solid black;
+}
+
+
+th{
+   vertical-align: middle;
+}
