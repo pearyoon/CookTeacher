@@ -1,3 +1,4 @@
+<%@page import="com.kh.cook.product.vo.PageVo"%>
 <%@page import="com.kh.cook.product.vo.ReviewVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,8 @@
     
 <%
 	List<ReviewVo> rvoList = (List<ReviewVo>)request.getAttribute("rvoList");
+	PageVo pv = (PageVo)request.getAttribute("pv");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -94,16 +97,28 @@
 						            			
 					                        </tr>
 										<%}%>
-										  
 										<%-- <tr>
 											<td>${review.content}</td>
 											<th>${review.reviewNo}</th>
 											<td>${review.reviewNo}</td>
 											<td>${review.reviewNo}</td>
 										</tr> --%>
-										
 				                    </tbody>
 				                </table>
+				                <br>
+			                	<div id="page-area" style="text-align: center;">
+						        	<%if(pv.getStartPage() != 1){%>
+							        	<a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getStartPage()-1%>" class="btn">이전</a>
+						        	<%}%>
+						        	
+							        <%for(int i = pv.getStartPage(); i <= pv.getEndPage(); i++){%>
+								        <a href="/cookTeacher/product/mypage/myReview?pno=<%=i%>" class="btn"><%=i%></a>
+							        <%}%>
+							        
+							        <%if(pv.getEndPage() != pv.getMaxPage()){%>
+									        <a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getEndPage()+1 %>" class="btn">다음</a>
+							        <%}%>
+		        				</div>
 				            </div>
        					 </div>
                     </div>
