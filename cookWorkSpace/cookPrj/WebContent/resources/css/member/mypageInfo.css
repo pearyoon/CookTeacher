@@ -1,0 +1,88 @@
+#board-container div{
+    /* border: 1px solid black; */
+}
+#board-container>div:first-child{
+    width: 820px;
+    margin: 0px auto;
+    padding-top: 50px;
+}
+
+.flex-box{
+    width: 620px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    border: 1px solid rgb(221, 221, 221);
+    margin-bottom: 40px;
+    justify-content: center;
+    margin-left: 110px;
+}
+
+
+.grade-area, .point-area{
+    width: 310px;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: center;
+    padding: 34px 60px 30px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+.point-info{
+    width: 620px;
+    margin-left: 110px;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.btn-area{
+    text-align: center;
+    padding: 50px 0px 50px;
+}
+
+.grade-area>i, .grade-area>div{
+    color: #255D00;
+    line-height: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0px;
+}
+.grade-area>i{
+    margin-right: 10px;
+}
+
+.point-area>div:first-child{
+    color: rgb(0, 0, 0);
+    line-height: 20px;
+    font-size: 15px;
+
+}
+
+.point-area>div:last-child{
+    color: #255D00;
+    line-height: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0px;
+}
+
+.btn-area>button{
+    height: 44px;
+    color: rgb(255, 255, 255);
+    background-color: #255D00;
+    border: 0px none;
+    width: 120px;
+    border-radius: 3px;
+}
+
+.btn-area span{
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+}
