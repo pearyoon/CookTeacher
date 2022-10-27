@@ -385,7 +385,6 @@ button[disabled], input[disabled] {
         	
         	<h2><%= vo.getCnt() %></h2>
         	
-        	
         
         </main>
 		<%@include file="/views/common/footer.jsp" %>

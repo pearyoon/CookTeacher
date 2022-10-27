@@ -217,7 +217,7 @@ public class ProductDao {
 			
 			rs = pstmt.executeQuery();
 			
-			System.out.println(rs.next());
+			//System.out.println(rs.next());
 			
 			while(rs.next()) {
 				String prodNo = rs.getString("PROD_NO");
@@ -278,7 +278,7 @@ public class ProductDao {
 			
 			rs = pstmt.executeQuery();
 			
-			System.out.println(rs.next());
+			//System.out.println(rs.next());
 			
 			while(rs.next()) {
 				String prodNo = rs.getString("PROD_NO");
@@ -339,7 +339,7 @@ public class ProductDao {
 			
 			rs = pstmt.executeQuery();
 			
-			System.out.println(rs.next());
+			//System.out.println(rs.next());
 			
 			while(rs.next()) {
 				String prodNo = rs.getString("PROD_NO");
@@ -399,7 +399,7 @@ public class ProductDao {
 			
 			rs = pstmt.executeQuery();
 			
-			System.out.println(rs.next());
+			//System.out.println(rs.next());
 			
 			while(rs.next()) {
 				String prodNo = rs.getString("PROD_NO");
@@ -521,7 +521,7 @@ public class ProductDao {
 			
 			rs = pstmt.executeQuery();
 			
-			System.out.println(rs.next());
+			//System.out.println(rs.next());
 			
 			while(rs.next()) {
 				String prodNo = rs.getString("PROD_NO");
@@ -581,7 +581,7 @@ public class ProductDao {
 			
 			rs = pstmt.executeQuery();
 			
-			System.out.println(rs.next());
+			//System.out.println(rs.next());
 			
 			while(rs.next()) {
 				String prodNo = rs.getString("PROD_NO");
@@ -631,7 +631,7 @@ public class ProductDao {
 
 		//SQL
 		
-		String sql = "SELECT P.PROD_NO  ,P.NAME  , R.CONTENT , M.NICK , R.ENROLL_DATE  FROM PRODUCT_REVIEW R JOIN PRODUCT P ON P.PROD_NO = R.PROD_NO JOIN MEMBER M ON R.NO = M.NO WHERE R.PROD_NO = ?";
+		String sql = "SELECT P.PROD_NO  ,P.NAME  , R.CONTENT , M.NICK , R.ENROLL_DATE  FROM PRODUCT_REVIEW R JOIN PRODUCT P ON P.PROD_NO = R.PROD_NO JOIN MEMBER M ON R.NO = M.NO WHERE R.PROD_NO = ? ORDER BY R.ENROLL_DATE ASC";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -680,7 +680,7 @@ public class ProductDao {
 
 		//SQL
 		
-		String sql = "SELECT R.REVIEW_NO, P.NAME  , R.CONTENT , R.ENROLL_DATE  FROM PRODUCT_REVIEW R JOIN PRODUCT P ON P.PROD_NO = R.PROD_NO JOIN MEMBER M ON R.NO = M.NO WHERE M.NO = ?";
+		String sql = "SELECT R.REVIEW_NO, M.NO, P.NAME  , R.CONTENT , R.ENROLL_DATE  FROM PRODUCT_REVIEW R JOIN PRODUCT P ON P.PROD_NO = R.PROD_NO JOIN MEMBER M ON R.NO = M.NO WHERE M.NO = ? ORDER BY R.REVIEW_NO DESC";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -695,12 +695,14 @@ public class ProductDao {
 			
 			while(rs.next()) {
 				String reviewNo = rs.getString("REVIEW_NO");
+				String nno = rs.getString("NO");
 				String name = rs.getString("NAME");
 				String content = rs.getString("CONTENT");
 				String enrollDate = rs.getString("ENROLL_DATE").substring(0,10);
 				
 				ReviewVo rvo = new ReviewVo();
 				rvo.setReviewNo(reviewNo);
+				rvo.setNo(nno);
 				rvo.setName(name);
 				rvo.setContent(content);
 				rvo.setEnrollDate(enrollDate);
@@ -717,10 +719,10 @@ public class ProductDao {
 			JDBCTemplate.close(pstmt);
 		}
 		
+		//System.out.println("rvoList" + rvoList);
 		return rvoList;
 	
 	}
-
 	
 
 }
