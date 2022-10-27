@@ -51,6 +51,7 @@ thead{
     font-size: 20px;
     font-weight: 600;
     padding-top: 20px;
+    padding-left: 20px;
 }
 .t-cl{
     width: 80px;
@@ -82,6 +83,18 @@ thead{
     width: 100px;
     text-align: end;
 }
+.t-no{
+    text-align: center;
+}
+tr td#img-box{
+    margin: 0 auto;
+    height: 260px;
+}
+
+tbody tr td img{
+    width: 300px;
+    height: 250px;
+}
 
 tbody tr td{
     padding-left: 20px;
@@ -107,11 +120,17 @@ tbody tr td{
 
 #report_btn{
     background-color: #FFD335;
+    color: #fff;
     border-radius: 5px;
     border: 1px #255D00;
     width: 70px;
     height: 28px;
     font-size: 14px;
+}
+
+#report_btn:hover{
+    border: 2px solid red;
+    color: black;
 }
 
 #main-bot{

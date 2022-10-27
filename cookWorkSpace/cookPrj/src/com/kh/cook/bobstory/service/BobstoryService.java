@@ -191,20 +191,22 @@ public class BobstoryService {
 	}
 
 	//게시글 좋아요 증가
-	public int plusLikeOne(String no) {
+	public String plusLikeOne(String no) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int result = dao.plusLikeOne(conn, no);
 		
+		String bobLike = null;
 		if(result == 1) {
 			JDBCTemplate.commit(conn);
+			bobLike = dao.selectLike(conn, no);
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
 		JDBCTemplate.close(conn);
 		
-		return result;
+		return bobLike;
 	}
 
 

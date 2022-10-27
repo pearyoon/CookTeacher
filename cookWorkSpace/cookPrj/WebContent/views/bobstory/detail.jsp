@@ -41,10 +41,16 @@
 					</tr>
 					<tr class="ta-2">
 					<td class="t-wr"><p><%=vo.getWriter()%></p></td>
+					<td class="t-no">No.<%=vo.getNo()%></td>
 					<td class="t-da"><%=vo.getEnrollDate()%></td>
 					</tr>
 				</thead>
 				<tbody>
+					<%if(attVo != null){%>
+						<tr>
+							<td id="img-box"><img alt="사진" src="<%=root %>/<%=attVo.getFilePath() %>/<%=attVo.getChangeName() %>"></td>
+						</tr>
+					<%}%>
 					<tr>
 						<td><%=vo.getContent()%></td>
 					</tr>
@@ -52,14 +58,19 @@
 			</table>
 			<hr>
 			<div class="vote_btn">
-				<input type="button" id="like_btn" value="좋아요" onclick="location.href='/cookTeacher/bobstory/boblike'">
-				<input type="button" id="report_btn" value="신고">
+				<button id="like_btn" onclick="bLike();">좋아요</button>
+				<button id="report_btn" onclick="location.href='/cookTeacher/bobstory/report'">신고</button>
+				<!-- <input type="button" id="like_btn" value="좋아요" onclick="bLike();"> -->
+				<!-- <input type="button" id="report_btn" value="신고" onclick="location.hred='/cookTeacher/bobstory/report'"> -->
 			</div>
 			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter())){%>
 			<div id="main-bot">
 				<a href="/cookTeacher/bobstory/edit?no=<%=vo.getNo()%>">수정하기</a>
 				<a href="/cookTeacher/bobstory/delete?no=<%=vo.getNo()%>" class="check-d" onclick="delete_b();">삭제하기</a>
 			<%}%>
+		</div>
+		<div class="bob_cmt">
+			
 		</div>
 	<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
 		</div>
