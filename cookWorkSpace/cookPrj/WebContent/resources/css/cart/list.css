@@ -76,6 +76,7 @@ input[type="checkbox"]{
 }
 
 .product-footer{
+  border-top: 1px solid gray;
   height: 50px;
   text-align: center;
   vertical-align: middle;
@@ -103,7 +104,7 @@ input[type="checkbox"]{
   border-bottom: 1px solid rgb(200, 200, 200);
 }
 
-.product:last-child {
+.product:nth-last-child(2) {
   border-bottom: none;
 }
 

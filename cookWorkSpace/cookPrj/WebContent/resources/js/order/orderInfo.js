@@ -3,7 +3,7 @@
 function searchAddr(){
     new daum.Postcode({
         oncomplete: function(data) {
-            $('#addr').text(data.address);
+            $('#addr').val(data.address);
             $('#detailAddr').val("");
             $('#detailAddr').attr('readonly', false);
         }
@@ -29,9 +29,6 @@ function checkOut() {
       check : prodNoList,
       point : point
     },
-    success: function(){
-      
-    }
 
   })
 
