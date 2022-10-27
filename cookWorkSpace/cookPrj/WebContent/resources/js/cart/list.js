@@ -82,27 +82,15 @@ function changeCnt(prodNo, var_cnt){
 }
 
 // 선택된 상품 가져오기
-const checkArr = document.querySelectorAll('#product-area input[name=check]');
-const checkStr = '${cartItem.prodNo}';
-
-for(let i = 0; i < checkArr.length; i++){
-    const list = checkArr[i].value;
-
-    let result = checkStr.search(list);
-    if(result > 0){
-        checkArr[i].checked = true;
+function cookOrder(){
+    const checkArr = document.querySelectorAll('#product-area input[name=check]');
+    for(let i = 0; i < checkArr.length; i++){
+        if(checkArr[i].checked === true){
+            return;
+        }
+    }
+    for(let i = 0; i < checkArr.length; i++){
+        checkArr[i].checked = true
     }
 }
-
-// $(document).ready(function order(){
-//     $("#order").click(function(){
-//         let checkArr = [];
-//         checkbox = $("[name=check]:checked");
-//         for(var i = 0; i < checkbox.length; i++){
-//             checkArr.push(checkbox.eq(i).val());
-//         }
-//         $("#checkArr").val(checkArr);
-        
-//     });
-// });
 
