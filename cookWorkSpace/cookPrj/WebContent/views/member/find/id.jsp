@@ -25,7 +25,7 @@
                     <div class="find-items">
                         <label for="memberName">이름</label>
                         <div>
-                            <input id="memberName" type="text" name="memberName" placeholder="이름을 입력해주세요.">
+                            <input id="memberName" class="focus" type="text" name="memberName" placeholder="이름을 입력해주세요.">
                         </div>
                     </div>
                         <div class="hidden-box">
@@ -34,7 +34,7 @@
                     <div class="find-items">
                         <label for="memberEmail">이메일</label>
                         <div>
-                            <input id="memberEmail" type="text" name="memberEmail" placeholder="이메일을 입력해주세요.">
+                            <input id="memberEmail" class="focus" type="text" name="memberEmail" placeholder="이메일을 입력해주세요.">
                         </div>
                     </div>
                     <div class="hidden-box">
@@ -53,6 +53,20 @@
     </div>
 
     <script>
+        let inputArr = $('.focus');
+        for(let i = 0; i < inputArr.length; i++){
+            inputArr[i].addEventListener('focus',()=>{
+                inputArr[i].style.border="1px solid rgb(51, 51, 51)";
+            });
+        }
+
+
+        for(let i = 0; i < inputArr.length; i++){
+            inputArr[i].addEventListener('blur',()=>{
+                inputArr[i].style.border="1px solid rgb(221, 221, 221)";
+            });
+        }
+
         // 이름
         $('#memberName').keyup(function(){
             const memberName = $('#memberName').val();

@@ -27,7 +27,6 @@ public class MemberCheckPwdController extends HttpServlet{
 		String id = loginMember.getId();
 		String pwd = req.getParameter("memberPwd");
 		
-		System.out.println(id+pwd);
 		
 		MemberVo vo = new MemberVo();
 		vo.setId(id);

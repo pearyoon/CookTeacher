@@ -1,3 +1,5 @@
+
+
 let nick = $('#memberNick').val();
 let email = $('#email').val();
 
@@ -20,6 +22,14 @@ $('#memberPwd1').keyup(function(){
 
 });
 
+$('#memberPwd1').blur(function(){
+    const memberPwd1 = $('#memberPwd1').val();
+
+    if(memberPwd1.length == 0){
+        $('#hidden-pwd1').text('');
+        pwd1ck = true;
+    }
+});
 
 // 비밀번호 확인
 let pwd2ck = true;
@@ -222,6 +232,17 @@ function checkEmail(){
 }
 
 let addrck = true;
+
+$('#addr').click(function(){
+    $('#hidden-addr').text('주소를 검색해주세요.');
+
+});
+
+$('#addr').blur(function(){
+    $('#hidden-addr').text('');
+
+});
+
 // 주소api
 function searchAddr(){
     new daum.Postcode({
@@ -233,7 +254,15 @@ function searchAddr(){
         }
     }).open();
 }
+$('#detailAddr').click(function(){
+    $('#hidden-detailAddr').text('주소를 검색해주세요.');
 
+});
+
+$('#detailAddr').blur(function(){
+    $('#hidden-detailAddr').text('');
+
+});
 
 $('#detailAddr').keyup(function(){
     const detailAddr = $('#detailAddr').val();
@@ -248,6 +277,8 @@ $('#detailAddr').keyup(function(){
 });
 
 
+
+
 function checkModify(){
     if(!pwd1ck){
         Swal.fire({
@@ -260,7 +291,7 @@ function checkModify(){
     if(!pwd2ck){
         Swal.fire({
             icon: 'error',
-            text: '비밀번호가 불일치합니다.',
+            text: '비밀번호가 일치하지 않습니다.',
           });
         return false;
     }
@@ -300,3 +331,23 @@ function checkModify(){
 
     return true;
 }
+
+let inputArr = $('.focus');
+for(let i = 0; i < inputArr.length; i++){
+    inputArr[i].addEventListener('focus',()=>{
+        inputArr[i].style.border="1px solid rgb(51, 51, 51)";
+    });
+}
+
+
+for(let i = 0; i < inputArr.length; i++){
+    inputArr[i].addEventListener('blur',()=>{
+        inputArr[i].style.border="1px solid rgb(221, 221, 221)";
+    });
+}
+
+
+$('#quit').click(function(){
+
+    window.location.href = "/cookTeacher/login/member/mypage/quit";
+});

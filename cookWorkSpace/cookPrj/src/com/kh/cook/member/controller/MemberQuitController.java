@@ -11,32 +11,37 @@ import javax.servlet.http.HttpSession;
 
 import com.kh.cook.member.service.MemberService;
 import com.kh.cook.member.vo.MemberVo;
-@WebServlet(urlPatterns = "/member/find/modify/pwd")
-public class MemberModifyPwdController extends HttpServlet{
+@WebServlet(urlPatterns = "/login/member/mypage/quit")
+public class MemberQuitController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/views/member/find/success/pwd.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/member/mypage/quit.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession s = req.getSession();
-		String no = (String)s.getAttribute("no");
-		String pwd = req.getParameter("memberPwd1");
-		System.out.println(pwd);
-		System.out.println(no);
-		MemberVo vo = new MemberVo();
-		vo.setPwd(pwd);
-		vo.setNo(no);
+		HttpSession ss = req.getSession();
+		MemberVo loginMember = (MemberVo)ss.getAttribute("loginMember");
 		
-		int result = new MemberService().modifyPwd(vo);
+		String no = loginMember.getNo();
+		String id = loginMember.getId();
+		String pwd = req.getParameter("memberPwd");
+		
+		MemberVo vo = new MemberVo();
+		
+		vo.setNo(no);
+		vo.setPwd(pwd);
+		vo.setId(id);
+		
+		
+		
+		int result = new MemberService().quit(vo);
 		
 		if(result == 1) {
-			s.setAttribute("alertMsg", "변경된 비밀번호로 로그인해주세요.");
-			resp.sendRedirect("/cookTeacher/member/login");
+			resp.sendRedirect("/cookTeacher/member/logout");
 		} else {
-			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+			req.setAttribute("alertMsg","비밀번호를 확인해주세요.");
+			req.getRequestDispatcher("/views/member/mypage/quit.jsp").forward(req, resp);
 		}
-		
 	}
 }

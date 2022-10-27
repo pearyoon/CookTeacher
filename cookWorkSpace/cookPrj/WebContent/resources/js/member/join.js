@@ -148,15 +148,14 @@ phone.addEventListener('keyup',()=>{
 
 const addr = document.querySelector('input[name=addr]');
 let addrck = false;
-addr.addEventListener('keyup',()=>{
+addr.addEventListener('click',()=>{
     const inputAddr = addr.value;            
-    
-    if(inputAddr == ""){
-        document.querySelector('#hidden-addr').innerHTML = '주소를 입력해주세요.';
-    } else{
-        document.querySelector('#hidden-addr').innerHTML = '';
-        
-    }
+    document.querySelector('#hidden-addr').innerHTML = '주소를 검색해주세요.';
+});
+
+addr.addEventListener('blur',()=>{
+    const inputAddr = addr.value;            
+    document.querySelector('#hidden-addr').innerHTML = '';
 });
 
 // 중복확인 검사
@@ -340,7 +339,7 @@ function checkJoin(){
     if(!pwd2ck){
         Swal.fire({
             icon: 'error',
-            text: '비밀번호가 불일치합니다.',
+            text: '비밀번호가 일치하지 않습니다.',
           });
         return false;
     }
@@ -389,5 +388,17 @@ function checkJoin(){
     return true;
 };
 
+let inputArr = $('input');
+for(let i = 0; i < inputArr.length; i++){
+    inputArr[i].addEventListener('focus',()=>{
+        inputArr[i].style.border="1px solid rgb(51, 51, 51)";
+    });
+}
 
+
+for(let i = 0; i < inputArr.length; i++){
+    inputArr[i].addEventListener('blur',()=>{
+        inputArr[i].style.border="1px solid rgb(221, 221, 221)";
+    });
+}
 
