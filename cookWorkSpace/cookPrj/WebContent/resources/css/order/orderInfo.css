@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+#container{
+  margin-bottom: 30px;
+}
+
 #order{
   width: 1050px;
   margin: 0 auto;
@@ -56,6 +60,24 @@
   height: 30px;
   text-align: left;
   padding-top: 20px;
+}
+
+.member-info>input{
+  width: 400px;
+  height: 25px;
+  padding: 0;
+  padding-left: 5px;
+}
+
+.search{
+  background-color: transparent;
+  border: 1px solid #255D00;
+  cursor: pointer;
+}
+
+.search:hover{
+  background: rgb(200, 200, 200);
+  color: black;
 }
 
 .dropdown-wrapper{
@@ -115,41 +137,18 @@
 }
 
 .product-name{
-  width: 700px;
-
+  width: 600px;
+  padding-left: 20px;
 }
 
-.count-wrapper{
-  display: flex;
-  align-items: center;
-  border: 1px solid gray;
-  margin-right: 30px;
-}
-
-.count-wrapper>*{
-  width: 24px;
-  height: 24px;
-  text-align: center;
-  line-height: 22px;
-}
-
-.minus{
-  background-image: url("../../img/icons/마이너스\ 버튼.svg 버튼.svg");
-}
-
-.plus{
-  background-image: url("../../img/icons/플러스\ 버튼.svg 버튼.svg");
-}
-
-.count-wrapper>button{
-  background-color: transparent;
-  border: none;
-  background-position: center;
-  background-size: contain;
+.count{
+  width: 50px;
+  text-align: end;
 }
 
 .price{
   width: 85px;
+  text-align: end;
 }
 
 .remove{
@@ -220,9 +219,9 @@
   cursor: pointer;
   }
 
-  .total-dd>button:active{
-    background-color:rgb(200, 200, 200);
-  }
+.total-dd>button:active{
+  background-color:rgb(200, 200, 200);
+}
 
 .payment-method{
   border-top: 1px solid rgb(200, 200, 200);
@@ -246,12 +245,15 @@
   border-radius: 10px;
   border: 1px solid rgb(200, 200, 200);
   margin-bottom: 32px;
+  cursor: pointer;
 }
 
+
 .account{
-  background-position: top;
+  background-position: 68px 6px;
   background-repeat: no-repeat;
-  background-image: url("../../img/icons/신용카드결제icon.png");
+  background-size: 75px 60px;
+  background-image: url("../../img/icons/무통장입금.png");
 }
 
 .card{
@@ -267,9 +269,14 @@
   background-image: url("../../img/icons/카카오페이icon.svg");
 }
 
+.choose-payment>input:hover{
+  background: rgb(200, 200, 200);
+  color: black;
+}
+
 #order-price{
   width: 350px;
-  height: 300px;
+  height: 350px;
   border: 1px solid gray;
   border-radius: 13px;
   margin-top: 65px;
@@ -333,4 +340,10 @@
   margin-top: 20px;
   font-size: 18px;
   font-weight: 500;
+  cursor: pointer;
+}
+
+#order-price>input:hover{
+  background: #FFD335;
+  color: black;
 }

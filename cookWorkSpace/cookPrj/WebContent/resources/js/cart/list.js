@@ -94,3 +94,19 @@ function cookOrder(){
     }
 }
 
+function cookCheck() {
+    let check = document.querySelectorAll('#product-area input[name=check]');
+    let price = document.querySelectorAll('#product-area input[name=price]');
+    let totalPrice = 0;
+   
+    for(let i = 0; i < check.length; i++){
+        if(check[i].checked === true){
+            totalPrice += parseInt(price[i].value);
+            document.getElementById("test").innerHTML = totalPrice;
+        }
+    }
+
+}
+
+{/* <fmt:formatNumber value="${total}" pattern="#,###"/> */}
+
