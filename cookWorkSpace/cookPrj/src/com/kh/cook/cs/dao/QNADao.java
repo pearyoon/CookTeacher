@@ -195,6 +195,29 @@ public class QNADao {
 			return result;
 		}
 
+		public int delete(Connection conn, String qno) {
+
+			String sql = "UPDATE QNA SET DELETE_YN = 'Y' WHERE NO = ?";
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, qno);
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
+		}
+
 
 }
 ;
