@@ -1,5 +1,10 @@
+<%@page import="com.kh.cook.cs.vo.CSVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    //List<CSVo> QNAList = (List<CSVo>)request.getAttribute("QNAList");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +16,40 @@
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/check.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/modify.css">
+<style>
+#board-container>.title{
+	width: 820px;
+	height: 35px;
+	margin: 0px auto;
+	display: grid;
+	grid-template-columns: 1fr 5fr 2fr 2fr;
+	align-content: center;
+	text-align: center;
+	
+	font-size: middle;
+	font-weight: bold;
+}
+#board-container>.list{
+	width: 820px;
+	height: 350px;
+	margin: 0px auto;
+	display: grid;
+	grid-template-columns: 1fr 5fr 2fr 2fr;
+	grid-template-rows: repeat(10,10%);
+	align-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: small;
+
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+#board-container>.list>div{
+	align-content: center;
+	border-bottom: 1px dotted lightgray;
+	line-height: 35px
+}
+</style>
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
@@ -41,7 +80,7 @@
                                     리뷰조회
                                 </a>
                             </li>
-                            <li class="non-clcik">
+                            <li class="/cookTeacher/views/cs/QnAhistory">
                                 <a href="">
                                     문의내역
                                 </a>
@@ -56,17 +95,38 @@
                 </div>
                 <div id="mypage-right">
                     <h2 id="head-aticle">
-                        회원정보
+                        문의내역
                     </h2>
                     <div id="line"></div>
                     <div id="board-container">
                     	<!-- *****************************여기 작성하면 댐!**************************** -->
                     	
+                    	<div class="title">
+							<!-- 문의 게시판 목록 -->
+							<div>글번호</div>
+							<div>제목</div>
+							<div>작성일시</div>
+							<div>답변여부</div>
+						</div>
+						
+						<div class="list">
+							
+							<div>1</div>
+							<div>제목</div>
+							<div>작성일시</div>
+							<div>답변여부</div>
+							
+							<%-- <%for(int i = 0; i<QNAList.size(); i++){ %>
+								<div><%= QNAList.get(i).getQnaNo() %></div>
+								<div><a href="/cookTeacher/cs/QnA/detail?no=<%= QNAList.get(i).getQnaNo() %>"><%= QNAList.get(i).getTitle() %></a></div>
+								<div><%= QNAList.get(i).getQnaDate() %></div>
+								<div><!-- 댓글 갯수 혹은 Y/N으로 표현 -->Y</div>
+							<%} %> --%>
+			
+						</div>
                     	
                     	
-                    	짜짠.
-                    	
-                    	
+                    	<!-- *****************************여기까지!**************************** -->
                     </div>
                 </div>
             </div>

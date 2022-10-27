@@ -101,7 +101,7 @@ main>.list>div{
 			<div class="name">
 				<!-- 게시판 이름 -->
 				<div id="qna">QnA</div>
-			</div><br><br><br><br><br>
+			</div><br><br><br><br>
 
 			<div class="title">
 				<!-- 문의 게시판 목록 -->
@@ -111,7 +111,6 @@ main>.list>div{
 				<div>작성일시</div>
 			</div>
 			<div class="list">
-				<!-- 짜가 목록 나중에 지움 -->
 				
 				<%for(int i = 0; i<QNAList.size(); i++){ %>
 					<div><%= QNAList.get(i).getQnaNo() %></div>
@@ -139,6 +138,7 @@ main>.list>div{
 			<%if(session.getAttribute("loginMember") != null){ %>
 				<div id="writebtn"><a href="/cookTeacher/cs/QnA/write">글쓰기</a></div>
 			<%} %>
+			
 
 		</main>
 		<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->

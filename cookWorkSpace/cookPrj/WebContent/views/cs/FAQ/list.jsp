@@ -102,7 +102,7 @@ main>.list>div{
 			<div class="name">
 				<!-- 게시판 이름 -->
 				<div id="faq">FAQ 자주묻는질문</div>
-			</div>
+			</div><br><br><br><br>
 
 			<div class="title">
 				<!-- 문의 게시판 목록 -->
@@ -133,11 +133,17 @@ main>.list>div{
 		        <%} %>
 			</div>
 			
+			<!-- 관리자일 때 FAQ글 작성 -->
 			<%if(session.getAttribute("loginMember") != null &&
 				loginMember.getId().equals("admin")){ %>
 				<div id="writebtn"><a href="/cookTeacher/cs/FAQ/write">글쓰기</a></div>
 			<%} %>
 
+			<!-- 일반회원일 때 QNA글 작성 -->
+			<%if(session.getAttribute("loginMember") != null){ %>
+				<div id="writebtn"><a href="/cookTeacher/cs/QnA/write">문의하기</a></div>
+			<%} %>
+			
 		</main>
 		<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
 	</div>

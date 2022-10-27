@@ -90,6 +90,22 @@ public class FAQService {
 				
 		return result;
 	}
+
+	public int delete(String fno) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.delete(conn, fno);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 	
 
 }

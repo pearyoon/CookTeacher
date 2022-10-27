@@ -84,4 +84,21 @@ public class QNAService {
 		return result;
 	}
 
+	public int delete(String qno) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+				
+		int result = dao.delete(conn, qno);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
 }

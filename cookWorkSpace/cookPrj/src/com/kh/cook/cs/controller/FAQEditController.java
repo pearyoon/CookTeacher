@@ -12,7 +12,7 @@ import com.kh.cook.cs.service.FAQService;
 import com.kh.cook.cs.vo.CSVo;
 
 @WebServlet(urlPatterns="/cs/FAQ/edit")
-public class FAQEditService extends HttpServlet{
+public class FAQEditController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

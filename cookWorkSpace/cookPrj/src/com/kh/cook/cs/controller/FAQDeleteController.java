@@ -8,25 +8,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.cook.cs.service.QNAService;
+import com.kh.cook.cs.service.FAQService;
 
-@WebServlet(urlPatterns="/cs/QnA/delete")
-public class QNADeleteController extends HttpServlet{
-	
+@WebServlet(urlPatterns="/cs/FAQ/delete")
+public class FAQDeleteController extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String Qno = req.getParameter("no");
+		String Fno = req.getParameter("no");
 		
-		int result = new QNAService().delete(Qno);
+		int result = new FAQService().delete(Fno);
 		
 		if(result == 1) {
 			req.getSession().setAttribute("alertMsg", "문의글이 삭제되었습니다.");
-			resp.sendRedirect("/cookTeacher/cs/QnA/list");
+			resp.sendRedirect("/cookTeacher/cs/FAQ/list");
 		} else {
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 	
 	}
-
 }
