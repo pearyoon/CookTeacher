@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    //List<CSVo> QNAList = (List<CSVo>)request.getAttribute("QNAList");
+    List<CSVo> myQNAList = (List<CSVo>)request.getAttribute("myQNAList");
     %>
 <!DOCTYPE html>
 <html>
@@ -116,12 +116,12 @@
 							<div>작성일시</div>
 							<div>답변여부</div>
 							
-							<%-- <%for(int i = 0; i<QNAList.size(); i++){ %>
-								<div><%= QNAList.get(i).getQnaNo() %></div>
-								<div><a href="/cookTeacher/cs/QnA/detail?no=<%= QNAList.get(i).getQnaNo() %>"><%= QNAList.get(i).getTitle() %></a></div>
-								<div><%= QNAList.get(i).getQnaDate() %></div>
+							<%for(int i = 0; i<myQNAList.size(); i++){ %>
+								<div><%= myQNAList.get(i).getQnaNo() %></div>
+								<div><a href="/cookTeacher/cs/QnA/detail?no=<%= myQNAList.get(i).getQnaNo() %>"><%= myQNAList.get(i).getTitle() %></a></div>
+								<div><%= myQNAList.get(i).getQnaDate() %></div>
 								<div><!-- 댓글 갯수 혹은 Y/N으로 표현 -->Y</div>
-							<%} %> --%>
+							<%} %> 
 			
 						</div>
                     	

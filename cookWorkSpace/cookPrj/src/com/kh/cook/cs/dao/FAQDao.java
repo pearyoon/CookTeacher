@@ -167,7 +167,7 @@ public class FAQDao {
 
 	public int updateFAQone(Connection conn, CSVo FAQvo) {
 		
-		String sql = "UPDATE QNA SET TITLE = ?, CONT = ?, MODIFY_DATE = SYSDATE WHERE QNA_NO = ?";
+		String sql = "UPDATE QNA SET TITLE = ?, CONT = ?, EDIT_DATE = SYSDATE WHERE QNA_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -194,7 +194,7 @@ public class FAQDao {
 	//글 삭제
 	public int delete(Connection conn, String fno) {
 		
-		String sql = "UPDATE QNA SET DELETE_YN = 'Y' WHERE NO = ?";
+		String sql = "UPDATE QNA SET DELETE_YN = 'Y' WHERE QNA_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
