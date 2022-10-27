@@ -230,10 +230,10 @@ public class MemberDao {
 	}
 
 	public String findPwd(MemberVo vo, Connection conn) {
-		String sql = "SELECT ID FROM MEMBER WHERE ID = ? AND PHONE = ? AND EMAIL =?";
+		String sql = "SELECT NO FROM MEMBER WHERE ID = ? AND PHONE = ? AND EMAIL =?";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
-		String memberId = null;
+		String no = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -244,7 +244,7 @@ public class MemberDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				memberId = rs.getString("ID");
+				no = rs.getString("NO");
 			}
 			
 		} catch (SQLException e) {
@@ -254,7 +254,49 @@ public class MemberDao {
 			close(rs);
 		}
 		
-		return memberId;
+		return no;
+		
+	}
+
+	public int modifyPwd(MemberVo vo, Connection conn) {
+		String sql = "UPDATE MEMBER SET PWD = ? WHERE NO = ? AND QUIT_YN = 'N'";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getPwd());
+			pstmt.setString(2, vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int quit(Connection conn, MemberVo vo) {
+		String sql = "UPDATE MEMBER SET QUIT_YN = 'Y' WHERE NO = ? AND QUIT_YN = 'N'";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 		
 	}
 

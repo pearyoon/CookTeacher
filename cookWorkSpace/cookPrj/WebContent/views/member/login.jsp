@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	session.removeAttribute("no");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +29,10 @@
 			<form action="/cookTeacher/member/login" method="post"  onsubmit="return checkLogin();">
                <div id="login-top">
                    <div>
-                       <input id="memberId" type="text" name="memberId" placeholder="아이디를 입력해주세요.">
+                       <input id="memberId" class="focus" type="text" name="memberId" placeholder="아이디를 입력해주세요.">
                    </div>
                    <div>
-                       <input id="memberPwd" type="password" name="memberPwd" placeholder="비밀번호를 입력해주세요.">
+                       <input id="memberPwd" class="focus" type="password" name="memberPwd" placeholder="비밀번호를 입력해주세요.">
                    </div>
                    <div class="hidden-box">
                         <i class="bi bi-exclamation-circle"></i>
@@ -86,6 +89,19 @@
             $('.hidden-box').removeClass('hidden-box');
         </c:if>
 
+        let inputArr = $('.focus');
+        for(let i = 0; i < inputArr.length; i++){
+            inputArr[i].addEventListener('focus',()=>{
+                inputArr[i].style.border="1px solid rgb(51, 51, 51)";
+            });
+        }
+
+
+        for(let i = 0; i < inputArr.length; i++){
+            inputArr[i].addEventListener('blur',()=>{
+                inputArr[i].style.border="1px solid rgb(221, 221, 221)";
+            });
+        }
 
     </script>
 </body>

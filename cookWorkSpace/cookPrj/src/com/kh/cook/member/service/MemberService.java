@@ -1,6 +1,9 @@
 package com.kh.cook.member.service;
 
-import static com.kh.cook.common.JDBCTemplate.*;
+import static com.kh.cook.common.JDBCTemplate.close;
+import static com.kh.cook.common.JDBCTemplate.commit;
+import static com.kh.cook.common.JDBCTemplate.getConnection;
+import static com.kh.cook.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 
@@ -107,11 +110,49 @@ public class MemberService {
 	public String findPwd(MemberVo vo) {
 		Connection conn = getConnection();
 		
-		String memberId = dao.findPwd(vo, conn);
+		String no = dao.findPwd(vo, conn);
 		
 		close(conn);
 		
-		return memberId;
+		return no;
+	}
+	public int modifyPwd(MemberVo vo) {
+		Connection conn = getConnection();
+		
+		int result = dao.modifyPwd(vo, conn);
+		
+		if(result == 1) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	public int quit(MemberVo vo) {
+		
+		Connection conn = getConnection();
+		
+		MemberVo checkMember = dao.selectOne(vo,conn); 
+				
+		int result = 0;
+		
+		if(checkMember != null) {
+			result = dao.quit(conn,vo);
+		}
+		
+		
+		if(result == 1) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 
 

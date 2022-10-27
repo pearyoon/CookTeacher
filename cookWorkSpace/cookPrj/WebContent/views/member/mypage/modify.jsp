@@ -13,8 +13,10 @@
 
 <script type="text/javascript" defer src="/cookTeacher/resources/js/member/modify.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
@@ -86,7 +88,7 @@
 						            </div>
 						            <div class="input-wrap">
 						                <div>
-						                    <input type="password" id="memberPwd1" name="memberPwd1" placeholder="비밀번호를 입력해주세요.">
+						                    <input type="password" id="memberPwd1" class="focus" name="memberPwd1" placeholder="비밀번호를 입력해주세요.">
 						                </div>
 						                <div>
 						                    <p id="hidden-pwd1"></p>
@@ -100,7 +102,7 @@
 						            </div>
 						            <div class="input-wrap">
 						                <div>
-						                    <input type="password" id="memberPwd2" name="memberPwd2" placeholder="비밀번호를 한번 더 입력해주세요.">
+						                    <input type="password" id="memberPwd2" class="focus" name="memberPwd2" placeholder="비밀번호를 한번 더 입력해주세요.">
 						                </div>
 						                <div>
 						                    <p id="hidden-pwd2"></p>
@@ -128,7 +130,7 @@
 						            </div>
 						            <div class="input-wrap">
 						                <div>
-						                    <input type="text" id="memberNick" name="memberNick" placeholder="닉네임을 입력해주세요." value="${loginMember.nick}">
+						                    <input type="text" id="memberNick" class="focus" name="memberNick" placeholder="닉네임을 입력해주세요." value="${loginMember.nick}">
 						                </div>
 						                <div>
 						                    <p id="hidden-nick"></p>
@@ -146,7 +148,7 @@
 						            </div>
 						            <div class="input-wrap">
 						                <div>
-						                    <input type="text" id="email" name="email" placeholder="메일을 입력해주세요." value="${loginMember.email}">
+						                    <input type="text" id="email" class="focus" name="email" placeholder="메일을 입력해주세요." value="${loginMember.email}">
 						                </div>
 						                <div>
 						                    <p id="hidden-email"></p>
@@ -164,7 +166,7 @@
 						            </div>
 						            <div class="input-wrap">
 						                <div>
-						                    <input type="text" id="phone" name="phone" placeholder="숫자만 입력해주세요." oninput="autoHyphen(this)"  value="${loginMember.phone}" maxlength="13" >
+						                    <input type="text" id="phone" class="focus" name="phone" placeholder="숫자만 입력해주세요." oninput="autoHyphen(this)"  value="${loginMember.phone}" maxlength="13" >
 						                </div>
 						                <div>
 						                    <p id="hidden-phone"></p>
@@ -178,7 +180,7 @@
 						            </div>
 						            <div class="input-wrap">
 						                <div>
-						                    <input type="text" id="addr" name="addr" placeholder="주소를 입력해주세요." value="${loginMember.addr}" readonly>
+						                    <input type="text" id="addr" class="focus" name="addr" placeholder="주소를 입력해주세요." value="${loginMember.addr}" readonly>
 						                </div>
 						                <div>
 						                    <p id="hidden-addr"></p>
@@ -194,7 +196,7 @@
 									<div></div>
 									<div class="input-wrap">
 										<div>
-											<input type="text" id="detailAddr" name="detailAddr" placeholder="나머지 주소를 입력해주세요." value="${loginMember.detailAddr}" readonly>
+											<input type="text" id="detailAddr" class="focus" name="detailAddr" placeholder="나머지 주소를 입력해주세요." value="${loginMember.detailAddr}" readonly>
 										</div>
 										<div>
 											<p id="hidden-detailAddr"></p>

@@ -15,7 +15,7 @@ import com.kh.cook.member.vo.MemberVo;
 public class MemberModifyController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		req.getRequestDispatcher("/views/member/mypage/modify.jsp").forward(req, resp);
 	}
 	
@@ -55,7 +55,7 @@ public class MemberModifyController extends HttpServlet{
 		if(updateMember != null) {
 			ss.setAttribute("alertMsg", "회원정보 수정 완료!");
 			ss.setAttribute("loginMember", updateMember);
-			resp.sendRedirect("/cookTeacher/login/mypage/member/modify");
+			resp.sendRedirect("/cookTeacher/login/mypage/member/check");
 		} else {
 			req.setAttribute("errorMsg", "회원수정실패");
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);

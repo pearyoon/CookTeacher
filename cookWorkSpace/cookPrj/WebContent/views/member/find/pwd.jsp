@@ -24,7 +24,7 @@
                     <div class="find-items">
                         <label for="memberId">아이디</label>
                         <div>
-                            <input id="memberId" type="text" name="memberId" placeholder="아이디를 입력해주세요.">
+                            <input id="memberId" class="focus" type="text" name="memberId" placeholder="아이디를 입력해주세요.">
                         </div>
                     </div>
                         <div class="hidden-box">
@@ -33,7 +33,7 @@
                     <div class="find-items">
                         <label for="phone">휴대폰</label>
                         <div>
-                            <input id="phone" type="text" name="phone" placeholder="번호만 입력해주세요." oninput="autoHyphen(this)" maxlength="13" >
+                            <input id="phone" class="focus" type="text" name="phone" placeholder="번호만 입력해주세요." oninput="autoHyphen(this)" maxlength="13" >
                         </div>
                     </div>
                         <div class="hidden-box">
@@ -42,7 +42,7 @@
                     <div class="find-items">
                         <label for="email">이메일</label>
                         <div>
-                            <input id="email" type="text" name="email" placeholder="이메일을 입력해주세요.">
+                            <input id="email" class="focus" type="text" name="email" placeholder="이메일을 입력해주세요.">
                         </div>
                     </div>
                     <div class="hidden-box">
@@ -61,8 +61,20 @@
     </div>
 
     <script>
-        // 아이디
+        let inputArr = $('.focus');
+        for(let i = 0; i < inputArr.length; i++){
+            inputArr[i].addEventListener('focus',()=>{
+                inputArr[i].style.border="1px solid rgb(51, 51, 51)";
+            });
+        }
 
+
+        for(let i = 0; i < inputArr.length; i++){
+            inputArr[i].addEventListener('blur',()=>{
+                inputArr[i].style.border="1px solid rgb(221, 221, 221)";
+            });
+        }
+        // 아이디
 
         $('#memberId').keyup(function(){
 

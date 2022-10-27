@@ -1,0 +1,138 @@
+#container>div{
+    box-sizing: border-box;
+}
+
+#container{
+    position: absolute;
+    padding-bottom: 50px;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+
+main{
+    width: 640px;
+    margin: 0px auto;
+}
+
+main>div:first-child{
+    padding: 50px 0px 51px;
+    border-bottom: 2px solid rgb(51, 51, 51);
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+.middle-wrap{
+    color: rgb(102, 102, 102);
+    line-height: 22px;
+}
+.middle-flex{
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 0px 10px 20px;
+}
+
+.flex-top{
+    width: 139px;
+    padding-top: 12px;
+}
+
+.flex-top>div{
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    line-height: 20px;
+}
+
+.flex-bottom{
+    flex: 1 1 0%;
+    padding-top: 10px;
+}
+
+.flex-bottom>div{
+    display: block;
+    padding: 0px 10px 10px 0px;
+    font-weight: normal;
+    color: #255D00;
+}
+
+li{
+    font-size: 13px;
+}
+
+.input-area{
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.input-area>div:first-child{
+    width: 139px;
+    padding-top: 12px;
+}
+
+.input-area label{
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    line-height: 20px;
+}
+
+.input-area>div:last-child{
+    width: 332px;
+    height: 48px;
+}
+
+.input-area input{
+    width: 100%;
+    height: 46px;
+    padding: 0px 11px 1px 15px;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 221, 221);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgb(51, 51, 51);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.btn-area{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 40px 0px 80px;
+}
+.btn-area span{
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+}
+.btn-area>button[type=button]{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    height: 44px;
+    color: #255D00;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #255D00;
+    width: 120px;
+    margin: 0px 4px;
+    border-radius: 3px;
+}
+
+.btn-area>button[type=submit]{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    height: 44px;
+    color: rgb(255, 255, 255);
+    background-color: #255D00;
+    border: 0px none;
+    width: 120px;
+    margin: 0px 4px;
+    border-radius: 3px;
+}

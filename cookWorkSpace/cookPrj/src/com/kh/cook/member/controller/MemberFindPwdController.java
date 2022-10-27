@@ -31,11 +31,12 @@ public class MemberFindPwdController extends HttpServlet{
 		vo.setPhone(phone);
 		vo.setEmail(email);
 		
-		String memberId = new MemberService().findPwd(vo);
+		String no = new MemberService().findPwd(vo);
 		
-		if(memberId != null) {
+		if(no != null) {
 			// 찾기 성공 1
-			resp.getWriter().write(memberId);
+			req.getSession().setAttribute("no", no);
+			resp.getWriter().write(no);
 		} else {
 			// 찾기 실패 0
 			resp.getWriter().write("findFail");

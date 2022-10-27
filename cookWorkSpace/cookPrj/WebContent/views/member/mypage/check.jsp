@@ -114,6 +114,15 @@
         <%@include file="/views/common/footer.jsp" %>
     </div>
 	<script>
+        $('#memberPwd').focus(function(){
+            $('#memberPwd').css("border", "1px solid rgb(51, 51, 51)");
+        });
+
+        $('#memberPwd').blur(function(){
+            $('#memberPwd').css("border", "1px solid rgb(221, 221, 221)");
+        });
+            
+
       function checkLogin(){
     	  const memberPwd = $('#memberPwd').val();
           const pwdReg = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;

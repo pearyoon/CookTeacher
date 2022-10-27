@@ -13,7 +13,6 @@ import com.kh.cook.member.service.MemberService;
 public class MemberDupIdController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		resp.setContentType("text/plain; charset=UTF-8;");
 		
 		String id = req.getParameter("inputId");
 		
