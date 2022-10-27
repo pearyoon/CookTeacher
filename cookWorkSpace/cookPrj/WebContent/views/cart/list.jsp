@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
 								
-                                <form id="product-area" action="/cookTeacher/order/info" method="post">
+                                <form id="product-area" onsubmit="cookOrder()" action="/cookTeacher/order/info" method="post">
                                     <ul>
                                         <c:if test="${empty cartList}">
                                             <div class="none-cart">
@@ -52,7 +52,7 @@
                                         </c:if>
                                    		<c:forEach items="${cartList}" var="cartItem">
                                         <li class="product">
-                                            <input type="checkbox" name="check" value="${cartItem.prodNo}">
+                                            <input type="checkbox" name="check" value="${cartItem.prodNo}" onchange="cookCheck()">
                                             <div class="thumb">
                                                 <img src="<c:url value="/resources/img/product/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
                                             </div>
@@ -66,10 +66,6 @@
                                             </div>
                                             <div class="price"><fmt:formatNumber value="${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" pattern="#,###"/>원</div>
                                             <button type="button" class="remove" onclick="deleteOne(${cartItem.prodNo})"></button>
-                                            <input type="hidden" name="prodNo" value="${cartItem.prodNo}">
-                                            <input type="hidden" name="prodName" value="${cartItem.name}">
-                                            <input type="hidden" name="cnt" value="${cartItem.cnt}">
-                                            <input type="hidden" name="price" value="${cartItem.price}">
                                         </li>
                                     </c:forEach>
                                        <c:set var="total" value="0" />
@@ -108,7 +104,7 @@
                                     <div class="sum-cnt">총 ${totalCnt}건</div>
                                     <div class="sum-amt"><strong><fmt:formatNumber value="${total + deliveryFee}" pattern="#,###"/></strong>원</div>
                                 </div>
-                                <input type="submit" value="주문하기" onclick="order()" id="order">
+                                <input type="submit" value="주문하기" form="product-area" id="order">
                             </div>
                         </div>
 
