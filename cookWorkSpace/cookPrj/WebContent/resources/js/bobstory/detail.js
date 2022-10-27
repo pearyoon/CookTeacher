@@ -20,24 +20,22 @@ function delete_b(){
       })
 }
 
-// function bLike(){
+function bLike(){
+  console.log('${no}');
+  let cnt = '${vo.cLike}';
+  let no = '${vo.no}';
   
-//   let cnt = '${vo.cLike}';
-//   let num = '${vo.no}';
-//   let cnt1 = $('#좋아요아이디').text(plusCnt);
-  
-//   $.ajax({
-//     url : "/cookTeacher/bobstory/boblike",
-//     type : "get",
-//     data : {"no" : no},
-//     success : function(result){
-//       if(result == 1){
-//         let plusCnt = cnt+1;
-//         $('#좋아요아이디').text(plusCnt);
-//       }
-//     },
-//     error : function(){
+  $.ajax({
+      url : "/cookTeacher/bobstory/boblike",
+      type : "post",
+      data : {"no" : no},
+      success : function(result){
+          if(result != ""){
+            $('#like_btn').text(result);
+          }
+      },
+      error : function(){
 
-//     }
-//   });
-// }
+      }
+  });
+}

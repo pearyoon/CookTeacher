@@ -41,8 +41,9 @@
 				<input type="text" name="title" placeholder="제목을 입력해주세요." required>
 				<hr>
 				<textarea name="content" id="text" cols="10" rows="20" style="width: 676px; height: 270;" placeholder="내용을 입력해주세요" required resize="none"></textarea>
+				<div class="select_img"><img src="" /> </div>
 				<div class="upfile">
-					<input type="file" name="file">
+					<input type="file" name="file" id="bobImg">
 				</div>
 				<div class="upload">
 					<input type="submit" id="btn-1" value="글쓰기" onclick="up_ok();">

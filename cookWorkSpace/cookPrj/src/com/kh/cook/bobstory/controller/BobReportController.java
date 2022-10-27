@@ -17,7 +17,7 @@ public class BobReportController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//데이터 꺼내기
 		String no = req.getParameter("no");
-		
+		System.out.println(no);
 		//디비 다녀오기
 		int result = new BobstoryService().report(no);
 		

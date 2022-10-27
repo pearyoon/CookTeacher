@@ -438,4 +438,35 @@ public class BobstoryDao {
 		
 	}
 
+	//좋아요 수 가져오기
+	public String selectLike(Connection conn, String no) {
+		//sql
+		
+		String sql = "SELECT C_LIKE FROM BOBSTORY WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String plusLike = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				plusLike = rs.getString("C_LIKE");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return plusLike;
+	}
+
 }

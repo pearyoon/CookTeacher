@@ -12,4 +12,12 @@ function up_ok(){
 
 }
 
-
+$('#bobImg').change(function(){
+    if(this.file && this.files[0]){
+        var reader = new FileReader;
+        reader.onload = function(data){
+            $('.select_img img').attr("src", data.target.result).width(500);
+        }
+        reader.readAsDataURL(this.files[0]);
+    }
+});

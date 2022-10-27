@@ -14,24 +14,14 @@ import com.kh.cook.bobstory.service.BobstoryService;
 public class BobLikeController extends HttpServlet{
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//데이터 가져오기
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String no = req.getParameter("no");
 		
-		//디비 다녀오기
-		int result = new BobstoryService().plusLikeOne(no);
+		System.out.println(no);
 		
-		//화면 선택
-		if(result == 1) {
-			//좋아요 누르기 성공
-			resp.sendRedirect("/cookTeacher/bobstory/detail?bno="+ no);
-		}else {
-			//좋아요 누르기 실패
-			req.setAttribute("msg", "좋아요 누르기 실패");
-			req.getRequestDispatcher("/views/common/erroePage.jsp").forward(req, resp);
-			
-		}
+		String result = new BobstoryService().plusLikeOne(no);
 		
+		resp.getWriter().write(result);
+	
 	}
-
 }
