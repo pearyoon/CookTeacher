@@ -11,12 +11,13 @@ public class MenuVo {
 	private String menuName;
 	private String menuInfo;
 	private String imgPath;
+	private String filePath;
 	public MenuVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public MenuVo(String recipe, String menuProd, String cal, String recommend, String menuCateNo, String no,
-			String menuName, String menuInfo, String imgPath) {
+			String menuName, String menuInfo, String imgPath, String filePath) {
 		super();
 		this.recipe = recipe;
 		this.menuProd = menuProd;
@@ -27,12 +28,13 @@ public class MenuVo {
 		this.menuName = menuName;
 		this.menuInfo = menuInfo;
 		this.imgPath = imgPath;
+		this.filePath = filePath;
 	}
 	@Override
 	public String toString() {
 		return "MenuVo [recipe=" + recipe + ", menuProd=" + menuProd + ", cal=" + cal + ", recommend=" + recommend
 				+ ", menuCateNo=" + menuCateNo + ", no=" + no + ", menuName=" + menuName + ", menuInfo=" + menuInfo
-				+ ", imgPath=" + imgPath + "]";
+				+ ", imgPath=" + imgPath + ", filePath=" + filePath + "]";
 	}
 	public String getRecipe() {
 		return recipe;
@@ -88,6 +90,13 @@ public class MenuVo {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	
 	
 	
 	
