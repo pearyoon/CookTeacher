@@ -118,7 +118,7 @@
                                 data : {"no" : no } ,
                                 success : function(result){
                                     if(result != ""){
-										$('#')
+										$('#recomm').text(result);
                                     }
                                 },
                                 error : function(){

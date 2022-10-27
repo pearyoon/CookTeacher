@@ -10,6 +10,7 @@ import java.util.List;
 import javax.naming.spi.DirStateFactory.Result;
 
 import com.kh.cook.common.JDBCTemplate;
+import com.kh.cook.menu.vo.MenuCateVo;
 import com.kh.cook.menu.vo.MenuVo;
 import com.kh.cook.product.vo.ProductVo;
 
@@ -467,6 +468,8 @@ public class MenuDao {
 			
 			pstmt.setString(1, no);
 			
+			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				plusRecomm = rs.getString("RECOMMEND");
 				
@@ -481,6 +484,108 @@ public class MenuDao {
 		}
 		
 		return plusRecomm;
+	}
+
+	public List<MenuCateVo> selectMenuCateList(Connection conn) {
+		String sql = "SELECT MENU_CATE_NO, MENU_TYPE FROM MENU_CATE";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MenuCateVo> MenucateList = new ArrayList<MenuCateVo>();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String menuCateNo = rs.getString("MENU_CATE_NO");
+				String menuType = rs.getString("MENU_TYPE");
+				
+				MenuCateVo vo = new MenuCateVo(menuCateNo, menuType);
+				
+
+				
+				MenucateList.add(vo);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+			
+		}
+		
+		return MenucateList;
+	
+	}
+
+	public String menuNum(Connection conn) {
+		String sql = "SELECT COUNT (*) + 1 AS MENUNUM\r\n"
+				+ "FROM MENU";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String menuNum = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			
+			if(rs.next()) {
+				menuNum = rs.getString("MENUNUM");
+				System.out.println(menuNum);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+		}
+		
+		return menuNum;
+		
+	}
+
+	public ProductVo changeProdNo(Connection conn, String prodInput) {
+		String sql = "SELECT PROD_NO, NAME FROM PRODUCT WHERE NAME LIKE '%?%'";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProductVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, prodInput);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String prodNo = rs.getString("PROD_NO");
+				String name = rs.getString("NAME");
+				
+				vo = new ProductVo();
+				vo.setProdNo(prodNo);
+				vo.setName(name);
+				
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+		}
+		
+		return vo;
 	}
 
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.menu.dao.MenuDao;
+import com.kh.cook.menu.vo.MenuCateVo;
 import com.kh.cook.menu.vo.MenuVo;
 import com.kh.cook.product.vo.ProductVo;
 
@@ -110,6 +111,7 @@ public class MenuService {
 		return voList;
 	}
 
+	//조회수 증가
 	public String plusRecommOne(String no) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -127,6 +129,38 @@ public class MenuService {
 		JDBCTemplate.close(conn);
 		
 		return recomm;
+	}
+
+	//레시피 카테고리 조회
+	public List<MenuCateVo> selectMenuCateList() {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<MenuCateVo> menuCateList = new MenuDao().selectMenuCateList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return menuCateList;
+	}
+
+	//레시피 등록 넘버 조회
+	public String menuNum() {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		String result = new MenuDao().menuNum(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	public ProductVo changeProdNo(String prodInput) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ProductVo changeInput = new MenuDao().changeProdNo(conn, prodInput);
+		
+		JDBCTemplate.close(conn);
+		
+		return changeInput;
 	}
 
 

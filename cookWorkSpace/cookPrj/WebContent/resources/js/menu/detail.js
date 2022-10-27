@@ -35,3 +35,19 @@ $('._count :button').on({
         }
     }
 });
+
+// 레시피등록 넘버
+function menuNum() {
+    $.ajax({
+        url : "/cookTeacher/menu/menuNum",
+        type : "post",
+        success : function(result){
+            if(result != ""){
+                $('#re-num').text(result);
+            }
+        },
+        errer : function(){
+            
+        }
+    })
+}

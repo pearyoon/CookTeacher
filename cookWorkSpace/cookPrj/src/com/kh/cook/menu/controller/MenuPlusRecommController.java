@@ -16,8 +16,6 @@ public class MenuPlusRecommController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String no = req.getParameter("no");
 		
-		System.out.println(no);
-		
 		String result = new MenuService().plusRecommOne(no);
 		
 		resp.getWriter().write(result);
