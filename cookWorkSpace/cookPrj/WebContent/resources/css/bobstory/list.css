@@ -70,7 +70,7 @@ thead{
 }
 
 tbody>tr{
-    height: 35px;
+    height: 40px;
 }
 tbody>tr>td{
     vertical-align: middle;
@@ -102,6 +102,6 @@ tbody {
 
 #page-area{
     text-align: center;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
 }

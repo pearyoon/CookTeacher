@@ -88,7 +88,6 @@ thead{
 }
 tr td#img-box{
     margin: 0 auto;
-    height: 260px;
 }
 
 tbody tr td img{
@@ -116,6 +115,7 @@ tbody tr td{
 }
 #like_btn:hover{
     background-color: #398209;
+    border: 3px solid #FFD335;
 }
 
 #report_btn{
