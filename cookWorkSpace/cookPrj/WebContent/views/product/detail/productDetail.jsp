@@ -545,9 +545,9 @@ button[disabled], input[disabled] {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    	<%for(int i = 1; i < rvoList.size(); ++i){%>
+                                    	<%for(int i = 0; i < rvoList.size(); ++i){%>
 					               			<tr>
-						               			<td><%= i %></td>
+						               			<td><%= i+1 %></td>
 		                                        <th>
 		                                            <%= rvoList.get(i).getContent() %>
 		                                        </th>
