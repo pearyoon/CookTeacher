@@ -323,7 +323,7 @@ public class MemberDao {
 	}
 
 	public MemberVo selectGrade(String no, Connection conn) {
-		String sql = "SELECT G.NAME AS GRADE, G.SAVE FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE M.NO = ? AND QUIT_YN = 'N'";
+		String sql = "SELECT M.NICK ,G.NAME AS GRADE, G.SAVE FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE M.NO = ? AND QUIT_YN = 'N'";
 		PreparedStatement pstmt = null;
 		MemberVo vo  = null;
 		ResultSet rs = null;
@@ -337,9 +337,10 @@ public class MemberDao {
 			if(rs.next()) {
 				String grade = rs.getString("GRADE");
 				String save = rs.getString("SAVE");
-				
+				String nick = rs.getString("NICK");
 				vo = new MemberVo();
 				
+				vo.setNick(nick);
 				vo.setGrade(grade);
 				vo.setSave(save);
 				

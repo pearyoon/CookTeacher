@@ -8,6 +8,8 @@
 <title>집밥쿡선생 :: 마이페이지</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/member/mypageInfo.css">
+
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -24,7 +26,7 @@
                     <div id="inner">
                         <ul id="list-menu">
                             <li class="non-clcik">
-                                <a href="<%=root%>/login/mypage/member/check">
+                                <a href="<%=root %>/login/mypage/member/check">
                                     회원정보
                                 </a>
                             </li>

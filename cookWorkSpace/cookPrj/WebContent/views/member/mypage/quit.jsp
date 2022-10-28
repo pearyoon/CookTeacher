@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>집밥쿡선생 :: 탈퇴</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/quit.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
@@ -87,7 +87,10 @@
 			}
 
 		};
-
+		
+		$('button[type="button"]').click(function(){
+			window.location.href = "/cookTeacher/login/mypage/member/check";
+		});
 		
 	</script>
 
