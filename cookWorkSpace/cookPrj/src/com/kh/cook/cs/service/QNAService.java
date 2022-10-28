@@ -59,7 +59,6 @@ public class QNAService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		CSVo QNAvo = dao.selectQNAone(conn,qnaNo);
-		System.out.println(QNAvo);
 		
 		JDBCTemplate.close(conn);
 		

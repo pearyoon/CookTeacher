@@ -135,7 +135,7 @@ main>.list>div{
 			
 			<!-- 관리자일 때 FAQ글 작성 -->
 			<%if(session.getAttribute("loginMember") != null &&
-				loginMember.getId().equals("admin")){ %>
+				loginMember.getId().equals("admin01")){ %>
 				<div id="writebtn"><a href="/cookTeacher/cs/FAQ/write">글쓰기</a></div>
 			<%} %>
 

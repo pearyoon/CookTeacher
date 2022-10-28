@@ -58,16 +58,27 @@ color: #000000;
 	padding: 10px;
 	font-size: small;
 }
-/* 등록 버튼 */
-#writebtn{
-	height: 20px;
-	display: flex;
-	flex-direction: row-reverse;
+/* 등록, 취소 버튼 */
+#writebtn>button{
+	height: 30px;
+	width: 50px;
+	background: #255D00;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
 	font-size: small;
 	margin: 5px;
 }
-#writebtn>a{
-	margin: 10px;
+
+#writebtn{
+	text-align: center;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+#writebtn>button:hover{
+    border: 10px yellow;
+    background-color: #326e0b;
 }
 </style>
 </head>
@@ -94,11 +105,11 @@ color: #000000;
 			<br><br>
 		</div>
 		
-	<%	if(loginMember != null && loginMember.getId().equals("admin")){ %>
+	<%	if(loginMember != null && loginMember.getId().equals("admin01")){ %>
 	<div id=writebtn>
-		<a href="/cookTeacher/cs/FAQ/edit?no=<%= FAQvo.getQnaNo() %>">수정</a>
-		<a href="/cookTeacher/cs/FAQ/delete?no=<%= FAQvo.getQnaNo() %>">삭제</a>
-	</div>		
+		<button type="button" onclick="location.href='/cookTeacher/cs/QnA/edit?no=<%= FAQvo.getQnaNo() %>';">수정</button>
+		<button type="button" onclick="location.href='/cookTeacher/cs/QnA/delete?no=<%= FAQvo.getQnaNo() %>';">삭제</button>
+	</div>			
 	<% } %>
 		
 	<%@include file="/views/common/footer.jsp" %>

@@ -104,15 +104,12 @@ public class QNADao {
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
-				System.out.println("sql문 실행됨");
 				
 				pstmt.setString(1, vo.getNo());
 				pstmt.setString(2, vo.getTitle());
 				pstmt.setString(3, vo.getContent());
-				System.out.println(vo);
 				
 				result = pstmt.executeUpdate();
-				System.out.println("sql추가됨");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
@@ -233,7 +230,7 @@ public class QNADao {
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setString(1, no2);
-				System.out.println(no2);
+
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
@@ -259,7 +256,6 @@ public class QNADao {
 					vo.setQnaCategory(qnaCategory);
 					
 					voList.add(vo);
-					System.out.println(vo);
 				}
 				
 			} catch (SQLException e) {

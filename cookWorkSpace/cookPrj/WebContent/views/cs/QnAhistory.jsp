@@ -111,11 +111,6 @@
 						
 						<div class="list">
 							
-							<div>1</div>
-							<div>제목</div>
-							<div>작성일시</div>
-							<div>답변여부</div>
-							
 							<%for(int i = 0; i<myQNAList.size(); i++){ %>
 								<div><%= myQNAList.get(i).getQnaNo() %></div>
 								<div><a href="/cookTeacher/cs/QnA/detail?no=<%= myQNAList.get(i).getQnaNo() %>"><%= myQNAList.get(i).getTitle() %></a></div>

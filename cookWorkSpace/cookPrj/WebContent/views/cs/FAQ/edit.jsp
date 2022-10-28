@@ -60,13 +60,28 @@ color: #000000;
 	text-align: center;
 	padding: 10px;
 }
-/* 등록 버튼 */
-#writebtn{
-	height: 20px;
-	display: flex;
-	flex-direction: row-reverse;
+
+/* 등록, 취소 버튼 */
+#writebtn input{
+	height: 30px;
+	width: 50px;
+	background: #255D00;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
 	font-size: small;
 	margin: 5px;
+}
+
+#writebtn{
+	text-align: center;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+#writebtn input:hover{
+    border: 10px yellow;
+    background-color: #326e0b;
 }
 </style>
 <body>
@@ -96,7 +111,28 @@ color: #000000;
 				</textarea>
 			<br><br>
 			</div>
-			<div id="writebtn"><input type="submit" value="수정"></div>
+			
+			<div id="writebtn">
+				<input type="button" name="" id="" value="취소" onclick="cancel();">
+				<input type="submit" value="수정">
+			</div>
+			
+				<!-- upload()함수 -->
+			<script>
+				function upload(){
+					if(confirm("자주묻는질문 내용을 수정하시겠습니까?")){
+						return true;
+					}else{
+						alert("수정을 취소합니다.");
+						return false;
+					}
+				}
+				
+				function cancel(){
+					alert("수정을 취소하고 목록으로 돌아갑니다.")
+					location.href="/cookTeacher/cs/FAQ/list"
+				}
+			</script>
 		</form>
 		<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
 	</div>
