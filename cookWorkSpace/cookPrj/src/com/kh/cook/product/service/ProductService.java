@@ -315,6 +315,20 @@ public class ProductService  {
 
 	}
 
+	
+	//관리자가 추가한 상품의 no 값 가져오기
+	public int findProdNo(ProductVo vo) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.FindProdNo(conn, vo);
+		
+		close(conn);
+		
+		return result;
+		
+	}
+
 
 	
 

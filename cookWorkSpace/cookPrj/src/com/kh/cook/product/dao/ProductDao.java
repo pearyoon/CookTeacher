@@ -1034,6 +1034,37 @@ public class ProductDao {
 
 	
 	}
+
+	//관리자가 추가한 식재료 번호 가져오기
+	public int FindProdNo(Connection conn, ProductVo vo) {
+
+		//SQL
+		String sql = "SELECT PROD_NO FROM PRODUCT WHERE NAME = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getName());
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("PROD_NO");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	
+	}
 
 }

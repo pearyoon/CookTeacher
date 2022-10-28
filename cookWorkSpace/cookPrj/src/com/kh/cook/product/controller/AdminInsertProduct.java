@@ -78,6 +78,8 @@ public class AdminInsertProduct extends HttpServlet {
 		//디비 다녀오기
 		int result = new ProductService().insertProduct(vo,avo);
 		List<ReviewVo> rvoList = new ProductService().selectReview(no);
+		//int no = new ProductService().findProdNo(vo);
+		
 		
 		//화면 선택
 		if(result == 1) {
