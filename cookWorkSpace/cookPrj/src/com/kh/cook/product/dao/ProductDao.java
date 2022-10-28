@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.cook.bobstory.vo.AttachmentVo;
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.product.vo.PageVo;
@@ -18,7 +19,7 @@ public class ProductDao {
 	//식재료 목록 조회
 	public List<ProductVo> selectProductList(Connection conn , PageVo pv) {
 		//SQL
-		String sql = "SELECT PROD_NO, CATE_NO, NAME, INFO, DETAIL, PRICE, WEIGHT, STOCK, IMG_PATH, IMG_PATH2, IMG_PATH3, IMG_PATH4 FROM PRODUCT";
+		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT PROD_NO, CATE_NO, NAME, INFO, DETAIL, PRICE, WEIGHT, STOCK, IMG_PATH, IMG_PATH2, IMG_PATH3, IMG_PATH4 FROM PRODUCT)T)WHERE RNUM BETWEEN ? AND ?";
 		//String sql = "SELECT * FROM PRODUCT WHERE MOD(PROD_NO, 2) = 0";
 		
 		
@@ -29,11 +30,11 @@ public class ProductDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-//			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
-//			int end = start + pv.getBoardLimit() + 1;
-//			
-//			pstmt.setInt(1, start);
-//			pstmt.setInt(2, end);
+			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
+			int end = start + pv.getBoardLimit() + 1;
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -170,6 +171,208 @@ public class ProductDao {
 		
 		return result;
 	}
+	
+	//과일채소 갯수 조회
+	public int selectFruitVegeCount(Connection conn) {
+
+		//SQL
+		String sql = "SELECT COUNT(*) AS CNT FROM PRODUCT WHERE CATE_NO = 1";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery(); //rs에 담긴 걸 자바에서 사용하기 편하게
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	//해산물 갯수 조회
+	public int selectSeafoodCount(Connection conn) {
+
+		//SQL
+		String sql = "SELECT COUNT(*) AS CNT FROM PRODUCT WHERE CATE_NO = 2";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery(); //rs에 담긴 걸 자바에서 사용하기 편하게
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	//육류계란 갯수 조회
+	public int selectEggMeatCount(Connection conn) {
+		
+		//SQL
+		String sql = "SELECT COUNT(*) AS CNT FROM PRODUCT WHERE CATE_NO = 3";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery(); //rs에 담긴 걸 자바에서 사용하기 편하게
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	//육류계란 갯수 조회
+	public int selectNoodleBreadCount(Connection conn) {
+		
+		//SQL
+		String sql = "SELECT COUNT(*) AS CNT FROM PRODUCT WHERE CATE_NO = 4";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery(); //rs에 담긴 걸 자바에서 사용하기 편하게
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	//유제품 갯수 조회
+	public int selectDairyCount(Connection conn) {
+		
+		//SQL
+		String sql = "SELECT COUNT(*) AS CNT FROM PRODUCT WHERE CATE_NO = 5";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery(); //rs에 담긴 걸 자바에서 사용하기 편하게
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	//음료 갯수 조회
+	public int selectDrinkCount(Connection conn) {
+		
+		//SQL
+		String sql = "SELECT COUNT(*) AS CNT FROM PRODUCT WHERE CATE_NO = 6";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery(); //rs에 담긴 걸 자바에서 사용하기 편하게
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+		
+	//기타 갯수 조회
+	public int selectEtcCount(Connection conn) {
+		
+		//SQL
+		String sql = "SELECT COUNT(*) AS CNT FROM PRODUCT WHERE CATE_NO = 7";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery(); //rs에 담긴 걸 자바에서 사용하기 편하게
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
 
 	//식재료 리뷰 작성
 	public int insertReview(Connection conn, ReviewVo rvo) {
@@ -267,7 +470,8 @@ public class ProductDao {
 
 		//SQL
 		
-		String sql = "SELECT PROD_NO, CATE_NO, NAME, INFO, DETAIL, PRICE, WEIGHT, STOCK, IMG_PATH, IMG_PATH2, IMG_PATH3, IMG_PATH4 FROM PRODUCT WHERE CATE_NO = 2";
+		//String sql = "SELECT PROD_NO, CATE_NO, NAME, INFO, DETAIL, PRICE, WEIGHT, STOCK, IMG_PATH, IMG_PATH2, IMG_PATH3, IMG_PATH4 FROM PRODUCT WHERE CATE_NO = 2";
+		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM, T.* FROM (SELECT PROD_NO, CATE_NO, NAME, INFO, DETAIL, PRICE, WEIGHT, STOCK, IMG_PATH, IMG_PATH2, IMG_PATH3, IMG_PATH4 FROM PRODUCT WHERE CATE_NO = 2)T)WHERE RNUM BETWEEN ? AND ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -276,9 +480,13 @@ public class ProductDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			rs = pstmt.executeQuery();
+			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
+			int end = start + pv.getBoardLimit() + 1;
 			
-			//System.out.println(rs.next());
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				String prodNo = rs.getString("PROD_NO");
@@ -758,6 +966,73 @@ public class ProductDao {
 		}
 		
 		return result;
+	}
+
+	//관리자 식재료 등록
+	public int insertProduct(Connection conn, ProductVo vo) {
+
+		//SQL (준비, 완성, 실행)
+		String sql = "INSERT INTO PRODUCT (PROD_NO, CATE_NO, NAME, INFO, DETAIL, PRICE, WEIGHT, STOCK , IMG_PATH) VALUES(SEQ_PRODUCT_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?,?)";
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getCateNo());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getInfo());
+			pstmt.setString(4, vo.getDetail());
+			pstmt.setString(5, vo.getPrice());
+			pstmt.setString(6, vo.getWeight());
+			pstmt.setString(7, vo.getStock());
+			pstmt.setString(8, vo.getImgPath());
+			
+			
+			System.out.println("vo.getName : " + vo.getName());
+			
+
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		System.out.println("DAO 쪽 리뷰 인서트 결과" + result);
+		return result;
+	}
+
+	//관리자 식재료 첨부파일 등록
+	public int insertAttachment(Connection conn, AttachmentVo avo) {
+		//SQL
+		
+		String sql = "INSERT INTO PRODUCTATTACHMENT ( NO ,PRODUCT_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_PRODUCTATTACHMENT_NO.NEXTVAL , SEQ_PRODUCT_NO.CURRVAL , ? , ? , ? )";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, avo.getOriginName());
+			pstmt.setString(2, avo.getChangeName());
+			pstmt.setString(3, avo.getFilePath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+
+	
 	}
 	
 

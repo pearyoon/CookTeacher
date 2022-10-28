@@ -34,14 +34,14 @@ public class AdminProductListController extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		listCount = new BobstoryService().selectCount();
+		listCount = new ProductService().selectCount();
 		String pno = req.getParameter("pno");
 		if(pno == null) {
 			pno = "1";
 		}
 		currentPage = Integer.parseInt(pno);
 		pageLimit  = 5;
-		boardLimit = 10;
+		boardLimit = 13;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		

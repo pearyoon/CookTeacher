@@ -5,6 +5,7 @@ import java.util.List;
 
 import static com.kh.cook.common.JDBCTemplate.*;
 
+import com.kh.cook.bobstory.vo.AttachmentVo;
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.product.dao.ProductDao;
 import com.kh.cook.product.vo.PageVo;
@@ -62,7 +63,80 @@ public class ProductService  {
 		
 		return result;
 	}
+	
+	//과일채소 갯수 조회
+	public int selectFruitVegeCount() {
+		Connection conn = getConnection();
 
+		int result = dao.selectFruitVegeCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	//해산물 식재료 갯수 조회
+	public int selectSeafoodCount() {
+		Connection conn = getConnection();
+
+		int result = dao.selectSeafoodCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//육류계란 식재료 갯수 조회
+	public int selectMeatEggCount() {
+		Connection conn = getConnection();
+
+		int result = dao.selectSeafoodCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//면류빵류 식재료 갯수 조회
+	public int selectNoodleBreadCount() {
+		Connection conn = getConnection();
+		
+		int result = dao.selectNoodleBreadCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//유제품 식재료 갯수 조회
+	public int selectDairyCount() {
+		Connection conn = getConnection();
+		
+		int result = dao.selectDairyCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//음료 식재료 갯수 조회
+	public int selectDrinkCount() {
+		Connection conn = getConnection();
+		
+		int result = dao.selectDrinkCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	//기타 식재료 갯수 조회
+	public int selectEtcCount() {
+		Connection conn = getConnection();
+		
+		int result = dao.selectEtcCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	
 
 	//식재료 리뷰 작성
 	public int write(ReviewVo rvo) {
@@ -206,10 +280,45 @@ public class ProductService  {
 
 		int result = dao.selecMyReviewCount(conn, no);
 		
-		JDBCTemplate.close(conn);
+		close(conn);
 		
 		return result;
 	}
+
+
+	//관리자 식재료 등록
+	public int insertProduct(ProductVo vo, AttachmentVo avo) {
+		Connection conn = getConnection(); 
+		
+		System.out.println(vo.getCateNo());
+		
+		//식재료 등록
+		int result = dao.insertProduct(conn, vo);
+		
+		//첨부파일 insert
+		int result2 = 1;
+		if(avo != null) {
+			result2 = dao.insertAttachment(conn, avo);
+		}
+		
+		
+		if(result * result2 == 1) {
+			//성공
+			commit(conn);
+		}else {
+			//실패
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result * result2 ;
+
+	}
+
+
+	
+
+
 
 
 
