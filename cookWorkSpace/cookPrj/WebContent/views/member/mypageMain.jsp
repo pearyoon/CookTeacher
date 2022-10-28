@@ -68,28 +68,6 @@
                     <div id="line"></div>
                     <div id="board-container">
                       
-                        <div>
-                            <div class="flex-box">
-                                <div class="grade-area">
-                                    <i class="bi bi-emoji-sunglasses"></i>
-                                    <div>현재 적립금</div>
-
-                                </div>
-                                <div class="point-area">
-                                    <div>3000P</div>
-                                </div>
-                            </div>
-                            <div class="point-info">
-                                <div>일반 1% 적립</div>
-                                <div>화이트 5% 적립</div>
-                                <div>그린 8% 적립</div>
-                            </div>
-                            <div class="btn-area">
-                                <button class="grade-btn" type="button">
-                                    <span>등급확인</span>
-                                </button>
-                            </div>
-                        </div>
                         
                     </div>
                 </div>
@@ -97,40 +75,7 @@
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
-    <script>
-        $('.grade-btn').click(function(){
-            $.ajax({
-                url : "/cookTeacher/login/mypage/member",
-                method : "POST",
-                success : function(data){
-                    if(data != ""){
-                        const result = JSON.parse(data); 
-
-                        console.log(result.grade);
-
-                        Swal.fire({
-                            title: '회원님은 '+result.grade+'등급 입니다.',
-                            text : result.save+'% 적립',
-                            width: 600,
-                            padding: '3em',
-                            color: '#716add',
-                            background: '#fff url(/images/trees.png)',
-                            backdrop: `
-                                rgba(0,0,123,0.4)
-                                url("/images/nyan-cat.gif")
-                                left top
-                                no-repeat
-                            `
-                        });
-                    }
-                    window.location
-                },
-                error : function(){
-
-                },
-            });
-        });
-    </script>
+    
 
 </body>
 </html>

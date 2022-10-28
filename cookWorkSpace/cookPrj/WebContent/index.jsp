@@ -41,8 +41,9 @@
                         <img src="/cookTeacher/resources/img/test3.jpg" alt="조회수높은레시피띄어주기(레시피게시판담당)" width="1050px" height="400px">
                     </a>
                 </div> 
-                
+
             </div>
+
             <div id="slide-btn-area">
                 <button id="slide-btn1"></button>
                 <button id="slide-btn2"></button>

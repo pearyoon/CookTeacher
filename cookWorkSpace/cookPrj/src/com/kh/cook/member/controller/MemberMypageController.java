@@ -17,7 +17,7 @@ import com.kh.cook.member.vo.MemberVo;
 public class MemberMypageController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/views/member/mypageMain.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/common/mypage.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
