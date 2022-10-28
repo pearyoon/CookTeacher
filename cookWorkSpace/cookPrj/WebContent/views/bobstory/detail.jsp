@@ -96,7 +96,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%if(attVo != null){%>
+					<%if(vo.getNo().equals(attVo.getNo())){%>
 						<tr>
 							<td id="img-box"><img alt="사진" src="<%=root %>/<%=attVo.getFilePath() %>/<%=attVo.getChangeName() %>"></td>
 						</tr>
@@ -114,8 +114,7 @@
 				<!-- <input type="button" id="like_btn" value="좋아요" onclick="bLike();"> -->
 				<!-- <input type="button" id="report_btn" value="신고" onclick="location.hred='/cookTeacher/bobstory/report'"> -->
 			</div>
-			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter()) && loginMember.getNick().equals("관리자")){%>
-			<%System.out.println(loginMember.getNick().equals("관리자")); %>
+			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter())){%>
 			<div id="main-bot">
 				<a href="/cookTeacher/bobstory/edit?no=<%=vo.getNo()%>">수정하기</a>
 				<!-- <button type="button" onclick="delete_b()">삭제하기</button> -->
