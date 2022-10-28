@@ -15,6 +15,7 @@
 <title>cookTeacher</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" defer src="/cookTeacher/resources/js/menu/detail.js"></script>
+
 <%
 	MenuVo vo = (MenuVo)request.getAttribute("vo");
 	List<ProductVo> prodList = (List<ProductVo>)request.getAttribute("prodList");
@@ -93,7 +94,7 @@
                 <div id="middle">
                     <div class="middle" style="font-size: 1.3rem;" >
                         <label id="kcal"><%=vo.getCal() %></label>
-                        <img alt="" src="/cookTeacher/resources/img/icons/칼로리.jpg" alt="식재료게시판담당" id="imgid" width="35px" height="30px" onclick="ChnImg()">
+                        <img alt="" src="/cookTeacher/resources/img/icons/칼로리.jpg" alt="식재료게시판담당" id="imgid" width="35px" height="30px" onclick="likeUp();">
                     </div>
                     <div class="middle" style="text-align: center; font-size: 0.8rem; font-weight: 700; line-height: 1.2rem; padding-left: 20px;">
                     <!-- 수정할 것!! => 메인이랑 레시피 연결 후 -->
@@ -102,13 +103,13 @@
                             <br>궁금하다면?
                         </a>
                     </div>
-                    <div class="middle" style="font-size: 1.5rem;" style="margin-right: 10px;" onclick="plusRecomm();">
+                    <div class="middle" style="font-size: 1.5rem;" style="margin-right: 10px;" onclick="plusRecomm(); likeUp();">
                         <img alt="" src="/cookTeacher/resources/img/icons/좋(초).jpg"  alt="식재료게시판담당" id="imgid"  width="25px" height="25px">
                         <label id="recomm" for="imgid"><%=vo.getRecommend()%></label>
                     </div>
                 </div>
     
-    				<script type="text/javascript">
+    				<script>
     					function plusRecomm() {
                             // console.log('${no}')
                             let cnt = '${vo.recommend}';
@@ -127,6 +128,18 @@
                                 }
                             })
 						}
+    					
+    					
+    					function likeUp(){
+    						Swal.fire({
+    							  position: 'top-end',
+    							  icon: 'success',
+    							  title: '추천 좋아요!',
+    							  showConfirmButton: false,
+    							  timer: 1500
+    							})
+    					}
+    					
     				</script>
 
                     <!-- 3 -->

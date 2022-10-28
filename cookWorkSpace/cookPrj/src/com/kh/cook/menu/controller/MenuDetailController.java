@@ -8,8 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.menu.service.MenuService;
+import com.kh.cook.menu.vo.MenuAttachmentVo;
+import com.kh.cook.menu.vo.MenuCartVo;
 import com.kh.cook.menu.vo.MenuVo;
 import com.kh.cook.product.vo.ProductVo;
 @WebServlet(urlPatterns = "/menu/detail")
@@ -25,6 +29,7 @@ public class MenuDetailController extends HttpServlet{
     	MenuVo vo = new MenuService().selectMenuOne(no);
 //    	int result = new MenuService().plusRecommOne(no);
     	List<ProductVo> prodList = new MenuService().selectProdList(no);
+		MenuAttachmentVo menuAttachmentVo = new MenuService().selectMenuAttachment(no);
     	
     	//화면선택
     	req.setAttribute("vo", vo);
@@ -46,15 +51,34 @@ public class MenuDetailController extends HttpServlet{
     	
     }
     
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//    	
-//    	//일단 .prodNo 이랑 
-//    	String prodNo[] = req.getParameterValues("prodNo");
-//    	String prodCnt[] = req.getParameterValues("prodCnt");
-//
-//    	
-//    
-//    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	
+    	
+    	HttpSession member = req.getSession();
+		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
+    	
+    	//일단 .prodNo 이랑 
+    	//넘버를 어떻게:?
+    	String prodNo = req.getParameter("prodNo");
+    	String prodCnt = req.getParameter("prodCnt");
+    	String memberNo = req.getParameter("no");
+    	
+    	MenuCartVo mcv = new MenuCartVo();
+    	mcv.setProdNo(prodNo);
+    	mcv.setProdCnt(prodCnt);
+    	
+    	int prodCart = new MenuService().cartInput(mcv);
+    	
+    	
+    	if(prodCart == 1) {
+    		s.setAttribute("alertMsg", "장바구니 담기 성공!");
+    		req.setAttribute("prodCart", prodCart);
+    		resp.sendRedirect("/cookTeacher/cart/list");
+    	}
+
+    	
+    
+    }
 
 }
