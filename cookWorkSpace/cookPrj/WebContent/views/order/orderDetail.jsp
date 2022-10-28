@@ -103,6 +103,12 @@
                                         <dd class="order-dd">30,000원</dd>
                                     </dl>
                                 </div>
+                                <div class="status">
+                                    <span>배송중</span>
+                                    <div>
+                                        
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
