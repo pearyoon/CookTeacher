@@ -454,6 +454,7 @@ button[disabled], input[disabled] {
                             <div class="inner">
                             	<form action="/cookTeacher/cart/list" method="get">
                             		<input type="submit" onclick="addCart();" class="cart-button css-1qirdbn e4nu7ef3" radius="3" value="장바구니 담기">
+                            		
                             	</form>
                             	
                             </div>
