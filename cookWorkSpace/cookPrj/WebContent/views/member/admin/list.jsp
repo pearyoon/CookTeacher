@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>집밥쿡선생 :: 회원조회</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
-<link rel="stylesheet" href="/cookTeacher/resources/css/member/admin/search.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/member/admin/list.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -18,6 +18,37 @@
     <%@ include file="/views/common/header.jsp" %>
     <div id="container">
         <div>회원정보조회</div>
+        <div class="list-wrap">
+            <div class="list-top">
+                <a href="">최신순</a>
+                <span>|</span>
+                <a href="">가입일순</a>
+                <span>|</span>
+                <a href="">탈퇴회원</a>
+            </div>
+            <div class="list-middle">
+                <div id="list-title" class="list-flex">
+                    <div>번호</div>
+                    <div>이름</div>
+                    <div>아이디</div>
+                    <div>가입일</div>
+                    <div>탈퇴여부</div>
+                </div>
+                <ul>
+                    <li>
+                        <a href="">
+                            <div>
+                                <div>1</div>
+                                <div>배윤아</div>
+                                <div>yoona0769</div>
+                                <div>2022-10-28</div>
+                                <div>O</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="search-wrap">
             <form action="">
                 <div class="flex-box">

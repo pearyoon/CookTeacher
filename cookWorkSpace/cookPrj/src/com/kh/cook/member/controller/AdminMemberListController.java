@@ -7,11 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet(urlPatterns = "/admin/member/search")
-public class AdminMemberSearchController extends HttpServlet{
-	
+@WebServlet(urlPatterns = "/admin/member/list")
+public class AdminMemberListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		req.getRequestDispatcher("/views/member/admin/list.jsp").forward(req, resp);
 	}
 }

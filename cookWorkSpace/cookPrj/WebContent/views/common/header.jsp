@@ -34,7 +34,7 @@
                        <span>|</span>
                        <a>신고관리</a>
                        <span>|</span>
-                       <a href="<%=root %>/admin/member/search">회원조회</a>
+                       <a href="<%=root %>/admin/member/list">회원조회</a>
                        
                    <%} else {%>
                     <a href="<%=root %>/member/join">회원가입</a>
