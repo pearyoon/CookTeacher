@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/edit.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<title>글 수정하기</title>
+<title>집밥쿡선생 :: 쿡스토리</title>
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->

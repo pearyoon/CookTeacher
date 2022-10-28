@@ -12,10 +12,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쿡스토리</title>
+<title>집밥쿡선생 :: 쿡스토리</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/list.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 <body>
 		<%@include file="/views/common/header.jsp" %> <!-- 헤더부분 가져오기-->
@@ -40,7 +43,7 @@
 					<tr align="center">
 						<td style="width: 80px;"><%=voList.get(i).getNo() %></td>
 						<td style="width: 180px;"><%=voList.get(i).getWriter() %></td>
-						<td><a href="<%=root%>/bobstory/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getTitle() %></a></td>
+						<td style="text-align: left;"><a href="<%=root%>/bobstory/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getTitle() %></a></td>
 						<td style="width: 100px;"><%=voList.get(i).getViewCount() %></td>
 						<td style="width: 180px;"><%=voList.get(i).getEnrollDate() %></td>
 						<td style="width: 80px;"><%=voList.get(i).getcLike()%></td>

@@ -10,18 +10,19 @@
 	if(attVo == null){
 		attVo = new AttachmentVo();
 	}
+	
 %>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쿡스토리</title>
+<title>집밥쿡선생 :: 쿡스토리</title>
 <!-- 경로 체크 필수 -->
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/detail.css">
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" defer src="/cookTeacher/resources/js/bobstory/detail.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
 	function bLike(){
@@ -107,23 +108,24 @@
 				</tbody>
 			</table>
 			<hr>
-			<div class="vote_btn">
+			 <div class="vote_btn">
 				<button id="like_btn" onclick="bLike();">좋아요</button>
 				<button id="report_btn" onclick="location.href='/cookTeacher/bobstory/report?no=<%=vo.getNo()%>'">신고</button>
 				<!-- <input type="button" id="like_btn" value="좋아요" onclick="bLike();"> -->
 				<!-- <input type="button" id="report_btn" value="신고" onclick="location.hred='/cookTeacher/bobstory/report'"> -->
 			</div>
-			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter()) && loginMember.getName().equals("관리자")){%>
+			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter()) && loginMember.getNick().equals("관리자")){%>
+			<%System.out.println(loginMember.getNick().equals("관리자")); %>
 			<div id="main-bot">
 				<a href="/cookTeacher/bobstory/edit?no=<%=vo.getNo()%>">수정하기</a>
-				<button type="button" onclick="delete_b()">삭제하기</button>
+				<!-- <button type="button" onclick="delete_b()">삭제하기</button> -->
 				<!-- <input type="submit" class="check-d" onclick="delete_b()" value="삭제하기"> -->
-				<!-- <a href="/cookTeacher/bobstory/delete?no=<%=vo.getNo()%>" class="check-d" onclick="delete_b();">삭제하기</a> -->
+				<a href="/cookTeacher/bobstory/delete?no=<%=vo.getNo()%>" class="check-d"">삭제하기</a>
 			<%}%>
 		</div>
-		<div class="bob_cmt">
-			
-		</div>
+		
+		
+		
 	<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->
 		</div>
 		
