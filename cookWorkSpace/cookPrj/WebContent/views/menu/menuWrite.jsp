@@ -85,7 +85,7 @@
                     <th>내용</th>
                     <td><textarea name="content" rows="10" style="resize:none;" ></textarea></td>
                 </tr>
-                <tr>
+                 <tr>
                     <th>레시피사진</th>
                     <td ><input type="file" name="f"></td>
                 </tr>

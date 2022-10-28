@@ -1,10 +1,17 @@
 package com.kh.cook.menu.service;
 
+import static com.kh.cook.common.JDBCTemplate.close;
+import static com.kh.cook.common.JDBCTemplate.commit;
+import static com.kh.cook.common.JDBCTemplate.getConnection;
+import static com.kh.cook.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 import java.util.List;
 
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.menu.dao.MenuDao;
+import com.kh.cook.menu.vo.MenuAttachmentVo;
+import com.kh.cook.menu.vo.MenuCartVo;
 import com.kh.cook.menu.vo.MenuCateVo;
 import com.kh.cook.menu.vo.MenuVo;
 import com.kh.cook.product.vo.ProductVo;
@@ -161,6 +168,55 @@ public class MenuService {
 		JDBCTemplate.close(conn);
 		
 		return changeInput;
+	}
+
+	//레시피 등록
+	public int menuWrite(MenuVo menuVo, MenuAttachmentVo menuAttachmentVo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MenuDao().insertRecipe(conn, menuVo);
+		
+		int result2 = 1;
+		if(menuAttachmentVo != null) {
+			result2 = new MenuDao().insertAttachment(conn, menuAttachmentVo);
+		}
+		
+		if(result * result2 == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+				
+	}
+
+	public MenuAttachmentVo selectMenuAttachment(String no) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		MenuAttachmentVo vo =  new MenuDao().selectAttachment(conn,no);
+		
+		JDBCTemplate.close(conn);
+		
+		return vo;
+	}
+
+	//mcv = 메뉴카트vo
+	public int cartInput(MenuCartVo mcv) {
+		Connection conn = getConnection();
+		
+		int result = new MenuDao().addCart(conn, mcv);
+		
+		if(result == 1) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 
 

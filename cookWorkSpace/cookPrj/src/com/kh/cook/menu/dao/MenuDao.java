@@ -10,6 +10,8 @@ import java.util.List;
 import javax.naming.spi.DirStateFactory.Result;
 
 import com.kh.cook.common.JDBCTemplate;
+import com.kh.cook.menu.vo.MenuAttachmentVo;
+import com.kh.cook.menu.vo.MenuCartVo;
 import com.kh.cook.menu.vo.MenuCateVo;
 import com.kh.cook.menu.vo.MenuVo;
 import com.kh.cook.product.vo.ProductVo;
@@ -587,6 +589,112 @@ public class MenuDao {
 		
 		return vo;
 	}
+
+	public int insertRecipe(Connection conn, MenuVo menuVo) {
+		//String sql = "INSERT INTO MENU( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ,IMG_PATH) VALUES (SEQ_MENU_NO.NEXTVAL, ? , '메뉴이름', '메뉴설명', '레시피' , 330 ,'재료', '한식레시피/kimchi_stew.png' ) ;";
+		String sql = "INSERT INTO MENU( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ,IMG_PATH) VALUES (SEQ_MENU_NO.NEXTVAL, ? , ?, ?, ?, ? ,?, '이미지.jpg')";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, menuVo.getMenuCateNo());
+			pstmt.setString(2, menuVo.getMenuName());
+			pstmt.setString(3, menuVo.getMenuInfo());
+			pstmt.setString(4, menuVo.getRecipe());
+			pstmt.setInt(5, Integer.parseInt(menuVo.getCal()));
+			pstmt.setString(6, menuVo.getCal());
+			pstmt.setString(7, menuVo.getMenuProd());
+			pstmt.setString(8, menuVo.getImgPath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int insertAttachment(Connection conn, MenuAttachmentVo menuAttachmentVo) {
+		String sql = "INSERT INTO MENUATTACHMENT ( NO ,MENU_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_MENUATTACHMENT_NO.NEXTVAL, SEQ_MENU_NO.CURRVAL , ? , ? , ? )";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, menuAttachmentVo.getOriginName());
+			pstmt.setString(2, menuAttachmentVo.getChangeName());
+			pstmt.setString(3, menuAttachmentVo.getFilePath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	
+	}
+
+	public MenuAttachmentVo selectAttachment(Connection conn, String no) {
+		String sql = "SELECT * FROM MENUATTACHMENT WHERE STATUS = 'O' AND MENU_NO = ? ";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MenuAttachmentVo vo = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String no1 = rs.getString("NO");
+				String menuNo = rs.getString("MENU_NO");
+				String originName = rs.getString("ORIGIN_NAME");
+				String changeName = rs.getString("CHANGE_NAME");
+				String filePath = rs.getString("FILE_PATH");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				String thumbYn = rs.getString("THUMB_YN");
+				String status = rs.getString("STATUS");
+		
+				vo = new MenuAttachmentVo();
+				vo.setNo(menuNo);
+				vo.setNo(menuNo);
+				vo.setOriginName(originName);
+				vo.setChangeName(changeName);
+				vo.setFilePath(filePath);
+				vo.setEnrollDate(enrollDate);
+				vo.setThumbYn(thumbYn);
+				vo.setStatus(status);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+		}
+		
+		return vo;
+	
+	}
+
+	public int addCart(Connection conn, MenuCartVo mcv) {
+		String sql = "";
+	}
+	
+	
+
 
 
 }
