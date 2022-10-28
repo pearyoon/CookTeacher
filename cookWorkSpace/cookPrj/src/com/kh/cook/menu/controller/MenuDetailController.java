@@ -54,6 +54,7 @@ public class MenuDetailController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
+    	HttpSession s = req.getSession();
     	
     	HttpSession member = req.getSession();
 		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
@@ -62,11 +63,14 @@ public class MenuDetailController extends HttpServlet{
     	//넘버를 어떻게:?
     	String prodNo = req.getParameter("prodNo");
     	String prodCnt = req.getParameter("prodCnt");
-    	String memberNo = req.getParameter("no");
+    	String memberNo = loginMember.getNo();
     	
     	MenuCartVo mcv = new MenuCartVo();
     	mcv.setProdNo(prodNo);
     	mcv.setProdCnt(prodCnt);
+    	mcv.setNo(memberNo);
+    	
+    	System.out.println(mcv.getProdNo());
     	
     	int prodCart = new MenuService().cartInput(mcv);
     	
@@ -75,6 +79,8 @@ public class MenuDetailController extends HttpServlet{
     		s.setAttribute("alertMsg", "장바구니 담기 성공!");
     		req.setAttribute("prodCart", prodCart);
     		resp.sendRedirect("/cookTeacher/cart/list");
+    	}else {
+    		System.out.println("네 장바구니 담기 실패임다^^");
     	}
 
     	

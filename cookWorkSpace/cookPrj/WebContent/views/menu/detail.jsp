@@ -153,10 +153,22 @@
                         <div style="border-top: 1px solid black; "></div>
 	               <div>    
                    <form action="/cookTeacher/menu/detail" method="post">
-                   <input id="btn" type="submit" class="btn btn-warning" style="font-size: 1.2rem; font-weight: 700;" value="비법퍼가기" onclick="cartCheck()">
+                   <input id="btn" type="submit" class="btn btn-warning" style="font-size: 1.2rem; font-weight: 700;" value="비법퍼가기" onclick="cartInput()">
                         <!-- <label class="re-btn" style="font-size: large;">비법 퍼가기</label> -->
                         <label class="re-btn-click">퍼가요~♡</label>
                    </div> 
+                   
+                   <script type="text/javascript">
+					function cardInput(){
+						Swal.fire({
+							  position: 'top-end',
+							  icon: 'success',
+							  title: '장바구니 담기 성공~',
+							  showConfirmButton: false,
+							  timer: 1500
+							})
+					}
+                   </script>
 
                         
                         <div id="prod-ment" >* 장바구니에 담을 재료를 선택해주세요. 
@@ -175,13 +187,13 @@
                         <c:forEach items="${prodList}" var="prodList">
                         <div class="prd-all">
                             <div class="product">
-                                <a href="/cookTeacher/product/detail/productDetail?no=${prodList.prodNo}}">
+                                <a href="/cookTeacher/product/detail/productDetail?no=${prodList.prodNo}">
                                     <img src =" <c:url value = "/resources/img/product/"></c:url>${prodList.imgPath}" alt="식재료게시판담당" width="100%" height="100%">
                                 </a>
-                                
+                             
                             </div>    
                             <div style="margin-top : 10px" class="prod-price">
-                                <input type="checkbox" name="prodNo" value="${prodList.prodNo}">${prodList.name} / ${prodList.weight}
+                                <input type="checkbox" name="prodNo" value="${prodList.prodNo}" > ${prodList.name} / ${prodList.weight}
                                 <pre ><fmt:formatNumber value="${prodList.price}" pattern="#,###"/>원</pre>
                                 <!-- 데이터 넘길 때 produckCnt로 넘기면 될듯? -->
                                	수량 : <input type="number" name="prodCnt" value="1" style="width: 20px; margin-bottom: 10px">

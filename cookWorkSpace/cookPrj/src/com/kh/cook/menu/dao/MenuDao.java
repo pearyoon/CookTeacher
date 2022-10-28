@@ -212,7 +212,7 @@ public class MenuDao {
 				vo.setMenuInfo(menuInfo);
 				vo.setImgPath(imgPath);
 				
-				System.out.println(vo);
+				
 				
 				voList.add(vo);
 
@@ -313,8 +313,6 @@ public class MenuDao {
 				vo.setMenuName(menuName);
 				vo.setMenuInfo(menuInfo);
 				vo.setImgPath(imgPath);
-				
-				System.out.println(vo);
 				
 				voList.add(vo);
 
@@ -690,7 +688,31 @@ public class MenuDao {
 	}
 
 	public int addCart(Connection conn, MenuCartVo mcv) {
-		String sql = "";
+		String sql = "INSERT INTO CART (NO, PROD_NO, CNT) VALUES (?, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mcv.getNo());
+			pstmt.setString(2, mcv.getProdNo());
+			pstmt.setString(3, mcv.getProdCnt());
+			
+			System.out.println(mcv.getProdNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			
+		}
+		
+		return result;
+		
 	}
 	
 	
