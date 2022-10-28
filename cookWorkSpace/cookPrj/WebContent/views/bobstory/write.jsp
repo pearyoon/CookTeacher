@@ -29,7 +29,7 @@
 			<br>
 			<p align="center" class="cookstory">쿡 스토리</p>
 			<br>
-			<form class="write" action="" method="post" enctype="multipart/form-data">
+			<form class="write" action="" method="post" enctype="multipart/form-data" onsubmit="return up_ok();">
 				<div id="cate">
 					카테고리&nbsp;<select name="category">
 						<!-- CATEGORY 테이블로부터 조회해오기 -->
@@ -46,7 +46,7 @@
 					<input type="file" name="file" id="bobImg">
 				</div>
 				<div class="upload">
-					<input type="submit" id="btn-1" value="글쓰기" onclick="up_ok();">
+					<input type="submit" id="btn-1" value="글쓰기">
 					&nbsp;
 					&nbsp;
 					<input type="reset" name="" id="btn-1" value="취소">

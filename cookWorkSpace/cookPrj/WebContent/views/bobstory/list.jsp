@@ -60,7 +60,7 @@
 			<div id="page-area">
 			        	
 				<%if(pv.getStartPage() != 1){%>
-					<a href="/cookTeacher/bobstory/list?pno=<%=pv.getStartPage()-1%>" class="btn">이전</a>
+					<a href="/cookTeacher/bobstory/list?pno=<%=pv.getStartPage()-1%>" class="btn"><</a>
 				<%}%>
 			
 			
@@ -69,7 +69,7 @@
 				<%}%>
 				
 				<%if(pv.getEndPage() != pv.getMaxPage()){%>
-						<a href="/cookTeacher/bobstory/list?pno=<%=pv.getEndPage()+1 %>" class="btn">다음</a>
+						<a href="/cookTeacher/bobstory/list?pno=<%=pv.getEndPage()+1 %>" class="btn">></a>
 				<%}%>
 				
 				
