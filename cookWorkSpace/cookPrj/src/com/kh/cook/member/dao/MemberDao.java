@@ -117,7 +117,7 @@ public class MemberDao {
 	}
 	// 아이디 찾기
 	public MemberVo findId(MemberVo vo, Connection conn) {
-		String sql = "SELECT ID,ENROLL_DATE FROM MEMBER WHERE NAME = ? AND EMAIL = ?";
+		String sql = "SELECT ID,ENROLL_DATE FROM MEMBER WHERE NAME = ? AND EMAIL = ? AND QUIT_YN = 'N'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -154,7 +154,7 @@ public class MemberDao {
 	// 아이디 중복 검사
 	public int dupCheckId(String id, Connection conn) {
 		
-		String sql = "SELECT ID FROM MEMBER WHERE ID = ? AND QUIT_YN = 'N'";
+		String sql = "SELECT ID FROM MEMBER WHERE ID = ?";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -180,7 +180,7 @@ public class MemberDao {
 	}
 	// 닉네임 중복검사
 	public int dupCheckNick(String nick, Connection conn) {
-		String sql = "SELECT NICK FROM MEMBER WHERE NICK = ? AND QUIT_YN = 'N'";
+		String sql = "SELECT NICK FROM MEMBER WHERE NICK = ?";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -205,7 +205,7 @@ public class MemberDao {
 	}
 
 	public int dupCheckEmail(String email, Connection conn) {
-		String sql = "SELECT EMAIL FROM MEMBER WHERE EMAIL = ? AND QUIT_YN = 'N'";
+		String sql = "SELECT EMAIL FROM MEMBER WHERE EMAIL = ?";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -230,7 +230,7 @@ public class MemberDao {
 	}
 
 	public String findPwd(MemberVo vo, Connection conn) {
-		String sql = "SELECT NO FROM MEMBER WHERE ID = ? AND PHONE = ? AND EMAIL =?";
+		String sql = "SELECT NO FROM MEMBER WHERE ID = ? AND PHONE = ? AND EMAIL = ? AND QUIT_YN = 'N'";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		String no = null;

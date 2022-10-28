@@ -355,7 +355,7 @@ function checkJoin(){
     if(!nickck){
         Swal.fire({
             icon: 'error',
-            text: '닉네임을 입력해주세요.',
+            text: '닉네임 중복확인해주세요.',
           });
         return false;
     }

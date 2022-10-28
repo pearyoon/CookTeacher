@@ -73,6 +73,7 @@
 
             if(!pwdReg.test(memberPwd1)){
                 $('#hidden-pwd1').text('영문 숫자 특수문자 조합의 8자 이상');
+                pwd1ck = false;
             } else{
                 $('#hidden-pwd1').text('');
                 pwd1ck = true;
@@ -86,6 +87,7 @@
 
             if(memberPwd1 != memberPwd2){
                 $('#hidden-pwd2').text('동일한 비밀번호를 입력해주세요.');
+                    pwd2ck = false;
                 } else{
                     $('#hidden-pwd2').text('');
                     pwd2ck = true;
