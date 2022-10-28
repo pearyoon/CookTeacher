@@ -100,15 +100,12 @@ public class FAQDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("sql문 실행됨");
 			
 			pstmt.setString(1, vo.getNo());
 			pstmt.setString(2, vo.getTitle());
 			pstmt.setString(3, vo.getContent());
-			System.out.println(vo);
 			
 			result = pstmt.executeUpdate();
-			System.out.println("sql추가됨");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

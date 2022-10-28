@@ -21,7 +21,7 @@ public class FAQWriteController extends HttpServlet{
 
 		HttpSession s = req.getSession();
 		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
-		boolean isAdmin = loginMember != null && loginMember.getId().equals("admin");
+		boolean isAdmin = loginMember != null && loginMember.getId().equals("admin01");
 		
 		if(isAdmin) {
 			//관리자일 때

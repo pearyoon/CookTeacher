@@ -74,17 +74,31 @@ color: #000000;
 	padding: 10px;
 	font-size: small;
 }
-/* 등록 버튼 */
-#writebtn{
-	height: 20px;
-	display: flex;
-	flex-direction: row-reverse;
+
+
+/* 등록, 취소 버튼 */
+#writebtn>button{
+	height: 30px;
+	width: 50px;
+	background: #255D00;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
 	font-size: small;
 	margin: 5px;
 }
-#writebtn>a{
-	margin: 10px;
+
+#writebtn{
+	text-align: center;
+	display: flex;
+	flex-direction: row-reverse;
 }
+
+#writebtn>button:hover{
+    border: 10px yellow;
+    background-color: #326e0b;
+}
+
 </style>
 </head>
 <body>
@@ -98,7 +112,6 @@ color: #000000;
 		</div>
 
 		<div class="title-area">
-			<!-- 문의 작성 -->
 			<div id="a">
 				제목 : 
 				<%=QNAvo.getTitle() %>
@@ -116,8 +129,8 @@ color: #000000;
 		
 		<%	if(loginMember != null && loginMember.getNo().equals(QNAvo.getNo())){ %>
 		<div id=writebtn>
-			<a href="/cookTeacher/cs/QnA/edit?no=<%= QNAvo.getQnaNo() %>">수정</a>
-			<a href="/cookTeacher/cs/QnA/delete?no=<%= QNAvo.getQnaNo() %>">삭제</a>
+			<button type="button" onclick="location.href='/cookTeacher/cs/QnA/edit?no=<%= QNAvo.getQnaNo() %>';">수정</button>
+			<button type="button" onclick="location.href='/cookTeacher/cs/QnA/delete?no=<%= QNAvo.getQnaNo() %>';">삭제</button>
 		</div>		
 		<% } %>
 		

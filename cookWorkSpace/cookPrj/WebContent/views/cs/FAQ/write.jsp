@@ -8,6 +8,7 @@
 <!-- 경로 체크 필수 -->
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script><!-- 알람 -->
 </head>
 <style>
 #container>div{
@@ -58,13 +59,27 @@ color: black;
 	padding: 10px;
 
 }
-/* 등록 버튼 */
-#writebtn{
-	height: 20px;
-	display: flex;
-	flex-direction: row-reverse;
+/* 등록 취소 버튼 */
+#writebtn input{
+	height: 30px;
+	width: 50px;
+	background: #255D00;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
 	font-size: small;
 	margin: 5px;
+}
+
+#writebtn{
+	text-align: center;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+#writebtn input:hover{
+    border: 10px yellow;
+    background-color: #326e0b;
 }
 </style>
 
@@ -81,7 +96,8 @@ color: black;
 			<!-- 게시판 이름 -->
 			<div id="qna">FAQ 자주묻는질문</div>
 		</div>
-		<form action="" method="post">
+		
+		<form action="/cookTeacher/cs/FAQ/write" method="post" onsubmit="return upload();">
 			<div class="title-area">
 				<!-- 문의 작성 -->
 					제목 : <input type="text" id="title" name="title">
@@ -92,7 +108,28 @@ color: black;
 				<textarea name="content" rows="22" cols="80" style="resize:none;" required></textarea>
 			<br><br>
 			</div>
-			<div id="writebtn"><input type="submit" value="등록"></div>
+			
+			<div id="writebtn">
+				<input type="button" name="" id="" value="취소" onclick="cancel();">
+				<input type="submit" value="등록">
+			</div>
+			
+			<!-- upload()함수 -->
+			<script>
+				function upload(){
+					if(confirm("자주묻는질문을 추가하시겠습니까?")){
+						return true;
+					}else{
+						alert("작성을 취소합니다.");
+						return false;
+					}
+				}
+				
+				function cancel(){
+					alert("작성을 취소하고 목록으로 돌아갑니다.")
+					location.href="/cookTeacher/cs/FAQ/list"
+				}
+			</script>
 		</form>
 		<%@include file="/views/common/footer.jsp" %>
 	</div>
