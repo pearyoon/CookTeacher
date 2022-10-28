@@ -76,7 +76,7 @@ public class OrderDao {
 				String name = rs.getString("NAME");
 				String phone = rs.getString("PHONE");
 				String dataAddr = rs.getString("ADDR");
-				String point = rs.getString("POINT");
+				int point = rs.getInt("POINT");
 				
 				int idx = dataAddr.indexOf(",");
 				

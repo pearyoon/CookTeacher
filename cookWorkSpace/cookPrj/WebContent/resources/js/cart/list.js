@@ -94,19 +94,16 @@ function cookOrder(){
     }
 }
 
-function cookCheck() {
-    let check = document.querySelectorAll('#product-area input[name=check]');
-    let price = document.querySelectorAll('#product-area input[name=price]');
-    let totalPrice = 0;
-   
-    for(let i = 0; i < check.length; i++){
-        if(check[i].checked === true){
-            totalPrice += parseInt(price[i].value);
-            document.getElementById("test").innerHTML = totalPrice;
-        }
-    }
+// function cookCheck() {
+//     let checkArr = document.querySelectorAll('#product-area input[name=check]');
+//     let price = document.querySelectorAll('#product-area input[name=price]');
+//     let totalPrice = 0;
 
-}
-
-{/* <fmt:formatNumber value="${total}" pattern="#,###"/> */}
+//     for(let i = 0; i < checkArr.length; i++){
+//         if(checkArr[i].checked === true){
+//             totalPrice += parseInt(price[i].value);
+//             document.getElementById('price').innerHTML = totalPrice.toLocaleString(undefined, {maximumFractionDigits: 5});
+//         }
+//     }
+// }
 

@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	List<CartItemVo> cartList = (List<CartItemVo>) request.getAttribute("cartList");
+
 %>
 
 <!DOCTYPE html>
@@ -42,14 +43,14 @@
                                     </div>
                                 </div>
                             </div>
-				
+                            
                             <form id="product-area" onsubmit="cookOrder()" action="/cookTeacher/order/info" method="post">
                                 <ul>
                                     <c:if test="${empty cartList}">
                                         <div class="none-cart">
                                             <p>장바구니에 담긴 상품이 없습니다.</p></div>
                                     </c:if>
-                               		<c:forEach items="${cartList}" var="cartItem">
+                                    <c:forEach items="${cartList}" var="cartItem">
                                     <li class="product">
                                         <input type="checkbox" name="check" value="${cartItem.prodNo}" onchange="cookCheck()">
                                         <div class="thumb">
@@ -65,19 +66,18 @@
                                         </div>
                                         <div class="price"><fmt:formatNumber value="${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" pattern="#,###"/>원</div>
                                         <button type="button" class="remove" onclick="deleteOne(${cartItem.prodNo})"></button>
-                                        <input type="hidden" name="price" id="price" value="${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}">
                                     </li>
                                 </c:forEach>
-                                   <c:set var="total" value="0" />
-                           <c:set var="totalCnt" value="0"/>
-						<c:forEach var="cartItem" items="${cartList}">
-							<c:set var="total" value="${total + Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" />
-							<c:set var="totalCnt" value="${totalCnt + 1}"/>
-						</c:forEach>
-                                 <c:set var="deliveryFee" value="0" />
-                                 <c:if test="${total <= 30000}">
-                              	<c:set var="deliveryFee" value="2500" />
-                                 </c:if>
+                                    <c:set var="total" value="0" />
+                                    <c:set var="totalCnt" value="0"/>
+                                    <c:forEach var="cartItem" items="${cartList}">
+                                        <c:set var="total" value="${total + Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" />
+                                        <c:set var="totalCnt" value="${totalCnt + 1}"/>
+                                    </c:forEach>
+                                    <c:set var="deliveryFee" value="0" />
+                                    <c:if test="${total <= 30000}">
+                                        <c:set var="deliveryFee" value="2500" />
+                                    </c:if>
                                     <div class="product-footer">
                                         <span><fmt:formatNumber value="${total}" pattern="#,###"/>원 + 배송비 <fmt:formatNumber value="${deliveryFee}" pattern="#,###"/>원 = <fmt:formatNumber value="${total + deliveryFee}" pattern="#,###"/>원</span>
                                         <span>(30,000원이상 무료배송)</span>
@@ -93,7 +93,7 @@
                             <div class="price-wrapper">
                                 <div class="price">
                                     <div>상품금액</div>
-                                    <div id="test">원</div>
+                                    <div><fmt:formatNumber value="${total}" pattern="#,###"/>원</div>
                                 </div>
                                 <div class="price">
                                     <div>배송비</div>
