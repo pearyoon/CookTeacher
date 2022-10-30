@@ -91,7 +91,9 @@ margin-bottom: 30px;
 	height: 100%;
 	display: flex;
 }
-     
+a:hover {
+  color : black;
+}     
     
 </style>
 </head>

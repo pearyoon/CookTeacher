@@ -25,13 +25,11 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
-
 div{
     --border: 1px solid black;
 }
 #product-name{
 	text-align: left;
-
 }
 #product-main-img/product{
     width: 100px;
@@ -65,7 +63,6 @@ div{
     font-size: 24px;
     --display: flex;
     margin: 0 auto;
-
 }
 #product-detail-info{
     font-size: medium;
@@ -79,8 +76,6 @@ div{
 .main-menu-bar-items > a{
     color : white;
 }
-
-
 #main{
     width: 60vw;
     height: 60vh;
@@ -119,7 +114,6 @@ table {
 section.notice {
   padding: 20px 0;
 }
-
 .page-title {
   margin-bottom: 60px;
 }
@@ -129,7 +123,6 @@ section.notice {
   font-weight: 400;
   text-align: center;
 }
-
 #board-search .search-window {
   padding: 15px 0;
   background-color: #f9f7f9;
@@ -162,14 +155,12 @@ section.notice {
   padding: 0;
   font-size: 16px;
 }
-
 .board-table {
   font-size: 13px;
   width: 100%;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
-
 .board-table a {
   color: #333;
   display: inline-block;
@@ -185,28 +176,22 @@ section.notice {
   font-size: 19px;
   font-weight: 500;
 }
-
 .board-table .th-num {
   width: 100px;
   text-align: center;
 }
-
 .board-table .th-date {
   width: 250px;
 }
-
 .board-table th, .board-table td {
   padding: 14px 0;
 }
-
 .board-table tbody td {
   border-top: 1px solid #e7e7e7;
   text-align: center;
   font-size: 16px;
   font-weight: 400;
-
 }
-
 .board-table tbody th {
   padding-left: 28px;
   padding-right: 14px;
@@ -215,11 +200,9 @@ section.notice {
   font-size: 16px;
   font-weight: 400;
 }
-
 .board-table tbody th p{
   display: none;
 }
-
 .btn {
   display: inline-block;
   padding: 0 30px;
@@ -247,31 +230,25 @@ section.notice {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-
 .btn-dark {
   background: #555;
   color: #fff;
 }
-
 .btn-dark:hover, .btn-dark:focus {
   background: #373737;
   border-color: #373737;
   color: #fff;
 }
-
 .btn-dark {
   background: #555;
   color: #fff;
 }
-
 .btn-dark:hover, .btn-dark:focus {
   background: #373737;
   border-color: #373737;
   color: #fff;
 }
-
 /* reset */
-
 * {
   list-style: none;
   text-decoration: none;
@@ -296,7 +273,6 @@ section.notice {
   width: 1px;
   height: 1px;
 }
-
 #write-bttn{
     text-align: center;
     width: 100px;
@@ -304,8 +280,6 @@ section.notice {
 #table-head{
     background-color: rgba(211, 211, 211, 0.566);
 }
-
-
 .css-1qirdbn {
     --display: block;
     padding: 0px 10px;
@@ -322,18 +296,15 @@ section.notice {
     font-weight: 700;
    	font-size: 17px;
 }
-
 .css-1qirdbn:hover {
     background: #255D00;
     border: 2px solid #FFD335;
     color: white;
     
 }
-
 button[disabled], input[disabled] {
     cursor: default;
 }
-
 .css-1e90glc {
     display: inline-flex;
     width: 28px;
@@ -358,21 +329,15 @@ button[disabled], input[disabled] {
     background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xNiAxMHY0aDR2MmgtNHY0aC0ydi00aC00di0yaDR2LTRoMnoiIGZpbGw9IiMzMzMiIGZpbGwtcnVsZT0ibm9uemVybyIvPgo8L3N2Zz4K);
     vertical-align: top;
 }
-
-
 .fa-arrow-alt-circle-up:before {
     content: "\f35b";
 }
-
 .fa-arrow-alt-circle-down:before {
     content: "\f358";
 }
-
 #main-menu-area{
 	height: 550px;
-
 }
-
 #header-search-area>button {
 	width: 45px;
 	height: 45px;
@@ -382,16 +347,22 @@ button[disabled], input[disabled] {
 	border-top-right-radius: 10px;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
 </style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
+            <form action="/cookTeacher/product/detail/productDetail" method="post">
             <div id="main-middle">
             <hr><br><br>
                 <div id="product-name"></div>
                     <div id="main-menu-area">
+                    <input type="hidden" name="prodNo" value="<%=vo.getProdNo() %>">
                         <div id="product-main-img/product">
                             <img/product src="/cookTeacher/upload/img/<%= vo.getImgPath()%>" alt="레시피게시판담당" width="100%" height="100%">
                         </div>
@@ -411,9 +382,9 @@ button[disabled], input[disabled] {
                             <div class="inner">
                                 구매 수량
                             </div>
-                            <div class="inner">
+                            <!-- <div class="inner">
                                 합계
-                            </div>
+                            </div> -->
                             <div class="inner">
                             <!-- 구매하기 버튼 위치 -->
                             
@@ -437,26 +408,50 @@ button[disabled], input[disabled] {
                                             <div class="subdiv">
                                                 <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="<%= vo.getPrice() %>"><%= vo.getPrice() %>원</div>
                                                 <div class="num">
-                                                    <div class="updown">
+                                                
+                                                    <!-- <div class="updown">
                                                     <br><br><br>
                                                         <input type="text" name="p_num1" id="p_num1" size="3" maxlength="3" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
                                                         <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
                                                         <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
                                                         <br><br><br>
+                                                    </div>  -->
+                                                    
+                                                   <br><br><br>
+                                                    <div class="updown">
+                                                    <input type="number" name="prodCnt" id="p_num1" size="3" maxlength="3" class="p_num" value="1" min="1" max="20" onkeyup="javascript:basket.changePNum(1);" style="width: 35px; margin-bottom: 35px ">
                                                     </div>
+                                                    
+                                                    
                                                 </div>
-                                                <div class="sum" name="totalSum"><br><%= vo.getPrice() %>원</div>
+                                                
+                                                <%-- <div class="sum" name="totalSum"><br><%= vo.getPrice() %>원</div> --%>
+                                                
                                             </div>
                                         </div>
                                 </form>
                             </div>
                             <br><br><br><br><br><br><br><br>
                             <div class="inner">
-                            	<form action="/cookTeacher/cart/list" method="get">
-                            		<input type="submit" onclick="addCart();" class="cart-button css-1qirdbn e4nu7ef3" radius="3" value="장바구니 담기">
+                            	<!-- <form action="/cookTeacher/cart/list" method="get"> -->
+                            		<input type="submit" onclick="" class="cart-button css-1qirdbn e4nu7ef3" radius="3" value="장바구니 담기">
                             		
                             	</form>
                             	
+			                   <!-- <script type="text/javascript">
+								function addCart(){
+									Swal.fire({
+										  position: 'top',
+										  icon: 'success',
+										  title: '장바구니에 담겼습니다.',
+										  showConfirmButton: false,
+										  timer: 1000000
+										})
+								}
+			                   </script> -->
+			                   
+			                 
+			                            	
                             </div>
                         </div>
                     </div>
@@ -602,7 +597,7 @@ button[disabled], input[disabled] {
     		  // 결과 출력
     		  resultElement.innerText = number;
     		}
-    	
+    	/* 
     	function addCart(){
     		/* alert("장바구니에 담겼습니다."); */
 			Swal.fire({
@@ -612,14 +607,12 @@ button[disabled], input[disabled] {
 			  imageHeight: 100,
 			  imageAlt: 'Custom image',
 			})
-
-    	}
+    	} */
     	
     	//지우기
     	let basket = {
     		    totalCount: 0, 
     		    totalPrice: 0,
-
     		    //재계산
     		    reCalc: function(){
     		        this.totalCount = 0;
@@ -645,14 +638,11 @@ button[disabled], input[disabled] {
     		        var newval = event.target.classList.contains('up') ? p_num+1 : event.target.classList.contains('down') ? p_num-1 : event.target.value;
     		        
     		        if (parseInt(newval) < 1 || parseInt(newval) > 99) { return false; }
-
     		        item.setAttribute('value', newval);
     		        item.value = newval;
-
     		        var price = item.parentElement.parentElement.previousElementSibling.firstElementChild.getAttribute('value');
     		        item.parentElement.parentElement.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
     		        //AJAX 업데이트 전송
-
     		        //전송 처리 결과가 성공이면    
     		        this.reCalc();
     		        this.updateUI();
@@ -667,7 +657,6 @@ button[disabled], input[disabled] {
     		        this.updateUI();
     		    }
     		}
-
     		// 숫자 3자리 콤마찍기
     		Number.prototype.formatNumber = function(){
     		    if(this==0) return 0;
@@ -676,7 +665,7 @@ button[disabled], input[disabled] {
     		    while (regex.test(nstr)) nstr = nstr.replace(regex, '$1' + ',' + '$2');
     		    return nstr;
     		};
-    	
+    		
 	
 	</script>
     

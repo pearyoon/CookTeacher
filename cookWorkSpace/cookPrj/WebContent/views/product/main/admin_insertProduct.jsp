@@ -102,7 +102,31 @@ table {
 	float: left;
 	text-align: center;
 }
+#bottom-bttn {
+    height: 40px;
+    width: 80px;
+    background: #FFD335;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 5px;
+    font-weight: 500;
+    box-shadow: 3px 3px #255D00;
+}
+#bottom-bttn:hover{
+    color: white;
+    background: #255D00;
+    box-shadow: 3px 3px #FFD335;
+}
 
+table{
+	font-size: 20px;
+	font-weight: 500;
+}
+#main-bottom{
+	border: 2px solid black;
+}
 </style>
 </head>
 <body>
@@ -165,11 +189,11 @@ table {
 		         
 	            		</table>
 	            		
-	            		<br><br>
+	            		
 	
 			            <div align="center">
-			                <button type="submit">작성하기</button>
-			                <button type="reset">취소하기</button>
+			                <button type="submit" id="bottom-bttn">작성하기</button>
+			                <button type="reset" id="bottom-bttn">취소하기</button>
 			            </div>
 		        		</form>
 	        		</div>

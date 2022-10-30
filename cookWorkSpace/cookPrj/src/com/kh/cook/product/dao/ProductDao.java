@@ -11,6 +11,7 @@ import com.kh.cook.bobstory.vo.AttachmentVo;
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.product.vo.PageVo;
+import com.kh.cook.product.vo.ProductCartVo;
 import com.kh.cook.product.vo.ProductVo;
 import com.kh.cook.product.vo.ReviewVo;
 
@@ -1061,6 +1062,36 @@ public class ProductDao {
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	
+	}
+
+	//식재료 장바구니에 담기
+	public int addCart(Connection conn, ProductCartVo pvo) {
+
+		String sql = "INSERT INTO CART (NO, PROD_NO, CNT) VALUES (?, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pvo.getNo());
+			pstmt.setString(2, pvo.getProdNo());
+			pstmt.setString(3, pvo.getProdCnt());
+			
+			System.out.println(pvo.getProdNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			
 		}
 		
 		return result;
