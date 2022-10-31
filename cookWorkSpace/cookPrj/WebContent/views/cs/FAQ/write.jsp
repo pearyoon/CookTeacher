@@ -97,7 +97,7 @@ color: black;
 			<div id="qna">FAQ 자주묻는질문</div>
 		</div>
 		
-		<form action="/cookTeacher/cs/FAQ/write" method="post" onsubmit="return upload();">
+		<form id="fff" action="/cookTeacher/cs/FAQ/write" method="post" onsubmit="return upload();">
 			<div class="title-area">
 				<!-- 문의 작성 -->
 					제목 : <input type="text" id="title" name="title">
@@ -122,15 +122,32 @@ color: black;
                        icon: 'success',
                     });
 				}
-			
-/* 				function upload(){
-					if(confirm("자주묻는질문을 추가하시겠습니까?")){
-						return true;
-					}else{
-						alert("작성을 취소합니다.");
-						return false;
-					}
-				} */
+				
+				function upload(){
+					
+					Swal.fire({
+					  title: '등록하시겠습니까?',
+					  icon: 'question',
+					  showCancelButton: true,
+					  confirmButtonText: '확인',
+					  cancelButtonText: '취소',
+					  })
+					  .then((result)=>{
+						  console.log(result);
+						  if (result.isConfirmed) {
+							  
+							  
+							    Swal.fire(
+							      '등록하였습니다!',
+							      'Your file has been deleted.',
+						    	  'success'
+						  	  ).then( ()=> {document.querySelector('#fff').submit();} );
+						  }
+					  });
+					
+					  return false;
+				}//upload end
+
 				
 				function cancel(){
 					Swal.fire({
