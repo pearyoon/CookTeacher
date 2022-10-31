@@ -32,6 +32,7 @@
 			<table class="table table-striped">
 				<thead>
 					<th scope="col">번호</th>
+					<th scope="col">음식</th>
 					<th scope="col">작성자</th>
 					<th scope="col">제목</th>
 					<th scope="col">조회수</th>
@@ -42,7 +43,8 @@
 				<%for(int i = 0; i < voList.size(); i++){%>
 					<tr align="center">
 						<td style="width: 80px;"><%=voList.get(i).getNo() %></td>
-						<td style="width: 180px;"><%=voList.get(i).getWriter() %></td>
+						<td style="width: 80px;"><%=voList.get(i).getCategory() %></td>
+						<td style="width: 130px;"><%=voList.get(i).getWriter() %></td>
 						<td style="text-align: left;"><a href="<%=root%>/bobstory/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getTitle() %></a></td>
 						<td style="width: 100px;"><%=voList.get(i).getViewCount() %></td>
 						<td style="width: 180px;"><%=voList.get(i).getEnrollDate() %></td>

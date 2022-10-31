@@ -2,6 +2,7 @@ package com.kh.cook.bobstory.service;
 
 import java.sql.Connection;
 
+import com.kh.cook.bobstory.dao.BobCmtDao;
 import com.kh.cook.bobstory.vo.BobCmtVo;
 import com.kh.cook.common.JDBCTemplate;
 
@@ -15,7 +16,16 @@ public class BobCmtService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
+		int result = new BobCmtDao().insertCmt(conn, vo);
 		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 }
