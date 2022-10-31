@@ -1,3 +1,4 @@
+<%@page import="com.kh.cook.menu.vo.MenuCateVo"%>
 <%@page import="com.kh.cook.bobstory.vo.PageVo"%>
 <%@page import="com.kh.cook.bobstory.vo.BobstoryVo"%>
 <%@page import="java.util.List"%>
@@ -6,6 +7,7 @@
 <%
 	List<BobstoryVo> voList = (List<BobstoryVo>)request.getAttribute("voList");
 	PageVo pv = (PageVo)request.getAttribute("pv");
+	MenuCateVo mcv = new MenuCateVo();
 %>    
 
 <!DOCTYPE html>
