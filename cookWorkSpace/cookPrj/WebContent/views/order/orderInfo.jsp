@@ -28,7 +28,7 @@
         <!-- 헤더는 컨테이너 밖에 -->
         <div id="container">
             <!-- 컨테이너 -->
-            <main>
+            <form action="/cookTeacher/order/success" method="post">
                 <div id="order">
                     <h1>주문 / 결제</h1>
 
@@ -86,7 +86,7 @@
                             <ul>
                                 <c:forEach var="cartItem" items="${cartList}">
                                     <li class="order-product">
-                                        <input type="hidden" name="prodNo"
+                                        <input type="hidden" name="check"
                                             value="${cartItem.prodNo}">
                                         <div class="thumb">
                                             <img src="<c:url value="/resources/img/product/" />${cartItem.imgPath}" alt="${cartItem.name}">
@@ -161,7 +161,7 @@
                                             <dd class="total-dd">
                                                 <input type="text" name="save-point"
                                                     class="save-point"
-                                                    placeholder="입력"><button>사용</button>
+                                                    placeholder="입력"><button type="button">사용</button>
                                             </dd>
 
                                         </dl>
@@ -174,9 +174,9 @@
                                 </div>
                                 <div class="payment-wrapper">
                                     <div class="choose-payment">
-                                        <input type="button" value="무통장입금" class="account">
-                                        <input type="button" value="신용카드" class="card">
-                                        <input type="button" value="카카오페이" class="kakaopay">
+                                        <input type="radio" value="무통장입금" class="account" name="payment" checked><label class="account">무통장입금</label>
+                                        <input type="radio" value="신용카드" class="card" name="payment"><label class="card">신용카드</label>
+                                        <input type="radio" value="카카오페이" class="kakaopay" name="payment"><label class="kakaopay">카카오페이</label>
                                     </div>
                                 </div>
 
@@ -218,7 +218,7 @@
                                                 pattern="#,###" />
                                         </strong>원</div>
                                 </div>
-                                <input type="submit" onclick="checkOut()" value="결제하기">
+                                <input type="submit" value="결제하기">
                             </div>
                         </section>
 
@@ -231,7 +231,7 @@
         </div>
 
 
-        </main>
+    </form>
         <%@include file="/views/common/footer.jsp" %>
             <!-- 푸터부분 파일 가져오기-->
             </div>

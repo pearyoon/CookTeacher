@@ -49,7 +49,7 @@ public class OrderService {
 	}
 
 	// 주문 내역 만들기
-	public int insertOrder(MemberVo cartMember, List<CartItemVo> cartList, String point) {
+	public int insertOrder(MemberVo cartMember, List<CartItemVo> cartList, String point, String payment) {
 
 		int totalPrice = 0;
 		
@@ -87,6 +87,7 @@ public class OrderService {
 		
 		int result = dao.insertOrder(conn, cartMember, point, totalPrice, earn);
 		String num = dao.selectSeq(conn);
+		int paymentResult = dao.insertPayment(conn, num, payment);
 
 		boolean isSuccess = true;
 		
@@ -97,7 +98,6 @@ public class OrderService {
 			
 			// 실패하면 롤백해줌 (커밋하지 않기 위해서)
 			if(detailResult == 0) {
-				rollback(conn);
 				result = 0;
 				isSuccess = false;
 				break;
@@ -105,12 +105,33 @@ public class OrderService {
 		}
 		
 		// 성공하면 커밋 해줌
-		if(isSuccess == true) {
+		if(isSuccess == true && paymentResult == 1) {
 			commit(conn);
+		}else {
+			rollback(conn);
 		}
 		
 		close(conn);
 		return result;
+		
+	}
+ 
+	public void selectOrderList(String no) {
+
+		Connection conn =  getConnection();
+		
+		
+		
+		/* 주문에 주문번호 / 결제 금액
+		 * 주문내역에 내역번호 / 식재료 번호 / 주문 번호 
+		 * 결제에 결제 수단 / 결제 날짜
+		 * 
+		 * 셀렉트 하려면 식재료 이름 / 주문 번호 / 결제 방법 / 결제 금액
+		 */
+		
+		/* 결제 완료된 상품 하나 조회하기
+		 * 
+		 */
 		
 	}
 

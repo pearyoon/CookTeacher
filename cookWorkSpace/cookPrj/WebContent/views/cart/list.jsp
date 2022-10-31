@@ -36,7 +36,7 @@
                             <div id="cart-header">
                                 <div class="all-btn">
                                     <div class="choose-all">
-                                        <input id="all" type="checkbox" ><label for="all">전체선택</label>
+                                        <input id="all" type="checkbox" onchange="cookCheckAll()"><label for="all">전체선택</label>
                                     </div>
                                     <div class="delete">
                                         <input type="button" value="삭제하기" onclick="deleteList()">
@@ -52,7 +52,7 @@
                                     </c:if>
                                     <c:forEach items="${cartList}" var="cartItem">
                                     <li class="product">
-                                        <input type="checkbox" name="check" value="${cartItem.prodNo}" onchange="cookCheck()">
+                                        <input type="checkbox" name="check" value="${cartItem.prodNo}" onchange="cookCheckOne()">
                                         <div class="thumb">
                                             <img src="<c:url value="/resources/img/product/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
                                         </div>
@@ -64,8 +64,10 @@
                                             <div class="count">${cartItem.cnt}</div>
                                             <button type="button" class="plus" onclick="changeCnt(${cartItem.prodNo}, 1)"></button>
                                         </div>
-                                        <div class="price"><fmt:formatNumber value="${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" pattern="#,###"/>원</div>
+                                        <div class="price"><span><fmt:formatNumber value="${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}" pattern="#,###"/></span>원</div>
                                         <button type="button" class="remove" onclick="deleteOne(${cartItem.prodNo})"></button>
+                                        <input type="hidden" name="itemPrice" value="${cartItem.price}">
+                                        <input type="hidden" name="price" value="${Integer.parseInt(cartItem.price) * Integer.parseInt(cartItem.cnt)}">
                                     </li>
                                 </c:forEach>
                                     <c:set var="total" value="0" />
@@ -79,7 +81,7 @@
                                         <c:set var="deliveryFee" value="2500" />
                                     </c:if>
                                     <div class="product-footer">
-                                        <span><fmt:formatNumber value="${total}" pattern="#,###"/>원 + 배송비 <fmt:formatNumber value="${deliveryFee}" pattern="#,###"/>원 = <fmt:formatNumber value="${total + deliveryFee}" pattern="#,###"/>원</span>
+                                        <span><span class="productPrice">0</span> 원 + 배송비 <span class="deliveryFee">0</span>원 = <span class="realTotalPrice">0</span>원</span>
                                         <span>(30,000원이상 무료배송)</span>
                                     </div>
                                 </ul>
@@ -93,16 +95,16 @@
                             <div class="price-wrapper">
                                 <div class="price">
                                     <div>상품금액</div>
-                                    <div><fmt:formatNumber value="${total}" pattern="#,###"/>원</div>
+                                    <div><span class="productPrice">0</span>원</div>
                                 </div>
                                 <div class="price">
                                     <div>배송비</div>
-                                    <div><fmt:formatNumber value="${deliveryFee}" pattern="#,###"/>원</div>
+                                    <div><span class="deliveryFee">0</span>원</div>
                                 </div>
                             </div>
                             <div class="sum">
-                                <div class="sum-cnt">총 ${totalCnt}건</div>
-                                <div class="sum-amt"><strong><fmt:formatNumber value="${total + deliveryFee}" pattern="#,###"/></strong>원</div>
+                                <div class="sum-cnt">총 <span id="cnt">0</span>건</div>
+                                <div class="sum-amt"><strong class="realTotalPrice">0</strong>원</div>
                             </div>
                             <input type="submit" value="주문하기" form="product-area" id="order">
                         </div>

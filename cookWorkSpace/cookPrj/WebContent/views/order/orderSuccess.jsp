@@ -9,7 +9,7 @@
     <!-- 경로 체크 필수 -->
     <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
     <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
-    <link rel="stylesheet" href="../../resources/css/order/orderSuccess.css">
+    <link rel="stylesheet" href="../resources/css/order/orderSuccess.css">
 </head>
 <body>
     <%@include file="/views/common/header.jsp" %> 
@@ -17,7 +17,7 @@
         <main>
             <div class="success">
                 <div class="check-icon">
-                    <img src="../../resources/img/icons/결제완료.png">
+                    <img src="../resources/img/icons/결제완료.png">
                 </div>
                 <div class="check-wrapper">
                     
@@ -37,8 +37,8 @@
                             <span>&#183; 주문/배송 및 기타 문의가 있을 경우, 1:1 문의에 남겨주시면 신속히 해결해드리겠습니다.</span>
                         </div>
                         <div class="movePage">
-                            <button class="moveHome">홈으로 이동</button>
-                            <button class="moveDetail">주문내역 상세보기</button>
+                            <button class="moveHome" type="button" onclick="location.href='/cookTeacher'">홈으로 이동</button>
+                            <button class="moveDetail" type="button" onclick="location.href='/cookTeacher/order/orderDetail'">주문내역 상세보기</button>
                         </div>
                     </div>
                     

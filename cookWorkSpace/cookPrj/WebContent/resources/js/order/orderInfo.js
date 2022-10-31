@@ -10,25 +10,25 @@ function searchAddr(){
 }
 
 // 결제하기
-function checkOut() {
-  const cartList = document.querySelectorAll('input[name=prodNo]');
-  const prodNoList = [];
+// function checkOut() {
+//   const cartList = document.querySelectorAll('input[name=prodNo]');
+//   const prodNoList = [];
 
-  for(let i = 0; i < cartList.length; i++){
-    prodNoList.push(cartList[i].value);
-  }
+//   for(let i = 0; i < cartList.length; i++){
+//     prodNoList.push(cartList[i].value);
+//   }
   
-  const point = document.querySelector('input[name=save-point]').value
+//   const point = document.querySelector('input[name=save-point]').value
 
-  $.ajax({
-    method: "POST",
-    url:"/cookTeacher/order/success",
-    traditional: true,
-    data: {
-      check : prodNoList,
-      point : point
-    },
+//   $.ajax({
+//     method: "POST",
+//     url:"/cookTeacher/order/success",
+//     traditional: true,
+//     data: {
+//       check : prodNoList,
+//       point : point
+//     },
 
-  })
+//   })
 
-}
+// }
