@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
-<link rel="stylesheet" href="../../resources/css/order/orderList.css">
+<link rel="stylesheet" href="../resources/css/order/orderList.css">
 
 </head>
 <body>

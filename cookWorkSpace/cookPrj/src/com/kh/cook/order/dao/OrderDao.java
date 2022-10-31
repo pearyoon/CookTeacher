@@ -4,9 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.kh.cook.cart.vo.CartItemVo;
 import com.kh.cook.member.vo.MemberVo;
+import com.kh.cook.order.vo.OrderDetailVo;
+import com.kh.cook.order.vo.OrderVo;
+import com.kh.cook.order.vo.PaymentVo;
 
 import static com.kh.cook.common.JDBCTemplate.*;
 
@@ -217,5 +222,130 @@ public class OrderDao {
 		return result;
 	}
 
-
+	// 주문 번호 / 결제 금액 가져오기
+	public OrderVo selectorderInfo(Connection conn, String no) {
+		String sql = "SELECT NO, MEMBER_NO, POINT, USE_POINT, SUM, NAME, ADDR, PHONE FROM \"ORDER\" WHERE MEMBER_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		OrderVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String orderNo = rs.getString("NO");
+				String memberNo = rs.getString("MEMBER_NO");
+				String point = rs.getString("POINT");
+				String usePoint = rs.getString("USE_POINT");
+				String sum = rs.getString("SUM");
+				String name = rs.getString("NAME");
+				String addr = rs.getString("ADDR");
+				String phone = rs.getString("PHONE");
+				
+				vo = new OrderVo();
+				vo.setNo(orderNo);
+				vo.setMemberNo(no);
+				vo.setPoint(usePoint);
+				vo.setUsePoint(usePoint);
+				vo.setSum(sum);
+				vo.setName(name);
+				vo.setAddr(addr);
+				vo.setPhone(phone);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return vo;
+	}
+	
+	// 주문 내역에서 내역번호 / 식재료 번호 / 주문 번호 
+	public List<OrderDetailVo> selectOrderDetail(Connection conn, String num) {
+		String sql = "SELECT NO, PROD_NO, ORDER_NO, CNT, PRICE FROM ORDER_DETAIL WHERE ORDER_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<OrderDetailVo> list = new ArrayList<OrderDetailVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String no = rs.getString("NO");
+				String prodNo = rs.getString("PROD_NO");
+				String orderNo = rs.getString("ORDER_NO");
+				String cnt = rs.getString("CNT");
+				String price = rs.getString("PRICE");
+				
+				OrderDetailVo vo = new OrderDetailVo();
+				vo.setNo(no);
+				vo.setProdNo(prodNo);
+				vo.setOrderNo(num);
+				vo.setCnt(cnt);
+				vo.setPrice(price);
+				
+				list.add(vo);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	// 결제에 결제 수단 / 결제 날짜
+	public PaymentVo selectPaymentInfo(Connection conn, String num) {
+		
+		String sql = "SELECT PAYMENT, PAY_DATE FROM PAYMENT WEHRE ORDER_NO = ? ";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		PaymentVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				String payment = rs.getString("PAYMENT");
+				String payDate = rs.getString("PAY_DATE");
+				String orderNo = rs.getString("ORDER_NO");
+				
+				vo = new PaymentVo();
+				vo.setPayment(payment);
+				vo.setPayDate(payDate);
+				vo.setOrderNo(num);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return vo;
+		
+	}
+	
+	
 }

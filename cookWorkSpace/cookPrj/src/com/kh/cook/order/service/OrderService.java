@@ -10,6 +10,9 @@ import com.kh.cook.cart.dao.CartDao;
 import com.kh.cook.cart.vo.CartItemVo;
 import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.order.dao.OrderDao;
+import com.kh.cook.order.vo.OrderDetailVo;
+import com.kh.cook.order.vo.OrderVo;
+import com.kh.cook.order.vo.PaymentVo;
 
 public class OrderService {
 	
@@ -116,23 +119,57 @@ public class OrderService {
 		
 	}
  
-	public void selectOrderList(String no) {
+	// 주문 내역 가져오기
+	public List<OrderDetailVo> selectOrderList(String no, String num) {
+		
 
+		// 커넥션 가져오기
 		Connection conn =  getConnection();
 		
+		List<OrderDetailVo> orderDetailList = dao.selectOrderDetail(conn, num);
 		
+		close(conn);
 		
-		/* 주문에 주문번호 / 결제 금액
-		 * 주문내역에 내역번호 / 식재료 번호 / 주문 번호 
-		 * 결제에 결제 수단 / 결제 날짜
-		 * 
-		 * 셀렉트 하려면 식재료 이름 / 주문 번호 / 결제 방법 / 결제 금액
-		 */
+		return orderDetailList;
+	
+	}
+	
+	// 주문 정보 가져오기
+	public OrderVo selectOrderInfo(String num) {
 		
-		/* 결제 완료된 상품 하나 조회하기
-		 * 
-		 */
+		// 커넥션 가져오기
+		Connection conn = getConnection();
+		
+		OrderVo orderInfo = dao.selectorderInfo(conn, num);
+		
+		close(conn);
+		
+		return orderInfo;
+		
+	}
+	
+	public PaymentVo selectPaymentInfo(String num) {
+		
+		// 커넥션 가져오기
+		Connection conn = getConnection();
+		
+		PaymentVo paymentInfo = dao.selectPaymentInfo(conn, num);
+		
+		close(conn);
+		
+		return paymentInfo;
 		
 	}
 
 }
+
+/* 주문에 주문번호 / 결제 금액
+ * 주문내역에 내역번호 / 식재료 번호 / 주문 번호 
+ * 결제에 결제 수단 / 결제 날짜
+ * 
+ * 셀렉트 하려면 식재료 이름 / 주문 번호 / 결제 방법 / 결제 금액
+ */
+
+/* 결제 완료된 상품 하나 조회하기
+ * 
+ */

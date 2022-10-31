@@ -38,7 +38,7 @@
                         </div>
                         <div class="movePage">
                             <button class="moveHome" type="button" onclick="location.href='/cookTeacher'">홈으로 이동</button>
-                            <button class="moveDetail" type="button" onclick="location.href='/cookTeacher/order/orderDetail'">주문내역 상세보기</button>
+                            <button class="moveDetail" type="button" onclick="location.href='/cookTeacher/order/orderList'">주문내역 상세보기</button>
                         </div>
                     </div>
                     
