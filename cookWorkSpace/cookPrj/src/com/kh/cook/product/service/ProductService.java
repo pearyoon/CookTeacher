@@ -7,8 +7,10 @@ import static com.kh.cook.common.JDBCTemplate.*;
 
 import com.kh.cook.bobstory.vo.AttachmentVo;
 import com.kh.cook.common.JDBCTemplate;
+import com.kh.cook.menu.dao.MenuDao;
 import com.kh.cook.product.dao.ProductDao;
 import com.kh.cook.product.vo.PageVo;
+import com.kh.cook.product.vo.ProductCartVo;
 import com.kh.cook.product.vo.ProductVo;
 import com.kh.cook.product.vo.ReviewVo;
 
@@ -327,6 +329,22 @@ public class ProductService  {
 		
 		return result;
 		
+	}
+
+
+	public int cartInput(ProductCartVo pvo) {
+
+		Connection conn = getConnection();
+		
+		int result = dao.addCart(conn, pvo);
+		
+		if(result == 1) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 
 

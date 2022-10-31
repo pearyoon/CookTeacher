@@ -92,7 +92,9 @@ margin-bottom: 30px;
 	display: flex;
 }
 
-    
+a:hover {
+  color : black;
+}    
 </style>
 </head>
 <body>

@@ -92,6 +92,10 @@ button.btnMain {
 	display: flex;
 }
   
+button:hover{
+    color: white;
+    background: black;
+}
 </style>
 </head>
 <body>

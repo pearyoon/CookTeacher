@@ -106,7 +106,9 @@ margin-bottom: 30px;
 	height: 100%;
 	display: flex;
 }
-
+a:hover {
+  color : black;
+}
 </style>
 </head>
 <body>
@@ -115,7 +117,7 @@ margin-bottom: 30px;
         <main>
             <hr>
             <div id="main-bottom">
-           	<img src="https://product-image.kurly.com/category/banner/pc/1f3d5f07-dea2-461a-af5d-18a3a30d8510.jpg">
+           	<img src="https://product-image.kurly.com/category/banner/pc/0a00c96f-719d-4ce5-b24f-fbed06d1d82e.jpg">
 	            <div id="main-menu-bar">
 	                    <div class="main-menu-bar-items" style="background-color: #255D00; box-shadow: 3px 3px #FFD335;">
 	                        <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>

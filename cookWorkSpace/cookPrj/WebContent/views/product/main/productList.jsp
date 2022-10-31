@@ -86,6 +86,11 @@ margin-bottom: 30px;
 	height: 100%;
 	display: flex;
 }
+
+a:link { color: red; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: blue; text-decoration: underline;}
+
     
 </style>
 </head>
@@ -95,7 +100,7 @@ margin-bottom: 30px;
         <main>
         <hr>
             <div id="main-bottom">
-            <img src="https://product-image.kurly.com/category/banner/pc/90da4c94-8cbf-4b9c-92c1-c6791a3f3c26.jpg">
+            <img src="https://product-image.kurly.com/cdn-cgi/image/width=1050,format=auto/banner/event/80b00ad6-ac3a-4005-b023-645fca0620ec.jpg">
             <!-- <div id="main-title">카테고리 선택</div> -->
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
