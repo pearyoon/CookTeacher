@@ -11,6 +11,7 @@
 	
 %>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script><!-- 알람 -->
 	<script>
 		<%if(alertMsg != null) {%>
 			Swal.fire('<%=alertMsg%>')

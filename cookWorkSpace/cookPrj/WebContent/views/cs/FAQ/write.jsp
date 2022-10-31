@@ -139,7 +139,6 @@ color: black;
 							  
 							    Swal.fire(
 							      '등록하였습니다!',
-							      'Your file has been deleted.',
 						    	  'success'
 						  	  ).then( ()=> {document.querySelector('#fff').submit();} );
 						  }

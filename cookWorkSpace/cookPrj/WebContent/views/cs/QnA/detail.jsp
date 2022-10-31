@@ -131,15 +131,9 @@ text-align: right;
 			<br><br>
 		</div>
 		
-		<!-- 댓글리스트 영역 -->
+		<!-- 답변 영역 -->
 		<div class="cmtlist">
 
-		</div>
-		
-		<!-- 댓글 작성 영역 -->
-		<div class="cmtwrite">
-			<input type="text" name="cmtcontent" placeholder="댓글 내용을 입력하세요.">
-			<input type="submit" value="작성">
 		</div>
 		
 		
