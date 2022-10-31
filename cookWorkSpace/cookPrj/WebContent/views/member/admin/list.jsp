@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@  taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,7 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
 </head>
 <body>
     <%@ include file="/views/common/header.jsp" %>
@@ -20,53 +22,131 @@
         <div>회원정보조회</div>
         <div class="list-wrap">
             <div class="list-top">
-                <a href="">최신순</a>
+            	<a href="/cookTeacher/admin/member/list?pno=1">전체</a>
+            	<span>|</span>
+                <a href="/cookTeacher/admin/member/list?pno=1&quitYn=n">유지회원</a>
                 <span>|</span>
-                <a href="">가입일순</a>
-                <span>|</span>
-                <a href="">탈퇴회원</a>
+                <a href="/cookTeacher/admin/member/list?pno=1&quitYn=y">탈퇴회원</a>
             </div>
             <div class="list-middle">
                 <div id="list-title" class="list-flex">
                     <div>번호</div>
-                    <div>이름</div>
                     <div>아이디</div>
+                    <div>이름</div>
                     <div>가입일</div>
-                    <div>탈퇴여부</div>
+                    <div>등급</div>
+                    <div>탈퇴</div>
                 </div>
                 <ul>
                     <li>
-                        <a href="">
-                            <div>
-                                <div>1</div>
-                                <div>배윤아</div>
-                                <div>yoona0769</div>
-                                <div>2022-10-28</div>
-                                <div>O</div>
+                    <c:forEach items="${memberList}" var="memberList">
+                    	<c:if test="${empty memberList}">
+                    	
+                    		<div>
+                    			<p>
+                    			회원이 없습니다.                    			
+                    			</p>
+                    		</div>
+                    	</c:if>
+                    	<a href="/cookTeacher/admin/member/detail?no=${memberList.no}">
+                    	
+                            <div class="list-flex" id="list-content">
+                                <div>${memberList.no}</div>
+                                <div>${memberList.id}</div>
+                                <div>${memberList.name}</div>
+                                <div>${memberList.enrollDate}</div>
+                                <div>${memberList.grade}</div>
+                                <div>${memberList.quitYn}</div>
                             </div>
                         </a>
+                    </c:forEach>
+
                     </li>
                 </ul>
             </div>
         </div>
+        <div class="btn-wrap">
+            <div>
+                <button id="left">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <c:if test="${pvo.currentPage == 1}">
+                	<script>
+                		$('#left').attr("disabled",true);
+                	</script>
+                </c:if>
+                <button id="right">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+                <c:if test="${pvo.currentPage == pvo.maxPage}">
+                	<script>
+                		$('#right').attr("disabled",true);
+                	</script>
+                </c:if>
+            </div>
+        </div>
         <div class="search-wrap">
-            <form action="">
-                <div class="flex-box">
-                    <div id="input-area">
-                        <input type="text" name="memberId" placeholder="찾고 싶은 아이디를 입력해주세요.">
-                    </div>
-                    <div id="btn-area">
-                        <button type="submit">
-                            <span>찾기</span>
-                            <i class="bi bi-search-heart"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+	        <form action="/cookTeacher/admin/member/list?pno=1" method="get">
+	        	<div class="flex-box">
+	                <div id="input-area">
+	                    <input type="text" name="search" placeholder="찾고 싶은 아이디를 입력해주세요.">
+	                    <input type="hidden" name="pno" value="">
+	                </div>
+	                <div id="btn-area">
+	                    <button type="submit" id="search-btn">
+	                        <span>찾기</span>
+	                        <i class="bi bi-search-heart"></i>
+	                    </button>
+	                </div>
+	            </div>
+	        </form>
+
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
+    	<c:if test="${quitYn eq 'y'}">
+    		<script>
+	        	$('#left').click(function(){
+	        		window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage-1}&quitYn=y";
+	            });
+	        	
+	        	$('#right').click(function(){
+
+	                window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage+1}&quitYn=y";
+	        	});
+	        
+    		</script>
+    	</c:if>
+    	<c:if test="${quitYn eq 'n'}">
+    		<script>
+	        	$('#left').click(function(){
+	        		window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage-1}&quitYn=n";
+	            });
+	        	
+	        	$('#right').click(function(){
+
+	                window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage+1}&quitYn=n";
+	        	});
+	        
+    		</script>
+    	</c:if>
+    	<c:if test="${empty quitYn}">
+    		<script>
+		       	$('#left').click(function(){
+		       		window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage-1}";
+		           });
+		       	
+		       	$('#right').click(function(){
+		
+		               window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage+1}";
+		       	});
+	        
+    		</script>
+    	</c:if>
+    
     <script>
+    
+    
         $('input[name="memberId"]').focus(function(){
             $('input[name="memberId"]').css("border", "1px solid rgb(51, 51, 51)");
         });

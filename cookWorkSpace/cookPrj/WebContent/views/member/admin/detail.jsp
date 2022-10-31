@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>집밥쿡선생 :: 회원가입</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
-<link rel="stylesheet" href="/cookTeacher/resources/css/member/admin/edit.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/member/admin/detail.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -20,7 +20,9 @@
         <div id="join-wrap">
             
 
-            <div></div>
+            <div>
+                <div>탈퇴 : ${vo.quitYn}</div> 
+            </div>
 
           
             <div id="join-top">
@@ -28,11 +30,19 @@
                 <form action="/cookTeacher/admin/member/edit" method="post" onsubmit="return checkEdit()">
                     <div class="join-items">
                         <div>
+                            <label for="enrollDate">가입일</label> 
+                        </div>
+                        <div class="input-area">
+                            <input id="enrollDate" type="text" name="enrollDate" value="${vo.enrollDate}" readonly>
+                        </div>
+                    </div>
+                    <div class="join-items">
+                        <div>
                             <label for="memberId">아이디</label>
                         </div>
                         <div>
                             <div class="input-area">
-                                <input id="memberId" type="text" name="memberId" value="" readonly>
+                                <input id="memberId" type="text" name="memberId" value="${vo.id }" readonly>
                             </div>
                         </div>
                     </div>
@@ -42,7 +52,7 @@
                         </div>
                         <div>
                             <div class="input-area">
-                                <input id="memberName" class="focus" type="text" name="memberName" value="">
+                                <input id="memberName" class="focus" type="text" name="memberName" value="${vo.name }">
                             </div>
                         </div>
 
@@ -53,7 +63,7 @@
                         </div>
                         <div>
                             <div class="input-area">
-                                <input id="memberNick" type="text" name="memberNick" value="" readonly>
+                                <input id="memberNick" type="text" name="memberNick" value="${vo.nick }" readonly>
                             </div>
 
                         </div>
@@ -64,7 +74,7 @@
                         </div>
                         <div>
                             <div class="input-area">
-                                <input id="email" type="text" name="email" value="" readonly>
+                                <input id="email" type="text" name="email" value="${vo.email }" readonly>
                             </div>
 
                         </div>
@@ -75,7 +85,17 @@
                         </div>
                         <div>
                             <div class="input-area">
-                                <input id="phone" class="focus" type="text" name="phone" value="">
+                                <input id="phone" class="focus" type="text" name="phone" value="${vo.point }">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="join-items">
+                        <div>
+                            <label for="phone">등급</label>
+                        </div>
+                        <div>
+                            <div class="input-area">
+                                <input id="phone" class="focus" type="text" name="phone" value="${vo.grade }">
                             </div>
                         </div>
                     </div>

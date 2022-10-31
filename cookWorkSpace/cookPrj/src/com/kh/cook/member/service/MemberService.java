@@ -162,7 +162,7 @@ public class MemberService {
 		MemberVo checkGrade = null;
 		if(result == 1) {
 			commit(conn);
-			checkGrade = dao.selectGrade(vo.getNo(), conn);
+			checkGrade = dao.selectOneByNo(vo.getNo(), conn);
 		} else {
 			rollback(conn);
 		}
@@ -170,6 +170,15 @@ public class MemberService {
 		close(conn);
 		
 		return checkGrade;
+	}
+	public MemberVo selectOneByNo(String no) {
+		Connection conn = getConnection();
+		
+		MemberVo vo = dao.selectOneByNo(no,conn);
+		
+		close(conn);
+		
+		return vo;
 	}
 
 

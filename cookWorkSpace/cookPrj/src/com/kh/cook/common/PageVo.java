@@ -11,6 +11,7 @@ public class PageVo {
 	private int maxPage;
 	private int startPage;
 	private int endPage;
+	
 	public int getListCount() {
 		return listCount;
 	}
