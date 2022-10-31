@@ -14,6 +14,7 @@ import com.kh.cook.menu.vo.MenuAttachmentVo;
 import com.kh.cook.menu.vo.MenuCartVo;
 import com.kh.cook.menu.vo.MenuCateVo;
 import com.kh.cook.menu.vo.MenuVo;
+import com.kh.cook.menu.vo.MenuWriteVo;
 import com.kh.cook.product.vo.ProductVo;
 
 import oracle.net.nt.ConnectDescription;
@@ -171,10 +172,10 @@ public class MenuService {
 	}
 
 	//레시피 등록
-	public int menuWrite(MenuVo menuVo, MenuAttachmentVo menuAttachmentVo) {
+	public int menuWrite(MenuWriteVo vo, MenuAttachmentVo menuAttachmentVo) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		int result = new MenuDao().insertRecipe(conn, menuVo);
+		int result = new MenuDao().insertRecipe(conn, vo);
 		
 		int result2 = 1;
 		if(menuAttachmentVo != null) {
