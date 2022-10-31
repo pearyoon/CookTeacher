@@ -80,11 +80,6 @@ main>.list>div{
 	line-height: 35px
 }
 
-#writebtn{
-	height: 20px;
-	display: flex;
-	flex-direction: row-reverse;
-}
 #page-area{
 	align-content: center;
 	text-align: center;
@@ -92,6 +87,28 @@ main>.list>div{
 	height: 30px;
 }
 
+/* 등록, 취소 버튼 */
+#writebtn>button{
+	height: 30px;
+	width: 70px;
+	background: #255D00;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: small;
+	margin: 5px;
+}
+
+#writebtn{
+	text-align: center;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+#writebtn>button:hover{
+    border: 10px yellow;
+    background-color: #326e0b;
+}
 </style>
 
 <body>
@@ -133,16 +150,17 @@ main>.list>div{
 		        <%} %>
 			</div>
 			
-			<!-- 관리자일 때 FAQ글 작성 -->
-			<%if(session.getAttribute("loginMember") != null &&
-				loginMember.getId().equals("admin01")){ %>
-				<div id="writebtn"><a href="/cookTeacher/cs/FAQ/write">글쓰기</a></div>
-			<%} %>
+			<div id="writebtn">
+				<!-- 관리자일 때 FAQ글 작성 -->
+				<%if(session.getAttribute("loginMember") != null && loginMember.getId().equals("admin01")){ %>
+					<button type="button" onclick="location.href='/cookTeacher/cs/FAQ/write';">글쓰기</button>
+				<%} %>
 
-			<!-- 일반회원일 때 QNA글 작성 -->
-			<%if(session.getAttribute("loginMember") != null){ %>
-				<div id="writebtn"><a href="/cookTeacher/cs/QnA/write">문의하기</a></div>
-			<%} %>
+				<!-- 일반회원일 때 QNA글 작성 -->
+				<%if(session.getAttribute("loginMember") != null){ %>
+					<button type="button" onclick="location.href='/cookTeacher/cs/QnA/write';">문의하기</button>
+				<%} %>
+			</div>
 			
 		</main>
 		<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->

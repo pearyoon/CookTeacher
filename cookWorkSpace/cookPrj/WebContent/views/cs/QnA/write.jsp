@@ -149,16 +149,26 @@ color: #000000;
 			<!-- upload()함수 -->
 			<script>
 			function upload(){
+				Swal.fire({
+                   title: '등록 성공!',
+                   icon: 'success',
+                });
+			}
+			
+			/* function upload(){
 				if(confirm("자주묻는질문을 추가하시겠습니까?")){
 					return true;
 				}else{
 					alert("작성을 취소합니다.");
 					return false;
 				}
-			}
+			} */
 			
 			function cancel(){
-				alert("작성을 취소하고 목록으로 돌아갑니다.")
+				Swal.fire({
+                    title: '등록 취소',
+                    icon: 'info',
+                 });
 				location.href="/cookTeacher/cs/QnA/list"
 			}
 			</script>
