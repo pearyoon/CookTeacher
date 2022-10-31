@@ -15,6 +15,7 @@ import javax.servlet.http.Part;
 
 import com.kh.cook.bobstory.controller.FileUploader;
 import com.kh.cook.bobstory.vo.AttachmentVo;
+import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.product.service.ProductService;
 import com.kh.cook.product.vo.ProductVo;
 import com.kh.cook.product.vo.ReviewVo;
@@ -39,6 +40,9 @@ public class AdminInsertProduct extends HttpServlet {
 		//세션 꺼내기
 		HttpSession s = req.getSession();
 		
+		//로그인 멤버 꺼내기
+		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
+		
 		//인코딩
 		req.setCharacterEncoding("UTF-8");
 
@@ -54,6 +58,8 @@ public class AdminInsertProduct extends HttpServlet {
 		String stock = req.getParameter("stock");
 		Part file = req.getPart("file");
 		
+		String content = req.getParameter("content");
+		
 		AttachmentVo avo = null;
 		//----------------파일 업로드 start ----------------------
 		
@@ -66,7 +72,6 @@ public class AdminInsertProduct extends HttpServlet {
 		
 		//데이터 뭉치기
 		ProductVo vo = new ProductVo();
-		vo.setProdNo(no);
 		vo.setCateNo(cateNo);
 		vo.setName(name);
 		vo.setInfo(info);
@@ -76,11 +81,21 @@ public class AdminInsertProduct extends HttpServlet {
 		vo.setStock(stock);
 		vo.setImgPath(avo.getChangeName());
 		
+		int prodNo = new ProductService().findProdNo(vo);
+		
+//		
+//		ReviewVo rvo = new ReviewVo();
+//		rvo.setProdNo(Integer.toString(prodNo));
+//		rvo.setNo(loginMember.getNo());
+//		rvo.setContent(content);
+		
 		//디비 다녀오기
 		int result = new ProductService().insertProduct(vo,avo);
-		List<ReviewVo> rvoList = new ProductService().selectReview(no);
-		//int no = new ProductService().findProdNo(vo);
+		//int result2 = new ProductService().insertReview(rvo,prodNo);
 		
+		List<ReviewVo> rvoList = new ProductService().selectReview(no);
+		
+		//vo.setProdNo(Integer.toString(prodNo));
 		
 		//화면 선택
 		if(result == 1) {
@@ -88,8 +103,10 @@ public class AdminInsertProduct extends HttpServlet {
 			s.setAttribute("alertMsg", "상품 등록 완료 !");
 			req.setAttribute("vo", vo);
 			req.setAttribute("rvoList", rvoList);
+			req.setAttribute("prodNo", prodNo);
+			
 			req.getRequestDispatcher("/views/product/detail/productDetail.jsp").forward(req, resp);
-			//resp.sendRedirect("/product/detail/productDetail?no="+no);
+			//resp.sendRedirect("/cookTeacher/product/detail/productDetail?no="+ prodNo);
 		}else {
 			//게시글 작성 실패
 			if(avo != null) {

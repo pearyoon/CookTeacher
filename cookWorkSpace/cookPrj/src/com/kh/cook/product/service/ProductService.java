@@ -158,6 +158,23 @@ public class ProductService  {
 		return result;
 	}
 
+	//관리자 식재료 리뷰 작성
+	public int insertReview(ReviewVo rvo, int prodNo) {
+
+		Connection conn = getConnection(); 
+		
+		int result = dao.insertAdminReview(conn, rvo, prodNo);
+		
+		if(result ==1) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 
 	//과일채소 목록 조회
 	public List<ProductVo> selectFruitVegeList(PageVo pv) {
@@ -306,6 +323,7 @@ public class ProductService  {
 		
 		if(result * result2 == 1) {
 			//성공
+			//voList 꺼내오기 (여기서 다시 PRODNO get 해오기)
 			commit(conn);
 		}else {
 			//실패
