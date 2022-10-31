@@ -66,6 +66,7 @@ public class AdminInsertProduct extends HttpServlet {
 		
 		//데이터 뭉치기
 		ProductVo vo = new ProductVo();
+		vo.setProdNo(no);
 		vo.setCateNo(cateNo);
 		vo.setName(name);
 		vo.setInfo(info);

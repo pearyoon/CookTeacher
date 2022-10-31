@@ -4,6 +4,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<% 
+	ProductVo vo = (ProductVo)request.getAttribute("vo");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +33,7 @@
         	<div id="main-bottom">
         		<div class="outer">
 	        		<div id="admin_insert">
-		        		<form id="enroll-form" action="/cookTeacher/product/main/admin_insertProduct" method="post" enctype="multipart/form-data">
+		        		<form id="enroll-form" action="/cookTeacher/product/detail/productDetail" method="post" enctype="multipart/form-data">
 		        		<table>
 		        		<tr>
 		        			<th >카테고리&nbsp;:&nbsp;&nbsp;</th>
@@ -79,11 +82,7 @@
 		                    <th>메인 사진&nbsp;:&nbsp;&nbsp;</th>
 		                    <td><input type="file" name="file"></td>
 		                </tr>
-		         
 	            		</table>
-	            		
-	            		
-	
 			            <div align="center">
 			                <button type="submit" id="bottom-bttn">등록하기</button>
 			                <button type="reset" id="bottom-bttn">취소하기</button>
