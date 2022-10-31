@@ -49,7 +49,7 @@
 					<input type="submit" id="btn-1" value="글쓰기">
 					&nbsp;
 					&nbsp;
-					<input type="reset" name="" id="btn-1" value="취소">
+					<input type="reset" name="" id="btn-1" value="취소" onclick="history.back(-1)">
 				</div>
 				<br>
 			</form>

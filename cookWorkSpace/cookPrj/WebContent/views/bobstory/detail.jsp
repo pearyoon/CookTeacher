@@ -114,71 +114,78 @@
 				<!-- <input type="button" id="like_btn" value="좋아요" onclick="bLike();"> -->
 				<!-- <input type="button" id="report_btn" value="신고" onclick="location.hred='/cookTeacher/bobstory/report'"> -->
 			</div>
-			<%if(loginMember != null && loginMember.getNick().equals(vo.getWriter())){%>
+			<%if(loginMember != null && (loginMember.getNick().equals(vo.getWriter()) || loginMember.getNick().equals("관리자"))){%>
 			<div id="main-bot">
 				<a href="/cookTeacher/bobstory/edit?no=<%=vo.getNo()%>">수정하기</a>
 				<!-- <button type="button" onclick="delete_b()">삭제하기</button> -->
 				<!-- <input type="submit" class="check-d" onclick="delete_b()" value="삭제하기"> -->
 				<a href="/cookTeacher/bobstory/delete?no=<%=vo.getNo()%>" class="check-d"">삭제하기</a>
+			</div>
 			<%}%>
-		</div>
 		<br>
 		<div class="cmt_container">
 			<div class="form-table">
-				<form action="/cookTeacher/bobstory/cmt" method="get">
+				<!-- <form action="/cookTeacher/bobstory/cmt" method="get"> -->
+					<input type="hidden" value="<%=vo.getNo()%>" name="bobNo">
+					<%if(loginMember != null) {%>
+						<input type="hidden" value="<%=loginMember.getNo()%>" name="writerNo">
+					<%}%>
 					<section class="cmt_inp">
 					<div class="cmt_count">&nbsp;댓글&nbsp;<span id="count">0</span></div>
 					
 					<span class="cmt_w" id="cmtWriter">작성자 : 
-					<%if(loginMember == null) {%>
-						
-					<%}else{%>
+					<%if(loginMember != null) {%>
 						<%=loginMember.getNick() %>
-					<%} %>
+					<%}%>
 					</span>
 						<div class="cmt_txt">
-							<textarea name="comment" id="cmt_comment" cols="50" rows="4" placeholder="내용을 입력해 주세요."></textarea>
-							&nbsp;<button type="submit" class="cmt_btn"><span>등록</span></button>
+							<textarea name="comment" id="cmt_comment" cols="50" rows="4" placeholder="회원 간의 불편함을 주는 댓글은 자제해주시고 따뜻한 댓글 부탁드립니다.
+																		게시물에 문제가 있다면 신고 또는 정중하게 이의제기 해주시길 바랍니다."></textarea>
+							&nbsp;<button class="cmt_btn"><span>등록</span></button>
 						</div>
 						
 					</section>
-				</form>
+				<!-- </form> -->
+<!-- 				<div class="cmt_box" style="border: 1px solid black;"> -->
+<!-- 					댓글 작성 하면 담을 곳 -->
+<!-- 				</div> -->
 				<script>
-					$().click(function(){
+					$('.cmt_btn').click(function(){
 							//JSON으로 전달할 파라미터 변수 선언
-							const bobno = ${no};
-							const cmt_writer = $('#cmtWriter').val();
-							const cmt_comment = $('#cmt_comment').val();
+							const bobno = '${vo.no}';
+							const cmtWriter = $('input[name=writerNo]').val();
+							const cmtComment = $('#cmt_comment]').val();
 
 							console.log(bobno);
-							console.log(cmt_writer);
-							console.log(cmt_comment);
-
+							console.log(cmtWriter);
+							console.log(cmtComment);
+							if(cmtWriter == ""){
+								alert('로그인 후 이용해주세요.');
+							}else if(cmtComment == ""){
+								alert('내용을 입력해주세요.');
+							}
+							const data = [bobno, cmtWriter, cmtComment];
+							
+							$.ajax({
+								url:"/cookTeacher/bobstory/cmt",
+								type:"get",
+								data: {
+									"bobno" : data[0] ,
+									"cmtWriter" : data[1] ,
+									"cmtComment" : data[2]
+									
+								},
+								success : function(result){
+									console.log('성공'+result);
+									alert('댓글을 작성하였습니다.');
+									$('#cmtWriter').val(cmtWriter);
+									$('#cmtComment').val();
+								},
+								error : function(){
+									
+								}
+							});
 					});
-					// function cmtsave(){
-					// 	var data = {
-					// 		comment:
-					// 	}
-						
-					// 	$.ajax({
-					// 		url:"/cookTeacher/bobstory/cmt",
-					// 		type:"post",
-					// 		data: 
-					// 	});
-					// }
-				
-					// function cmtbtn(){
-					// 	$.ajax({
-					// 		url : "/cookTeacher/bobstory/cmt",
-					// 		type : "get",
-					// 		success : function(result){
-
-					// 		},
-					// 		error : function(){
-
-					// 		}
-					// 	});
-					// }
 				</script>
 			</div>
 

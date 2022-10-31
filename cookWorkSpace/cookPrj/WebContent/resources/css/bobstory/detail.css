@@ -163,7 +163,7 @@ tbody tr td{
     display: flex;
     align-items: center;
     border-radius: 10px;
-    width: 8vw;
+    width: 20vw;
     flex-basis: 1;
     justify-content: space-between;
 }

@@ -2,6 +2,7 @@ function up_ok(){
     if(confirm("게시글을 작성하시겠습니까?"))
     {
      location.href="/cookTeacher/bobstory/list";
+     alert('게시글 작성에 성공했습니다.');
     }
     else
     {

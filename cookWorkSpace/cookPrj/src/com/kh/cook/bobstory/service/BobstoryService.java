@@ -209,6 +209,11 @@ public class BobstoryService {
 		return bobLike;
 	}
 
+	public BobstoryVo selectBoardOne(String no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 
