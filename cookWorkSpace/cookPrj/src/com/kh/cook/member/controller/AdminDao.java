@@ -14,9 +14,21 @@ import com.kh.cook.member.vo.MemberVo;
 
 public class AdminDao {
 
-	public int selectCount(Connection conn) {
-		String sql = "SELECT COUNT(*) AS CNT FROM MEMBER";
+	public int selectCount(Connection conn, MemberVo vo) {
+		String sql = null;
 		
+		if(vo.getId() != null) {
+			sql = "SELECT COUNT(*) AS CNT FROM MEMBER WHERE ADMIN_YN = 'N' AND ID LIKE '%" + vo.getId() +"%'";
+			
+		} else if("all".equals(vo.getNo())) {
+			sql = "SELECT COUNT(*) AS CNT FROM MEMBER WHERE ADMIN_YN = 'N'";
+		
+		} else if("X".equals(vo.getQuitYn())) {
+			sql = "SELECT COUNT(*) AS CNT FROM MEMBER WHERE ADMIN_YN = 'N' AND QUIT_YN = 'N'";
+		
+		} else if("O".equals(vo.getQuitYn())) {
+			sql = "SELECT COUNT(*) AS CNT FROM MEMBER WHERE ADMIN_YN = 'N' AND QUIT_YN = 'Y'";
+		} 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
@@ -40,7 +52,7 @@ public class AdminDao {
 	}
 
 	public List<MemberVo> selectList(Connection conn, PageVo pvo) {
-		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM, T.* FROM (   SELECT M.NO, G.NAME AS GRADE, M.ID, M.NAME, M.ENROLL_DATE, M.QUIT_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO ORDER BY M.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM, T.* FROM (   SELECT M.NO, G.NAME AS GRADE, M.ID, M.NAME, M.ENROLL_DATE, M.QUIT_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO  WHERE ADMIN_YN = 'N'  ORDER BY M.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<MemberVo> voList = new ArrayList<MemberVo>();
@@ -51,8 +63,8 @@ public class AdminDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(1, pvo.getStart());
+			pstmt.setInt(2, pvo.getEnd());
 			
 			rs = pstmt.executeQuery();
 			
@@ -84,8 +96,8 @@ public class AdminDao {
 		return voList;
 	}
 
-	public List<MemberVo> selectQuitYMember(Connection conn, PageVo pvo) {
-		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM, T.* FROM (   SELECT M.NO, G.NAME AS GRADE, M.ID, M.NAME, M.ENROLL_DATE, M.QUIT_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE QUIT_YN = 'Y' ORDER BY M.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+	public List<MemberVo> selectListByQuit(Connection conn, PageVo pvo,String quitYn) {
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM, T.* FROM (   SELECT M.NO, G.NAME AS GRADE, M.ID, M.NAME, M.ENROLL_DATE, M.QUIT_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE QUIT_YN = ?  AND ADMIN_YN = 'N' ORDER BY M.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<MemberVo> voList = new ArrayList<MemberVo>();
@@ -96,8 +108,9 @@ public class AdminDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setString(1, quitYn);
+			pstmt.setInt(2, pvo.getStart());
+			pstmt.setInt(3, pvo.getEnd());
 			
 			rs = pstmt.executeQuery();
 			
@@ -107,7 +120,7 @@ public class AdminDao {
 				String id = rs.getString("ID");
 				String name = rs.getString("NAME");
 				String enrollDate = rs.getString("ENROLL_DATE").substring(0, 11);
-				String quitYn = rs.getString("QUIT_YN");
+				String dataQuitYn = rs.getString("QUIT_YN");
 				
 				MemberVo vo = new MemberVo();
 				vo.setNo(no);
@@ -115,7 +128,7 @@ public class AdminDao {
 				vo.setId(id);
 				vo.setName(name);
 				vo.setEnrollDate(enrollDate);
-				vo.setQuitYn(quitYn);
+				vo.setQuitYn(dataQuitYn);
 				
 				voList.add(vo);
 			}
@@ -129,27 +142,29 @@ public class AdminDao {
 		return voList;
 	}
 
-	public List<MemberVo> selectQuitNMember(Connection conn, PageVo pvo) {
-		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM, T.* FROM (   SELECT M.NO, G.NAME AS GRADE, M.ID, M.NAME, M.ENROLL_DATE, M.QUIT_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE QUIT_YN = 'N' ORDER BY M.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+
+
+	public List<MemberVo> selectListById(Connection conn, PageVo pvo, String id) {
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM, T.* FROM (   SELECT M.NO, G.NAME AS GRADE, M.ID, M.NAME, M.ENROLL_DATE, M.QUIT_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE ID LIKE ? AND ADMIN_YN = 'N' ORDER BY M.NO DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+	
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<MemberVo> voList = new ArrayList<MemberVo>();
 		
-		int start = (pvo.getCurrentPage() - 1) * pvo.getBoardLimit() + 1;
-		int end = start + pvo.getBoardLimit() - 1;
+		
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setString(1, "%"+id+"%");
+			pstmt.setInt(2, pvo.getStart());
+			pstmt.setInt(3, pvo.getEnd());
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				String no = rs.getString("NO");
 				String grade =  rs.getString("GRADE");
-				String id = rs.getString("ID");
+				String dataId = rs.getString("ID");
 				String name = rs.getString("NAME");
 				String enrollDate = rs.getString("ENROLL_DATE").substring(0, 11);
 				String quitYn = rs.getString("QUIT_YN");
@@ -157,7 +172,7 @@ public class AdminDao {
 				MemberVo vo = new MemberVo();
 				vo.setNo(no);
 				vo.setGrade(grade);
-				vo.setId(id);
+				vo.setId(dataId);
 				vo.setName(name);
 				vo.setEnrollDate(enrollDate);
 				vo.setQuitYn(quitYn);
@@ -165,13 +180,40 @@ public class AdminDao {
 				voList.add(vo);
 			}
 			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 			close(rs);
 		}
+		
 		return voList;
+		
+	}
+
+	public int updateMember(MemberVo vo, Connection conn) {
+		String sql = "UPDATE MEMBER SET NAME = ? , POINT =  ? , GRADE = ? WHERE NO = ? AND ID = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getName());
+			pstmt.setInt(2, vo.getPoint());
+			pstmt.setString(3, vo.getGrade());
+			pstmt.setString(4, vo.getNo());
+			pstmt.setString(5, vo.getId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 

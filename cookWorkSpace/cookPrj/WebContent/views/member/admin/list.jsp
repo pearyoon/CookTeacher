@@ -22,11 +22,11 @@
         <div>회원정보조회</div>
         <div class="list-wrap">
             <div class="list-top">
-            	<a href="/cookTeacher/admin/member/list?pno=1">전체</a>
+            	<a href="/cookTeacher/admin/member/list?member=all&pno=1">전체</a>
             	<span>|</span>
-                <a href="/cookTeacher/admin/member/list?pno=1&quitYn=n">유지회원</a>
+                <a href="/cookTeacher/admin/member/list?pno=1&quitYn=N">유지회원</a>
                 <span>|</span>
-                <a href="/cookTeacher/admin/member/list?pno=1&quitYn=y">탈퇴회원</a>
+                <a href="/cookTeacher/admin/member/list?pno=1&quitYn=Y">탈퇴회원</a>
             </div>
             <div class="list-middle">
                 <div id="list-title" class="list-flex">
@@ -78,7 +78,7 @@
                 <button id="right">
                     <i class="bi bi-chevron-right"></i>
                 </button>
-                <c:if test="${pvo.currentPage == pvo.maxPage}">
+                <c:if test="${pvo.currentPage == pvo.maxPage || pvo.listCount == 0}">
                 	<script>
                 		$('#right').attr("disabled",true);
                 	</script>
@@ -86,11 +86,11 @@
             </div>
         </div>
         <div class="search-wrap">
-	        <form action="/cookTeacher/admin/member/list?pno=1" method="get">
+	        <form action="/cookTeacher/admin/member/list" method="get">
 	        	<div class="flex-box">
 	                <div id="input-area">
 	                    <input type="text" name="search" placeholder="찾고 싶은 아이디를 입력해주세요.">
-	                    <input type="hidden" name="pno" value="">
+	                    <input type="hidden" name="pno" value="1">
 	                </div>
 	                <div id="btn-area">
 	                    <button type="submit" id="search-btn">
@@ -104,28 +104,28 @@
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
-    	<c:if test="${quitYn eq 'y'}">
+    	<c:if test="${quitYn eq 'Y'}">
     		<script>
 	        	$('#left').click(function(){
-	        		window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage-1}&quitYn=y";
+	        		window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage-1}&quitYn=Y";
 	            });
 	        	
 	        	$('#right').click(function(){
 
-	                window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage+1}&quitYn=y";
+	                window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage+1}&quitYn=Y";
 	        	});
 	        
     		</script>
     	</c:if>
-    	<c:if test="${quitYn eq 'n'}">
+    	<c:if test="${quitYn eq 'N'}">
     		<script>
 	        	$('#left').click(function(){
-	        		window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage-1}&quitYn=n";
+	        		window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage-1}&quitYn=N";
 	            });
 	        	
 	        	$('#right').click(function(){
 
-	                window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage+1}&quitYn=n";
+	                window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage+1}&quitYn=N";
 	        	});
 	        
     		</script>
@@ -133,12 +133,25 @@
     	<c:if test="${empty quitYn}">
     		<script>
 		       	$('#left').click(function(){
-		       		window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage-1}";
+		       		window.location.href="/cookTeacher/admin/member/list?member=all&pno=${pvo.currentPage-1}";
 		           });
 		       	
 		       	$('#right').click(function(){
 		
-		               window.location.href="/cookTeacher/admin/member/list?pno=${pvo.currentPage+1}";
+		               window.location.href="/cookTeacher/admin/member/list?member=all&pno=${pvo.currentPage+1}";
+		       	});
+	        
+    		</script>
+    	</c:if>
+    	<c:if test="${search != null}">
+    		<script>
+		       	$('#left').click(function(){
+		       		window.location.href="/cookTeacher/admin/member/list?search=${search}&pno=${pvo.currentPage-1}";
+		           });
+		       	
+		       	$('#right').click(function(){
+		
+		               window.location.href="/cookTeacher/admin/member/list?search=${search}&pno=${pvo.currentPage+1}";
 		       	});
 	        
     		</script>

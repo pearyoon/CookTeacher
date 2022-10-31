@@ -89,6 +89,7 @@
 
 		};
 		
+
 		$('button[type="button"]').click(function(){
 			window.location.href = "/cookTeacher/login/mypage/member/check";
 		});

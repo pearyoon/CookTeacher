@@ -78,7 +78,7 @@
     margin-right: 10px;
 }
 
-.join-items .input-area>input {
+.join-items .input-area>input, .input-area>select {
     width: 100%;
     height: 46px;
     padding: 0px 11px 1px 15px;
