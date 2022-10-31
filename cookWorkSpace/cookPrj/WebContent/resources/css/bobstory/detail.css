@@ -142,3 +142,51 @@ tbody tr td{
     font-weight: 600;
 
 }
+
+/* 댓 글 */
+.form-table{
+    display: flex;
+    justify-content: center;
+}
+
+.cmt_count{
+    height: 40px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    width: 6vw;
+}
+
+.cmt_w{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    width: 8vw;
+    flex-basis: 1;
+    justify-content: space-between;
+}
+
+.cmt_txt{
+    display: flex;
+    justify-content: center;
+}
+
+#cmt_comment{
+    width: 1000px;
+    height: 100px;
+}
+
+.cmt_btn{
+    height: 100px;
+    color: #fff;
+    background-color: #255D00;
+    border-style: none;
+    border-radius: 7px;
+}
+
+.cmt_btn:hover{
+    background-color: #398209;
+    border: 2px solid #FFD335;
+}

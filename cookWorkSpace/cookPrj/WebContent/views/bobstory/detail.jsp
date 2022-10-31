@@ -122,7 +122,68 @@
 				<a href="/cookTeacher/bobstory/delete?no=<%=vo.getNo()%>" class="check-d"">삭제하기</a>
 			<%}%>
 		</div>
-		
+		<br>
+		<div class="cmt_container">
+			<div class="form-table">
+				<form action="/cookTeacher/bobstory/cmt" method="get">
+					<section class="cmt_inp">
+					<div class="cmt_count">&nbsp;댓글&nbsp;<span id="count">0</span></div>
+					
+					<span class="cmt_w" id="cmtWriter">작성자 : 
+					<%if(loginMember == null) {%>
+						
+					<%}else{%>
+						<%=loginMember.getNick() %>
+					<%} %>
+					</span>
+						<div class="cmt_txt">
+							<textarea name="comment" id="cmt_comment" cols="50" rows="4" placeholder="내용을 입력해 주세요."></textarea>
+							&nbsp;<button type="submit" class="cmt_btn"><span>등록</span></button>
+						</div>
+						
+					</section>
+				</form>
+				<script>
+					$().click(function(){
+							//JSON으로 전달할 파라미터 변수 선언
+							const bobno = ${no};
+							const cmt_writer = $('#cmtWriter').val();
+							const cmt_comment = $('#cmt_comment').val();
+
+							console.log(bobno);
+							console.log(cmt_writer);
+							console.log(cmt_comment);
+
+					});
+					// function cmtsave(){
+					// 	var data = {
+					// 		comment:
+					// 	}
+						
+					// 	$.ajax({
+					// 		url:"/cookTeacher/bobstory/cmt",
+					// 		type:"post",
+					// 		data: 
+					// 	});
+					// }
+				
+					// function cmtbtn(){
+					// 	$.ajax({
+					// 		url : "/cookTeacher/bobstory/cmt",
+					// 		type : "get",
+					// 		success : function(result){
+
+					// 		},
+					// 		error : function(){
+
+					// 		}
+					// 	});
+					// }
+				</script>
+			</div>
+
+		</div>
+
 		
 		
 	<%@include file="/views/common/footer.jsp" %> <!-- 푸터부분 파일 가져오기-->

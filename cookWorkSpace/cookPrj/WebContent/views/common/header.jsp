@@ -32,7 +32,7 @@
                    <%} else if(loginMember != null &&"Y".equals(loginMember.getAdminYn())) {%>	
                        <a href="<%=root %>/member/logout">로그아웃</a>
                        <span>|</span>
-                       <a>신고관리</a>
+                       <a href="<%=root%>/report/list">신고관리</a>
                        <span>|</span>
                        <a href="<%=root %>/admin/member/list">회원조회</a>
                        
