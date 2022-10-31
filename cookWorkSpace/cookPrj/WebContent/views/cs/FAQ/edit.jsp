@@ -129,7 +129,10 @@ color: #000000;
 				}
 				
 				function cancel(){
-					alert("수정을 취소하고 목록으로 돌아갑니다.")
+					Swal.fire({
+                       title: '등록 취소',
+                       icon: 'info',
+                    });
 					location.href="/cookTeacher/cs/FAQ/list"
 				}
 			</script>
