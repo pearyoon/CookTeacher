@@ -264,7 +264,6 @@ public class MenuDao {
 				vo.setMenuInfo(menuInfo);
 				vo.setImgPath(imgPath);
 				
-				System.out.println(vo);
 				
 				voList.add(vo);
 
@@ -591,7 +590,7 @@ public class MenuDao {
 
 	public int insertRecipe(Connection conn, MenuWriteVo vo) {
 		//String sql = "INSERT INTO MENU( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ,IMG_PATH) VALUES (SEQ_MENU_NO.NEXTVAL, ? , '메뉴이름', '메뉴설명', '레시피' , 330 ,'재료', '한식레시피/kimchi_stew.png' ) ;";
-		String sql = "INSERT INTO MENUWRITE( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ,IMG_PATH) VALUES (SEQ_MENU_NO.NEXTVAL, ? , ?, ?, ?, ? ,?, IMG)";
+		String sql = "INSERT INTO MENU_WRITE( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ) VALUES (SEQ_MENU_WRITE_NO.NEXTVAL, ?, ?, ?, ? , ? ,?)";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -616,7 +615,7 @@ public class MenuDao {
 	}
 
 	public int insertAttachment(Connection conn, MenuAttachmentVo menuAttachmentVo) {
-		String sql = "INSERT INTO MENUATTACHMENT ( NO , MENU_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_MENUATTACHMENT_NO.NEXTVAL, SEQ_MENU_NO.CURRVAL , ? , ? , ?)";
+		String sql = "INSERT INTO MENUATTACHMENT ( NO , MENU_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_MENUATTACHMENT_NO.NEXTVAL, SEQ_MENU_WRITE_NO.CURRVAL , ? , ? , ?)";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -640,7 +639,7 @@ public class MenuDao {
 	
 	}
 
-	public MenuAttachmentVo selectAttachment(Connection conn, String no) {
+	public MenuAttachmentVo selectAttachment(Connection conn, String Nno) {
 		String sql = "SELECT * FROM MENUATTACHMENT WHERE STATUS = 'O' AND MENU_NO = ? ";
 		
 		PreparedStatement pstmt = null;
@@ -649,7 +648,7 @@ public class MenuDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, no);
+			pstmt.setString(1, Nno);
 			
 			rs = pstmt.executeQuery();
 			
@@ -713,6 +712,105 @@ public class MenuDao {
 		
 		return result;
 		
+	}
+
+	public List<MenuWriteVo> selectNewInList(Connection conn) {
+		String sql = "SELECT * FROM MENU_WRITE ORDER BY NO";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MenuWriteVo> writeList = new ArrayList<MenuWriteVo>();
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+
+				String no = rs.getString("NO");
+				String menuCateNo = rs.getString("MENU_CATE_NO");
+				String menuName = rs.getString("MENU_NAME");
+				String menuInfo = rs.getString("MENU_INFO");
+				String recipe = rs.getString("RECIPE");
+				String cal = rs.getString("CAL");
+				String recommend = rs.getString("RECOMMEND");
+				String menuProd = rs.getString("MENU_PROD");
+				
+				MenuWriteVo vo = new MenuWriteVo();
+				vo.setNo(no);
+				vo.setMenuCateNo(menuCateNo);
+				vo.setMenuName(menuName);
+				vo.setMenuInfo(menuInfo);
+				vo.setRecipe(recipe);
+				vo.setCal(cal);
+				vo.setRecommend(recommend);
+				vo.setMenuProd(menuProd);
+				
+				writeList.add(vo);
+				
+			}
+				
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return writeList;
+
+	
+	}
+
+	//등록레시피 디테일
+	public MenuWriteVo selectNewMenuOne(Connection conn, String Nno) {
+		
+		String sql = "SELECT * FROM MENU_WRITE WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MenuWriteVo vo = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Nno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String recipe = rs.getString("RECIPE");
+				String menuProd = rs.getString("MENU_PROD");
+				String cal = rs.getString("CAL");
+				String recommend = rs.getString("RECOMMEND");
+				String menuCate_no = rs.getString("MENU_CATE_NO");
+				String menuName = rs.getString("MENU_NAME");
+				String menuInfo = rs.getString("MENU_INFO");
+	
+				
+				vo = new MenuWriteVo();
+				vo.setRecipe(recipe);
+				vo.setMenuProd(menuProd);
+				vo.setCal(cal);
+				vo.setRecommend(recommend);
+				vo.setMenuCateNo(menuCate_no);
+				vo.setMenuName(menuName);
+				vo.setMenuInfo(menuInfo);
+			
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+		}
+		
+		return vo;
 	}
 	
 	

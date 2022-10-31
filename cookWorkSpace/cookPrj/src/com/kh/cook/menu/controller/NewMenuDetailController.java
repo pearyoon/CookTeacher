@@ -17,36 +17,34 @@ import com.kh.cook.menu.service.MenuService;
 import com.kh.cook.menu.vo.MenuAttachmentVo;
 import com.kh.cook.menu.vo.MenuCartVo;
 import com.kh.cook.menu.vo.MenuVo;
+import com.kh.cook.menu.vo.MenuWriteVo;
 import com.kh.cook.product.vo.ProductVo;
-@WebServlet(urlPatterns = "/menu/detail")
-public class MenuDetailController extends HttpServlet{
+@WebServlet(urlPatterns = "/menu/newDetail")
+public class NewMenuDetailController extends HttpServlet{
 	
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	//데이터 보내기
-    	String no = req.getParameter("no");
-		//String Nno = req.getParameter("Nno");
-//    	String cntNo = req.getParameter("cntNo");
+//    	String no = req.getParameter("no");
+		String Nno = req.getParameter("Nno");
+
     	
     	//디비 다녀오기
-    	MenuVo vo = new MenuService().selectMenuOne(no);
+    	MenuWriteVo mwVo = new MenuService().selectNewMenuOne(Nno);
 //    	int result = new MenuService().plusRecommOne(no);
-    	List<ProductVo> prodList = new MenuService().selectProdList(no);
-		//MenuAttachmentVo menuAttachmentVo = new MenuService().selectMenuAttachment(Nno);
+    	//List<ProductVo> prodList = new MenuService().selectProdList(no);
+		MenuAttachmentVo menuAttachmentVo = new MenuService().selectMenuAttachment(Nno);
     	
     	//화면선택
-    	req.setAttribute("vo", vo);
-    	//req.setAttribute("attchmentVo", menuAttachmentVo);
+    	req.setAttribute("mwVo", mwVo);
+    	req.setAttribute("attchmentVo", menuAttachmentVo);
     	
-    	if(prodList == null) {
-    		System.out.println("null");
-    	}else {
-    		req.setAttribute("no", no);
-    		req.setAttribute("prodList", prodList);
-    		req.getRequestDispatcher("/views/menu/detail.jsp").forward(req, resp);
-    		
-    	}
-
+		
+//		  if(prodList == null) { // System.out.println("null"); // }else { //
+		  req.setAttribute("Nno", Nno); // req.setAttribute("prodList", prodList); //
+		  req.getRequestDispatcher("/views/menu/newDetail.jsp").forward(req, resp); // //
+		  
+		 
     }
     
     @Override

@@ -19,7 +19,7 @@
     
             <div id="recipe-middle">
                 <div id="resipe" >레시피</div>
-                <hr width="60%" style="margin-bottom: 10px; margin-top: 0px;">
+                <hr width="70%" style="margin-bottom: 10px; margin-top: 0px;">
                     <div id="category">
                         <a href="<%=root %>/menu/korean"> 한식  </a>
                         <label for="">  |  </label>
@@ -32,8 +32,10 @@
                         <a href="<%=root %>/menu/western"> 양식 </a>
                         <label for="">  |  </label>
                         <a href="<%=root %>/menu/dessert"> 디저트 </a>
+                    	<label for="">  |  </label>
+                        <a href="<%=root %>/menu/newIn"> NEW IN ! </a>
                     </div>
-                <hr width="60%" style="margin-top: 10px; margin-bottom: 50px">
+                <hr width="70%" style="margin-top: 10px; margin-bottom: 50px">
                 
                     <div class="cate-name"><a href="<%=root %>/menu/korean">- 한식 -</a></div>
                     <div class="recipe-menu-area">
