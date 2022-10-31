@@ -5,18 +5,19 @@ public class OrderDetailVo {
 	public OrderDetailVo() {
 	
 	}
-	
-	public OrderDetailVo(String no, String prod_no, String order_no, String cnt, String price) {
+
+	public OrderDetailVo(String no, String prodNo, String orderNo, String cnt, String price) {
+		super();
 		this.no = no;
-		this.prod_no = prod_no;
-		this.order_no = order_no;
+		this.prodNo = prodNo;
+		this.orderNo = orderNo;
 		this.cnt = cnt;
 		this.price = price;
 	}
 
 	private String no;
-	private String prod_no;
-	private String order_no;
+	private String prodNo;
+	private String orderNo;
 	private String cnt;
 	private String price;
 	
@@ -28,20 +29,20 @@ public class OrderDetailVo {
 		this.no = no;
 	}
 
-	public String getProd_no() {
-		return prod_no;
+	public String getProdNo() {
+		return prodNo;
 	}
 
-	public void setProd_no(String prod_no) {
-		this.prod_no = prod_no;
+	public void setProdNo(String prodNo) {
+		this.prodNo = prodNo;
 	}
 
-	public String getOrder_no() {
-		return order_no;
+	public String getOrderNo() {
+		return orderNo;
 	}
 
-	public void setOrder_no(String order_no) {
-		this.order_no = order_no;
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
 	}
 
 	public String getCnt() {
@@ -62,8 +63,9 @@ public class OrderDetailVo {
 
 	@Override
 	public String toString() {
-		return "oderDetailVo [no=" + no + ", prod_no=" + prod_no + ", order_no=" + order_no + ", cnt=" + cnt
-				+ ", price=" + price + "]";
+		return "OrderDetailVo [no=" + no + ", prodNo=" + prodNo + ", orderNo=" + orderNo + ", cnt=" + cnt + ", price="
+				+ price + "]";
 	}
+	
 	
 }

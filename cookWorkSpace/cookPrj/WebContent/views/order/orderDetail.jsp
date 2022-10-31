@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
-<link rel="stylesheet" href="../../resources/css/order/orderDetail.css">
+<link rel="stylesheet" href="../resources/css/order/orderDetail.css">
 
 </head>
 <body>
@@ -105,23 +105,23 @@
                             <ul>
                                 <li class="list">
                                     <span class="listName">상품금액</span>
-                                    <span class="info">3000<span>원</span></span>
+                                    <span class="pay-info">3000<span>원</span></span>
                                 </li>
                                 <li class="list">
                                     <span class="listName">배송비</span>
-                                    <span class="info">2500<span>원</span></span>
+                                    <span class="pay-info">2500<span>원</span></span>
                                 </li>
                                 <li class="list">
                                     <span class="listName">결제금액</span>
-                                    <span class="info">5500<span>원</span></span>
+                                    <span class="pay-info">5500<span>원</span></span>
                                 </li>
                                 <li class="list">
                                     <span class="listName">적립금액</span>
-                                    <span class="info">5<span>원</span></span>
+                                    <span class="pay-info">5<span>원</span></span>
                                 </li>
                                 <li class="list">
                                     <span class="listName">결제방법</span>
-                                    <span class="info">카카오페이</span>
+                                    <span class="pay-info">카카오페이</span>
                                 </li>
                             </ul>
                         </div>
@@ -132,16 +132,40 @@
                             </div>
                             <ul>
                                 <li class="list">
-                                    <span class="listName">주문번호</span>
+                                    <span class="info-name">주문번호</span>
                                     <span class="info">22797152599</span>
                                 </li>
                                 <li class="list">
-                                    <span class="listName">보내는분</span>
+                                    <span class="info-name">보내는분</span>
                                     <span class="info">홍길동</span>
                                 </li>
                                 <li class="list">
-                                    <span class="listName">결제일시</span>
+                                    <span class="info-name">결제일시</span>
                                     <span class="info">2022-10-31 22:00:00</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="order-info">
+                            <div class="order-info-header">
+                                <h3>배송정보</h3>
+                            </div>
+                            <ul>
+                                <li class="list">
+                                    <span class="info-name">받는분</span>
+                                    <span class="info">홍길동</span>
+                                </li>
+                                <li class="list">
+                                    <span class="info-name">핸드폰</span>
+                                    <span class="info">010-1111-1111</span>
+                                </li>
+                                <li class="list">
+                                    <span class="info-name">주소</span>
+                                    <span class="info">강남구 테헤란로 111-111</span>
+                                </li>
+                                <li class="list">
+                                    <span class="info-name">받으실 장소</span>
+                                    <span class="info">문앞</span>
                                 </li>
                             </ul>
                         </div>

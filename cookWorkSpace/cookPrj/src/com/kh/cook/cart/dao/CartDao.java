@@ -186,10 +186,14 @@ public class CartDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, vo.getNo());
-			pstmt.setString(2, vo.getProdNo());
+			pstmt.setString(1, vo.getCnt());
+			pstmt.setString(2, vo.getNo());
+			pstmt.setString(3, vo.getProdNo());
+			
 			
 			result = pstmt.executeUpdate();
+			System.out.println(result);
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
