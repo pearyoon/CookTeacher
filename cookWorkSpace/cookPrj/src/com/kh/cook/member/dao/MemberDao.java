@@ -356,7 +356,7 @@ public class MemberDao {
 
 	public MemberVo selectOneByNo(String no, Connection conn) {
 		
-		String sql = "SELECT M.NO ,G.NAME AS GRADE ,M.ID ,M.PWD ,M.EMAIL ,M.NAME ,M.PHONE ,M.NICK ,M.ADDR ,M.ENROLL_DATE ,M.MODIFY_DATE ,M.QUIT_YN ,M.POINT ,M.ADMIN_YN ,G.SAVE FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE M.NO = ?";
+		String sql = "SELECT M.NO ,M.GRADE ,M.ID ,M.PWD ,M.EMAIL ,M.NAME ,M.PHONE ,M.NICK ,M.ADDR ,M.ENROLL_DATE ,M.MODIFY_DATE ,M.QUIT_YN ,M.POINT ,M.ADMIN_YN ,G.SAVE FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE M.NO = ?";
 		PreparedStatement pstmt = null;
 		MemberVo vo = null;
 		ResultSet rs = null;

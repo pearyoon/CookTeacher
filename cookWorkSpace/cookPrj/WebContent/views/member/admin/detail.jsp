@@ -27,7 +27,7 @@
           
             <div id="join-top">
                 
-                <form action="/cookTeacher/admin/member/edit" method="post" onsubmit="return checkEdit()">
+                <form action="" method="post" onsubmit="return checkEdit()">
                     <div class="join-items">
                         <div>
                             <label for="enrollDate">가입일</label> 
@@ -81,21 +81,25 @@
                     </div>
                     <div class="join-items">
                         <div>
-                            <label for="phone">포인트</label>
+                            <label for="point">포인트</label>
                         </div>
                         <div>
                             <div class="input-area">
-                                <input id="phone" class="focus" type="text" name="phone" value="${vo.point }">
+                                <input id="point" class="focus" type="text" name="point" value="${vo.point }">
                             </div>
                         </div>
                     </div>
                     <div class="join-items">
                         <div>
-                            <label for="phone">등급</label>
+                            <label for="grade">등급</label>
                         </div>
                         <div>
                             <div class="input-area">
-                                <input id="phone" class="focus" type="text" name="phone" value="${vo.grade }">
+                                <select name="grade" id="grade">
+                                    <option value="1" class="option">일반</option>
+                                    <option value="2" class="option">화이트</option>
+                                    <option value="3" class="option">그린</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -117,17 +121,41 @@
     <script>
         let inputArr = $('.focus');
         for(let i = 0; i < inputArr.length; i++){
-        inputArr[i].addEventListener('focus',()=>{
-            inputArr[i].style.border="1px solid rgb(51, 51, 51)";
-        });
-    }
+	        inputArr[i].addEventListener('focus',()=>{
+	            inputArr[i].style.border="1px solid rgb(51, 51, 51)";
+	        });
+	    }
 
 
         for(let i = 0; i < inputArr.length; i++){
-        inputArr[i].addEventListener('blur',()=>{
-            inputArr[i].style.border="1px solid rgb(221, 221, 221)";
-        });
-}
+	        inputArr[i].addEventListener('blur',()=>{
+	            inputArr[i].style.border="1px solid rgb(221, 221, 221)";
+	        });
+		}
+        
+        function checkEdit(){
+        	const pwd1 = $('#memberPwd1').val();
+        	const pwd2 = '${loginMember.pwd}';
+        	
+        	if(pwd1 != pwd2){
+        		return false;
+        	}
+        	
+        	return true;
+        }
+
+        const gradeArr = $('.option');
+        let grade = '${vo.grade}';
+
+        console.log(gradeArr);
+        for(let i = 0; i < gradeArr.length; i++){
+            const check = gradeArr[i].value;
+            
+            if(check == grade){
+                gradeArr[i].selected = true;
+            }
+           
+        }
     </script>
   
 </body>

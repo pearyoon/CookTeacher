@@ -10,60 +10,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.cook.common.PageVo;
+import com.kh.cook.common.Paging;
 import com.kh.cook.member.vo.MemberVo;
 @WebServlet(urlPatterns = "/admin/member/list")
 public class AdminMemberListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//페이징 처리
-		int listCount;
-		int currentPage;
-		int pageLimit;
-		int boardLimit;
-		
-		int maxPage;
-		int startPage;
-		int endPage;
-		
-		listCount = new AdminService().selectCount();
-		currentPage = Integer.parseInt(req.getParameter("pno"));
-		pageLimit = 2;
-		boardLimit = 10;
-		
-		maxPage = (int)Math.ceil((double)listCount / boardLimit);
-		
-		startPage = (currentPage-1) / pageLimit * pageLimit + 1;
-		
-		endPage = startPage + pageLimit - 1;
-		
-		if(endPage > maxPage) {
-			endPage = maxPage;
-		}
-		
-		PageVo pvo = new PageVo();
-		pvo.setListCount(listCount);
-		pvo.setCurrentPage(currentPage);
-		pvo.setPageLimit(pageLimit);
-		pvo.setBoardLimit(boardLimit);
-		
-		pvo.setMaxPage(maxPage);
-		pvo.setStartPage(startPage);
-		pvo.setEndPage(endPage);
-		
+		String id = req.getParameter("search");
 		String quitYn = req.getParameter("quitYn");
+		String all = req.getParameter("member");
+		
+		MemberVo vo = new MemberVo();
+		
+		vo.setNo(all);
+		vo.setId(id);
+		vo.setQuitYn(quitYn);
+		
+		
+		
+		//페이징 처리
+		
+		PageVo pvo = new Paging().paging(Integer.parseInt(req.getParameter("pno")),vo);
+		
+		
 		List<MemberVo> voList = null;
 
-
-		
-		if("y".equals(quitYn)){
-			voList = new AdminService().selectQuitYMember(pvo);
-		} else if("n".equals(quitYn)) {
-			voList = new AdminService().selectQuitNMember(pvo);
+		if(quitYn != null) {
+			voList = new AdminService().selectListByQuit(pvo,quitYn);
+		} else if(id != null) {
+			voList = new AdminService().selectListById(pvo, id);
 		} else {
 			voList = new AdminService().selectList(pvo);
 		}
 		
+
+		req.setAttribute("search", id);
 		req.setAttribute("quitYn", quitYn);
 		req.setAttribute("pvo", pvo);
 		req.setAttribute("memberList", voList);
