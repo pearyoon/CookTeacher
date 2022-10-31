@@ -237,7 +237,18 @@
   font-weight: bold;
 }
 
-.choose-payment>input{
+.choose-payment{
+  /* display: flex; */
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+input[type=radio]{
+  display: none;
+}
+
+input[type="radio"] + label {
+  display: inline-block;
   background-color: transparent;
   width: calc(33% - 8px); 
   padding-top: 60px ;
@@ -246,6 +257,7 @@
   border: 1px solid rgb(200, 200, 200);
   margin-bottom: 32px;
   cursor: pointer;
+  text-align: center;
 }
 
 
@@ -268,6 +280,7 @@
   background-size: 80px 66px;
   background-image: url("../../img/icons/카카오페이icon.svg");
 }
+
 
 .choose-payment>input:hover{
   background: rgb(200, 200, 200);

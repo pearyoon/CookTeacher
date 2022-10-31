@@ -6,8 +6,11 @@ function chooseAll(e){
     // 타겟이 전체선택 checkbox가 체크 되면 product-area에 있는 checkbox들이 체크 된다.
     checkbox[i].checked = e.target.checked
   }
+  cookCheck();
 }
-document.querySelector('.choose-all').addEventListener('click', chooseAll)
+document.querySelector('#all').addEventListener('change', chooseAll)
+
+$('#all').click();
 
 // 전체삭제  및 선택 삭제
 function deleteList() {
@@ -26,17 +29,15 @@ function deleteList() {
       data: {
           prodNo: prodNoList
       },
-      success: function (){
-          location.reload(); // 페이지 새로고침
-      }  
-  })
-    //   success: function (x){
-    //       const resultList = JSON.parse(x);
+      success: function (x){
+        const resultList = JSON.parse(x);
 
-    //       for (let i = 0; i < resultList.length; i++) {
-    //           $(`input[value=`+ resultList[i] +`]`).parent().remove()
-    //       }
-    //   }
+        for (let i = 0; i < resultList.length; i++) {
+            $(`input[value=`+ resultList[i] +`]`).parent().remove()
+        }
+    } 
+  })
+     
   
 }
 
@@ -49,8 +50,9 @@ function deleteOne(prodNo) {
       data: {
           prodNo: [prodNo]
       },
-      success: function (){
-          location.reload(); // 페이지 새로고침
+      success: function (result){
+          
+        $(`input[value=`+ prodNo +`]`).parent().remove() // 페이지 새로고침
       }  
   })
 }
@@ -73,8 +75,15 @@ function changeCnt(prodNo, var_cnt){
               prodNo,
               cnt: changed_cnt // 넘겨줄 데이터
           },
-          success: function(result){    // 성공하면 실행할 함수
-              location.reload();
+          success: function(){    // 성공하면 실행할 함수
+            $(`input[value=`+ prodNo +`]`).siblings('.count-wrapper').find('.count').text(changed_cnt)
+
+            let itemPrice = $(`input[value=`+ prodNo +`]`).siblings('input[name=itemPrice]').val();
+            let totalPrice = itemPrice * changed_cnt;
+            $(`input[value=`+ prodNo +`]`).siblings('input[name=price]').val(totalPrice)
+            $(`input[value=`+ prodNo +`]`).siblings('.price').find('span').text(totalPrice.toLocaleString());
+
+            cookCheck();
           }
       });
   }
@@ -94,16 +103,57 @@ function cookOrder(){
     }
 }
 
-// function cookCheck() {
-//     let checkArr = document.querySelectorAll('#product-area input[name=check]');
-//     let price = document.querySelectorAll('#product-area input[name=price]');
-//     let totalPrice = 0;
+function cookCheckAll(){
+    cookCheck();
+}
 
-//     for(let i = 0; i < checkArr.length; i++){
-//         if(checkArr[i].checked === true){
-//             totalPrice += parseInt(price[i].value);
-//             document.getElementById('price').innerHTML = totalPrice.toLocaleString(undefined, {maximumFractionDigits: 5});
-//         }
-//     }
-// }
+function cookCheckOne() {
+    
+    document.querySelector('#all').checked = false;
+    cookCheck();
+}
+
+// 체크시 가격 / 수량 / 배송비 계산해서 나타내기
+function cookCheck() {
+
+    let checkArr = document.querySelectorAll('#product-area input[name=check]');
+    let price = document.querySelectorAll('#product-area input[name=price]');
+    let cnt = 0;
+    let totalPrice = 0;
+
+
+    for(let i = 0; i < checkArr.length; i++){
+        if(checkArr[i].checked === true){
+            totalPrice += parseInt(price[i].value);
+            cnt += 1;
+        }
+    }
+
+    let productPrice = document.getElementsByClassName('productPrice')
+    for(let i = 0; i < productPrice.length; i++){
+        productPrice[i].innerHTML = totalPrice.toLocaleString(undefined, {maximumFractionDigits: 5});
+    }
+
+    let deliveryFee = document.getElementsByClassName('deliveryFee')
+    
+    let delivery = 0;
+    if(totalPrice <= 30000 && totalPrice !== 0){
+        delivery = 2500;
+    }
+
+    for(let i = 0; i < deliveryFee.length; i++){
+        deliveryFee[i].innerHTML = delivery.toLocaleString(undefined, {maximumFractionDigits: 5});
+
+    }
+        
+
+    let realTotalPrice = totalPrice + delivery;
+    let totalPriceList = document.getElementsByClassName('realTotalPrice')
+
+    for(let i = 0; i < totalPriceList.length; i++){
+        totalPriceList[i].innerHTML = realTotalPrice.toLocaleString(undefined, {maximumFractionDigits: 5});
+    }
+
+    document.getElementById('cnt').innerText = cnt;
+}
 
