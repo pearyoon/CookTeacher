@@ -194,11 +194,11 @@ public class MenuService {
 				
 	}
 
-	public MenuAttachmentVo selectMenuAttachment(String no) {
+	public MenuAttachmentVo selectMenuAttachment(String Nno) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		MenuAttachmentVo vo =  new MenuDao().selectAttachment(conn,no);
+		MenuAttachmentVo vo =  new MenuDao().selectAttachment(conn,Nno);
 		
 		JDBCTemplate.close(conn);
 		
@@ -219,6 +219,29 @@ public class MenuService {
 		close(conn);
 		return result;
 	}
+
+	//새로운 레시피 리스트
+	public List<MenuWriteVo> selectNewInList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		List<MenuWriteVo> writeList = new MenuDao().selectNewInList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return writeList;
+	}
+
+	public MenuWriteVo selectNewMenuOne(String Nno) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		MenuWriteVo vo = new MenuDao().selectNewMenuOne(conn, Nno);
+		
+		JDBCTemplate.close(conn);
+		
+		return vo;
+	}
+
+
 
 
 
