@@ -19,6 +19,7 @@ import com.kh.cook.menu.service.MenuService;
 import com.kh.cook.menu.vo.MenuAttachmentVo;
 import com.kh.cook.menu.vo.MenuCateVo;
 import com.kh.cook.menu.vo.MenuVo;
+import com.kh.cook.menu.vo.MenuWriteVo;
 import com.kh.cook.product.vo.ProductVo;
 @WebServlet(urlPatterns = "/menu/write")
 
@@ -38,16 +39,11 @@ public class MenuWriteController extends HttpServlet{
 		
 		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
 		
-//		if(loginMember == null) {
-//			req.getRequestDispatcher("/member/login").forward(req, resp);
-//		}else {
-			
+
 			List<MenuCateVo> cateList = new MenuService().selectMenuCateList();
 			String result = new MenuService().menuNum();
 			
-//		String prodInput = req.getParameter("write-prod");
-			
-//		ProductVo changeInput = new MenuService().changeProdNo(prodInput);
+
 			
 			//새로운 메뉴 넘버
 			req.setAttribute("result", result);
@@ -68,15 +64,16 @@ public class MenuWriteController extends HttpServlet{
 		
 		HttpSession s = req.getSession();
 		
-		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
+//		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
 		
 		String menuCate = req.getParameter("menuCate");
 		String reName = req.getParameter("re-name");
 		String reInfo = req.getParameter("re-info");
 		String cal = req.getParameter("cal");
 		String content = req.getParameter("content");
-		Part f = req.getPart("f");
 		String writeProd = req.getParameter("write-prod");
+
+		Part f = req.getPart("f");
 		
 		MenuAttachmentVo menuAttachmentVo = null;
 		
@@ -89,15 +86,16 @@ public class MenuWriteController extends HttpServlet{
 		}
 		
 		
-		MenuVo menuVo = new MenuVo();
-		menuVo.setMenuCateNo(menuCate);
-		menuVo.setMenuName(reName);
-		menuVo.setMenuInfo(reInfo);
-		menuVo.setCal(cal);
-		menuVo.setRecipe(content);
-		menuVo.setMenuCateNo(writeProd);
+		MenuWriteVo vo = new MenuWriteVo();
+		vo.setMenuCateNo(menuCate);
+		vo.setMenuName(reName);
+		vo.setMenuInfo(reInfo);
+		vo.setCal(cal);
+		vo.setRecipe(content);
+		vo.setMenuProd(writeProd);
 		
-		int result = new MenuService().menuWrite(menuVo, menuAttachmentVo);
+		
+		int result = new MenuService().menuWrite(vo, menuAttachmentVo);
 		
 		if(result == 1) {
 			s.setAttribute("alerMsg", "레시피 등록 완료!");
@@ -107,7 +105,7 @@ public class MenuWriteController extends HttpServlet{
 				String savePath = rootPath + menuAttachmentVo.getFilePath() + "/" + menuAttachmentVo.getChangeName();
 				new File(savePath).delete();
 			}
-			System.out.println("네 오류임다^^");
+			System.out.println("네 글쓰기 오류임다^^");
 		}
 	
 	}

@@ -14,6 +14,7 @@ import com.kh.cook.menu.vo.MenuAttachmentVo;
 import com.kh.cook.menu.vo.MenuCartVo;
 import com.kh.cook.menu.vo.MenuCateVo;
 import com.kh.cook.menu.vo.MenuVo;
+import com.kh.cook.menu.vo.MenuWriteVo;
 import com.kh.cook.product.vo.ProductVo;
 
 public class MenuDao {
@@ -588,23 +589,22 @@ public class MenuDao {
 		return vo;
 	}
 
-	public int insertRecipe(Connection conn, MenuVo menuVo) {
+	public int insertRecipe(Connection conn, MenuWriteVo vo) {
 		//String sql = "INSERT INTO MENU( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ,IMG_PATH) VALUES (SEQ_MENU_NO.NEXTVAL, ? , '메뉴이름', '메뉴설명', '레시피' , 330 ,'재료', '한식레시피/kimchi_stew.png' ) ;";
-		String sql = "INSERT INTO MENU( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ,IMG_PATH) VALUES (SEQ_MENU_NO.NEXTVAL, ? , ?, ?, ?, ? ,?, '이미지.jpg')";
+		String sql = "INSERT INTO MENUWRITE( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ,IMG_PATH) VALUES (SEQ_MENU_NO.NEXTVAL, ? , ?, ?, ?, ? ,?, IMG)";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, menuVo.getMenuCateNo());
-			pstmt.setString(2, menuVo.getMenuName());
-			pstmt.setString(3, menuVo.getMenuInfo());
-			pstmt.setString(4, menuVo.getRecipe());
-			pstmt.setInt(5, Integer.parseInt(menuVo.getCal()));
-			pstmt.setString(6, menuVo.getCal());
-			pstmt.setString(7, menuVo.getMenuProd());
-			pstmt.setString(8, menuVo.getImgPath());
+			pstmt.setString(1, vo.getMenuCateNo());
+			pstmt.setString(2, vo.getMenuName());
+			pstmt.setString(3, vo.getMenuInfo());
+			pstmt.setString(4, vo.getRecipe());
+			pstmt.setString(5, vo.getCal());
+			pstmt.setString(6, vo.getMenuProd());
+			
 			
 			result = pstmt.executeUpdate();
 			
@@ -616,7 +616,7 @@ public class MenuDao {
 	}
 
 	public int insertAttachment(Connection conn, MenuAttachmentVo menuAttachmentVo) {
-		String sql = "INSERT INTO MENUATTACHMENT ( NO ,MENU_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_MENUATTACHMENT_NO.NEXTVAL, SEQ_MENU_NO.CURRVAL , ? , ? , ? )";
+		String sql = "INSERT INTO MENUATTACHMENT ( NO , MENU_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_MENUATTACHMENT_NO.NEXTVAL, SEQ_MENU_NO.CURRVAL , ? , ? , ?)";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -665,7 +665,7 @@ public class MenuDao {
 		
 				vo = new MenuAttachmentVo();
 				vo.setNo(menuNo);
-				vo.setNo(menuNo);
+				vo.setMenuNo(menuNo);
 				vo.setOriginName(originName);
 				vo.setChangeName(changeName);
 				vo.setFilePath(filePath);

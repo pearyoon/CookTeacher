@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.cook.cart.service.CartService;
+import com.kh.cook.cart.vo.CartVo;
 import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.menu.service.MenuService;
 import com.kh.cook.menu.vo.MenuAttachmentVo;
@@ -29,7 +31,7 @@ public class MenuDetailController extends HttpServlet{
     	MenuVo vo = new MenuService().selectMenuOne(no);
 //    	int result = new MenuService().plusRecommOne(no);
     	List<ProductVo> prodList = new MenuService().selectProdList(no);
-		MenuAttachmentVo menuAttachmentVo = new MenuService().selectMenuAttachment(no);
+//		MenuAttachmentVo menuAttachmentVo = new MenuService().selectMenuAttachment(no);
     	
     	//화면선택
     	req.setAttribute("vo", vo);
@@ -42,13 +44,7 @@ public class MenuDetailController extends HttpServlet{
     		req.getRequestDispatcher("/views/menu/detail.jsp").forward(req, resp);
     		
     	}
-    	
-//    	if(result == 1) {
-//    		resp.sendRedirect("/cookTeacher/menu/detail?no="+ no +"cntNo=" + cntNo);
-//    	}else {
-//    		System.out.println("카운팅 실 패 !!");
-//    	}
-    	
+
     }
     
     @Override
@@ -65,14 +61,15 @@ public class MenuDetailController extends HttpServlet{
     	String prodCnt = req.getParameter("prodCnt");
     	String memberNo = loginMember.getNo();
     	
-    	MenuCartVo mcv = new MenuCartVo();
-    	mcv.setProdNo(prodNo);
-    	mcv.setProdCnt(prodCnt);
-    	mcv.setNo(memberNo);
+    	CartVo vo = new CartVo();
+    	vo.setProdNo(prodNo);
+    	vo.setCnt(prodCnt);
+    	vo.setNo(memberNo);
     	
-    	System.out.println(mcv.getProdNo());
     	
-    	int prodCart = new MenuService().cartInput(mcv);
+    	
+    	int prodCart = new CartService().addCart(vo);
+//    	int prodCart = new MenuService().cartInput(mcv);
     	
     	
     	if(prodCart == 1) {

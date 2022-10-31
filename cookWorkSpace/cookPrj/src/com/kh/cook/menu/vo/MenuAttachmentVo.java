@@ -1,24 +1,24 @@
 package com.kh.cook.menu.vo;
 
 public class MenuAttachmentVo {
-	public MenuAttachmentVo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	private String no;
-	private String MenuNo;
-	private String originName;
+
+	private String no; // 단순 넘버
+	private String menuNo; // 메뉴넘버
+	private String originName; 
 	private String changeName;
 	private String filePath;
 	private String enrollDate;
 	private String thumbYn;
 	private String status;
-	
+	public MenuAttachmentVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public MenuAttachmentVo(String no, String menuNo, String originName, String changeName, String filePath,
 			String enrollDate, String thumbYn, String status) {
 		super();
 		this.no = no;
-		MenuNo = menuNo;
+		this.menuNo = menuNo;
 		this.originName = originName;
 		this.changeName = changeName;
 		this.filePath = filePath;
@@ -28,7 +28,7 @@ public class MenuAttachmentVo {
 	}
 	@Override
 	public String toString() {
-		return "MenuAttachmentVo [no=" + no + ", MenuNo=" + MenuNo + ", originName=" + originName + ", changeName="
+		return "MenuAttachmentVo [no=" + no + ", MenuNo=" + menuNo + ", originName=" + originName + ", changeName="
 				+ changeName + ", filePath=" + filePath + ", enrollDate=" + enrollDate + ", thumbYn=" + thumbYn
 				+ ", status=" + status + "]";
 	}
@@ -39,10 +39,10 @@ public class MenuAttachmentVo {
 		this.no = no;
 	}
 	public String getMenuNo() {
-		return MenuNo;
+		return menuNo;
 	}
 	public void setMenuNo(String menuNo) {
-		MenuNo = menuNo;
+		this.menuNo = menuNo;
 	}
 	public String getOriginName() {
 		return originName;
@@ -80,6 +80,7 @@ public class MenuAttachmentVo {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 	
 	
 	

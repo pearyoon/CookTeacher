@@ -184,17 +184,17 @@
                     
 
                     
-                        <c:forEach items="${prodList}" var="prodList">
+                        <c:forEach items="${prodList}" var="prod">
                         <div class="prd-all">
                             <div class="product">
-                                <a href="/cookTeacher/product/detail/productDetail?no=${prodList.prodNo}">
-                                    <img src =" <c:url value = "/resources/img/product/"></c:url>${prodList.imgPath}" alt="식재료게시판담당" width="100%" height="100%">
+                                <a href="/cookTeacher/product/detail/productDetail?no=${prod.prodNo}">
+                                    <img src =" <c:url value = "/resources/img/product/"></c:url>${prod.imgPath}" alt="식재료게시판담당" width="100%" height="100%">
                                 </a>
                              
                             </div>    
                             <div style="margin-top : 10px" class="prod-price">
-                                <input type="checkbox" name="prodNo" value="${prodList.prodNo}" > ${prodList.name} / ${prodList.weight}
-                                <pre ><fmt:formatNumber value="${prodList.price}" pattern="#,###"/>원</pre>
+                                <input type="checkbox" name="prodNo" value="${prod.prodNo}" > ${prod.name} / ${prod.weight}
+                                <pre ><fmt:formatNumber value="${prod.price}" pattern="#,###"/>원</pre>
                                 <!-- 데이터 넘길 때 produckCnt로 넘기면 될듯? -->
                                	수량 : <input type="number" name="prodCnt" value="1" style="width: 20px; margin-bottom: 10px">
                             	<!--  -->
@@ -202,9 +202,9 @@
                             </div>
 
                             	
-                            </form>
                         </div>
                     </c:forEach>		
+                            </form>
 
 				<!--  -->
 				
