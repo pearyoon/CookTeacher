@@ -48,6 +48,7 @@ color: #000000;
 	grid-template-rows: repeat(2, 50px);
 	align-content: center;
 	border-top: 3px solid black;
+	border-bottom: 3px solid black;
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -61,15 +62,16 @@ color: #000000;
 .title-area>.write{
 	text-align: left;
 }
-.title-area>#b{
+.title-area>#writer,#date{
 	font-size: small;
 }
-
+.title-area>#date{
+text-align: right;
+}
 /* 내용 영역 */
 .content-area{
 	width: 600px;
 	height: 400px;
-	border-top: 3px solid black;
 	border-bottom: 3px solid black;
 	padding: 10px;
 	font-size: small;
@@ -106,19 +108,21 @@ color: #000000;
 
 	
 	<div id="container"> <!-- 컨테이너 -->
+	
 		<div class="name">
 			<!-- 게시판 이름 -->
 			<div id="qna">QnA</div>
 		</div>
 
+		<!-- 문의글 상세 제목 및 내용 -->
 		<div class="title-area">
 			<div id="a">
 				제목 : 
 				<%=QNAvo.getTitle() %>
 			</div>
-			<div id="b">작성자 :</div>
-			<div class="write" id="b" name="writer"><%=QNAvo.getWriter() %></div>
-			<div id="b" name="enrollDate"><%=QNAvo.getQnaDate() %></div>
+			<div id="writer">작성자 :</div>
+			<div class="write" id="writer" name="writer"><%=QNAvo.getWriter() %></div>
+			<div id="date" name="enrollDate"><%=QNAvo.getQnaDate() %></div>
 		</div>
 
 		<div class="content-area">
@@ -127,6 +131,19 @@ color: #000000;
 			<br><br>
 		</div>
 		
+		<!-- 댓글리스트 영역 -->
+		<div class="cmtlist">
+
+		</div>
+		
+		<!-- 댓글 작성 영역 -->
+		<div class="cmtwrite">
+			<input type="text" name="cmtcontent" placeholder="댓글 내용을 입력하세요.">
+			<input type="submit" value="작성">
+		</div>
+		
+		
+		<!-- 수정 / 삭제 버튼 -->
 		<%	if(loginMember != null && loginMember.getNo().equals(QNAvo.getNo())){ %>
 		<div id=writebtn>
 			<button type="button" onclick="location.href='/cookTeacher/cs/QnA/edit?no=<%= QNAvo.getQnaNo() %>';">수정</button>

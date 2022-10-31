@@ -111,8 +111,8 @@ color: #000000;
 			<!-- 게시판 이름 -->
 			<div id="qna">QnA</div>
 		</div>
-
-		<form action="/cookTeacher/cs/QnA/write" method="post" onsubmit="return upload();">
+		
+		<form id="fff" action="/cookTeacher/cs/QnA/write" method="post" onsubmit="return upload();">
 			<div class="title-area">
 				<!-- 문의 작성 -->
 				<div id="a">
@@ -148,15 +148,41 @@ color: #000000;
 			
 			<!-- upload()함수 -->
 			<script>
-			function upload(){
+/* 			function upload(){
 				Swal.fire({
                    title: '등록 성공!',
                    icon: 'success',
                 });
-			}
+			} */
+			
+ 			function upload(){
+				
+				Swal.fire({
+				  title: '등록하시겠습니까?',
+				  icon: 'question',
+				  showCancelButton: true,
+				  confirmButtonText: '확인',
+				  cancelButtonText: '취소',
+				  })
+				  .then((result)=>{
+					  console.log(result);
+					  if (result.isConfirmed) {
+						  
+						  
+						    Swal.fire(
+						      '등록하였습니다!',
+						      'Your file has been deleted.',
+					    	  'success'
+					  	  ).then( ()=> {document.querySelector('#fff').submit();} );
+					  }
+				  });
+				
+				  return false;
+			}//upload end
+
 			
 			/* function upload(){
-				if(confirm("자주묻는질문을 추가하시겠습니까?")){
+				if(confirm("등록하시겠습니까?")){
 					return true;
 				}else{
 					alert("작성을 취소합니다.");
@@ -167,7 +193,7 @@ color: #000000;
 			function cancel(){
 				Swal.fire({
                     title: '등록 취소',
-                    icon: 'info',
+                    icon: 'info'
                  });
 				location.href="/cookTeacher/cs/QnA/list"
 			}
