@@ -12,6 +12,7 @@
     
 }
 
+
 /* 회원가입 */
 #container>div:first-child{
     margin-bottom: 50px;
@@ -30,10 +31,20 @@
     margin-bottom: 50px;
 }
 /* 보더, 필수입력사항 */
+/* 보더, 필수입력사항 */
 #join-wrap>div:first-child{
     padding-bottom: 10px;
     border-bottom: 2px solid rgb(51, 51, 51);
-
+    color: rgb(51, 51, 51);
+    font-size: 13px;
+    line-height: 17px;
+    text-align: right;
+}
+.member-info{
+    padding-bottom: 20px;
+}
+.member-info>div{
+    padding: 5px 55px;
 }
 
 #join-top{

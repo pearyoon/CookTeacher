@@ -185,6 +185,8 @@ public class MemberVo {
 
 
 	public void setModifyDate(String modifyDate) {
+		
+		
 		this.modifyDate = modifyDate;
 	}
 
@@ -197,7 +199,13 @@ public class MemberVo {
 
 
 	public void setQuitYn(String quitYn) {
-		this.quitYn = quitYn;
+		if("Y".equals(quitYn)) {
+			this.quitYn = "O";
+		} else {
+			
+			this.quitYn = "X";
+		}
+		
 	}
 
 

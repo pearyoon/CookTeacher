@@ -6,14 +6,14 @@ let idck = false;
 memberId.addEventListener("keyup" ,()=>{
     idck = false;
     const inputId = memberId.value;
-    const idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+    const idReg = /^(?=.*[a-z])(?=.*[0-9]).{6,20}$/;;
 
     $('#dupId-btn').attr('disabled',false);
     $('#dupId-btn').addClass('non-check');
     $('#dupId-btn').removeClass('check');
 
     if(!idReg.test(inputId)){
-        document.querySelector('#hidden-id').innerHTML = '영문 숫자 조합의 6자 이상  20자 이하';
+        document.querySelector('#hidden-id').innerHTML = '영문(소문자) 숫자 조합의 6자 이상  20자 이하';
     
     } else if(inputId == "") {
         document.querySelector('#hidden-id').innerHTML = '아이디를 입력해주세요.';
@@ -29,10 +29,10 @@ const memberPwd1 = document.querySelector('input[name=memberPwd1]');
 let pwd1ck = false;
 memberPwd1.addEventListener("keyup",()=>{
     const inputPwd1 = memberPwd1.value;
-    const pwdReg = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+    const pwdReg = /^(?=.*[a-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
 
     if(!pwdReg.test(inputPwd1)){
-        document.querySelector('#hidden-pwd1').innerHTML = '영문 숫자 특수문자 조합의 8자 이상';
+        document.querySelector('#hidden-pwd1').innerHTML = '영문(소문자) 숫자 특수문자 조합의 8자 이상';
     } else if(inputPwd1.length == 0) {
         document.querySelector('#hidden-pwd1').innerHTML = '비밀번호를 입력해주세요.';
     } else{

@@ -322,34 +322,91 @@ public class MemberDao {
 		
 	}
 
-	public MemberVo selectGrade(String no, Connection conn) {
-		String sql = "SELECT M.NICK ,G.NAME AS GRADE, G.SAVE FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE M.NO = ? AND QUIT_YN = 'N'";
+//	public MemberVo selectGrade(String no, Connection conn) {
+//		String sql = "SELECT M.NICK ,G.NAME AS GRADE, G.SAVE FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE M.NO = ? AND QUIT_YN = 'N'";
+//		PreparedStatement pstmt = null;
+//		MemberVo vo  = null;
+//		ResultSet rs = null;
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, no);
+//		
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				String grade = rs.getString("GRADE");
+//				String save = rs.getString("SAVE");
+//				String nick = rs.getString("NICK");
+//				vo = new MemberVo();
+//				
+//				vo.setNick(nick);
+//				vo.setGrade(grade);
+//				vo.setSave(save);
+//				
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(pstmt);
+//			close(rs);
+//		}
+//		return vo;
+//	}
+
+	public MemberVo selectOneByNo(String no, Connection conn) {
+		
+		String sql = "SELECT M.NO ,G.NAME AS GRADE ,M.ID ,M.PWD ,M.EMAIL ,M.NAME ,M.PHONE ,M.NICK ,M.ADDR ,M.ENROLL_DATE ,M.MODIFY_DATE ,M.QUIT_YN ,M.POINT ,M.ADMIN_YN ,G.SAVE FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE M.NO = ?";
 		PreparedStatement pstmt = null;
-		MemberVo vo  = null;
+		MemberVo vo = null;
 		ResultSet rs = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, no);
-		
+			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				String dataNo = rs.getString("NO");
 				String grade = rs.getString("GRADE");
-				String save = rs.getString("SAVE");
+				String id = rs.getString("ID");
+				String pwd = rs.getString("PWD");
+				String email = rs.getString("EMAIL");
+				String name = rs.getString("NAME");
+				String phone = rs.getString("PHONE");
 				String nick = rs.getString("NICK");
+				String addr = rs.getString("ADDR");
+				String enrollDate = rs.getString("ENROLL_DATE").substring(0, 11);
+				String modifyDate = rs.getString("MODIFY_DATE");
+				String quitYn = rs.getString("QUIT_YN");
+				int point = rs.getInt("POINT");
+				String save = rs.getString("SAVE");
+				
 				vo = new MemberVo();
 				
-				vo.setNick(nick);
+				vo.setNo(dataNo);
 				vo.setGrade(grade);
+				vo.setId(id);
+				vo.setPwd(pwd);
+				vo.setEmail(email);
+				vo.setName(name);
+				vo.setPhone(phone);
+				vo.setNick(nick);
+				vo.setAddr(addr);
+				vo.setEnrollDate(enrollDate);
+				vo.setModifyDate(modifyDate);
+				vo.setQuitYn(quitYn);
+				vo.setPoint(point);
 				vo.setSave(save);
 				
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(pstmt);
 			close(rs);
+			close(pstmt);
 		}
 		return vo;
 	}
