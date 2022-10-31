@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.cook.bobstory.service.BobCmtService;
 import com.kh.cook.bobstory.vo.BobCmtVo;
 
-@WebServlet(urlPatterns = "bobstory/cmtlist")
+@WebServlet(urlPatterns = "/bobstory/cmtlist")
 public class BobCmtListController extends HttpServlet{
 
 	@Override

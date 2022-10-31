@@ -36,7 +36,7 @@ public class BobCmtService {
 		//트랜잭션 ,클로즈
 		Connection conn = JDBCTemplate.getConnection();
 		
-		List<BobCmtVo> list = new BobCmtDao().cmtCount(conn, no);
+		List<BobCmtVo> list = new BobCmtDao().selectList(conn, no);
 		
 		JDBCTemplate.close(conn);
 		
