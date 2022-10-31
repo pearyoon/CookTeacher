@@ -19,115 +19,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
-<style>
+<link rel="stylesheet" href="/cookTeacher/resources/css/product/admin_insertProduct.css">
 
-a {
-	color: black;
-}
-a:link {
-	text-decoration: none;
-}
-a:visited { 
-	color: black; text-decoration: none;
-}
-a:hover { 
-	text-decoration: none;
-}
-
-#main-menu-bar a{
-    font-size: 16px;
-    text-align: center;
-}
-
-#main-menu-bar {
-margin-top: 30px;
-margin-bottom: 30px;
-}
-
-#price{
-    font-size: larger;
-    font-weight: 700;
-}
-#category-name{
-    font-weight: 800;
-    font-size: xx-large;
-}
-#main-top>div:first-child, #main-middle>div:first-child, #main-bottom>div:first-child {
-	font-size: 1.5rem;
-	padding: 20px;
-}   
-
-.header-menu-items > a {
-	color: white;
-}
-#header-search-area>button {
-	width: 45px;
-	height: 45px;
-	background-color: white;
-	border-left: white;
-	border-bottom-right-radius: 10px;
-	border-top-right-radius: 10px;
-}
-
-.main-menu-bar-items > a:hover{
-	color: white;
-	
-}
-button.btnMain {
-  position: absolute;
-  top: 90px;
-  left : 440px; 
-}
-
-.outer{
-   --color: white;
-   width: 100%;
-   --height: 550px;
-   margin: auto;
-   padding-top: 50px;
-}
-
-#enroll-form table{border: 1px solid white; margin:auto;}
-#enroll-form input, #enroll-form textarea{
-   width: 100%;
-   box-sizing: border-box;
-}
-
-table {
-	border-collapse: separate;
-	border-spacing: 0 20px;
-}
-
-#option{
-	float: left;
-	text-align: center;
-}
-#bottom-bttn {
-    height: 40px;
-    width: 80px;
-    background: #FFD335;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    margin: 5px;
-    font-weight: 500;
-    box-shadow: 3px 3px #255D00;
-}
-#bottom-bttn:hover{
-    color: white;
-    background: #255D00;
-    box-shadow: 3px 3px #FFD335;
-}
-
-table{
-	font-size: 20px;
-	font-weight: 500;
-}
-#main-bottom{
-	border: 2px solid black;
-}
-</style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
@@ -192,7 +85,7 @@ table{
 	            		
 	
 			            <div align="center">
-			                <button type="submit" id="bottom-bttn">작성하기</button>
+			                <button type="submit" id="bottom-bttn">등록하기</button>
 			                <button type="reset" id="bottom-bttn">취소하기</button>
 			            </div>
 		        		</form>

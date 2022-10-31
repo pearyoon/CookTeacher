@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.kh.cook.product.vo.PageVo"%>
 <%@page import="com.kh.cook.product.vo.ProductVo"%>
 <%@page import="java.util.List"%>
@@ -7,6 +8,7 @@
 <%
 	List<ProductVo> voList = (List<ProductVo>)request.getAttribute("voList");
 	PageVo pv = (PageVo)request.getAttribute("pv");
+	DecimalFormat formatter = new DecimalFormat("###,###");
 %>
 
 <!DOCTYPE html>
@@ -24,75 +26,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
-<style>
+<link rel="stylesheet" href="/cookTeacher/resources/css/product/productList.css">
 
-a {
-	color: black;
-}
-a:link {
-	text-decoration: none;
-}
-a:visited { 
-	color: black; text-decoration: none;
-}
-a:hover { 
-	text-decoration: none;
-}
-
-#main-menu-bar a{
-    font-size: 16px;
-    text-align: center;
-}
-
-#main-menu-bar {
-margin-top: 30px;
-margin-bottom: 30px;
-}
-
-#price{
-    font-size: larger;
-    font-weight: 700;
-}
-#category-name{
-    font-weight: 800;
-    font-size: xx-large;
-}
-#main-top>div:first-child, #main-middle>div:first-child, #main-bottom>div:first-child {
-	font-size: 1.5rem;
-	padding: 20px;
-}   
-
-.header-menu-items > a {
-	color: white;
-}
-#header-search-area>button {
-	width: 45px;
-	height: 45px;
-	background-color: white;
-	border-left: white;
-	border-bottom-right-radius: 10px;
-	border-top-right-radius: 10px;
-}
-
-.main-menu-bar-items > a:hover{
-	color: white;
-	
-}
-
-.main-prod-area{
-	flex-wrap: wrap;
-	justify-content: space-between;
-	width: 100%;
-	height: 100%;
-	display: flex;
-}
-
-a:link { color: red; text-decoration: none;}
-a:visited { color: black; text-decoration: none;}
-a:hover { color: blue; text-decoration: underline;}
-
-    
-</style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
@@ -135,13 +70,12 @@ a:hover { color: blue; text-decoration: underline;}
 	            			<a href="/cookTeacher/product/detail/productDetail?no=<%=voList.get(i).getProdNo() %>">
 		                        <img src="/cookTeacher/upload/img/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
 					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
-					            <div><%= voList.get(i).getPrice() %> 원</div>
+					            <div><%= formatter.format(Integer.parseInt(voList.get(i).getPrice())) %> 원</div>
 	                        </a>
                         </div>
                         <br><br><br><br><br><br><br><br><br><br><br><br> 
 					<%}%>
                 </div>
-  
  			<br><br>
  			<div>
 		        <div id="page-area">
@@ -159,12 +93,9 @@ a:hover { color: blue; text-decoration: underline;}
 		        	<%if(pv.getEndPage() != pv.getMaxPage()){%>
 					    <a href="/cookTeacher/product/main/productList?pno=<%= pv.getEndPage()+1 %>" class="btn btn-primary btn-sm">다음</a>
 		       		<%}%>
-		        	
 		        </div>
  
  			</div>
-  
-
                  
             </div>
 		<%@include file="/views/common/footer.jsp" %>
