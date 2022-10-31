@@ -81,21 +81,25 @@ public class AdminInsertProduct extends HttpServlet {
 		vo.setStock(stock);
 		vo.setImgPath(avo.getChangeName());
 		
-		int prodNo = new ProductService().findProdNo(vo);
 		
-//		
-//		ReviewVo rvo = new ReviewVo();
-//		rvo.setProdNo(Integer.toString(prodNo));
-//		rvo.setNo(loginMember.getNo());
-//		rvo.setContent(content);
+		
 		
 		//디비 다녀오기
 		int result = new ProductService().insertProduct(vo,avo);
-		//int result2 = new ProductService().insertReview(rvo,prodNo);
+		int prodNo = new ProductService().findProdNo(vo);
+		
+		System.out.println("prodNo : " + prodNo);
+		
+		ReviewVo rvo = new ReviewVo();
+		rvo.setProdNo(Integer.toString(prodNo));
+		rvo.setNo(loginMember.getNo());
+		rvo.setContent(content);
+		
+		int result2 = new ProductService().insertReview(rvo,prodNo);
 		
 		List<ReviewVo> rvoList = new ProductService().selectReview(no);
 		
-		//vo.setProdNo(Integer.toString(prodNo));
+		vo.setProdNo(Integer.toString(prodNo));
 		
 		//화면 선택
 		if(result == 1) {

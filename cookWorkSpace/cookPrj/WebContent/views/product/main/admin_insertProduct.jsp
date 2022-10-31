@@ -86,7 +86,7 @@
 		                </tr>
 		                <tr>
 		                    <th>리뷰 안내&nbsp;:&nbsp;&nbsp;</th>
-		                    <td><input type="text" name="content" value="리뷰 작성 시 건당 100p 지급합니다."></td>
+		                    <td><input type="text" name="content" value="*[공지]* 리뷰 작성 시 건당 100p 지급합니다. 많은 참여 부탁드립니다 ^^"></td>
 		                </tr>
 		                <tr>
 		                    <td><input type="hidden" name="prodNo"></td>
