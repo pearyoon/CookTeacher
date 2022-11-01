@@ -10,58 +10,56 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.cook.cs.service.FAQService;
+import com.kh.cook.cs.service.QNAService;
+import com.kh.cook.cs.vo.CSCommentVo;
 import com.kh.cook.cs.vo.CSVo;
 import com.kh.cook.member.vo.MemberVo;
 
-@WebServlet(urlPatterns="/cs/FAQ/write")
-public class FAQWriteController extends HttpServlet{
-
+@WebServlet(urlPatterns="/cs/QnA/reply")
+public class QNAReplyController extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		HttpSession s = req.getSession();
-		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
-		boolean isAdmin = loginMember != null && loginMember.getId().equals("admin01");
+		//화면 보여주기
 		
-		if(isAdmin) {
-			//관리자일 때
-			req.getRequestDispatcher("/views/cs/FAQ/write.jsp").forward(req, resp);
-		} else {
-			//관리자 아닐 때
-			req.setAttribute("msg","권한이 없습니다.");
-			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
-		}
+		String Qno = req.getParameter("no");
+		
+		CSVo QNAvo = new QNAService().selectQNAone(Qno);
+		
+		req.setAttribute("QNAvo", QNAvo);
+		req.getRequestDispatcher("/views/cs/QnA/reply.jsp").forward(req, resp);
 	
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+	
 		//세션
-		HttpSession s  = req.getSession();
-		//로그인멤버
+		HttpSession s = req.getSession();
+		
+		//로그인멤버 가져오기
 		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
 		
-		//꺼
-		String title = req.getParameter("title");
+		//데이터 꺼내기
 		String content = req.getParameter("content");
+		String Qno = req.getParameter("no");
 		
-		//뭉
-		CSVo vo = new CSVo();
-		vo.setTitle(title);
-		vo.setContent(content);
-		vo.setNo(loginMember.getNo());
+		//뭉치기
+		CSCommentVo cvo = new CSCommentVo();
+		cvo.setCmtContent(content);
+		cvo.setQpostNo(Qno);
+		cvo.setWriterNo(loginMember.getNo());
 		
 		//디비
-		int result = new FAQService().write(vo);
+		int result = new QNAService().reply(cvo);
 		
-		//화면
+		//화면선택
 		if(result == 1) {
-			resp.sendRedirect("/cookTeacher/cs/FAQ/list");
+			resp.sendRedirect("/cookTeacher/cs/QnA/detail?no="+ Qno);
 		} else {
-			// 작성 실패 메세지, 에러페이지 포워딩
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 	
 	}
+
 }

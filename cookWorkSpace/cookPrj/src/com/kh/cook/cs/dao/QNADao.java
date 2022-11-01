@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.common.PageVo;
+import com.kh.cook.cs.vo.CSCommentVo;
 import com.kh.cook.cs.vo.CSVo;
 
 public class QNADao {
@@ -169,6 +170,7 @@ public class QNADao {
 			return vo;
 		}
 
+		//문의글 수정
 		public int updateQNAone(Connection conn, CSVo QNAvo) {
 			
 			String sql = "UPDATE QNA SET TITLE = ?, CONT = ?, EDIT_DATE = SYSDATE WHERE QNA_NO = ?";
@@ -218,6 +220,7 @@ public class QNADao {
 			return result;
 		}
 
+		//마이페이지 문의내역 조회
 		public List<CSVo> selectMyQNAList(Connection conn, String no2) {
 			
 			String sql = "SELECT Q.QNA_NO,Q.NO ,M.NICK ,Q.TITLE ,Q.CONT ,Q.Q_DATE ,Q.DELETE_YN ,Q.EDIT_DATE ,Q.QNA_CATE FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE Q.DELETE_YN = 'N' AND Q.QNA_CATE = 'Q' AND Q.NO = ? ORDER BY Q.QNA_NO DESC";
@@ -268,6 +271,34 @@ public class QNADao {
 			
 			return voList;
 		}
+
+		//답변 작성
+		public int reply(Connection conn, CSCommentVo cvo) {
+			
+			String sql = "INSERT 댓글 내용 ?번호 ?내용 ?닉네임";
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, cvo.getQpostNo());
+				pstmt.setString(2, cvo.getCmtContent());
+				pstmt.setString(3, cvo.getWriterNo());
+								
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(pstmt);
+			}
+		
+			return result;
+		}
+		
+		//답변 조회 메소드 작성하기
 
 
 }

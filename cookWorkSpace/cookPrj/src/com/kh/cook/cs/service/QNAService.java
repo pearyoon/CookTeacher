@@ -6,6 +6,7 @@ import java.util.List;
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.common.PageVo;
 import com.kh.cook.cs.dao.QNADao;
+import com.kh.cook.cs.vo.CSCommentVo;
 import com.kh.cook.cs.vo.CSVo;
 
 public class QNAService {
@@ -54,11 +55,13 @@ public class QNAService {
 		return result;
 	}
 
+	//문의글 상세
 	public CSVo selectQNAone(String qnaNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		CSVo QNAvo = dao.selectQNAone(conn,qnaNo);
+		//답변 정보 코드 작성하기 CSCommentVo 에 담아서
 		
 		JDBCTemplate.close(conn);
 		
@@ -111,6 +114,24 @@ public class QNAService {
 		JDBCTemplate.close(conn);
 		
 		return voList;
+	}
+
+	//답변 작성
+	public int reply(CSCommentVo cvo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.reply(conn, cvo);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+				
+		return result;
 	}
 
 }

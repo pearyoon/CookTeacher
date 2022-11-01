@@ -8,7 +8,7 @@ public class CSCommentVo {
 	private String cmtContent;
 	private String cmtDate;
 	private String deleteYN;
-	private String editDate;
+	
 	public String getCmtNo() {
 		return cmtNo;
 	}
