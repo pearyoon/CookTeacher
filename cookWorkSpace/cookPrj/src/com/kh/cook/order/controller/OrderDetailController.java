@@ -16,7 +16,7 @@ import com.kh.cook.order.vo.OrderDetailVo;
 import com.kh.cook.order.vo.OrderVo;
 import com.kh.cook.order.vo.PaymentVo;
 
-@WebServlet(urlPatterns = "/login/mypage/member/orderDetail")
+@WebServlet(urlPatterns = "/order/mypage/orderlist/orderDetail")
 public class OrderDetailController extends HttpServlet {
 	
 	@Override

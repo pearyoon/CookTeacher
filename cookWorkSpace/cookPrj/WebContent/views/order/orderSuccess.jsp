@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	int insertOrder = (int) request.getAttribute("insertOrder");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +31,7 @@
                             <h1>고객님의 주문이 완료되었습니다.</h1>
                             <p>열심히 달려갈게요!</p>
                         </div>
-    
+    					
                         <div class="order-price">
                             <p>결제 금액 : </p>
                             <p>30000원</p>

@@ -49,6 +49,7 @@ public class CartService {
 
 		if(result == 1) {
 			commit(conn);
+			// 장바구니 리스트 가져오기
 		}else {
 			rollback(conn);
 		}
