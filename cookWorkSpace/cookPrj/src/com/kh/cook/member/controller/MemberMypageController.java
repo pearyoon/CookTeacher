@@ -42,7 +42,18 @@ public class MemberMypageController extends HttpServlet{
 		}
 		
 		MemberVo checkGrade = new MemberService().gradeCheck(vo);
-		System.out.println(checkGrade.getGrade());
+		
+		String grade = checkGrade.getGrade();
+		
+		if("1".equals(grade)) {
+			checkGrade.setGrade("일반");
+		} else if("2".equals(grade)) {
+			checkGrade.setGrade("화이트");	
+		} else {
+			checkGrade.setGrade("그린");
+		}
+			
+		
 		Gson gson = new Gson();
 		String result = gson.toJson(checkGrade);
 		

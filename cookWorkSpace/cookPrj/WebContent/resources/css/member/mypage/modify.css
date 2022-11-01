@@ -169,3 +169,39 @@
     background-color: #255D00;
     color: white;
 }
+
+#modify-wrap .modify-items:first-child{
+    margin: 10px 0px;
+}
+
+.profile-btn{
+    display: flex;
+    align-items: flex-end;
+    
+}
+
+.profile-btn>button{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 50px;
+    height: 20px;
+    border-radius: 2px;
+    color: #255D00;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #255D00;
+    margin: 0px 3px;
+}
+
+.profile-btn span{
+    font-size: 12px;
+}
+
+.profile-btn>button:hover{
+    color: rgb(255, 255, 255);
+    background-color: #255D00;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+ 

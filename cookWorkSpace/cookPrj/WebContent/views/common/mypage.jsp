@@ -63,7 +63,7 @@
                 </div>
                 <div id="mypage-right">
                     <h2 id="head-aticle">
-                        적립금 안내
+                        적립금
                     </h2>
                     <div id="line"></div>
                     <div id="board-container">
