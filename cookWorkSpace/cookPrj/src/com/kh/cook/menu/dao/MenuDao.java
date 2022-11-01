@@ -1,5 +1,7 @@
 package com.kh.cook.menu.dao;
 
+import static com.kh.cook.common.JDBCTemplate.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +11,7 @@ import java.util.List;
 
 import javax.naming.spi.DirStateFactory.Result;
 
+import com.kh.cook.cart.vo.CartVo;
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.menu.vo.MenuAttachmentVo;
 import com.kh.cook.menu.vo.MenuCartVo;
@@ -715,7 +718,8 @@ public class MenuDao {
 	}
 
 	public List<MenuWriteVo> selectNewInList(Connection conn) {
-		String sql = "SELECT * FROM MENU_WRITE ORDER BY NO";
+//		String sql = "SELECT * FROM MENU_WRITE ORDER BY NO";
+		String sql = "SELECT M.NO, M.MENU_NAME, M.MENU_INFO, A.CHANGE_NAME, A.FILE_PATH FROM MENU_WRITE M JOIN MENUATTACHMENT A ON M.NO = A.MENU_NO ORDER BY NO";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -726,26 +730,31 @@ public class MenuDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
+		
 			while(rs.next()) {
 
 				String no = rs.getString("NO");
-				String menuCateNo = rs.getString("MENU_CATE_NO");
+//				String menuCateNo = rs.getString("MENU_CATE_NO");
 				String menuName = rs.getString("MENU_NAME");
 				String menuInfo = rs.getString("MENU_INFO");
-				String recipe = rs.getString("RECIPE");
-				String cal = rs.getString("CAL");
-				String recommend = rs.getString("RECOMMEND");
-				String menuProd = rs.getString("MENU_PROD");
+//				String recipe = rs.getString("RECIPE");
+//				String cal = rs.getString("CAL");
+//				String recommend = rs.getString("RECOMMEND");
+//				String menuProd = rs.getString("MENU_PROD");
+				String filePath = rs.getString("FILE_PATH");
+				String chageName = rs.getString("CHANGE_NAME");
 				
 				MenuWriteVo vo = new MenuWriteVo();
 				vo.setNo(no);
-				vo.setMenuCateNo(menuCateNo);
+//				vo.setMenuCateNo(menuCateNo);
 				vo.setMenuName(menuName);
 				vo.setMenuInfo(menuInfo);
-				vo.setRecipe(recipe);
-				vo.setCal(cal);
-				vo.setRecommend(recommend);
-				vo.setMenuProd(menuProd);
+				vo.setFilePath(filePath);
+				vo.setChangeName(chageName);
+//				vo.setRecipe(recipe);
+//				vo.setCal(cal);
+//				vo.setRecommend(recommend);
+//				vo.setMenuProd(menuProd);
 				
 				writeList.add(vo);
 				
@@ -812,6 +821,62 @@ public class MenuDao {
 		
 		return vo;
 	}
+
+	// 카트에 담기
+	public int addCart(Connection conn, CartVo vo) {
+		
+		String sql ="INSERT INTO CART (NO, PROD_NO, CNT) VALUES (?, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getNo());
+			pstmt.setString(2, vo.getProdNo());
+			pstmt.setString(3, vo.getCnt());
+			
+			result = pstmt.executeUpdate();
+			
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+		
+	}
+		
+		// 카트 중복 체크
+		public int updateCnt(Connection conn,  CartVo vo) {
+			
+			String sql = "UPDATE CART SET CNT=CNT+? WHERE NO = ? AND PROD_NO = ? AND PAYMENT_YN = 'N' ";
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, vo.getCnt());
+				pstmt.setString(2, vo.getNo());
+				pstmt.setString(3, vo.getProdNo());
+				
+				
+				result = pstmt.executeUpdate();
+				System.out.println(result);
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			return result;
+		}
 	
 	
 

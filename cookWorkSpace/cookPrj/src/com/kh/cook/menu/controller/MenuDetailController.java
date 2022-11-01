@@ -1,6 +1,7 @@
 package com.kh.cook.menu.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -59,24 +60,32 @@ public class MenuDetailController extends HttpServlet{
     	
     	//일단 .prodNo 이랑 
     	//넘버를 어떻게:?
-    	String prodNo = req.getParameter("prodNo");
-    	String prodCnt = req.getParameter("prodCnt");
+    	String prodNo[] = req.getParameterValues("prodNo");
+    	String prodCnt[]  = req.getParameterValues("prodCnt");
     	String memberNo = loginMember.getNo();
     	
-    	CartVo vo = new CartVo();
-    	vo.setProdNo(prodNo);
-    	vo.setCnt(prodCnt);
-    	vo.setNo(memberNo);
+    	List<CartVo> cartList = new ArrayList<CartVo>();
+    	
+    	for(int i=0; i< prodNo.length; i++) {
+    		CartVo vo = new CartVo();
+    		vo.setProdNo(prodNo[i]);
+    		vo.setCnt(prodCnt[i]);
+    		vo.setNo(memberNo);
+    		
+    		cartList.add(vo);
+    		
+    	}
+    	
+    	System.out.println(prodCnt);
     	
     	
+    	//int prodCart = new CartService().addCart(vo, prodNo);
+    	boolean isCheck = new MenuService().addCart(cartList);
     	
-    	int prodCart = new CartService().addCart(vo);
-//    	int prodCart = new MenuService().cartInput(mcv);
     	
-    	
-    	if(prodCart == 1) {
+    	if(isCheck) {
     		s.setAttribute("alertMsg", "장바구니 담기 성공!");
-    		req.setAttribute("prodCart", prodCart);
+//    		req.setAttribute("prodCart", prodCart);
     		resp.sendRedirect("/cookTeacher/cart/list");
     	}else {
     		System.out.println("네 장바구니 담기 실패임다^^");

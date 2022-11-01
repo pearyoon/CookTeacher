@@ -33,7 +33,8 @@
                         <label for="">  |  </label>
                         <a href="<%=root %>/menu/dessert"> 디저트 </a>
                     	<label for="">  |  </label>
-                        <a href="<%=root %>/menu/newIn"> NEW IN ! </a>
+                        <a href="<%=root %>/menu/newIn" class="a_style" >NEW IN !</a>
+                        </a>
                     </div>
                 <hr width="70%" style="margin-top: 10px; margin-bottom: 50px">
                 

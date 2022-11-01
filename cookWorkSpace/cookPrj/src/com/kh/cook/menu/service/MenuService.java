@@ -8,6 +8,8 @@ import static com.kh.cook.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.List;
 
+import com.kh.cook.cart.dao.CartDao;
+import com.kh.cook.cart.vo.CartVo;
 import com.kh.cook.common.JDBCTemplate;
 import com.kh.cook.menu.dao.MenuDao;
 import com.kh.cook.menu.vo.MenuAttachmentVo;
@@ -240,6 +242,40 @@ public class MenuService {
 		
 		return vo;
 	}
+
+	public boolean addCart(List<CartVo> cartList) {
+		Connection conn = JDBCTemplate.getConnection();
+		int cnt = 0;
+		//for문 잘 돌아갔는지 체크~
+		boolean isCheck = false;
+		for(int i = 0; i < cartList.size(); i++) {
+			int result = new MenuDao().addCart(conn, cartList.get(i));
+			//내일 머지하고 다시 해보기!!
+			//int result2 = new MenuDao().updateCnt(conn, cartList.get(i));
+			
+			if(result == 1) {
+				cnt += 1;
+				
+			}
+			
+		}
+		
+		if(cnt == cartList.size()) {
+			isCheck = true;
+			
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+
+		
+		return isCheck;
+	
+	}
+
+
 
 
 
