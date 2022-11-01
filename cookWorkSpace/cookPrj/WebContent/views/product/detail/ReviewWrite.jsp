@@ -214,7 +214,21 @@ textarea {
 	border-bottom-right-radius: 10px;
 	border-top-right-radius: 10px;
 }
-
+#write-bttn {
+    text-align: center;
+    width: 100px;
+    display: block;
+    margin: auto;
+    float: right;
+    background-color: #FFD335;
+    border-radius: 10px;
+    height: 25px;
+    letter-spacing: 1px;
+}
+#write-bttn:hover {
+    background-color: #255D00;
+    color: white;
+}
 </style>
 </head>
 <body>
@@ -225,7 +239,7 @@ textarea {
 			<form action="/cookTeacher/product/detail/ReviewWrite" method="post">
 				  <div id="board-list">
                             <div class="container">
-                    	    	<br><h1 align="left">■ 리뷰 작성하기</h1><br>
+                    	    	<br><h1 align="left">■ 리뷰 작성하기&nbsp;&nbsp;<img src="/cookTeacher/upload/img/note.png" style="height: 5%; width: 5%"></h1><br>
 	                                <table class="board-table">
 	                                    <thead>
 		                                    <tr id="table-head">

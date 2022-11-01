@@ -27,7 +27,8 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/product/productDetail.css">
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<style>
+</style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
