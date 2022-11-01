@@ -27,6 +27,7 @@
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
+        <!-- <h1 align="center" style="font-size: 30px">Cook's Pick!</h1> -->
             <div id="slide-area">
                 <div class="slide-items">
                     <div style="width: 1050px; height: 400px; ">
