@@ -28,8 +28,12 @@ public class MemberLoginController extends HttpServlet{
 		vo.setId(id);
 		vo.setPwd(pwd);
 		
+		System.out.println(id);
+		System.out.println(pwd);
+		
 		MemberVo loginMember = new MemberService().selectOne(vo);
-	
+		
+		
 		if(loginMember != null) {
 			//로그인 성공
 			req.getSession().setAttribute("loginMember", loginMember);

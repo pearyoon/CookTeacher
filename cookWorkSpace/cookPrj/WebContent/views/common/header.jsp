@@ -55,10 +55,13 @@
                         <div>집밥Cook선생</div>
                     </div>
                     <div id="header-search-area">
-                        <input type="text" name="search" placeholder="검색어를 입력해주세요.">
-                        <button><img src="/cookTeacher/resources/img/icons/search.png" alt="검색아이콘" width="100%" height="100%"></button>
+                        <!-- <input type="text" name="search" placeholder="검색어를 입력해주세요.">
+                        <button><img src="/cookTeacher/resources/img/icons/search.png" alt="검색아이콘" width="100%" height="100%"></button> -->
                     </div>
                     <div id="header-member-area">
+                        <div>
+                            <img src="/cookTeacher/upload/profile/member_profile.gif" alt="" width="50px">
+                        </div>
                     <%if(loginMember != null) {%>
                         <div><%=loginMember.getNick() %> 님</div>
                     <%} else{%>

@@ -1,6 +1,12 @@
+<%@page import="com.kh.cook.common.AttachmentVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@  taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+<%
+	AttachmentVo attVo = (AttachmentVo)session.getAttribute("attVo");
+	session.removeAttribute("attVo");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,14 +31,23 @@
 </style>
 </head>
 <body>
-	<c:if test="${attVo != null}">
+	
+	<%if(attVo != null){ %>
 		<script>
-//			const name = '${}';
-		
-//			window.opener.$().attr(src,);
+
+			const filePath = '<%=attVo.getFilePath()%>';
+			const changeName = '<%=attVo.getChangeName()%>';
+			const url = "/cookTeacher/"+ filePath + "/" + changeName;
+			
+			console.log(url);
+			
+			$(opener.document).find('#profile-img').attr('src', url);
+			$(opener.document).find('#profile-url').val(url);
+			
+			
 			window.close();
 		</script>
-	</c:if>
+	<%} %>
 
 	<div id="upload-wrap">
 		<h1>이미지 첨부</h1>

@@ -18,7 +18,7 @@ public class MemberFindSuccessIdController extends HttpServlet{
 		MemberVo findMember = (MemberVo)ss.getAttribute("findMember");
 		
 		if(findMember==null) {
-			req.setAttribute("errorMsg", "로그인 후 이용해주세요.");
+			req.setAttribute("errorMsg", "접근 제한입니다.");
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 			return;
 		}

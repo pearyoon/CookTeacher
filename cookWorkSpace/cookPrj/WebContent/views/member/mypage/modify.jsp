@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,9 +76,13 @@
 									<div>
 										<label for="">이미지 등록</label>
 									</div>
-									<div class="profile-img">
-										<img src="/cookTeacher/upload/profile/no_image.png" width="151">
-										<input hidden type="text" value="">
+									<div>
+									<c:if test="${empty loginMember.profile}">
+										<img id="profile-img" src="/cookTeacher/upload/profile/no_image.png" width="151">
+										<input hidden id="profile-url" type="text" name="profileUrl" value="" readonly>									
+									</c:if>
+										<img id="profile-img" src="${loginMember.profile}" width="151">
+										<input hidden id="profile-url" type="text" name="profileUrl" value="${loginMember.profile}" readonly>	
 									</div>
 									<div class="profile-btn">
 										<button type="button" id="upload-btn">
@@ -245,6 +251,14 @@
 		$('#upload-btn').click(function(){
 			const url = "/cookTeacher/login/member/profile/upload"
 			window.open(url, "child","width=300px height=250px")
+		});
+
+		$('#delete-btn').click(function(){
+
+			const url = "/cookTeacher/upload/profile/no_image.png";
+			
+			$('#profile-img').attr('src',url);
+			$('#profile-url').val('');
 		});
 
 	</script>

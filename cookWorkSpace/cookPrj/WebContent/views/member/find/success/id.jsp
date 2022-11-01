@@ -26,8 +26,22 @@
 					<div>아이디 확인 후 로그인해주세요.</div>
 				</div>
 				<div class="middle">
-					<div><%=findMember.getId() %></div>
-					<div>가입일 : <%=findMember.getEnrollDate() %></div>
+					<div id="member-profile">
+					<%if(findMember.getProfile() != null) {%>
+						<div>
+							<img src="<%=findMember.getProfile() %>" alt="" width="50px">
+						</div>
+
+					<%} else{%>
+						<div>
+							<img src="/cookTeacher/upload/profile/member_profile.gif" alt="" width="50px">
+						</div>
+					<%} %>	
+					</div>
+					<div id="member-info">
+						<div><%=findMember.getId() %></div>
+						<div>가입일 : <%=findMember.getEnrollDate() %></div>
+					</div>
 				</div>
 				<div class="bottom">
 					<button type="button" onclick="findPwdBtn();">
