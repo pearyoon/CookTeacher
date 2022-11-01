@@ -28,6 +28,7 @@
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/product/productList.css">
 
+
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
@@ -71,7 +72,7 @@
 		                        <img src="/cookTeacher/upload/img/<%=voList.get(i).getImgPath() %>" alt="식재료게시판담당" width="100%" height="100%">
 					            <div><%= voList.get(i).getName() %> / <%= voList.get(i).getWeight() %></div>
 					            <div><%= formatter.format(Integer.parseInt(voList.get(i).getPrice())) %> 원</div>
-	                        </a>
+	                        </a> 
                         </div>
                         <br><br><br><br><br><br><br><br><br><br><br><br> 
 					<%}%>

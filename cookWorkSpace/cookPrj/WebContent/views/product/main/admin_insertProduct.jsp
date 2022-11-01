@@ -6,6 +6,8 @@
     
 <% 
 	ProductVo vo = (ProductVo)request.getAttribute("vo");
+	String prodNo = (String)request.getAttribute("prodNo");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -33,7 +35,7 @@
         	<div id="main-bottom">
         		<div class="outer">
 	        		<div id="admin_insert">
-		        		<form id="enroll-form" action="/cookTeacher/product/detail/productDetail" method="post" enctype="multipart/form-data">
+		        		<form id="enroll-form" action="/cookTeacher/product/main/admin_insertProduct" method="post" enctype="multipart/form-data">
 		        		<table>
 		        		<tr>
 		        			<th >카테고리&nbsp;:&nbsp;&nbsp;</th>
@@ -81,6 +83,13 @@
 		                <tr>
 		                    <th>메인 사진&nbsp;:&nbsp;&nbsp;</th>
 		                    <td><input type="file" name="file"></td>
+		                </tr>
+		                <tr>
+		                    <th>리뷰 안내&nbsp;:&nbsp;&nbsp;</th>
+		                    <td><input type="text" name="content" value="*[공지]* 리뷰 작성 시 건당 100p 지급합니다. 많은 참여 부탁드립니다 ^^"></td>
+		                </tr>
+		                <tr>
+		                    <td><input type="hidden" name="prodNo"></td>
 		                </tr>
 	            		</table>
 			            <div align="center">

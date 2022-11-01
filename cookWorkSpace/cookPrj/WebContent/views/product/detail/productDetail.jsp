@@ -225,7 +225,6 @@
 		                                        </th>
 		                                        <td><%= rvoList.get(i).getNick() %></td>
 		                                        <td><%= rvoList.get(i).getEnrollDate() %></td>
-						            			
 					                        </tr>
 										<%}%>
                                     </tbody>

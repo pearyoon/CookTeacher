@@ -404,7 +404,37 @@ public class ProductDao {
 		return result;
 		
 	}
+	
+	//관리자 식재료 리뷰 작성
+	public int insertAdminReview(Connection conn, ReviewVo rvo, int prodNo) {
 
+		//SQL (준비, 완성, 실행)
+		
+		String sql = "INSERT INTO PRODUCT_REVIEW(REVIEW_NO, NO, PROD_NO,  CONTENT) VALUES(SEQ_PRODUCT_REVIEW_NO.NEXTVAL, ?, ?,  ?)";
+	
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, rvo.getNo());
+			pstmt.setString(2, Integer.toString(prodNo));
+			pstmt.setString(3, rvo.getContent());
+
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		System.out.println("DAO2 쪽 리뷰 인서트 결과" + result);
+		return result;
+		
+	}
+	
 	//과일채소 목록 조회
 	public List<ProductVo> selectFruitVegeList(Connection conn, PageVo pv) {
 
@@ -1097,5 +1127,6 @@ public class ProductDao {
 		return result;
 	
 	}
+
 
 }
