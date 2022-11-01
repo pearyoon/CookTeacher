@@ -3,7 +3,6 @@
 <%@page import="com.kh.cook.menu.vo.MenuVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%
 	List<MenuVo> recommList = (List<MenuVo>)request.getAttribute("recommList");
 %>
@@ -12,11 +11,6 @@
 <head>
 <meta charset="UTF-8">
 <title>집밥쿡선생</title>
-<link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
-<link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
-<link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <!-- Bootstrap cdn 설정 -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
@@ -24,6 +18,10 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
@@ -72,34 +70,9 @@
                           </a>
                         </div>
                       </div>
-
-
                 </div>
-
-                  <script>
-                    $(function(){
-                      // 이미지 슬라이드 컨트롤를 사용하기 위해서는 carousel를 실행해야한다.
-                      $('#carousel-example-generic').carousel({
-                        // 슬리아딩 자동 순환 지연 시간
-                        // false면 자동 순환하지 않는다.
-                        interval: 2300,
-                        // hover를 설정하면 마우스를 가져대면 자동 순환이 멈춘다.
-                        pause: "hover",
-                        // 순환 설정, true면 1 -> 2가면 다시 1로 돌아가서 반복
-                        wrap: true,
-                        // 키보드 이벤트 설정 여부(?)
-                        keyboard : true
-                      });
-                    });
-                  </script>
-                
-  				
-
+              
             </div>
-
-           
-    
-    
             <div id="main-middle">
                 <div>레시피</div>
                 <div id="main-menu-area">
@@ -212,6 +185,23 @@
         </main>
 		<%@include file="/views/common/footer.jsp" %>
     </div>
+    
+        <script>
+           $(function(){
+             // 이미지 슬라이드 컨트롤를 사용하기 위해서는 carousel를 실행해야한다.
+             $('#carousel-example-generic').carousel({
+               // 슬리아딩 자동 순환 지연 시간
+               // false면 자동 순환하지 않는다.
+               interval: 2300,
+               // hover를 설정하면 마우스를 가져대면 자동 순환이 멈춘다.
+               pause: "hover",
+               // 순환 설정, true면 1 -> 2가면 다시 1로 돌아가서 반복
+               wrap: true,
+               // 키보드 이벤트 설정 여부(?)
+               keyboard : true
+             });
+           });
+         </script>
     
 
 </body>
