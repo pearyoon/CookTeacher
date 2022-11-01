@@ -129,6 +129,7 @@
 			<div class="form-table">
 				<!-- <form action="/cookTeacher/bobstory/cmt" method="get"> -->
 					<input type="hidden" value="<%=vo.getNo()%>" name="bobNo">
+					<input type="hidden" value="<%=loginMember.getNick()%>" name="bobName">
 					<%if(loginMember != null) {%>
 						<input type="hidden" value="<%=loginMember.getNo()%>" name="writerNo">
 					<%}%>
@@ -141,7 +142,7 @@
 					<%}%>
 					</span>
 						<div class="cmt_txt">
-							<textarea name="comment" id="cmt_comment" cols="50" rows="4" placeholder="회원 간의 불편함을 주는 댓글은 자제해주시고 따뜻한 댓글 부탁드립니다.
+							<textarea name="comment" id="cmt_content" cols="50" rows="4" placeholder="회원 간의 불편함을 주는 댓글은 자제해주시고 따뜻한 댓글 부탁드립니다.
 																		게시물에 문제가 있다면 신고 또는 정중하게 이의제기 해주시길 바랍니다."></textarea>
 							&nbsp;<button class="cmt_btn"><span>등록</span></button>
 						</div>
@@ -154,48 +155,90 @@
 					$('.cmt_btn').click(function(){
 							//JSON으로 전달할 파라미터 변수 선언
 							const bobno = '${vo.no}';
-							const cmtWriter = $('input[name=writerNo]').val();
-							const cmtComment = $('#cmt_comment').val();
+							const cmtWriter = $('input[name=bobName]').val();
+							const cmtContent = $('#cmt_content').val();
 
 							console.log(bobno);
 							console.log(cmtWriter);
-							console.log(cmtComment);
+							console.log(cmtContent);
 							if(cmtWriter == ""){
 								alert('로그인 후 이용해주세요.');
-							}else if(cmtComment == ""){
+								return;
+							}else if(cmtContent == ""){
 								alert('내용을 입력해주세요.');
+								return;
 							}
-							const data = [bobno, cmtWriter, cmtComment];
+							// const data = [bobno, cmtWriter, cmtComment];
 							
 							$.ajax({
 								url:"/cookTeacher/bobstory/cmt",
 								type:"get",
-								data: {
-									"bobno" : data[0] ,
-									"cmtWriter" : data[1] ,
-									"cmtComment" : data[2]
-									
-								},
+								dataType : JSON,
+								data: JSON.stringify({
+									"bobno" : bobno ,
+									"cmtWriter" : cmtWriter ,
+									"cmtContent" : cmtContent
+								}),
 								success : function(result){
-									console.log('성공');
-									alert('댓글을 작성하였습니다.');
-									$('.cmt2Writer').text(cmtWriter);
-									$('.cmtComment').text(cmtComment);
+									if(result == 1){
+										$('.cmt2Writer').innerText = cmtWriter;
+										$('.cmt2Content').innerText = cmtContent;
+										console.log('성공');
+										alert('댓글을 작성하였습니다.');
+									}else{
+										alert('댓글 작성에 실패하였습니다.');
+									}
+									$('.cmt_box').eq(0).prepend("<button>앞에 추가</button>");
+									
 								},
 								error : function(){
 									
 								}
 							});
 					});
+
+					function getList(){
+
+						var bno = "${vo.no}"//게시글 번호
+						var pageNum = 1;
+
+						//$.getJSON(요청주소, 콜백함수)
+						$.getJSON("/cookTeacher/bobstory/cmt/list" + bno + "/" +pageNum,
+						function(data){
+							
+							var str = "";
+
+							for(var i= 0; i < data.length; i++){
+								var date = new Date(data[i],cmtDate);
+								var cmtDate = date.getFullYear() +"/" + (date.getMonth()+1)+"/"+date.getDate();
+
+								str += "<div class='cmt2Content'>";
+								str += "<strong class='left'>" + data[i].cmtWriter + "</strong>";
+								str += "<small class='left'>" + "</small>";
+								str += "<a href='#' class='right'><span></span>수정</a>";
+								str += "<a href='#' class='right'><span></span>삭제</a>";
+								str += "</div>";
+								str += "<p class='clearfix'>" + data[i].reply + "</p>";
+								str += "</div>";
+								str += "</div>";
+							}
+                    
+                    			$("#cmt_box").html(str);
+							
+						});
+
+					}
 				</script>
 			</div>
 		</div><!-- cmt container-->
 		<br>
 		<div class="cmt_box">
-			<div class="cmt2Writer">작성자 <br><br><span class="cmt2enroll">작성시각</span></div>
-			<input type="text" class="cmt2Comment" value="내용">
-			&nbsp;<span><a href="" style="height: 50px;">수정</a></span>
-			<span><a href="">삭제</a></span>
+			<div class="cmt2Writer">작성자</div>
+			<div class="cmt2Content">내용</div>
+			<button id="editbtn" onclick="location.href='/cookTeacher/bobstory/cmt/edit'">수정</button>
+			<button id="deletebtn" onclick="location.href='/cookTeacher/bobstory/cmt/delete'">삭제</button>
+			<!-- &nbsp;<span><a href="/cookTeacher/bobstory/cmt/edit">수정</a></span>
+			<span><a href="/cookTeacher/bobstory/cmt/delete">삭제</a></span> -->
 		</div>	
 
 		
