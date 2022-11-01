@@ -40,7 +40,7 @@ public class MemberDao {
 	}
 	
 	public MemberVo selectOne(MemberVo vo, Connection conn) {
-		String sql = "SELECT M.NO ,G.NAME AS GRADE ,ID ,PWD ,EMAIL ,M.NAME ,PHONE ,NICK ,ADDR ,ENROLL_DATE ,MODIFY_DATE ,QUIT_YN ,POINT ,ADMIN_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE ID = ? AND PWD = ? AND QUIT_YN = 'N'";
+		String sql = "SELECT M.NO ,G.NAME AS GRADE ,ID ,PWD ,EMAIL ,M.NAME ,PHONE ,NICK ,ADDR ,PROFILE,ENROLL_DATE ,MODIFY_DATE ,QUIT_YN ,POINT ,ADMIN_YN FROM MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE ID = ? AND PWD = ? AND QUIT_YN = 'N'";
 	
 		PreparedStatement pstmt = null;
 		MemberVo loginMember = null;
@@ -64,6 +64,7 @@ public class MemberDao {
 				String phone = rs.getString("PHONE");
 				String nick = rs.getString("NICK");
 				String dataAddr = rs.getString("ADDR");
+				String profile = rs.getString("PROFILE");
 				String enroll_date = rs.getString("ENROLL_DATE");
 				String modify_date = rs.getString("MODIFY_DATE");
 				String quitYn = rs.getString("QUIT_YN");
@@ -76,7 +77,25 @@ public class MemberDao {
 				String detailAddr = dataAddr.substring(idx+1);
 				
 				
-				loginMember = new MemberVo(no,grade,id,pwd,email,name,phone,nick,addr,detailAddr,enroll_date,modify_date,quitYn,point,adminYn);
+				loginMember = new MemberVo();
+				
+				loginMember.setNo(no);
+				loginMember.setGrade(grade);
+				loginMember.setId(id);
+				loginMember.setPwd(pwd);
+				loginMember.setEmail(email);
+				loginMember.setName(name);
+				loginMember.setPhone(phone);
+				loginMember.setNick(nick);
+				loginMember.setAddr(addr);
+				loginMember.setDetailAddr(detailAddr);
+				loginMember.setProfile(profile);
+				loginMember.setEnrollDate(enroll_date);
+				loginMember.setModifyDate(modify_date);
+				loginMember.setQuitYn(quitYn);
+				loginMember.setPoint(point);
+				loginMember.setAdminYn(adminYn);
+				
 
 				
 			}
@@ -91,7 +110,7 @@ public class MemberDao {
 	}
 	// 수정
 	public int updateOneByNo(MemberVo vo, Connection conn) {
-		String sql = "UPDATE MEMBER SET PWD = ? ,EMAIL = ? ,PHONE = ? ,NICK = ? ,ADDR = ? WHERE NO = ?";
+		String sql = "UPDATE MEMBER SET PWD = ? ,EMAIL = ? ,PHONE = ? ,NICK = ? ,ADDR = ?,PROFILE = ? WHERE NO = ?";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -103,7 +122,8 @@ public class MemberDao {
 			pstmt.setString(3, vo.getPhone());
 			pstmt.setString(4, vo.getNick());
 			pstmt.setString(5, vo.getAddr());
-			pstmt.setString(6, vo.getNo());
+			pstmt.setString(6, vo.getProfile());
+			pstmt.setString(7, vo.getNo());
 			
 			
 			result = pstmt.executeUpdate();
@@ -117,7 +137,7 @@ public class MemberDao {
 	}
 	// 아이디 찾기
 	public MemberVo findId(MemberVo vo, Connection conn) {
-		String sql = "SELECT ID,ENROLL_DATE FROM MEMBER WHERE NAME = ? AND EMAIL = ? AND QUIT_YN = 'N'";
+		String sql = "SELECT ID, PROFILE, ENROLL_DATE FROM MEMBER WHERE NAME = ? AND EMAIL = ? AND QUIT_YN = 'N'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -134,11 +154,13 @@ public class MemberDao {
 			
 			if(rs.next()) {
 				String id = rs.getString("ID");
+				String profile = rs.getString("PROFILE");
 				String enrollDate =  rs.getString("ENROLL_DATE").substring(0, 11);
 				
 				findMember = new MemberVo();
 				
 				findMember.setId(id);
+				findMember.setProfile(profile);
 				findMember.setEnrollDate(enrollDate);
 			}
 			

@@ -161,11 +161,11 @@
     
     
         $('input[name="search"]').focus(function(){
-            $('input[name="memberId"]').css("border", "1px solid rgb(51, 51, 51)");
+            $('input[name="search"]').css("border", "1px solid rgb(51, 51, 51)");
         });
 
         $('input[name="search"]').blur(function(){
-            $('input[name="memberId"]').css("border", "1px solid rgb(221, 221, 221)");
+            $('input[name="search"]').css("border", "1px solid rgb(221, 221, 221)");
         });
 
     </script>

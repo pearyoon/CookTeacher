@@ -4,12 +4,10 @@ public class MemberVo {
 	public MemberVo() {
 		
 	}
-	
-	
-	
+
 	public MemberVo(String no, String grade, String id, String pwd, String email, String name, String phone,
-			String nick, String addr, String detailAddr, String enrollDate, String modifyDate, String quitYn, int point,
-			String adminYn) {
+			String nick, String addr, String detailAddr, String profile, String enrollDate, String modifyDate,
+			String quitYn, int point, String adminYn, String save) {
 		super();
 		this.no = no;
 		this.grade = grade;
@@ -21,14 +19,14 @@ public class MemberVo {
 		this.nick = nick;
 		this.addr = addr;
 		this.detailAddr = detailAddr;
+		this.profile = profile;
 		this.enrollDate = enrollDate;
 		this.modifyDate = modifyDate;
 		this.quitYn = quitYn;
 		this.point = point;
 		this.adminYn = adminYn;
+		this.save = save;
 	}
-
-
 
 	private String no;
 	private String grade;
@@ -40,12 +38,15 @@ public class MemberVo {
 	private String nick;
 	private String addr;
 	private String detailAddr;
+	private String profile;
 	private String enrollDate;
 	private String modifyDate;
 	private String quitYn;
 	private int point;
 	private String adminYn;
 	private String save;
+	
+	
 	public String getNo() {
 		return no;
 	}
@@ -244,21 +245,31 @@ public class MemberVo {
 		this.save = save;
 	}
 
+	
+	
+	
+
+	public String getProfile() {
+		return profile;
+	}
+
+
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
 
 
 	@Override
 	public String toString() {
 		return "MemberVo [no=" + no + ", grade=" + grade + ", id=" + id + ", pwd=" + pwd + ", email=" + email
 				+ ", name=" + name + ", phone=" + phone + ", nick=" + nick + ", addr=" + addr + ", detailAddr="
-				+ detailAddr + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + ", quitYn=" + quitYn
-				+ ", point=" + point + ", adminYn=" + adminYn + ", save=" + save + "]";
+				+ detailAddr + ", profile=" + profile + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate
+				+ ", quitYn=" + quitYn + ", point=" + point + ", adminYn=" + adminYn + ", save=" + save + "]";
 	}
 
 
-
-	
-	
-	
 	
 	
 }

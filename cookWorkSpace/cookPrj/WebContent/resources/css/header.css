@@ -84,9 +84,15 @@ header{
 }
 
 /* 회원 */
-#header-member-area>div:first-child{
+/* #header-member-area>div{
+    border: 1px solid;
+} */
+
+
+
+#header-member-area>div:nth-child(2){
+    padding: 10px 5px;
     text-align: center;
-    width: 150px;
 }
 
 
