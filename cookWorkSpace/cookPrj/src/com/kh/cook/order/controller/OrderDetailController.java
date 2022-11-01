@@ -16,7 +16,7 @@ import com.kh.cook.order.vo.OrderDetailVo;
 import com.kh.cook.order.vo.OrderVo;
 import com.kh.cook.order.vo.PaymentVo;
 
-@WebServlet(urlPatterns = "/login/mypage/member/orderInfo")
+@WebServlet(urlPatterns = "/login/mypage/member/orderDetail")
 public class OrderDetailController extends HttpServlet {
 	
 	@Override
@@ -32,17 +32,23 @@ public class OrderDetailController extends HttpServlet {
 		// 주문 번호 가져오기
 		String num = req.getParameter("num");
 		
-		// 결제방법
-		
 		List<OrderDetailVo> orderlist = new OrderService().selectOrderList(no,num);
 		 OrderVo orderInfo = new OrderService().selectOrderInfo(num);
 		 PaymentVo paymentInfo = new OrderService().selectPaymentInfo(num);
 		 
-		 req.setAttribute("orderlist", orderlist);
-		 req.setAttribute("orderInfo", orderInfo);
-		 req.setAttribute("paymentInfo", paymentInfo);
-		
-		req.getRequestDispatcher("/views/order/orderDetail.jsp").forward(req, resp);
+		 String memberNo = orderInfo.getMemberNo();
+		 
+		 if(no == memberNo) {
+			 req.setAttribute("orderlist", orderlist);
+			 req.setAttribute("orderInfo", orderInfo);
+			 req.setAttribute("paymentInfo", paymentInfo);
+			 
+			 req.getRequestDispatcher("/views/order/orderDetail.jsp").forward(req, resp);
+			 
+		 }else {
+			 resp.sendRedirect("/cookTeacher/member/login");
+		 }
+		 
 		
 	}
 

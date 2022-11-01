@@ -34,7 +34,7 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/mypage/member/orderlist">
                                     주문내역
                                 </a>
                             </li>

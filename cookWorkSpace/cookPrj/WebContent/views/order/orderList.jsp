@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
-<link rel="stylesheet" href="../resources/css/order/orderList.css">
+<link rel="stylesheet" href="../../resources/css/order/orderList.css">
 
 </head>
 <body>
@@ -31,7 +31,7 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="/cookTeacher/mypage/member/orderDetail">
+                                <a href="/cookTeacher/mypage/member/orderlist">
                                     주문내역
                                 </a>
                             </li>

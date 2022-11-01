@@ -8,9 +8,11 @@ import java.util.List;
 
 import com.kh.cook.cart.dao.CartDao;
 import com.kh.cook.cart.vo.CartItemVo;
+import com.kh.cook.cart.vo.CartVo;
 import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.order.dao.OrderDao;
 import com.kh.cook.order.vo.OrderDetailVo;
+import com.kh.cook.order.vo.OrderListVo;
 import com.kh.cook.order.vo.OrderVo;
 import com.kh.cook.order.vo.PaymentVo;
 
@@ -54,20 +56,24 @@ public class OrderService {
 	// 주문 내역 만들기
 	public int insertOrder(MemberVo cartMember, List<CartItemVo> cartList, String point, String payment) {
 
+		//전체 가격
 		int totalPrice = 0;
 		
 		for(int i = 0; i < cartList.size(); i++) {
 			CartItemVo item = cartList.get(i);
+			// 전체 가격 계산
 			int sum = Integer.parseInt(item.getPrice()) * Integer.parseInt(item.getCnt());
 			totalPrice += sum;
 		}
 		
+		// 포인트
 		if(point != null && !point.equals("")) {
 			totalPrice -= Integer.parseInt(point);
 		}
 		
 		double rate = 0;
 		
+		// 회원 등급에 따른 적립 포인트
 		switch(cartMember.getGrade()) {
 		
 		case "1": 
@@ -94,10 +100,13 @@ public class OrderService {
 
 		boolean isSuccess = true;
 		
+		// 주문 내역 만들기
 		for(int i = 0; i < cartList.size(); i++) {
 			CartItemVo item = cartList.get(i);
 			
 			int detailResult = dao.insertOrderDetail(conn, num, item);
+			int updateResult = dao.updatePaymentYN(conn, cartMember, item);
+			int updateStock = dao.updateStock(conn, item);
 			
 			// 실패하면 롤백해줌 (커밋하지 않기 위해서)
 			if(detailResult == 0) {
@@ -148,6 +157,7 @@ public class OrderService {
 		
 	}
 	
+	// 결제 정보 가져오기
 	public PaymentVo selectPaymentInfo(String num) {
 		
 		// 커넥션 가져오기
@@ -158,6 +168,19 @@ public class OrderService {
 		close(conn);
 		
 		return paymentInfo;
+		
+	}
+	
+	// 주문 내역 조회하기
+	public List<OrderListVo> selectOrderInfoList(String no) {
+		
+		Connection conn = getConnection();
+		
+		List<OrderListVo> orderList = dao.selectOrderInfoList(conn, no);
+		
+		close(conn);
+		
+		return orderList;
 		
 	}
 

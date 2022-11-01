@@ -35,6 +35,7 @@ function deleteList() {
         for (let i = 0; i < resultList.length; i++) {
             $(`input[value=`+ resultList[i] +`]`).parent().remove()
         }
+        
     } 
   })
      
