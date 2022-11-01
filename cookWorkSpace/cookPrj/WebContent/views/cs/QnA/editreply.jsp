@@ -1,8 +1,10 @@
 <%@page import="com.kh.cook.cs.vo.CSVo"%>
+<%@page import="com.kh.cook.cs.vo.CSCommentVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
     CSVo QNAvo = (CSVo)request.getAttribute("QNAvo");
+    CSCommentVo cvo = (CSCommentVo)request.getAttribute("cvo");
     %>
 <!DOCTYPE html>
 <html>
@@ -109,7 +111,9 @@ color: black;
 	
 			<div class="content-area">
 			<br>
-				<textarea name="content" rows="22" cols="80" style="resize:none;" required></textarea>
+				<textarea name="content" rows="22" cols="80" style="resize:none;" required>
+				<%=cvo.getCmtContent() %>
+				</textarea>
 			<br><br>
 			</div>
 			
@@ -118,13 +122,13 @@ color: black;
 				<input type="submit" value="등록">
 			</div>
 			
-			<input hidden type="text" name="no" value=<%=QNAvo.getQnaNo() %>>
+			<input hidden type="text" name="no" value="<%= QNAvo.getQnaNo()%>">
 			<!-- upload()함수 -->
 			<script>
 				function upload(){
 					
 					Swal.fire({
-					  title: '등록하시겠습니까?',
+					  title: '수정하시겠습니까?',
 					  icon: 'question',
 					  showCancelButton: true,
 					  confirmButtonText: '확인',
@@ -136,7 +140,7 @@ color: black;
 							  
 							  
 							    Swal.fire(
-							      '등록하였습니다!',
+							      '수정하였습니다!',
 						    	  'success'
 						  	  ).then( ()=> {document.querySelector('#fff').submit();} );
 						  }
@@ -148,10 +152,10 @@ color: black;
 				
 				function cancel(){
 					Swal.fire({
-                       title: '등록 취소',
+                       title: '수정 취소',
                        icon: 'info',
                     });
-					location.href="/cookTeacher/cs/QnA/detail?=no<%= QNAvo.getQnaNo() %>"
+					location.href="/cookTeacher/cs/QnA/detail?no=<%= QNAvo.getQnaNo() %>"
 				}
 			</script>
 		</form>

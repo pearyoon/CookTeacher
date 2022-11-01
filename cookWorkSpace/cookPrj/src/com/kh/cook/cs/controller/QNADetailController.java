@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.cook.cs.service.QNAService;
+import com.kh.cook.cs.vo.CSCommentVo;
 import com.kh.cook.cs.vo.CSVo;
 
 @WebServlet(urlPatterns="/cs/QnA/detail")
@@ -21,8 +22,10 @@ public class QNADetailController extends HttpServlet{
 	System.out.println(qnaNo);
 	
 	CSVo QNAvo = new QNAService().selectQNAone(qnaNo);
+	CSCommentVo cvo = new QNAService().selectReplyOne(qnaNo);
 	
 	req.setAttribute("QNAvo", QNAvo);
+	req.setAttribute("cvo", cvo);
 	req.getRequestDispatcher("/views/cs/QnA/detail.jsp").forward(req, resp);
 	
 	}

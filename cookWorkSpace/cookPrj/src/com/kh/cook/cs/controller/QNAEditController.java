@@ -33,17 +33,17 @@ public class QNAEditController extends HttpServlet{
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String Qno = req.getParameter("no");
-		
+		System.out.println(Qno);
 		CSVo QNAvo = new CSVo();
 		
 		QNAvo.setTitle(title);
 		QNAvo.setContent(content);
 		QNAvo.setQnaNo(Qno);
+		System.out.println(Qno);
 		
 		int result = new QNAService().edit(QNAvo);
 		
 		if(result == 1) {
-			req.getSession().setAttribute("alertMsg", "공지사항 수정 성공!");
 			resp.sendRedirect("/cookTeacher/cs/QnA/detail?no="+ Qno);
 		} else {
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);

@@ -1,8 +1,10 @@
+<%@page import="com.kh.cook.cs.vo.CSCommentVo"%>
 <%@page import="com.kh.cook.cs.vo.CSVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
     CSVo QNAvo = (CSVo)request.getAttribute("QNAvo");
+    CSCommentVo cvo = (CSCommentVo)request.getAttribute("cvo");
     %>
 <!DOCTYPE html>
 <html>
@@ -71,17 +73,18 @@ text-align: right;
 /* 내용 영역 */
 .content-area{
 	width: 600px;
-	height: 400px;
+	height: 200px;
 	border-bottom: 3px solid black;
 	padding: 10px;
 	font-size: small;
+	line-height: 20px;
 }
 
 
 /* 등록, 취소 버튼 */
 #writebtn>button{
 	height: 30px;
-	width: 50px;
+	width: 70px;
 	background: #255D00;
 	color: #fff;
 	border: none;
@@ -131,27 +134,51 @@ text-align: right;
 			<br><br>
 		</div>
 		
-		<!-- 답변 영역 -->
-		<div class="cmtlist">
-
-		</div>
-		
 		
 		<div id=writebtn>
-		
-		<!-- 수정 / 삭제 버튼 -->
-		<%	if(loginMember != null && loginMember.getNo().equals(QNAvo.getNo())){ %>
-			<button type="button" onclick="location.href='/cookTeacher/cs/QnA/edit?no=<%= QNAvo.getQnaNo() %>';">수정</button>
-			<button type="button" onclick="location.href='/cookTeacher/cs/QnA/delete?no=<%= QNAvo.getQnaNo() %>';">삭제</button>
-		<% } %>
-		
-		<!-- 문의 답변 버튼 -->
-		<%	if(loginMember != null && loginMember.getId().equals("admin01")){ %>
-			<button type="button" onclick="location.href='/cookTeacher/cs/QnA/reply?no=<%= QNAvo.getQnaNo() %>';">답변</button>
-		<% } %>
-		
+			<!-- 수정 / 삭제 버튼 -->
+			<%	if(loginMember != null && loginMember.getNo().equals(QNAvo.getNo())){ %>
+				<button type="button" onclick="location.href='/cookTeacher/cs/QnA/edit?no=<%= QNAvo.getQnaNo() %>';">수정</button>
+				<button type="button" onclick="location.href='/cookTeacher/cs/QnA/delete?no=<%= QNAvo.getQnaNo() %>';">삭제</button>
+			<% } %>
+			
+			<!-- 문의 답변 버튼 -->
+			<%if(cvo == null) {%>
+				<%	if(loginMember != null && loginMember.getId().equals("admin01")){ %>
+					<button type="button" onclick="location.href='/cookTeacher/cs/QnA/reply?no=<%= QNAvo.getQnaNo() %>';">답변</button>
+				<% } %>
+			<%} %>
+			<br>
 		</div>		
 		
+		<%if(cvo != null) {%>
+		<!-- 답변 영역 -->
+		<div class="cmtlist">
+			<!-- 문의글 상세 제목 및 내용 -->
+			<div class="title-area">
+				<div id="a">
+					제목 : RE)<%=QNAvo.getTitle() %>
+				</div>
+				<div id="writer">작성자 :</div>
+				<div class="write" id="writer" name="writer">관리자</div>
+			</div>
+	
+			<div class="content-area">
+				<br>
+				<%=cvo.getCmtContent() %>
+				<br><br>
+			</div>
+		</div>
+		
+		<div id=writebtn>
+			<!-- 수정 / 삭제 버튼 -->
+				<%	if(loginMember != null && loginMember.getId().equals("admin01")){ %>
+					<button type="button" onclick="location.href='/cookTeacher/cs/QnA/editreply?no=<%= QNAvo.getQnaNo() %>';">답변수정</button>
+					<button type="button" onclick="location.href='/cookTeacher/cs/QnA/deletereply?no=<%= QNAvo.getQnaNo() %>';">답변삭제</button>
+				<% } %>
+			<br>
+		</div>		
+		<%} %>
 		
 		<%@include file="/views/common/footer.jsp" %>
 	</div>

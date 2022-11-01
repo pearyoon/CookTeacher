@@ -134,4 +134,24 @@ public class QNAService {
 		return result;
 	}
 
+	//답변 조회
+	public CSCommentVo selectReplyOne(String qnaNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		CSCommentVo cvo = dao.selectReplyOne(conn, qnaNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return cvo;
+	}
+
+	//답변 수정
+	public int editreply(CSCommentVo cvo) {
+		return 0;
+	}
+	
+	
+	//답변 삭제
+
 }

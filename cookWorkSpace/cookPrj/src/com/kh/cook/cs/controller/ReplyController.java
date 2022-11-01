@@ -16,18 +16,29 @@ import com.kh.cook.cs.vo.CSVo;
 import com.kh.cook.member.vo.MemberVo;
 
 @WebServlet(urlPatterns="/cs/QnA/reply")
-public class QNAReplyController extends HttpServlet{
+public class ReplyController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//화면 보여주기
+		HttpSession s = req.getSession();
+		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
+		boolean isAdmin = loginMember != null && loginMember.getId().equals("admin01");
 		
-		String Qno = req.getParameter("no");
+		if(isAdmin) {
+			//관리자일 때
+			String Qno = req.getParameter("no");
+			
+			CSVo QNAvo = new QNAService().selectQNAone(Qno);
+			
+			req.setAttribute("QNAvo", QNAvo);
+			req.getRequestDispatcher("/views/cs/QnA/reply.jsp").forward(req, resp);
+		} else {
+			//관리자 아닐 때
+			req.setAttribute("msg","권한이 없습니다.");
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+		}
 		
-		CSVo QNAvo = new QNAService().selectQNAone(Qno);
-		
-		req.setAttribute("QNAvo", QNAvo);
-		req.getRequestDispatcher("/views/cs/QnA/reply.jsp").forward(req, resp);
 	
 	}
 	
@@ -49,6 +60,7 @@ public class QNAReplyController extends HttpServlet{
 		cvo.setCmtContent(content);
 		cvo.setQpostNo(Qno);
 		cvo.setWriterNo(loginMember.getNo());
+		
 		
 		//디비
 		int result = new QNAService().reply(cvo);

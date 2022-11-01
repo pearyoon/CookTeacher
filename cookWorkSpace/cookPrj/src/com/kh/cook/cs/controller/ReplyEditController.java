@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.cook.cs.service.FAQService;
+import com.kh.cook.cs.service.QNAService;
+import com.kh.cook.cs.vo.CSCommentVo;
 import com.kh.cook.cs.vo.CSVo;
 import com.kh.cook.member.vo.MemberVo;
 
-@WebServlet(urlPatterns="/cs/FAQ/edit")
-public class FAQEditController extends HttpServlet{
-	
+
+@WebServlet(urlPatterns="/cs/QnA/editreply")
+public class ReplyEditController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//화면 보여주기
@@ -26,41 +28,41 @@ public class FAQEditController extends HttpServlet{
 		
 		if(isAdmin) {
 			//관리자일 때
-			String Fno = req.getParameter("no");
+			String Qno = req.getParameter("no");
 			
-			CSVo FAQvo = new FAQService().selectFAQOne(Fno);
+			CSVo QNAvo = new QNAService().selectQNAone(Qno);
+			CSCommentVo cvo = new QNAService().selectReplyOne(Qno);
 			
-			req.setAttribute("FAQvo", FAQvo);
-			req.getRequestDispatcher("/views/cs/FAQ/edit.jsp").forward(req, resp);
+			req.setAttribute("QNAvo", QNAvo);
+			req.setAttribute("cvo", cvo);
+			req.getRequestDispatcher("/views/cs/QnA/editreply.jsp").forward(req, resp);
+			
 		} else {
 			//관리자 아닐 때
 			req.setAttribute("msg","권한이 없습니다.");
-			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
+		
 	
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		String Fno = req.getParameter("no");
+		String Qno = req.getParameter("no");
+
+		CSCommentVo cvo = new CSCommentVo();
 		
-		CSVo FAQvo = new CSVo();
+		cvo.setCmtContent(content);
+		cvo.setQpostNo(Qno);
 		
-		FAQvo.setTitle(title);
-		FAQvo.setContent(content);
-		FAQvo.setQnaNo(Fno);
-		
-		int result = new FAQService().edit(FAQvo);
+		int result = new QNAService().editreply(cvo);
 		
 		if(result == 1) {
-			resp.sendRedirect("/cookTeacher/cs/FAQ/detail?no="+ Fno);
+			resp.sendRedirect("/cookTeacher/cs/QnA/detail?no="+ Qno);
 		} else {
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 	
 	}
-
 }
