@@ -160,11 +160,11 @@
     <script>
     
     
-        $('input[name="memberId"]').focus(function(){
+        $('input[name="search"]').focus(function(){
             $('input[name="memberId"]').css("border", "1px solid rgb(51, 51, 51)");
         });
 
-        $('input[name="memberId"]').blur(function(){
+        $('input[name="search"]').blur(function(){
             $('input[name="memberId"]').css("border", "1px solid rgb(221, 221, 221)");
         });
 

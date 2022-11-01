@@ -2,7 +2,10 @@
     	
 // 아이디 유효성 체크
 const memberId = document.querySelector('input[name=memberId]');
+
 let idck = false;
+
+// 유효성
 memberId.addEventListener("keyup" ,()=>{
     idck = false;
     const inputId = memberId.value;

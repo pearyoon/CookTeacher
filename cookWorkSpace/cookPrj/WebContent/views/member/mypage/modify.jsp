@@ -71,6 +71,25 @@
 						<div id="modify-wrap">
 						    <form action="<%=root %>/login/mypage/member/modify" method="post" onsubmit="return checkModify()">
 						        <div class="modify-items">
+									<div>
+										<label for="">이미지 등록</label>
+									</div>
+									<div class="profile-img">
+										<img src="/cookTeacher/upload/profile/no_image.png" width="151">
+										<input hidden type="text" value="">
+									</div>
+									<div class="profile-btn">
+										<button type="button" id="upload-btn">
+											<span>등록</span>
+										</button>
+										<button type="button" id="delete-btn">
+											<span>삭제</span>
+										</button>
+									</div>
+								</div>
+
+								<div></div>
+								<div class="modify-items">
 						            <div>
 						                <label for="memberId">아이디</label>
 						            </div>
@@ -221,6 +240,14 @@
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
+
+	<script>
+		$('#upload-btn').click(function(){
+			const url = "/cookTeacher/login/member/profile/upload"
+			window.open(url, "child","width=300px height=250px")
+		});
+
+	</script>
 </body>
 </html> 
     
