@@ -69,7 +69,7 @@
                     </div>
                     
                 </div>
-                   <hr><div style="font-size: 20px; font-weight: 700; ">[ 카테고리 선택 ]</div>
+                   <hr><div style="font-size: 20px; font-weight: 700; ">[ 카테고리 선택 ]&nbsp;&nbsp;<img src="/cookTeacher/resources/img/shopping-bag.png" style="height:4%; width:4%"></div>
                 <hr>
                 <br><br>
                 <div class="main-prod-area">

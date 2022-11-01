@@ -65,7 +65,7 @@
                     </div>
                 </div>
             
-                <hr><div style="font-size: 20px; font-weight: 700; ">[ 해산물 ]</div><hr>
+                <hr><div style="font-size: 20px; font-weight: 700; ">[ 해산물 ]&nbsp;&nbsp;<img src="/cookTeacher/resources/img/seafood.png" style="height:4%; width:4%"></div><hr>
                 <br><br>
                 <div class="main-prod-area">
                		<%for(int i = 0; i < voList.size(); ++i){%>

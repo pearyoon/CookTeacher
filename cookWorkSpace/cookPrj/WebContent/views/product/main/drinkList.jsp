@@ -59,7 +59,7 @@
                         <a href="/cookTeacher/product/main/etcList">기타</a>
                     </div>
                 </div>
-               <hr><div style="font-size: 20px; font-weight: 700; ">[ 음료 ]</div><hr>
+               <hr><div style="font-size: 20px; font-weight: 700; ">[ 음료 ]&nbsp;&nbsp;<img src="/cookTeacher/resources/img/drink.png" style="height:4%; width:4%"></div><hr>
                 <br><br>
                 <div class="main-prod-area">
                		<%for(int i = 0; i < voList.size(); ++i){%>

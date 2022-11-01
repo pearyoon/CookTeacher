@@ -43,7 +43,7 @@ a:hover{
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
-        <!-- <h1 align="center" style="font-size: 2rem">Cook's Pick!</h1> -->
+         <!-- <h1 align="center" style="font-size: 2rem"><img src="/cookTeacher/resources/img/thumbs-up.png" style="height:3%; width:3%">&nbsp;&nbsp;쿡선생 추천</h1> --> 
             <div id="slide-area">
                 <div class="slide-items">
                     <div style="width: 1050px; height: 400px; ">
@@ -97,9 +97,9 @@ a:hover{
                     </div>
                 </div>
             </div>
-            <br><hr>
+            <br><hr style="border-top:3px solid #eee">
             <div id="main-bottom">
-                <div>식재료 쇼핑</div><hr>
+                <div>식재료 쇼핑 <img src="/cookTeacher/resources/img/online-shopping.png" style="height:5%; width:5%"></div><hr style="border-top:3px solid #eee">
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>

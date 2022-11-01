@@ -60,7 +60,7 @@
                         <a href="/cookTeacher/product/main/etcList" style="color: white;">기타</a>
                     </div>
                 </div>
-              <hr><div style="font-size: 20px; font-weight: 700; ">[ 기타 ]</div>
+              <hr><div style="font-size: 20px; font-weight: 700; ">[ 기타 ]&nbsp;&nbsp;<img src="/cookTeacher/resources/img/seasoning.png" style="height:4%; width:4%"></div>
                 <hr>
                 <br><br>
                 <div class="main-prod-area">

@@ -40,23 +40,27 @@
                     <div id="main-menu-area">
                     <input type="hidden" name="prodNo" value="<%=vo.getProdNo() %>">
                         <div id="product-main-img/product">
-                            <img/product src="/cookTeacher/upload/img/<%= vo.getImgPath()%>" alt="레시피게시판담당" width="100%" height="100%">
+                            <img/product src="/cookTeacher/upload/img/<%= vo.getImgPath()%>" alt="레시피게시판담당" width="120%" height="100%">
                         </div>
                         <div class="outer">
                             <div class="inner" id="real-name">
                                 [&nbsp;<%= vo.getName() %>&nbsp;]
                             </div>
                             <div class="inner">
-                                원산지
+                            <img src="/cookTeacher/resources/img/checked.png" style="height:20px; width:20px">
+                                &nbsp;원산지 :
                             </div>
                             <div class="inner">
-                                중량
+                            <img src="/cookTeacher/resources/img/checked.png" style="height:20px; width:20px">
+                                &nbsp;중량 :
                             </div>
                             <div class="inner">
-                                가격
+                            <img src="/cookTeacher/resources/img/checked.png" style="height:20px; width:20px">
+                                &nbsp;가격 :
                             </div>
                             <div class="inner">
-                                구매 수량
+                            <img src="/cookTeacher/resources/img/checked.png" style="height:20px; width:20px">
+                                &nbsp;구매 수량 :
                             </div>
                             <!-- <div class="inner">
                                 합계
@@ -137,13 +141,14 @@
                 <div>
                     <br>
                     <p>
+                    <img src="/cookTeacher/resources/img/megaphone.png" style="height:5%; width:5%">
                         <%= vo.getInfo() %>
                         <br>
                     </p>
                     <br>
                     <div id="product-detail-info">
                         <%= vo.getDetail() %>
-                    </div>
+                    </div><br>
                 </div>
                 <br><br>
                 <hr>
@@ -165,7 +170,7 @@
                     </div>
                     <br><br><br><br><br><br><br>
                     <div>
-                        *제품 이미지
+                        *제품 이미지&nbsp;&nbsp;📷
                         <br><br><br><br>
                     </div>
                     <div id="big-name">
@@ -186,7 +191,7 @@
                     </div>
                     <div>
                     	<br>
-                        *상세 이미지
+                        *상세 이미지&nbsp;&nbsp;🔍
                         <br><br><br><br>
                     </div>
                 </a>
