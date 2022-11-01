@@ -112,3 +112,12 @@ main div{
 	text-align: center;
 	font-size: small;
 }
+
+/* ============= */
+.a_style {
+    color: rgb(7, 100, 0);
+    text-decoration: none;
+    transition: 1s;
+    font-size: large;
+   }
+   .a_style:hover { text-shadow: 0 0 .1em, 0 0 .3em; }

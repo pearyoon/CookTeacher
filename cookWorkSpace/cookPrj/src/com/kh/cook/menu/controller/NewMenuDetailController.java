@@ -69,7 +69,7 @@ public class NewMenuDetailController extends HttpServlet{
     	
     	
     	int prodCart = new CartService().addCart(vo);
-//    	int prodCart = new MenuService().cartInput(mcv);
+    	//int prodCart = new MenuService().cartInput(mcv);
     	
     	
     	if(prodCart == 1) {

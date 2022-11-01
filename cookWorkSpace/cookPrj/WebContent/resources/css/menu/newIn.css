@@ -43,10 +43,11 @@ main div{
 
 .recipe-newIn-area{
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: flex-start;
+    margin-left: 30px;
     padding-bottom: 60px;
     margin-top: 30px;
+    flex-wrap: wrap;
     /*height: 400px;  */
 }
 /* 레시피 이미지 크기 */
@@ -107,3 +108,29 @@ main div{
     margin-top:10px;
     text-align: center; 
 }
+
+
+#new-recipe{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.new-div{
+    /* padding-bottom: 50px; */
+    /* display: flex; */
+    align-content: space-around;
+    vertical-align: middle;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+}
+
+.new-img{
+    width: 300px; 
+    height: 200px;
+}
+
+

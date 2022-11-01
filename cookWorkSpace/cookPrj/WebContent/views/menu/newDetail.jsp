@@ -1,3 +1,4 @@
+<%@page import="com.kh.cook.menu.vo.MenuAttachmentVo"%>
 <%@page import="com.kh.cook.menu.vo.MenuWriteVo"%>
 <%@page import="com.kh.cook.product.vo.ProductVo"%>
 <%@page import="java.util.List"%>
@@ -19,7 +20,12 @@
 
 <%
 	MenuWriteVo vo = (MenuWriteVo)request.getAttribute("mwVo");
-List<ProductVo> prodList = (List<ProductVo>)request.getAttribute("prodList");
+	MenuAttachmentVo attVo =  (MenuAttachmentVo)request.getAttribute("attchmentVo");
+	if(attVo == null){
+		attVo = new MenuAttachmentVo();
+	}
+	
+	List<ProductVo> prodList = (List<ProductVo>)request.getAttribute("prodList");
 %>
 
 
@@ -55,7 +61,7 @@ List<ProductVo> prodList = (List<ProductVo>)request.getAttribute("prodList");
                     
                     <!-- 레시피 카테고리별로 이미지 폴더 어떻게 구분할지 -->
 
-                    
+                    	<img width="500px" height="500px" alt="사진" src="<%= root %>/<%=attVo.getFilePath() %>/<%=attVo.getChangeName()%>">
                         <%-- <img id="re-imgimg" src="/cookTeacher/resources/img/<%=vo.getImgPath()%>" alt="" width="500px" height="500px"> --%>
                     </div>
                     
@@ -232,7 +238,7 @@ List<ProductVo> prodList = (List<ProductVo>)request.getAttribute("prodList");
 					}
 				</script> -->
 				
-
+				
 
 
                 </div>

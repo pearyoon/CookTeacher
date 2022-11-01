@@ -10,12 +10,14 @@ public class MenuWriteVo {
 	private String cal;
 	private String recommend;
 	private String menuProd;
+	private String changeName;
+	private String filePath;
 	public MenuWriteVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public MenuWriteVo(String no, String menuCateNo, String menuName, String menuInfo, String recipe, String cal,
-			String recommend, String menuProd) {
+			String recommend, String menuProd, String changeName, String filePath) {
 		super();
 		this.no = no;
 		this.menuCateNo = menuCateNo;
@@ -25,12 +27,14 @@ public class MenuWriteVo {
 		this.cal = cal;
 		this.recommend = recommend;
 		this.menuProd = menuProd;
+		this.changeName = changeName;
+		this.filePath = filePath;
 	}
 	@Override
 	public String toString() {
 		return "MenuWriteVo [no=" + no + ", menuCateNo=" + menuCateNo + ", menuName=" + menuName + ", menuInfo="
 				+ menuInfo + ", recipe=" + recipe + ", cal=" + cal + ", recommend=" + recommend + ", menuProd="
-				+ menuProd + "]";
+				+ menuProd + ", changeName=" + changeName + ", filePath=" + filePath + "]";
 	}
 	public String getNo() {
 		return no;
@@ -80,5 +84,19 @@ public class MenuWriteVo {
 	public void setMenuProd(String menuProd) {
 		this.menuProd = menuProd;
 	}
+	public String getChangeName() {
+		return changeName;
+	}
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	
 	
 }
