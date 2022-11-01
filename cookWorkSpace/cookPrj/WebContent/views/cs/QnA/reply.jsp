@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FAQ 작성</title>
+<title>QnA 답변 작성</title>
 <!-- 경로 체크 필수 -->
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
@@ -94,13 +94,13 @@ color: black;
 	<div id="container"> <!-- 컨테이너 -->
 		<div class="name">
 			<!-- 게시판 이름 -->
-			<div id="qna">FAQ 자주묻는질문</div>
+			<div id="qna">QnA</div>
 		</div>
 		
-		<form id="fff" action="/cookTeacher/cs/FAQ/write" method="post" onsubmit="return upload();">
+		<form id="fff" action="/cookTeacher/cs/QnA/reply" method="post" onsubmit="return upload();">
 			<div class="title-area">
 				<!-- 문의 작성 -->
-					제목 : <input type="text" id="title" name="title">
+					제목 : RE) 제목 데이터 불러오기
 			</div>
 	
 			<div class="content-area">
@@ -116,13 +116,6 @@ color: black;
 			
 			<!-- upload()함수 -->
 			<script>
-				function upload(){
-					Swal.fire({
-                       title: '등록 성공!',
-                       icon: 'success',
-                    });
-				}
-				
 				function upload(){
 					
 					Swal.fire({

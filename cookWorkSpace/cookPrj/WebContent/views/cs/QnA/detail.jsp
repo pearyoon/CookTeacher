@@ -131,25 +131,27 @@ text-align: right;
 			<br><br>
 		</div>
 		
-		<!-- 댓글리스트 영역 -->
+		<!-- 답변 영역 -->
 		<div class="cmtlist">
 
 		</div>
 		
-		<!-- 댓글 작성 영역 -->
-		<div class="cmtwrite">
-			<input type="text" name="cmtcontent" placeholder="댓글 내용을 입력하세요.">
-			<input type="submit" value="작성">
-		</div>
 		
+		<div id=writebtn>
 		
 		<!-- 수정 / 삭제 버튼 -->
 		<%	if(loginMember != null && loginMember.getNo().equals(QNAvo.getNo())){ %>
-		<div id=writebtn>
 			<button type="button" onclick="location.href='/cookTeacher/cs/QnA/edit?no=<%= QNAvo.getQnaNo() %>';">수정</button>
 			<button type="button" onclick="location.href='/cookTeacher/cs/QnA/delete?no=<%= QNAvo.getQnaNo() %>';">삭제</button>
-		</div>		
 		<% } %>
+		
+		<!-- 문의 답변 버튼 -->
+		<%	if(loginMember != null && loginMember.getId().equals("admin01")){ %>
+			<button type="button" onclick="location.href='/cookTeacher/cs/QnA/reply?no=<%= QNAvo.getQnaNo() %>';">답변</button>
+		<% } %>
+		
+		</div>		
+		
 		
 		<%@include file="/views/common/footer.jsp" %>
 	</div>

@@ -43,7 +43,6 @@ public class FAQEditController extends HttpServlet{
 		int result = new FAQService().edit(FAQvo);
 		
 		if(result == 1) {
-			req.getSession().setAttribute("alertMsg", "공지사항 수정 성공!");
 			resp.sendRedirect("/cookTeacher/cs/FAQ/detail?no="+ Fno);
 		} else {
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
