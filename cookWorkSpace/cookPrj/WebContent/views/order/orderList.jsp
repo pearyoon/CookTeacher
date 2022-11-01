@@ -1,7 +1,12 @@
+<%@page import="com.kh.cook.order.vo.OrderListVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	String view = (String)request.getAttribute("view");
+	List<OrderListVo> orderList = (List<OrderListVo>) request.getAttribute("orderList");
 %>
 
 <!DOCTYPE html>
@@ -31,7 +36,7 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="/cookTeacher/mypage/member/orderlist">
+                                <a href="">
                                     주문내역
                                 </a>
                             </li>
@@ -73,9 +78,11 @@
                         </div>
                     </div>
                     <div id="board-container">
+                        <fmt:parseDate value="${orderList.payDate}" var="payDate" pattern="yyyy.MM.dd HH:mm:ss" />
+                        <c:forEach items="${orderList}" var="orderItem">
                         <div class="order-info">
                             <div class="order-header">
-                                <span>2022.11.07</span>
+                                <span><fmt:formatDate value="${payDate}" pattern="yyyy-MM-dd" /></span>
                                 <a href="../../views/order/orderDetail.jsp">주문내역 상세보기</a>
                             </div>
                             <div class="order-info-wrapper">
@@ -85,30 +92,31 @@
                                 <div class="order-list">
                                     <dl class="order-dl">
                                         <dt class="order-dt">상품명</dt>
-                                        <dd class="order-dd">사과 외 2건</dd>
+                                        <dd class="order-dd">${orderItem.name}외 2건</dd>
                                     </dl>
                                     <dl class="order-dl">
                                         <dt class="order-dt">주문번호</dt>
-                                        <dd class="order-dd">1234</dd>
+                                        <dd class="order-dd">${orderItem.no}</dd>
                                     </dl>
                                     <dl class="order-dl">
                                         <dt class="order-dt">결제방법</dt>
-                                        <dd class="order-dd">카카오페이</dd>
+                                        <dd class="order-dd">${orderItem.payment}</dd>
                                     </dl>
                                     <dl class="order-dl">
                                         <dt class="order-dt">결제금액</dt>
-                                        <dd class="order-dd">30,000원</dd>
+                                        <dd class="order-dd">${orderItem.sum}원</dd>
                                     </dl>
                                 </div>
                                 <div class="order-right">
                                     <div class="status">
                                         <span>배송중</span>
                                     </div>
-                                        <div class="ask">
-                                            <button class="ask-btn"><a href="">1:1문의하기</a></button>
+                                    <div class="ask">
+                                        <button class="ask-btn"><a href="">1:1문의하기</a></button>
                                     </div>
                                 </div>
                             </div>
+                        </c:forEach>
                         </div>
                         
                     </div>

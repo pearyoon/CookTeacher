@@ -31,7 +31,7 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="/cookTeacher/mypage/member/orderDetail">
+                                <a href="/cookTeacher/order/mypage/orderlist/orderDetail">
                                     주문내역
                                 </a>
                             </li>

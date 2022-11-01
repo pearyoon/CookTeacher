@@ -35,10 +35,10 @@ public class OrderSuccessController extends HttpServlet {
 		// 디비 다녀오기
 		MemberVo cartMember = new OrderService().checkCartMember(no, check);
 		List<CartItemVo> cartList = new OrderService().selectCartList(no, check);
-		int result = new OrderService().insertOrder(cartMember, cartList, point, payment);
+		int insertOrder = new OrderService().insertOrder(cartMember, cartList, point, payment);
 		
-		if(result == 1) {
-			
+		if(insertOrder == 1) {
+			req.setAttribute("insertOrder", insertOrder);
 			req.getRequestDispatcher("/views/order/orderSuccess.jsp").forward(req, resp);
 		}else{
 			System.out.println("실패..ㅠㅠㅠ");
