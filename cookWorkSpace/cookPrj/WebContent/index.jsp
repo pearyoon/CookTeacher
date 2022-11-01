@@ -130,7 +130,7 @@
                         <div id="prod_price">2,880원</div>
                     </div>
                     <div>
-                        <a href="cookTeacher/product/detail/productDetail?no=95">
+                        <a href="/cookTeacher/product/detail/productDetail?no=95">
                             <img src="/cookTeacher/resources/img/product/p_초코우유.png" alt="식재료게시판담당" width="100%" height="100%">
                         </a>
                         <div>초코우유</div>

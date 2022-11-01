@@ -20,10 +20,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
-<!-- Latest compiled and minified CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/product/productList.css">
@@ -77,22 +74,22 @@
                         <br><br><br><br><br><br><br><br><br><br><br><br> 
 					<%}%>
                 </div>
- 			<br><br>
+ 			<br>
  			<div>
 		        <div id="page-area">
 		        	<!-- 이전 버튼 -->
 		        	<%if(pv.getStartPage() != 1){%>
-			        	<a href="/cookTeacher/product/main/productList?pno=<%= pv.getStartPage()-1 %>" class="btn btn-primary btn-sm">이전</a>
+			        	<a href="/cookTeacher/product/main/productList?pno=<%= pv.getStartPage()-1 %>" class="btn btn-success btn-sm">이전</a>
 		        	<%}%>
 		        	
 		            <!-- 페이지 버튼 -->
 		        	<%for(int i = pv.getStartPage(); i<= pv.getEndPage(); ++i){%>
-			            <a href="/cookTeacher/product/main/productList?pno=<%= i %>" class="btn btn-primary btn-sm"><%= i %></a>
+			            <a href="/cookTeacher/product/main/productList?pno=<%= i %>" class="btn btn-warning btn-sm"><%= i %></a>
 		        	<%}%>
 		        	
 		        	<!-- 다음 버튼 -->
 		        	<%if(pv.getEndPage() != pv.getMaxPage()){%>
-					    <a href="/cookTeacher/product/main/productList?pno=<%= pv.getEndPage()+1 %>" class="btn btn-primary btn-sm">다음</a>
+					    <a href="/cookTeacher/product/main/productList?pno=<%= pv.getEndPage()+1 %>" class="btn btn-success btn-sm">다음</a>
 		       		<%}%>
 		        </div>
  
@@ -103,6 +100,7 @@
 
         </main>
     </div>
+    
     
 
 </body>
