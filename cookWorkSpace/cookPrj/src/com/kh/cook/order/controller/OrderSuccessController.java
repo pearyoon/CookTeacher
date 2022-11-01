@@ -26,6 +26,7 @@ public class OrderSuccessController extends HttpServlet {
 		MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
 		String no = loginMember.getNo();
 		
+		
 		// 장바구니 목록 가져오기
 		String[] check = req.getParameterValues("check");
 		String point = req.getParameter("point");

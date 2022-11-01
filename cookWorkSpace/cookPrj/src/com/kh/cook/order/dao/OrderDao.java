@@ -8,10 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.cook.cart.vo.CartItemVo;
+import com.kh.cook.cart.vo.CartVo;
 import com.kh.cook.member.vo.MemberVo;
 import com.kh.cook.order.vo.OrderDetailVo;
+import com.kh.cook.order.vo.OrderListVo;
 import com.kh.cook.order.vo.OrderVo;
 import com.kh.cook.order.vo.PaymentVo;
+import com.kh.cook.product.vo.ProductVo;
 
 import static com.kh.cook.common.JDBCTemplate.*;
 
@@ -345,7 +348,100 @@ public class OrderDao {
 		}
 		return vo;
 		
-	}
+	}//selectPaymentInfo
 	
+	// 주문하면 장바구니 비우기
+	public int updatePaymentYN(Connection conn, MemberVo cartMember, CartItemVo item) {
+		
+		String sql = "UPDATE CART SET PAYMENT_YN = 'Y' WHERE NO =? AND PROD_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cartMember.getNo());
+			pstmt.setString(2, item.getProdNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}//updatePaymentYN
+	
+	public int updateStock(Connection conn, CartItemVo item) {
+		
+		String sql = "UPDATE PRODUCT SET STOCK = STOCK - ? WHERE PROD_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, item.getCnt());
+			pstmt.setString(2, item.getProdNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}//updateStock
+	
+	// 주문 내역 조회하기
+	public List<OrderListVo> selectOrderInfoList(Connection conn, String no) {
+		String sql = "SELECT O.NO, O.SUM, D.NAME, D.CNT, P.PAYMENT, P.PAY_DATE FROM \"ORDER\" O JOIN PAYMENT P ON O.NO = P.ORDER_NO JOIN ( SELECT MAX(P.NAME) AS NAME, COUNT(*) AS CNT, D.ORDER_NO FROM ORDER_DETAIL D JOIN PRODUCT P ON D.PROD_NO = P.PROD_NO GROUP BY D.ORDER_NO ) D ON D.ORDER_NO = O.NO WHERE O.MEMBER_NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<OrderListVo> list = new ArrayList<OrderListVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				String orderNo = rs.getString("NO");
+				String sum = rs.getString("SUM");
+				String name = rs.getString("NAME");
+				String cnt = rs.getString("CNT");
+				String payment = rs.getString("PAYMENT");
+				String payDate = rs.getString("PAY_DATE");
+				
+				OrderListVo vo = new OrderListVo();
+				vo.setNo(orderNo);
+				vo.setSum(sum);
+				vo.setName(name);
+				vo.setCnt(cnt);
+				vo.setPayment(payment);
+				vo.setPayDate(payDate);
+				
+				list.add(vo);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+		
+		
+	}
 	
 }

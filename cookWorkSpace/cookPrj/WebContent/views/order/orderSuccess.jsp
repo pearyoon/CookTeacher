@@ -44,12 +44,8 @@
                     
                 </div>
 
-
-
             </div>
         
-
-            
         </main>
         <%@include file="/views/common/footer.jsp" %> 
 </body>

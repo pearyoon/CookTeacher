@@ -28,19 +28,32 @@ public class CartService {
 		CartVo checkCart = dao.checkCart(conn, vo);
 		int result = 0;
 		
+		ProductVo pv = new ProductService().selectProductOne(vo.getProdNo());
+		
+		
 		if(checkCart != null) {
-			result = dao.updateCnt(conn, vo);
+
+			if(Integer.parseInt(pv.getStock()) >= (Integer.parseInt(checkCart.getCnt()) + Integer.parseInt(vo.getCnt()))) {
+			
+				result = dao.updateCnt(conn, vo);
+			
+			}
 		}else {
 			
-			result = dao.addCart(conn, vo);
+			if(Integer.parseInt(pv.getStock()) >= Integer.parseInt(vo.getCnt())) {
+				
+				result = dao.addCart(conn, vo);
+			
+			}
 		}
-		
+
 		if(result == 1) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		close(conn);
+		
 		return result;
 	}// addCart
 
