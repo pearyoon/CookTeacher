@@ -27,6 +27,10 @@ div>p{
 p:hover{
     color: #FFD335;
 }
+ul{
+    display: flex;
+    flex-direction: row-reverse;  
+}
 
 /*메인*/
 #main-top{

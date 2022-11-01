@@ -24,19 +24,20 @@ public class BobCmtWriteController extends HttpServlet{
 
 		
 		//데이터 뭉치기
-		BobCmtVo vo = new BobCmtVo();
-		vo.setPostNo(bobno);
-		vo.setWriter(writerNo);
-		vo.setCmt(comment);
+		BobCmtVo cmtvo = new BobCmtVo();
+		cmtvo.setPostNo(bobno);
+		cmtvo.setWriter(writerNo);
+		cmtvo.setCmt(comment);
 		
 		
 		//디비 다녀오기
-		int result = new BobCmtService().writeCmt(vo);
+		int result = new BobCmtService().writeCmt(cmtvo);
 		
 		//화면 선택
 		if(result == 1) {
 			//댓글 작성 성공
 			req.getSession().setAttribute("alertMsg", "댓글을 성공적으로 작성하였습니다.");
+			req.setAttribute("cmtvo", cmtvo);
 			resp.getWriter().write("성공~");
 		}else {
 			//댓글 작성 실패
