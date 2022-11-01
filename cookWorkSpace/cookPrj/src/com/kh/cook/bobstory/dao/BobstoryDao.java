@@ -469,4 +469,97 @@ public class BobstoryDao {
 		return plusLike;
 	}
 
+	//내가 쓴 밥스토리 갯수
+	public int myBobstoryCount(Connection conn, String no) {
+		//sQL
+		
+		String sql = "SELECT COUNT (*) AS CNT FROM BOBSTORY WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("CNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	//내가 쓴 밥스토리 조회
+	public List<BobstoryVo> selectMyBobstory(Connection conn, String no, PageVo pv) {
+		//sql
+		
+		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM , AB.* FROM (SELECT B.NO , B.CATEGORY , B.TITLE , B.CONTENT , B.ENROLL_DATE , B.DELETE_YN , B.C_LIKE , B.MODIFY_DATE , B.VIEW_COUNT , B.REPORT_YN , M.NICK AS WRITER FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO WHERE WRITER = ? ORDER BY B.NO DESC) AB ) WHERE RNUM BETWEEN ? AND ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<BobstoryVo> voList = new ArrayList<BobstoryVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
+			int end = start + pv.getBoardLimit() + 1;
+			
+			pstmt.setString(1, no);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				//rs -> vo
+				String no1 = rs.getString("NO");
+				String writer = rs.getString("WRITER");
+				String category = rs.getString("CATEGORY");
+				String title = rs.getString("TITLE");
+				String content = rs.getString("CONTENT");
+				String enrollDate = rs.getString("ENROLL_DATE");
+				String deleteYn = rs.getString("DELETE_YN");
+				String cLike = rs.getString("C_LIKE");
+				String viewCount = rs.getString("VIEW_COUNT");
+				String reportYn = rs.getString("REPORT_YN");
+				
+				BobstoryVo vo = new BobstoryVo();
+				vo.setNo(no1);
+				vo.setWriter(writer);
+				vo.setCategory(category);
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setEnrollDate(enrollDate);
+				vo.setDeleteYn(deleteYn);
+				vo.setcLike(cLike);
+				vo.setViewCount(viewCount);
+				vo.setReportYn(reportYn);
+				
+				voList.add(vo);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return voList;
+		
+	}
+
 }

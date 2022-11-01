@@ -11,8 +11,9 @@
     top: 28%;
     left: 50%;
     transform: translate(-50%);
-    width: 1050px; 
+    width: 1050px;
     overflow: auto;
+
 }
 
 /* 쿡 스톨히 */
@@ -189,4 +190,26 @@ tbody tr td{
 .cmt_btn:hover{
     background-color: #398209;
     border: 2px solid #FFD335;
+}
+
+.cmt_box{
+    width: 1000px;
+    height: 150px;
+}
+
+.cmt2Writer{
+    font-size: 14px;
+    height: 50px;
+}
+
+.cmt2Comment{
+    height: 100px;
+    width: 900px;
+    border: 0;
+    border-bottom: 1px solid #aaa;
+}
+
+span a {
+    color: #aaa;
+    font-size: 16px;
 }

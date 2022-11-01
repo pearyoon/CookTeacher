@@ -1,7 +1,11 @@
+<%@page import="com.kh.cook.bobstory.vo.PageVo"%>
+<%@page import="com.kh.cook.bobstory.vo.BobstoryVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String view = (String)request.getAttribute("view");
+	List<BobstoryVo> voList = (List<BobstoryVo>)request.getAttribute("voList");
+	PageVo pv = (PageVo)request.getAttribute("pv");
 %>
 
 <!DOCTYPE html>
@@ -12,9 +16,6 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
-
-<link rel="stylesheet" href="/cookTeacher/resources/css/member/mypage/check.css">
-<link rel="stylesheet" href="/cookTeacher/resources/css/mypage/modify.css">
 
 </head>
 <body>
@@ -71,36 +72,28 @@
 				                    <thead>
 				                    <tr id="table-head">
 				                        <th scope="col" class="th-num">번호</th>
-				                        <th scope="col" class="th-title">제품명</th>
-				                        <th scope="col" class="th-title">내용</th>
-				                        <th scope="col" class="th-date">등록일</th>
+				                        <th scope="col" class="th-title">작성자</th>
+				                        <th scope="col" class="th-content">내용</th>
+				                        <th scope="col" class="th-date">작성일시</th>
 				                    </tr>
 				                    </thead>
 				                    <tbody>
 				                    
-								    	<%for(int i = 0; i < rvoList.size(); ++i){%>
+								    	<%for(int i = 0; i < voList.size(); ++i){%>
 					               			<tr>
-		                                        <td>
-		                                            <%= rvoList.get(i).getReviewNo() %>
-		                                        </td>
-		                                        <td><%= rvoList.get(i).getName() %></td>
-		                                        <td><%= rvoList.get(i).getContent() %></td>
-		                                        <td><%= rvoList.get(i).getEnrollDate() %></td>
+		                                        <td><%= voList.get(i).getNo() %></td>
+		                                        <td><%= voList.get(i).getWriter() %></td>
+		                                        <td><%= voList.get(i).getContent() %></td>
+		                                        <td><%= voList.get(i).getEnrollDate() %></td>
 						            			
 					                        </tr>
 										<%}%>
-										<%-- <tr>
-											<td>${review.content}</td>
-											<th>${review.reviewNo}</th>
-											<td>${review.reviewNo}</td>
-											<td>${review.reviewNo}</td>
-										</tr> --%>
 				                    </tbody>
 				                </table>
 				                <br>
 			                	<div id="page-area" style="text-align: center;">
 						        	<%if(pv.getStartPage() != 1){%>
-							        	<a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getStartPage()-1%>" class="btn">이전</a>
+							        	<a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getStartPage()-1%>" class="btn"><</a>
 						        	<%}%>
 						        	
 							        <%for(int i = pv.getStartPage(); i <= pv.getEndPage(); i++){%>
@@ -108,7 +101,7 @@
 							        <%}%>
 							        
 							        <%if(pv.getEndPage() != pv.getMaxPage()){%>
-									        <a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getEndPage()+1 %>" class="btn">다음</a>
+									        <a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getEndPage()+1 %>" class="btn">></a>
 							        <%}%>
 		        				</div>
 				            </div>
@@ -120,10 +113,5 @@
         </div>
         <%@include file="/views/common/footer.jsp" %>
     </div>
-
-    <script>
-
-
-    </script>
 </body>
 </html>

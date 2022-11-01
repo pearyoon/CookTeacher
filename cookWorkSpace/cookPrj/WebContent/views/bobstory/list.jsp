@@ -31,6 +31,14 @@
 			<p>쿡 스토리</p>
 			<br>
 			<br>
+			<ul>
+				<li><a href="">댓글순</a></li>
+				&nbsp;
+				<li><a href="">추천순</a></li>
+				&nbsp;
+				<li><a href="">조회순</a></li>
+			</ul>
+			<br>
 			<table class="table table-striped">
 				<thead>
 					<th scope="col">번호</th>

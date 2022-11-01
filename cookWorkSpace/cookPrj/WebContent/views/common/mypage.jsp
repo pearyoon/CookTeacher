@@ -39,7 +39,7 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/bobstory/mypage/myCookStory">
                                     쿡스토리
                                 </a>
                             </li>

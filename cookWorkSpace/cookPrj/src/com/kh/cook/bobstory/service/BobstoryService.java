@@ -209,9 +209,29 @@ public class BobstoryService {
 		return bobLike;
 	}
 
-	public BobstoryVo selectBoardOne(String no) {
-		// TODO Auto-generated method stub
-		return null;
+	//내가 쓴 밥스토리 갯수
+	public int countBobstory(String no) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.myBobstoryCount(conn, no);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+		
+	}
+
+	//내가 쓴 밥스토리 조회
+	public List<BobstoryVo> selectBobstory(String no, PageVo pv) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<BobstoryVo> result = dao.selectMyBobstory(conn, no, pv);
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 
 

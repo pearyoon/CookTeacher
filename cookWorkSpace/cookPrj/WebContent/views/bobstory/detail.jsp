@@ -1,3 +1,4 @@
+<%@page import="com.kh.cook.bobstory.vo.BobCmtVo"%>
 <%@page import="com.kh.cook.bobstory.vo.AttachmentVo"%>
 <%@page import="com.kh.cook.bobstory.vo.BobstoryVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,6 +11,7 @@
 	if(attVo == null){
 		attVo = new AttachmentVo();
 	}
+	BobCmtVo cvo = (BobCmtVo)request.getAttribute("cmtvo");
 	
 %>  
 <!DOCTYPE html>
@@ -133,9 +135,9 @@
 					<section class="cmt_inp">
 					<div class="cmt_count">&nbsp;댓글&nbsp;<span id="count">0</span></div>
 					
-					<span class="cmt_w" id="cmtWriter">작성자 : 
+					<span class="cmt_w" id="cmtWriter"> 
 					<%if(loginMember != null) {%>
-						<%=loginMember.getNick() %>
+						작성자 : <%=loginMember.getNick() %>
 					<%}%>
 					</span>
 						<div class="cmt_txt">
@@ -146,15 +148,14 @@
 						
 					</section>
 				<!-- </form> -->
-<!-- 				<div class="cmt_box" style="border: 1px solid black;"> -->
-<!-- 					댓글 작성 하면 담을 곳 -->
-<!-- 				</div> -->
+							
+						
 				<script>
 					$('.cmt_btn').click(function(){
 							//JSON으로 전달할 파라미터 변수 선언
 							const bobno = '${vo.no}';
 							const cmtWriter = $('input[name=writerNo]').val();
-							const cmtComment = $('#cmt_comment]').val();
+							const cmtComment = $('#cmt_comment').val();
 
 							console.log(bobno);
 							console.log(cmtWriter);
@@ -176,10 +177,10 @@
 									
 								},
 								success : function(result){
-									console.log('성공'+result);
+									console.log('성공');
 									alert('댓글을 작성하였습니다.');
-									$('#cmtWriter').val(cmtWriter);
-									$('#cmtComment').val();
+									$('.cmt2Writer').text(cmtWriter);
+									$('.cmtComment').text(cmtComment);
 								},
 								error : function(){
 									
@@ -188,8 +189,14 @@
 					});
 				</script>
 			</div>
-
-		</div>
+		</div><!-- cmt container-->
+		<br>
+		<div class="cmt_box">
+			<div class="cmt2Writer">작성자 <br><br><span class="cmt2enroll">작성시각</span></div>
+			<input type="text" class="cmt2Comment" value="내용">
+			&nbsp;<span><a href="" style="height: 50px;">수정</a></span>
+			<span><a href="">삭제</a></span>
+		</div>	
 
 		
 		
