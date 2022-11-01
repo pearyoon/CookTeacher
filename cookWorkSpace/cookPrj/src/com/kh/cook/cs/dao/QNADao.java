@@ -275,7 +275,7 @@ public class QNADao {
 		//답변 작성
 		public int reply(Connection conn, CSCommentVo cvo) {
 			
-			String sql = "INSERT 댓글 내용 ?번호 ?내용 ?닉네임";
+			String sql = "INSERT INTO QNA_CMT VALUES( SEQ_QNA_NO.NEXTVAL, ?,?,?,SYSDATE,'N')";
 			
 			PreparedStatement pstmt = null;
 			int result = 0;
@@ -284,8 +284,8 @@ public class QNADao {
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setString(1, cvo.getQpostNo());
-				pstmt.setString(2, cvo.getCmtContent());
-				pstmt.setString(3, cvo.getWriterNo());
+				pstmt.setString(2, cvo.getWriterNo());
+				pstmt.setString(3, cvo.getCmtContent());
 								
 				result = pstmt.executeUpdate();
 				
@@ -297,8 +297,53 @@ public class QNADao {
 		
 			return result;
 		}
+
+		//답변 조회 메소x드 작성하기
+		public CSCommentVo selectReplyOne(Connection conn, String qnaNo) {
+			
+			String sql = "SELECT * FROM QNA_CMT WHERE Q_POST_NO = ?  AND DELETE_YN = 'N'";
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			CSCommentVo cvo = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, qnaNo);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					String cmtNo = rs.getString("CMT_NO");
+					String QpostNo = rs.getString("Q_POST_NO");
+					String writerNo = rs.getString("WRITER_NO");
+					String cmtContent = rs.getString("CMT");
+					String cmtDate = rs.getString("CMT_DATE");
+					String deleteYN = rs.getString("DELETE_YN");
+					
+					cvo = new CSCommentVo();
+					cvo.setCmtNo(cmtNo);
+					cvo.setQpostNo(QpostNo);
+					cvo.setWriterNo(writerNo);
+					cvo.setCmtContent(cmtContent);
+					cvo.setCmtDate(cmtDate);
+					cvo.setDeleteYN(deleteYN);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(pstmt);
+				JDBCTemplate.close(rs);
+			}
+			
+			return cvo;
+			
+			
+			
+			
+		}
 		
-		//답변 조회 메소드 작성하기
 
 
 }

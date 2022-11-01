@@ -57,6 +57,7 @@ color: #000000;
 	border-bottom: 3px solid black;
 	padding: 10px;
 	font-size: small;
+	line-height: 20px;
 }
 /* 등록, 취소 버튼 */
 #writebtn>button{

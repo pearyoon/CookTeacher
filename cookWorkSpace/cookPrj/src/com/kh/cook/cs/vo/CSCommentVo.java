@@ -45,16 +45,10 @@ public class CSCommentVo {
 	public void setDeleteYN(String deleteYN) {
 		this.deleteYN = deleteYN;
 	}
-	public String getEditDate() {
-		return editDate;
-	}
-	public void setEditDate(String editDate) {
-		this.editDate = editDate;
-	}
 	@Override
 	public String toString() {
 		return "CSCommentVo [cmtNo=" + cmtNo + ", QpostNo=" + QpostNo + ", writerNo=" + writerNo + ", cmtContent="
-				+ cmtContent + ", cmtDate=" + cmtDate + ", deleteYN=" + deleteYN + ", editDate=" + editDate + "]";
+				+ cmtContent + ", cmtDate=" + cmtDate + ", deleteYN=" + deleteYN + "]";
 	}
 	public CSCommentVo(String cmtNo, String qpostNo, String writerNo, String cmtContent, String cmtDate,
 			String deleteYN, String editDate) {
@@ -65,7 +59,6 @@ public class CSCommentVo {
 		this.cmtContent = cmtContent;
 		this.cmtDate = cmtDate;
 		this.deleteYN = deleteYN;
-		this.editDate = editDate;
 	}
 	public CSCommentVo() {
 		super();

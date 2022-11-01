@@ -145,20 +145,35 @@ color: #000000;
 			<!-- upload()함수 -->
 			<script>
 			function upload(){
-				if(confirm("문의글을 수정하시겠습니까?")){
-					return true;
-				}else{
-					alert("문의글 수정을 취소합니다.");
-					return false;
-				}
-			}
+				
+				Swal.fire({
+				  title: '수정하시겠습니까?',
+				  icon: 'question',
+				  showCancelButton: true,
+				  confirmButtonText: '확인',
+				  cancelButtonText: '취소',
+				  })
+				  .then((result)=>{
+					  console.log(result);
+					  if (result.isConfirmed) {
+						  
+						  
+						    Swal.fire(
+						      '수정하였습니다!',
+					    	  'success'
+					  	  ).then( ()=> {document.querySelector('#fff').submit();} );
+					  }
+				  });
+				
+				  return false;
+			}//upload end
 			
 			function cancel(){
 				Swal.fire({
-                    title: '등록 취소',
+                    title: '수정 취소',
                     icon: 'info',
                  });
-				location.href="/cookTeacher/cs/QnA/list"
+				location.href="/cookTeacher/cs/QNA/detail?no=<%= QNAvo.getQnaNo() %>"
 			}
 			</script>
 			
