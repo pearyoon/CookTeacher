@@ -18,6 +18,7 @@ import com.kh.cook.menu.service.MenuService;
 import com.kh.cook.menu.vo.MenuAttachmentVo;
 import com.kh.cook.menu.vo.MenuCartVo;
 import com.kh.cook.menu.vo.MenuVo;
+import com.kh.cook.menu.vo.MenuWriteVo;
 import com.kh.cook.product.vo.ProductVo;
 @WebServlet(urlPatterns = "/menu/detail")
 public class MenuDetailController extends HttpServlet{
@@ -34,6 +35,7 @@ public class MenuDetailController extends HttpServlet{
 //    	int result = new MenuService().plusRecommOne(no);
     	List<ProductVo> prodList = new MenuService().selectProdList(no);
 		//MenuAttachmentVo menuAttachmentVo = new MenuService().selectMenuAttachment(Nno);
+    	
     	
     	//화면선택
     	req.setAttribute("vo", vo);

@@ -39,7 +39,7 @@
     		
         <div class="outer">
         <br>
-        <h2 align="center">레시피 등록</h2>
+        <h1 id="re-title" align="center">레시피 등록</h1>
         <br>
 
 		<!-- 파일 자체를 보내려면:  enctype="multipart/form-data" 사용 -->
@@ -49,7 +49,7 @@
             <table id="write-wrap">
                 <tr>
                     <th width="100px">카테고리</th>
-                    <td width="500px">
+                    <td width="500px" >
                         <select name="menuCate">
                             <!-- CTEGORY 테이블로부터 조회해오기 -->
                             <%for(int i=0; i<MenuCateList.size(); ++i){%>
@@ -57,14 +57,6 @@
                             <%}%>
                         </select>
                     </td>
-                </tr>
-                <tr>
-                    <th><div>레시피 번호</div></th>
-                    <td><!-- <button onclick="menuNum()">레시피 번호 확인</button> -->
-                        <label for="" id="re-num"><input type="text" name="menuNum" value="<%=menuNum %>"></label>
-                    </td>
-
-
                 </tr>
                 <tr>
                     <div style="width: 50px;">
@@ -104,9 +96,8 @@
             </table>
 
             <div align="center">
-                <br>
-                <button type="submit">등록하기</button>
-                <button type="reset">취소하기</button>
+                <button class="sub-btn" type="submit">등록하기</button>
+                <button class="sub-btn" type="reset">취소하기</button>
             </div>
 
         </form>

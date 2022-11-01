@@ -2,7 +2,7 @@
    
    /* color: black; */
    width: 800px;
-   height: 1000px;
+   height: 850px;
    margin: auto;
    padding-top: 50px;
 }
@@ -30,3 +30,28 @@ th{
 th{
    vertical-align: middle;
 }
+
+
+
+tbody{
+   border: 1px solid black;
+}
+
+#re-title{
+   font-size: 1.7em;
+   font-weight: 600;
+   color: #255D00;
+   padding-bottom: 50px;
+}
+
+.sub-btn{
+    
+   background-color: #FFD335;
+   color: black;
+   border: 1px solid #255D00;
+   border-radius: 20%;
+   font-weight: 700;
+   font-size: medium;
+   margin: 5px;
+   margin-top: 10px;
+  }

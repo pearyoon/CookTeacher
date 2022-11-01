@@ -38,23 +38,25 @@ public class MenuWriteController extends HttpServlet{
 		HttpSession s = req.getSession();
 		
 		MemberVo loginMember = (MemberVo)s.getAttribute("loginMember");
+		boolean isAdmin = loginMember != null && loginMember.getId().equals("admin01");
 		
-
+		if(isAdmin) {
+			
 			List<MenuCateVo> cateList = new MenuService().selectMenuCateList();
 			String result = new MenuService().menuNum();
-			
-
 			
 			//새로운 메뉴 넘버
 			req.setAttribute("result", result);
 			//메뉴 카테고리
 			req.setAttribute("MenuCateList", cateList);
-			//넘버로 바꿔서 입력
-//		req.setAttribute("changeInput", changeInput);
-			
-			req.getRequestDispatcher("/views/menu/menuWrite.jsp").forward(req, resp);
 		
-//		}
+			req.getRequestDispatcher("/views/menu/menuWrite.jsp").forward(req, resp);
+		}else {
+			req.setAttribute("errorMsg", "관리자만 접근 가능합니다.");
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+		}
+		
+
 		
 		
 	}
@@ -71,6 +73,7 @@ public class MenuWriteController extends HttpServlet{
 		String reInfo = req.getParameter("re-info");
 		String cal = req.getParameter("cal");
 		String content = req.getParameter("content");
+		//줄로 된 식재
 		String writeProd = req.getParameter("write-prod");
 
 		Part f = req.getPart("f");
@@ -96,6 +99,8 @@ public class MenuWriteController extends HttpServlet{
 		
 		
 		int result = new MenuService().menuWrite(vo, menuAttachmentVo);
+		//
+//		MenuWriteVo prod = new MenuService().selectProd();
 		
 		if(result == 1) {
 			s.setAttribute("alerMsg", "레시피 등록 완료!");

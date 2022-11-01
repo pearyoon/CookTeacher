@@ -34,6 +34,7 @@ public class NewMenuDetailController extends HttpServlet{
 //    	int result = new MenuService().plusRecommOne(no);
     	//List<ProductVo> prodList = new MenuService().selectProdList(no);
 		MenuAttachmentVo menuAttachmentVo = new MenuService().selectMenuAttachment(Nno);
+
     	
     	//화면선택
     	req.setAttribute("mwVo", mwVo);

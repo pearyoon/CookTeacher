@@ -23,7 +23,7 @@ public class MenuBanchanController extends HttpServlet{
     	
     	//회면선택
     	req.setAttribute("voList", voList);
-    	req.getRequestDispatcher("/views/menu/newIn.jsp").forward(req, resp);
+    	req.getRequestDispatcher("/views/menu/banchan.jsp").forward(req, resp);
     	
     }
 
