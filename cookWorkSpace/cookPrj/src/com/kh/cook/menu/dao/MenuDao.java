@@ -877,6 +877,40 @@ public class MenuDao {
 			}
 			return result;
 		}
+
+		public String[] selectProd(Connection conn, String Nno) {
+			
+			String sql = "SELECT MENU_PROD FROM MENU_WRITE WHERE NO = ?";
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String menuProd = null;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, Nno);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					menuProd = rs.getString("MENU_PROD");
+					
+				}
+
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+				JDBCTemplate.close(rs);
+			}
+			
+			String[] cutProd = menuProd.split(",");
+			
+			return cutProd;
+		}
 	
 	
 

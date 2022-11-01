@@ -186,6 +186,8 @@ public class MenuService {
 		
 		if(result * result2 == 1) {
 			JDBCTemplate.commit(conn);
+
+			
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
@@ -237,6 +239,17 @@ public class MenuService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		MenuWriteVo vo = new MenuDao().selectNewMenuOne(conn, Nno);
+		
+		//메뉴Write 잘라서 가져오기!
+
+		String cutProd[] =  new MenuDao().selectProd(conn, Nno);
+
+		for(int i=0; i < cutProd.length; i++) {
+			MenuWriteVo vo2 = new MenuWriteVo();
+			vo2.setMenuProd(cutProd[i]);
+		}
+		
+		System.out.println(cutProd[1]);
 		
 		JDBCTemplate.close(conn);
 		

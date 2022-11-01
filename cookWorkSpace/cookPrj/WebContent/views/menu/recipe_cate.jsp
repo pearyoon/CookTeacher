@@ -15,11 +15,14 @@
         <%@include file="/views/common/header.jsp" %>
        <div id="container">
         	<main>
-                <div><a href="<%=root %>/menu/write" >(관리자)레시피 추가</a></div>
-    
-            <div id="recipe-middle">
-                <div id="resipe" >레시피</div>
-                <hr width="70%" style="margin-bottom: 10px; margin-top: 0px;">
+
+        	
+                <!--  -->
+                
+                <div id="recipe-middle">
+                    <div id="resipe" >레시피</div>
+
+                <hr width="75%" style="margin-bottom: 10px; margin-top: 0px;">
                     <div id="category">
                         <a href="<%=root %>/menu/korean"> 한식  </a>
                         <label for="">  |  </label>
@@ -34,9 +37,11 @@
                         <a href="<%=root %>/menu/dessert"> 디저트 </a>
                     	<label for="">  |  </label>
                         <a href="<%=root %>/menu/newIn" class="a_style" >NEW IN !</a>
-                        </a>
+                        <%if(loginMember != null && loginMember.getId().equals("admin01")){%>
+                            <button id="write-btn" onclick="location.href='<%=root %>/menu/write'"> + 레시피 추가</button>
+                        <%}%>
                     </div>
-                <hr width="70%" style="margin-top: 10px; margin-bottom: 50px">
+                <hr width="75%" style="margin-top: 10px; margin-bottom: 50px">
                 
                     <div class="cate-name"><a href="<%=root %>/menu/korean">- 한식 -</a></div>
                     <div class="recipe-menu-area">
