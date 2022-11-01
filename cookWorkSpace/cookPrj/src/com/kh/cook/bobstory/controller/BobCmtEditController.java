@@ -15,7 +15,7 @@ import com.kh.cook.bobstory.vo.BobCmtVo;
 public class BobCmtEditController extends HttpServlet{
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//인코딩 필터처리
 		
 		//데이터 꺼내기

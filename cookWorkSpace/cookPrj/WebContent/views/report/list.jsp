@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신고</title>
+<title>집밥 쿡선생 :: 신고 게시글 관리</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 </head>
@@ -27,15 +27,15 @@
 			<table class="report-table">
 				<thead>
 					<th>번호</th>
+					<th>유형</th>
 					<th>작성자</th>
-					<th>조회수</th>
 				</thead>
 				<tbody>
 				<%for(int i = 0; i < voList.size(); i++){%>
 					<tr align="center">
 						<th><%=voList.get(i).getNo() %></th>
-						<th><a href="<%=root%>/board/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getWriter() %></a></th>
-						<th><%=voList.get(i).getHit() %></th>
+						<th><%=voList.get(i).getType()%></th>
+						<th><a href="<%=root%>/bobstory/detail?bno=<%=voList.get(i).getNo() %>"></a><%=voList.get(i).getWriter() %></th>
 					</tr>
 				<%} %>	
 				</tbody>
@@ -44,33 +44,20 @@
 			<div id="page-area">
 			        	
 				<%if(pv.getStartPage() != 1){%>
-					<a href="/cookTeacher/bobstory/list?pno=<%=pv.getStartPage()-1%>" class="btn">이전</a>
+					<a href="/cookTeacher/report/list?pno=<%=pv.getStartPage()-1%>" class="btn">이전</a>
 				<%}%>
 			
 			
 				<%for(int i = pv.getStartPage(); i <= pv.getEndPage(); i++){%>
-					<a href="/cookTeacher/bobstory/list?pno=<%=i%>" class="btn"><%=i%></a>
+					<a href="/cookTeacher/report/list?pno=<%=i%>" class="btn"><%=i%></a>
 				<%}%>
 				
 				<%if(pv.getEndPage() != pv.getMaxPage()){%>
-						<a href="/cookTeacher/bobstory/list?pno=<%=pv.getEndPage()+1 %>" class="btn">다음</a>
+						<a href="/cookTeacher/report/list?pno=<%=pv.getEndPage()+1 %>" class="btn">다음</a>
 				<%}%>
 				
 				
 			</div>
-		<%-- 	<div id="main">
-			
-				<div>번호</div>
-				<div>작성자</div>
-				<div>조회수</div>
-				
-				<%for(int i = 0; i < voList.size(); i++) {%>
-					<div><%=voList.get(i).getNo() %></div>
-		            <div><a href="/app99/notice/detail?no=<%=voList.get(i).getNo() %>"><%=voList.get(i).getWriter() %></a></div>
-		            <div><%=voList.get(i).getHit() %></div>
-				<%} %>
-			</div> --%>
-			
 		</main>
 	<%@ include file="/views/common/footer.jsp" %>	
 	</div>

@@ -529,7 +529,7 @@ public class BobstoryDao {
 				String category = rs.getString("CATEGORY");
 				String title = rs.getString("TITLE");
 				String content = rs.getString("CONTENT");
-				String enrollDate = rs.getString("ENROLL_DATE");
+				String enrollDate = rs.getString("ENROLL_DATE").substring(0,10);
 				String deleteYn = rs.getString("DELETE_YN");
 				String cLike = rs.getString("C_LIKE");
 				String viewCount = rs.getString("VIEW_COUNT");

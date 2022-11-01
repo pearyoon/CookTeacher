@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/bobstory/myCookStory.css">
 
 </head>
 <body>
@@ -28,22 +29,22 @@
                     <div id="inner">
                         <ul id="list-menu">
                             <li class="non-clcik">
-                                <a href="/cookTeacher/mypage/member/check">
+                                <a href="<%=root %>/login/mypage/member/check">
                                     회원정보
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/mypage/member/orderlist">
                                     주문내역
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/bobstory/mypage/myCookStory">
                                     쿡스토리
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/product/mypage/myReview">
                                     리뷰조회
                                 </a>
                             </li>
@@ -93,15 +94,15 @@
 				                <br>
 			                	<div id="page-area" style="text-align: center;">
 						        	<%if(pv.getStartPage() != 1){%>
-							        	<a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getStartPage()-1%>" class="btn"><</a>
+							        	<a href="/cookTeacher/bobstory/mypage/myCookStory?pno=<%=pv.getStartPage()-1%>" class="btn"><</a>
 						        	<%}%>
 						        	
 							        <%for(int i = pv.getStartPage(); i <= pv.getEndPage(); i++){%>
-								        <a href="/cookTeacher/product/mypage/myReview?pno=<%=i%>" class="btn"><%=i%></a>
+								        <a href="/cookTeacher/bobstory/mypage/myCookStory?pno=<%=i%>" class="btn"><%=i%></a>
 							        <%}%>
 							        
 							        <%if(pv.getEndPage() != pv.getMaxPage()){%>
-									        <a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getEndPage()+1 %>" class="btn">></a>
+									    <a href="/cookTeacher/bobstory/mypage/myCookstory?pno=<%=pv.getEndPage()+1 %>" class="btn">></a>
 							        <%}%>
 		        				</div>
 				            </div>

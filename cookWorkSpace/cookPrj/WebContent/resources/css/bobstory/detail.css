@@ -195,18 +195,20 @@ tbody tr td{
 .cmt_box{
     width: 1000px;
     height: 150px;
+    margin: 0 auto;
 }
 
 .cmt2Writer{
     font-size: 14px;
-    height: 50px;
+    height: 40px;
+    line-height: 30px;
 }
 
 .cmt2Comment{
-    height: 100px;
+    height: 70px;
     width: 900px;
     border: 0;
-    border-bottom: 1px solid #aaa;
+    line-height: 50px;
 }
 
 span a {
