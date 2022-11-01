@@ -44,7 +44,7 @@
                         <a href="/cookTeacher/product/main/seafoodList">해산물</a>
                     </div>
                     <div class="main-menu-bar-items" style="background-color: #255D00; box-shadow: 3px 3px #FFD335;">
-                        <a href="/cookTeacher/product/main/meatEggList">육류 / 계란</a>
+                        <a href="/cookTeacher/product/main/meatEggList" style="color: white;">육류 / 계란</a>
                     </div>
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/noodleBreadList">면류 / 빵류</a>

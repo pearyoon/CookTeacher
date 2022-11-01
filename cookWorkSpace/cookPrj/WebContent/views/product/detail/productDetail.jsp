@@ -161,9 +161,9 @@
                 <!-- 상품 설명 -->
                 <a id="tag-detail" >
                     <div class="main-prod-area">
-                        <img/product src="/cookTeacher/upload/img/<%= vo.getImgPath() %>" alt="상품 이미지" width="80%" height="100%">
+                        <img/product src="/cookTeacher/upload/img/<%= vo.getImgPath() %>" alt="상품 이미지" width="80%" height="130%">
                     </div>
-                    <br>
+                    <br><br><br><br><br><br><br>
                     <div>
                         *제품 이미지
                         <br><br><br><br>
@@ -175,7 +175,7 @@
                     <div>
                      <%= vo.getDetail() %>
                     </div>
-                    <br><br><br><br><br>
+                    <br><br><br><br>
                     <hr><br><br>
                 </a>
                 <!-- 영양 정보 -->

@@ -57,7 +57,7 @@
                         <a href="/cookTeacher/product/main/drinkList">음료</a>
                     </div>
                     <div class="main-menu-bar-items" style="background-color: #255D00; box-shadow: 3px 3px #FFD335;">
-                        <a href="/cookTeacher/product/main/etcList">기타</a>
+                        <a href="/cookTeacher/product/main/etcList" style="color: white;">기타</a>
                     </div>
                 </div>
               <hr><div style="font-size: 20px; font-weight: 700; ">[ 기타 ]</div>

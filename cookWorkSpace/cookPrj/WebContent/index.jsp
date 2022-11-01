@@ -22,12 +22,28 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+a:hover{
+    text-decoration: none;
+}
+.main-menu-bar-items>a{
+    font-weight: 500;
+}
+.main-menu-bar-items>a:hover{
+    color: white;
+}
+.main-menu-bar-items:hover{
+	background-color: #255D00;
+}
+
+</style>
+
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
-        <!-- <h1 align="center" style="font-size: 30px">Cook's Pick!</h1> -->
+        <!-- <h1 align="center" style="font-size: 2rem">Cook's Pick!</h1> -->
             <div id="slide-area">
                 <div class="slide-items">
                     <div style="width: 1050px; height: 400px; ">
@@ -39,13 +55,13 @@
                           </ol>
                           <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                              <img src="/cookTeacher/resources/img/test2.jpg" style="width:1050px ; height:400px; ">
+                              <img src="/cookTeacher/resources/img/test.jpg" style="width:1050px ; height:400px; ">
                             </div>
                             <div class="item">
-                              <img src="/cookTeacher/resources/img/test3.jpg" style="width:1050px ; height:400px; ">
+                              <img src="/cookTeacher/resources/img/main_steak.jpg" style="width:1050px ; height:400px; ">
                             </div>
                             <div class="item">
-                              <img src="/cookTeacher/resources/img/cooking_gromit.jpg" style="width:1050px ; height:400px; ">
+                              <img src="/cookTeacher/resources/img/cookTeacher_main_banner_yellow.png" style="width:1050px ; height:400px; ">
                             </div>
                           </div>
                           <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -83,7 +99,7 @@
             </div>
             <br><hr>
             <div id="main-bottom">
-                <div>식재료 쇼핑</div><br><hr>
+                <div>식재료 쇼핑</div><hr>
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>

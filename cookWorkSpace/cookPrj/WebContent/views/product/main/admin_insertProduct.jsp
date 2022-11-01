@@ -42,13 +42,13 @@
 	                    	<td >
 			        		<select id="option" name="cateNo">
 			        			<option value="0" selected>선택</option>
-			        			<option value="1">과일 / 채소</option>
-			        			<option value="2">해산물</option>
-			        			<option value="3">육류 / 계란</option>
-			        			<option value="4">면 / 베이커리</option>
-			        			<option value="5">유제품</option>
-			        			<option value="6">음료</option>
-			        			<option value="7">기타</option>
+			        			<option value="1">과일 🍓 / 채소 🥦</option>
+			        			<option value="2">해산물 🐟</option>
+			        			<option value="3">육류 🥩 / 계란 🥚</option>
+			        			<option value="4">면 🍝 / 베이커리 🍞</option>
+			        			<option value="5">유제품 🥛</option>
+			        			<option value="6">음료 🧃</option>
+			        			<option value="7">기타 🧂</option>
 			        		</select>
 		        		</tr> 
 		        		<!-- 
@@ -86,7 +86,7 @@
 		                </tr>
 		                <tr>
 		                    <th>리뷰 안내&nbsp;:&nbsp;&nbsp;</th>
-		                    <td><input type="text" name="content" value="*[공지]* 리뷰 작성 시 건당 100p 지급합니다. 많은 참여 부탁드립니다 ^^"></td>
+		                    <td><input type="text" name="content" value="*[공지]* 리뷰 작성 시 건당 100p 지급합니다. 많은 참여 부탁드립니다 ^^" style="width:600px;"></td>
 		                </tr>
 		                <tr>
 		                    <td><input type="hidden" name="prodNo"></td>
