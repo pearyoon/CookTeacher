@@ -43,37 +43,37 @@ public class ProductDetailController extends HttpServlet {
 	
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		HttpSession s = req.getSession();
-    	
-    	HttpSession member = req.getSession();
-		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
-    	
-    	String prodNo = req.getParameter("prodNo");
-    	String prodCnt = req.getParameter("prodCnt");
-    	String memberNo = loginMember.getNo();
-    	
-    	CartVo cvo = new CartVo();
-    	cvo.setProdNo(prodNo);
-    	cvo.setCnt(prodCnt);
-    	cvo.setNo(memberNo);
-    	
-    	System.out.println(cvo.getProdNo());
-    	
-    	int prodCart = new CartService().addCart(cvo);
-    	
-    	
-    	if(prodCart == 1) {
-    		s.setAttribute("alertMsg", "장바구니 담기 성공!");
-    		req.setAttribute("prodCart", prodCart);
-    		resp.sendRedirect("/cookTeacher/cart/list");
-    	}else {
-    		System.out.println("장바구니 담기 실패..");
-    	}
-	
-	}
+//	@Override
+//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//
+//		HttpSession s = req.getSession();
+//    	
+//    	HttpSession member = req.getSession();
+//		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
+//    	
+//    	String prodNo = req.getParameter("prodNo");
+//    	String prodCnt = req.getParameter("prodCnt");
+//    	String memberNo = loginMember.getNo();
+//    	
+//    	CartVo cvo = new CartVo();
+//    	cvo.setProdNo(prodNo);
+//    	cvo.setCnt(prodCnt);
+//    	cvo.setNo(memberNo);
+//    	
+//    	System.out.println(cvo.getProdNo());
+//    	
+//    	int prodCart = new CartService().addCart(cvo);
+//    	
+//    	
+//    	if(prodCart == 1) {
+//    		s.setAttribute("alertMsg", "장바구니 담기 성공!");
+//    		req.setAttribute("prodCart", prodCart);
+//    		resp.sendRedirect("/cookTeacher/cart/list");
+//    	}else {
+//    		System.out.println("장바구니 담기 실패..");
+//    	}
+//	
+//	}
 
 }
 

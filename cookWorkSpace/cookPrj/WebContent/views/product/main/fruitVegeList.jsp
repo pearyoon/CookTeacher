@@ -79,17 +79,17 @@
 		        <div id="page-area">
 		        	<!-- 이전 버튼 -->
 		        	<%if(pv.getStartPage() != 1){%>
-			        	<a href="/cookTeacher/product/main/fruitVegeList?pno=<%= pv.getStartPage()-1 %>" class="btn btn-primary btn-sm">이전</a>
+			        	<a href="/cookTeacher/product/main/fruitVegeList?pno=<%= pv.getStartPage()-1 %>" class="btn btn-success btn-sm">이전</a>
 		        	<%}%>
 		        	
 		            <!-- 페이지 버튼 -->
 		        	<%for(int i = pv.getStartPage(); i<= pv.getEndPage(); ++i){%>
-			            <a href="/cookTeacher/product/main/fruitVegeList?pno=<%= i %>" class="btn btn-primary btn-sm"><%= i %></a>
+			            <a href="/cookTeacher/product/main/fruitVegeList?pno=<%= i %>" class="btn btn-warning btn-sm"><%= i %></a>
 		        	<%}%>
 		        	
 		        	<!-- 다음 버튼 -->
 		        	<%if(pv.getEndPage() != pv.getMaxPage()){%>
-					    <a href="/cookTeacher/product/main/fruitVegeList?pno=<%= pv.getEndPage()+1 %>" class="btn btn-primary btn-sm">다음</a>
+					    <a href="/cookTeacher/product/main/fruitVegeList?pno=<%= pv.getEndPage()+1 %>" class="btn btn-success btn-sm">다음</a>
 		       		<%}%>
 		        	
 		        </div>

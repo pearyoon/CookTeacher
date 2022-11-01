@@ -33,7 +33,7 @@
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
-            <form action="/cookTeacher/product/detail/productDetail" method="post">
+            <form action="/cookTeacher/cart/add" method="post">
             <div id="main-middle">
             <hr><br><br>
                 <div id="product-name"></div>
@@ -95,7 +95,7 @@
                                                     
                                                    <br><br><br>
                                                     <div class="updown">
-                                                    <input type="number" name="prodCnt" id="p_num1" size="3" maxlength="3" class="p_num" value="1" min="1" max="20" onkeyup="javascript:basket.changePNum(1);" style="width: 35px; margin-bottom: 35px ">
+                                                    <input type="number" name="cnt" id="p_num1" size="3" maxlength="3" class="p_num" value="1" min="1" max="100" onkeyup="javascript:basket.changePNum(1);" style="width: 35px; margin-bottom: 35px ">
                                                     </div>
                                                     
                                                     
