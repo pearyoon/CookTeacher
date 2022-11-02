@@ -78,6 +78,10 @@
                             </div>
                             <div class="inner">
                             <img src="/cookTeacher/resources/img/checked.png" style="height:20px; width:20px">
+                                &nbsp;재고 :
+                            </div>
+                            <div class="inner">
+                            <img src="/cookTeacher/resources/img/checked.png" style="height:20px; width:20px">
                                 &nbsp;구매 수량 :
                             </div>
                             <!-- <div class="inner">
@@ -114,10 +118,13 @@
                                                         <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
                                                         <br><br><br>
                                                     </div>  -->
-                                                    
+                                                    <br><br><br>
+                                                    <div class="inner">
+						                                <%= vo.getStock() %>
+						                            </div>
                                                    <br><br><br>
                                                     <div class="updown">
-                                                    <input type="number" name="cnt" id="p_num1" size="3" maxlength="3" class="p_num" value="1" min="1" max="100" onkeyup="javascript:basket.changePNum(1);" style="width: 35px; margin-bottom: 35px ">
+                                                    <input type="number" name="cnt" id="p_num1" style="width: 45px;" class="p_num" value="1" min="1" max="1000" onkeyup="javascript:basket.changePNum(1);" style="width: 35px; margin-bottom: 35px ">
                                                     </div>
                                                 </div>
                                                 <%-- <div class="sum" name="totalSum"><br><%= vo.getPrice() %>원</div> --%>
@@ -275,6 +282,11 @@
                         </div>
             </div>
             <br><br>
+            <div style="margin-left: 485px; margin-bottom: 20px;">
+				<%if(loginMember != null && loginMember.getId().equals("admin01")){%>	
+				<button class="delete-btn" onclick="location.href='/cookTeacher/product/admin_delete?no=<%=vo.getProdNo()%>'">삭제하기</button>
+				<%}%>
+			</div>
         </main>
 		<%@include file="/views/common/footer.jsp" %>
     </div>

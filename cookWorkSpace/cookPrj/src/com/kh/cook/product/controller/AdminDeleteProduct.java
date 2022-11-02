@@ -48,7 +48,7 @@ public class AdminDeleteProduct extends HttpServlet {
 			req.getRequestDispatcher("/views/product/detail/productDetail.jsp").forward(req, resp);
 		}else {
 			//실패 => 메세지 , 에러페이지
-			req.setAttribute("msg", "공지사항 삭제 실패...");
+			req.setAttribute("msg", "상품사항 삭제 실패...");
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 		
