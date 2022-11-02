@@ -12,7 +12,7 @@
 		attVo = new AttachmentVo();
 	}
 	BobCmtVo cvo = (BobCmtVo)request.getAttribute("cmtvo");
-	
+	System.out.println("화면 cvo ::: " + cvo);
 %>  
 <!DOCTYPE html>
 <html>
@@ -155,7 +155,7 @@
 					$('#cmt_btn').click(function(){
 							//JSON으로 전달할 파라미터 변수 선언
 							const bobno = '${vo.no}';
-							const cmtWriter = $('input[name=bobNick]').val();
+							const cmtWriter = $('input[name=writerNo]').val();
 							const cmtContent = $('#cmt_content').val();
 
 							console.log(bobno);
@@ -174,15 +174,18 @@
 								url:"/cookTeacher/bobstory/cmt",
 								type:"get",
 								data: {
-									"bobno" : bobno ,
-									"cmtWriter" : cmtWriter ,
-									"cmtContent" : cmtContent
+									"bobNo" : bobno ,
+									"writerNo" : cmtWriter ,
+									"comment" : cmtContent
 								},
 								success : function(result){
-									for(var i = 0; i < result.length; i++){
-										$('.cmt2Writer')[i].innerText = cmtWriter;
-										$('.cmt2Content')[i].innerText = cmtContent;
-										$('.cmt_box').eq(i).prepend('zzz');
+									const objList = JSON.parse(result);
+									console.log(objList);
+									for(var i = 0; i < objList.length; i++){
+										$('.cmt_box').eq(0).prepend('<h1 style="background-color:red; border:1px solid black;">' + objList[i].cmt + '</h1>');
+// 										$('.cmt2Writer')[i].innerText = cmtWriter;
+// 										$('.cmt2Content')[i].innerText = cmtContent;
+// 										$('.cmt_box').eq(i).prepend('zzz');
 
 									}
 									
@@ -190,7 +193,7 @@
 									alert('댓글을 작성하였습니다.');		
 								},
 								error : function(){
-									
+									alert('ajax error');
 								}
 							});
 					});

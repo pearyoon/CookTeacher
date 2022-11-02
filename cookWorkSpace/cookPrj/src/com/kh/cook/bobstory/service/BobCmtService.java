@@ -30,20 +30,6 @@ public class BobCmtService {
 		return result;
 	}
 
-	//댓글 리스트
-	public List<BobCmtVo> selectList(PageVo pv) {
-		//커넥션
-		//SQL
-		//트랜잭션 ,클로즈
-		Connection conn = JDBCTemplate.getConnection();
-		
-		List<BobCmtVo> list = new BobCmtDao().selectList(conn, pv);
-		
-		JDBCTemplate.close(conn);
-		
-		return list;
-	}
-
 	//댓글 갯수 조회
 	public int selectCount() {
 		//커넥션
@@ -97,4 +83,17 @@ public class BobCmtService {
 		return result;
 	}
 
+	//댓글 리스트 조회
+	public List<BobCmtVo> selectBobCmtList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<BobCmtVo> list = new BobCmtDao().selectList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+		
+	}
+	
 }

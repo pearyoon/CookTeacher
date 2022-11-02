@@ -28,7 +28,7 @@
 			<table class="table">
 				<thead>
 					<th scope="col">번호</th>
-					<th scope="col">유형</th>
+					<th scope="col">음식</th>
 					<th scope="col">작성자</th>
 				</thead>
 				<tbody>

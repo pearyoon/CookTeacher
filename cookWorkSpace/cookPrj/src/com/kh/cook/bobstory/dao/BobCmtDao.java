@@ -41,23 +41,18 @@ public class BobCmtDao {
 	}
 
 	//댓글 목록 조회
-	public List<BobCmtVo> selectList(Connection conn, PageVo pv) {
+	public List<BobCmtVo> selectList(Connection conn) {
 		//sql
 		
-		String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM , AC.* FROM (SELECT BC.CMT_NO ,B.NO AS NO ,M.NICK AS WRITER ,BC.CMT ,BC.ENROLL_DATE ,BC.MODIFY_DATE ,BC.DELETE_YN ,BC.REPORT_YN FROM BOBSTORY_CMT BC JOIN MEMBER M ON BC.WRITER = M.NO JOIN BOBSTORY B ON BC.POST_NO = B.NO WHERE B.DELETE_YN = 'N' AND B.REPORT_YN = 'N' ORDER BY BC.CMT_NO DESC ) AC ) WHERE RNUM BETWEEN ? AND ?";
+		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<BobCmtVo> voList = new ArrayList<BobCmtVo>();
+		List<BobCmtVo> cmtList = new ArrayList<BobCmtVo>();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() +1;
-			int end = start + pv.getBoardLimit() +1;
-			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -67,10 +62,6 @@ public class BobCmtDao {
 				String postNo = rs.getString("POST_NO");
 				String writer = rs.getString("WRITER");
 				String cmt = rs.getString("CMT");
-				String enrollDate = rs.getString("ENROLL_DATE");
-				String modifyDate = rs.getString("MODIFY_DATE");
-				String deleteYn = rs.getString("DELETE_YN");
-				String reportYn = rs.getString("REPORT_YN");
 				
 				//vo -> list
 				BobCmtVo vo = new BobCmtVo();
@@ -78,12 +69,9 @@ public class BobCmtDao {
 				vo.setPostNo(postNo);
 				vo.setWriter(writer);
 				vo.setCmt(cmt);
-				vo.setEnrollDate(enrollDate);
-				vo.setModifyDate(modifyDate);
-				vo.setDeleteYn(deleteYn);
-				vo.setReportYn(reportYn);
+
 				
-				voList.add(vo);
+				cmtList.add(vo);
 			}
 			
 		} catch (SQLException e) {
@@ -93,14 +81,14 @@ public class BobCmtDao {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		return voList;
+		return cmtList;
 	}
 
 	//댓글 갯수 조회
 	public int selectCount(Connection conn) {
 		//sql
 		
-		String sql = "SELECT COUNT (*) AS CNT FROM BOBSTORY_CMT WHERE DELETE_YN = 'N' AND REPORT_YN = 'N'";
+		String sql = "SELECT COUNT (*) AS CNT FROM BOBSTORY_CMT WHERE DELETE_YN = 'N'";
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
