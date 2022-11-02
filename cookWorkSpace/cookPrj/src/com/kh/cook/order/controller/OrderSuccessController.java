@@ -29,19 +29,19 @@ public class OrderSuccessController extends HttpServlet {
 		
 		// 장바구니 목록 가져오기
 		String[] check = req.getParameterValues("check");
-		String point = req.getParameter("point");
+		String usePoint = req.getParameter("usePoint");
 		String payment = req.getParameter("payment");
 
 		// 디비 다녀오기
 		MemberVo cartMember = new OrderService().checkCartMember(no, check);
 		List<CartItemVo> cartList = new OrderService().selectCartList(no, check);
-		int insertOrder = new OrderService().insertOrder(cartMember, cartList, point, payment);
+		int totalPrice = new OrderService().insertOrder(cartMember, cartList, usePoint, payment);
 		
-		if(insertOrder == 1) {
-			req.setAttribute("insertOrder", insertOrder);
+		if(totalPrice != -1) {
+			req.setAttribute("totalPrice", totalPrice);
 			req.getRequestDispatcher("/views/order/orderSuccess.jsp").forward(req, resp);
 		}else{
-			System.out.println("실패..ㅠㅠㅠ");
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 		
 	}

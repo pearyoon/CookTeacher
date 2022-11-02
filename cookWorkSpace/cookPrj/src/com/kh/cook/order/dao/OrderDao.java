@@ -227,7 +227,7 @@ public class OrderDao {
 
 	// 주문 번호 / 결제 금액 가져오기
 	public OrderVo selectorderInfo(Connection conn, String no) {
-		String sql = "SELECT NO, MEMBER_NO, POINT, USE_POINT, SUM, NAME, ADDR, PHONE FROM \"ORDER\" WHERE MEMBER_NO = ?";
+		String sql = "SELECT NO, MEMBER_NO, POINT, USE_POINT, SUM, NAME, ADDR, PHONE FROM \"ORDER\" WHERE NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -252,8 +252,8 @@ public class OrderDao {
 				
 				vo = new OrderVo();
 				vo.setNo(orderNo);
-				vo.setMemberNo(no);
-				vo.setPoint(usePoint);
+				vo.setMemberNo(memberNo);
+				vo.setPoint(point);
 				vo.setUsePoint(usePoint);
 				vo.setSum(sum);
 				vo.setName(name);
@@ -314,7 +314,7 @@ public class OrderDao {
 	// 결제에 결제 수단 / 결제 날짜
 	public PaymentVo selectPaymentInfo(Connection conn, String num) {
 		
-		String sql = "SELECT PAYMENT, PAY_DATE FROM PAYMENT WEHRE ORDER_NO = ? ";
+		String sql = "SELECT PAYMENT, PAY_DATE FROM PAYMENT WHERE ORDER_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -327,16 +327,14 @@ public class OrderDao {
 			
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				
 				String payment = rs.getString("PAYMENT");
 				String payDate = rs.getString("PAY_DATE");
-				String orderNo = rs.getString("ORDER_NO");
 				
 				vo = new PaymentVo();
 				vo.setPayment(payment);
 				vo.setPayDate(payDate);
-				vo.setOrderNo(num);
 				
 			}
 			
@@ -399,7 +397,7 @@ public class OrderDao {
 	
 	// 주문 내역 조회하기
 	public List<OrderListVo> selectOrderInfoList(Connection conn, String no) {
-		String sql = "SELECT O.NO, O.SUM, D.NAME, D.CNT, P.PAYMENT, P.PAY_DATE FROM \"ORDER\" O JOIN PAYMENT P ON O.NO = P.ORDER_NO JOIN ( SELECT MAX(P.NAME) AS NAME, COUNT(*) AS CNT, D.ORDER_NO FROM ORDER_DETAIL D JOIN PRODUCT P ON D.PROD_NO = P.PROD_NO GROUP BY D.ORDER_NO ) D ON D.ORDER_NO = O.NO WHERE O.MEMBER_NO = ?";
+		String sql = "SELECT O.NO, O.SUM, D.NAME, D.CNT, P.PAYMENT, P.PAY_DATE, D.IMG_PATH, O.CANCEL_YN FROM \"ORDER\" O JOIN PAYMENT P ON O.NO = P.ORDER_NO JOIN ( SELECT MAX(P.NAME) AS NAME, MAX(P.IMG_PATH) AS IMG_PATH, COUNT(*) AS CNT, D.ORDER_NO FROM ORDER_DETAIL D JOIN PRODUCT P ON D.PROD_NO = P.PROD_NO GROUP BY D.ORDER_NO ) D ON D.ORDER_NO = O.NO WHERE O.MEMBER_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -418,16 +416,20 @@ public class OrderDao {
 				String sum = rs.getString("SUM");
 				String name = rs.getString("NAME");
 				String cnt = rs.getString("CNT");
+				String imgPath = rs.getString("IMG_PATH");
 				String payment = rs.getString("PAYMENT");
 				String payDate = rs.getString("PAY_DATE");
+				String cancelYN = rs.getString("CANCEL_YN");
 				
 				OrderListVo vo = new OrderListVo();
 				vo.setNo(orderNo);
 				vo.setSum(sum);
 				vo.setName(name);
 				vo.setCnt(cnt);
+				vo.setImgPath(imgPath);
 				vo.setPayment(payment);
 				vo.setPayDate(payDate);
+				vo.setCancelYN(cancelYN);
 				
 				list.add(vo);
 				
@@ -441,6 +443,29 @@ public class OrderDao {
 		}
 		return list;
 		
+		
+	}
+
+	public int deleteOrder(Connection conn, String orderNo) {
+		
+		String sql = "UPDATE \"ORDER\" SET CANCEL_YN = 'Y' WHERE NO = ? ";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, orderNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 		
 	}
 	

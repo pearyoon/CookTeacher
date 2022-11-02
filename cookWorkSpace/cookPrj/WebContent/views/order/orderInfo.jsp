@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
     <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/order/orderInfo.css">
-    <script src="../resources/js/order/orderInfo.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
@@ -49,7 +48,7 @@
                                         <div class="info-list">배송지</div>
                                         <div class="member-info">
                                             <input type="text" id="addr" value="${cartMember.getAddr()}" readonly></input>
-                                            <button class="search" onclick="searchAddr()">주소검색</button>
+                                            <button type="button" class="search" onclick="searchAddr()">주소검색</button>
                                         </div>
                                     </li>
 
@@ -161,7 +160,7 @@
                                             <dd class="total-dd">
                                                 <input type="text" name="save-point"
                                                     class="save-point"
-                                                    placeholder="입력"><button type="button">사용</button>
+                                                    placeholder="입력"><button type="button" onclick="clickPoint()">사용</button>
                                             </dd>
 
                                         </dl>
@@ -198,9 +197,10 @@
 
                                     <div class="price">
                                         <div>포인트</div>
-                                        <div>
-                                            ${cartMember.getPoint()}p
+                                        <div class="usePoint">
+                                            0P
                                         </div>
+                                        <input name="usePoint" type="hidden" value="0">
                                     </div>
 
                                     <div class="price">
@@ -235,6 +235,13 @@
         <%@include file="/views/common/footer.jsp" %>
             <!-- 푸터부분 파일 가져오기-->
             </div>
+            <script>
+                const point = <%=cartMember.getPoint()%>;
+                const totalPrice = ${total};
+                const deliveryFee = ${deliveryFee};
+                
+            </script>
+    <script src="../resources/js/order/orderInfo.js"></script>
 </body>
 
 </html>

@@ -21,35 +21,42 @@ public class CartService {
 	private final CartDao dao = new CartDao();
 	
 	// 장바구니 담기
-	public int addCart(CartVo vo) {
+	public int addCart(List<CartVo> list) {
 		
 		Connection conn = getConnection();
 		
-		CartVo checkCart = dao.checkCart(conn, vo);
 		int result = 0;
 		
-		ProductVo pv = new ProductService().selectProductOne(vo.getProdNo());
-		
-		
-		if(checkCart != null) {
-
-			if(Integer.parseInt(pv.getStock()) >= (Integer.parseInt(checkCart.getCnt()) + Integer.parseInt(vo.getCnt()))) {
+		for(int i = 0; i < list.size(); i++) {
+			CartVo vo = list.get(i);
 			
-				result = dao.updateCnt(conn, vo);
+			CartVo checkCart = dao.checkCart(conn, vo);
 			
-			}
-		}else {
+			ProductVo pv = new ProductService().selectProductOne(vo.getProdNo());
 			
-			if(Integer.parseInt(pv.getStock()) >= Integer.parseInt(vo.getCnt())) {
+			
+			if(checkCart != null) {
 				
-				result = dao.addCart(conn, vo);
-			
+				if(Integer.parseInt(pv.getStock()) >= (Integer.parseInt(checkCart.getCnt()) + Integer.parseInt(vo.getCnt()))) {
+					
+					result = dao.updateCnt(conn, vo);
+					
+				}
+			}else {
+				
+				if(Integer.parseInt(pv.getStock()) >= Integer.parseInt(vo.getCnt())) {
+					
+					result = dao.addCart(conn, vo);
+					
+				}
+			}
+			if(result == 0) {
+				break;
 			}
 		}
 
 		if(result == 1) {
 			commit(conn);
-			// 장바구니 리스트 가져오기
 		}else {
 			rollback(conn);
 		}

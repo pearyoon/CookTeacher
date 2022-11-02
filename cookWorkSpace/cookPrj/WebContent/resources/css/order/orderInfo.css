@@ -40,26 +40,31 @@
 }
 
 .info-wrapper{
+  margin: 0 50px;
   margin-bottom: 30px;
 }
 
 .info-wrapper>li{
   display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
 }
 
 .info-list{
-  width: 230px;
+  width: 160px;
   height: 30px;
   text-align: left;
-  padding-top: 20px;
-  padding-left: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .member-info{
   width: 500px;
   height: 30px;
   text-align: left;
-  padding-top: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .member-info>input{
@@ -72,6 +77,7 @@
 .search{
   background-color: transparent;
   border: 1px solid #255D00;
+  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -81,7 +87,6 @@
 }
 
 .dropdown-wrapper{
-  padding-top: 15px;
   display: inline-block;
 }
 
