@@ -88,7 +88,7 @@
                                         <input type="hidden" name="check"
                                             value="${cartItem.prodNo}">
                                         <div class="thumb">
-                                            <img src="<c:url value="/resources/img/product/" />${cartItem.imgPath}" alt="${cartItem.name}">
+                                            <img src="<c:url value="/upload/img/" />${cartItem.imgPath}" alt="${cartItem.name}">
                                         </div>
                                         <div class="product-name">
                                             <a href="#">${cartItem.name}</a>
@@ -196,7 +196,7 @@
                                     </div>
 
                                     <div class="price">
-                                        <div>포인트</div>
+                                        <div>사용한 포인트</div>
                                         <div class="usePoint">
                                             0P
                                         </div>
@@ -218,7 +218,7 @@
                                                 pattern="#,###" />
                                         </strong>원</div>
                                 </div>
-                                <input type="submit" value="결제하기">
+                                <input type="submit" value="결제하기" onclick="requestPay()">
                             </div>
                         </section>
 
@@ -242,6 +242,10 @@
                 
             </script>
     <script src="../resources/js/order/orderInfo.js"></script>
+     <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
 </body>
 
 </html>

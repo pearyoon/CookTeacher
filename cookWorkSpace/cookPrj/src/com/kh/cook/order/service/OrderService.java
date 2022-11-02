@@ -70,8 +70,7 @@ public class OrderService {
 		}
 		// 포인트
 		if(point != null && !point.equals("")) {
-			int usePoint = totalPrice - Integer.parseInt(point);
-			int memberPoint = cartMember.getPoint() - usePoint;
+			totalPrice -= Integer.parseInt(point);
 		}
 		
 		
@@ -95,10 +94,11 @@ public class OrderService {
 		}
 		
 		int earn = (int)(totalPrice * rate);
-		int totalPoint = cartMember.getPoint() + earn;
+		int totalPoint = earn - Integer.parseInt(point);
 	
 		Connection conn = getConnection();
 		
+		int resultPoint = dao.subtractPoint(conn, cartMember, totalPoint);
 		int result = dao.insertOrder(conn, cartMember, point, totalPrice, earn);
 		String num = dao.selectSeq(conn);
 		int paymentResult = dao.insertPayment(conn, num, payment);

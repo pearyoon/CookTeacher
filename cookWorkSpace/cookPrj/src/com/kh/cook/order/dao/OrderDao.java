@@ -376,6 +376,7 @@ public class OrderDao {
 		return result;
 	}//updatePaymentYN
 	
+	// 재고 수량 조절
 	public int updateStock(Connection conn, CartItemVo item) {
 		
 		String sql = "UPDATE PRODUCT SET STOCK = STOCK - ? WHERE PROD_NO = ?";
@@ -401,7 +402,7 @@ public class OrderDao {
 	
 	// 주문 내역 조회하기
 	public List<OrderListVo> selectOrderInfoList(Connection conn, String no) {
-		String sql = "SELECT O.NO, O.SUM, D.NAME, D.CNT, P.PAYMENT, P.PAY_DATE, D.IMG_PATH, O.CANCEL_YN FROM \"ORDER\" O JOIN PAYMENT P ON O.NO = P.ORDER_NO JOIN ( SELECT MAX(P.NAME) AS NAME, MAX(P.IMG_PATH) AS IMG_PATH, COUNT(*) AS CNT, D.ORDER_NO FROM ORDER_DETAIL D JOIN PRODUCT P ON D.PROD_NO = P.PROD_NO GROUP BY D.ORDER_NO ) D ON D.ORDER_NO = O.NO WHERE O.MEMBER_NO = ?";
+		String sql = "SELECT O.NO, O.SUM, D.NAME, D.CNT, P.PAYMENT, P.PAY_DATE, D.IMG_PATH, O.CANCEL_YN FROM \"ORDER\" O JOIN PAYMENT P ON O.NO = P.ORDER_NO JOIN ( SELECT MAX(P.NAME) AS NAME, MAX(P.IMG_PATH) AS IMG_PATH, COUNT(*) AS CNT, D.ORDER_NO FROM ORDER_DETAIL D JOIN PRODUCT P ON D.PROD_NO = P.PROD_NO GROUP BY D.ORDER_NO ) D ON D.ORDER_NO = O.NO WHERE O.MEMBER_NO = ? ORDER BY P.PAY_DATE DESC ";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -450,6 +451,7 @@ public class OrderDao {
 		
 	}
 
+	// 주문 내역 삭제
 	public int deleteOrder(Connection conn, String orderNo) {
 		
 		String sql = "UPDATE \"ORDER\" SET CANCEL_YN = 'Y' WHERE NO = ? ";
@@ -461,6 +463,30 @@ public class OrderDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, orderNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
+	public int subtractPoint(Connection conn, MemberVo cartMember, int totalPoint) {
+		
+		String sql = "UPDATE MEMBER SET POINT = POINT + ? WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, totalPoint);
+			pstmt.setString(2, cartMember.getNo());
 			
 			result = pstmt.executeUpdate();
 			
