@@ -34,7 +34,7 @@
             <div id="recipe-newIn">
                 <div id="resipe" >|&nbsp;&nbsp; NEW RECIPE !  &nbsp;&nbsp;|</div>
                 <hr width="60%" style="margin-bottom: 10px; margin-top: 10px;">
-                <div id="ment"><label for="">새로운 레시피는 여기서! 각 페이지에 넣는 건 실패 했슴니다..</label></div>
+                <div id="ment"><label for="">쿡선생괴 함께 새로운 레시피로 함께헤요!</label></div>
                     
 			       <div id="gap"></div>
                     <hr width="60%" style="margin-bottom: 10px; margin-top: 10px;">
@@ -45,10 +45,11 @@
 				<%for(int i=0; i < writeList.size(); ++i ){ %>
 				<div id="new-recipe">
 						<div class="new-div">
-							<a href="/cookTeacher/menu/newDetail?Nno=<%=writeList.get(i).getNo()%>">
+						<!-- 수정 -->
+							<a href="/cookTeacher/menu/newDetail?no=<%=writeList.get(i).getNo()%>">
 							<div><img class="new-img" src="/cookTeacher/<%=writeList.get(i).getFilePath()%>/<%=writeList.get(i).getChangeName() %>"  alt="qksksk"></div>
-							<div><%=writeList.get(i).getMenuName() %></div>
-							<div><%=writeList.get(i).getMenuInfo()%></div>
+							<div id="menu_info"><%=writeList.get(i).getMenuInfo()%></div>
+							<div id="menu_name"><%=writeList.get(i).getMenuName() %></div>
 							</a>
 						</div>
 				</div>

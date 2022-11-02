@@ -160,10 +160,21 @@
                         <div style="border-top: 1px solid black; "></div>
 	               <div>    
                    <form action="/cookTeacher/menu/detail" method="post">
-                   <input id="btn" type="submit" class="btn btn-warning" style="font-size: 1.2rem; font-weight: 700;" value="비법퍼가기" onclick="cartInput()">
+                   <input id="btn" type="submit" class="btn btn-warning" style="font-size: 1.2rem; font-weight: 700;" value="비법퍼가기" onclick="login_check()">
                         <!-- <label class="re-btn" style="font-size: large;">비법 퍼가기</label> -->
                         <label class="re-btn-click">퍼가요~♡</label>
                    </div> 
+                   
+                       <script>
+                       function login_check(){ 
+                    	   
+                            if(loginMember == ""){ 
+                               alert("로그인해주세요")
+                               location.href='/member/login';
+                            }
+
+                      }   
+					    </script>
                    
                    <script type="text/javascript">
 					function cardInput(){

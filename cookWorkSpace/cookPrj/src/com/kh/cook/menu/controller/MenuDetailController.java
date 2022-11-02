@@ -66,6 +66,8 @@ public class MenuDetailController extends HttpServlet{
     	String prodCnt[]  = req.getParameterValues("prodCnt");
     	String memberNo = loginMember.getNo();
     	
+
+    	
     	List<CartVo> cartList = new ArrayList<CartVo>();
     	
     	for(int i=0; i< prodNo.length; i++) {
@@ -80,6 +82,10 @@ public class MenuDetailController extends HttpServlet{
     	
     	System.out.println(prodCnt);
     	
+    	
+    	if(loginMember == null) {
+    		req.getRequestDispatcher("/member/login").forward(req, resp);
+    	}
     	
     	//int prodCart = new CartService().addCart(vo, prodNo);
     	boolean isCheck = new MenuService().addCart(cartList);

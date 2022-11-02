@@ -25,24 +25,29 @@ public class NewMenuDetailController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	//데이터 보내기
-//    	String no = req.getParameter("no");
-		String Nno = req.getParameter("Nno");
+    	String no = req.getParameter("no");
+//		String Nno = req.getParameter("Nno");
 
     	
     	//디비 다녀오기
-    	MenuWriteVo mwVo = new MenuService().selectNewMenuOne(Nno);
-//    	int result = new MenuService().plusRecommOne(no);
-    	//List<ProductVo> prodList = new MenuService().selectProdList(no);
-		MenuAttachmentVo menuAttachmentVo = new MenuService().selectMenuAttachment(Nno);
+		//여기서 menuProd 한글-> 숫자로 인서트
+    	MenuWriteVo mwVo = new MenuService().selectNewMenuOne(no);
+    	
+    	List<ProductVo> prodList = new MenuService().selectProdList(no);
+    	
+
+		MenuAttachmentVo menuAttachmentVo = new MenuService().selectMenuAttachment(no);
 
     	
     	//화면선택
+		// 여기서 reqset 해주기 (새로운)
+		req.setAttribute("prodList", prodList);
     	req.setAttribute("mwVo", mwVo);
     	req.setAttribute("attchmentVo", menuAttachmentVo);
     	
 		
 //		  if(prodList == null) { // System.out.println("null"); // }else { //
-		  req.setAttribute("Nno", Nno); // req.setAttribute("prodList", prodList); //
+		  req.setAttribute("no", no); // req.setAttribute("prodList", prodList); //
 		  req.getRequestDispatcher("/views/menu/newDetail.jsp").forward(req, resp); // //
 		  
 		 
