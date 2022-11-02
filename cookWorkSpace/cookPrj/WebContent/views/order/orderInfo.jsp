@@ -226,13 +226,13 @@
 
                     </div>
 
+                    <%@include file="/views/common/footer.jsp" %>
                 </div>
 
-        </div>
+            </div>
 
 
     </form>
-        <%@include file="/views/common/footer.jsp" %>
             <!-- 푸터부분 파일 가져오기-->
             </div>
             <script>
