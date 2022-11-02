@@ -36,7 +36,7 @@ public class ReportListController extends HttpServlet{
 			pno = "1";
 		}
 		currentPage = Integer.parseInt(pno);
-		pageLimit  = 5;
+		pageLimit  = 1;
 		boardLimit = 10;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);

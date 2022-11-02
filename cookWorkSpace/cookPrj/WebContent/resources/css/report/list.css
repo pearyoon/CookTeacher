@@ -1,0 +1,87 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+#container>div{
+    box-sizing: border-box;
+}
+
+#container{
+    position: relative;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1050px; 
+    
+}
+
+div>p{
+    margin-left: 430px;
+    width: 150px;
+    font-size: 28px;
+    line-height: 35px;
+    font-weight: 500;
+    color: #aaa;
+}
+p:hover{
+    color: #FFD335;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    vertical-align: top;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+}
+
+table {
+    --display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+
+.table tr:nth-child(odd){
+    background-color: #ddd;
+}
+
+.table thead th{
+   text-align: center;
+    background-color: #255D00;
+    color: #fff;
+    vertical-align: middle;
+}
+
+thead{
+    border: 2px solid #FFD335;
+    height: 31px;
+}
+
+tbody>tr{
+    height: 40px;
+}
+tbody>tr>td{
+    vertical-align: middle;
+}
+
+.table>tbody {
+    vertical-align: inherit;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+
+#page-area{
+    text-align: center;
+    letter-spacing: 2px;
+
+}

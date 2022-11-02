@@ -19,7 +19,8 @@ public class BobListController extends HttpServlet{
 	//게시판 조회
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-				
+
+
 		//페이징처리
 		int listCount;
 		int currentPage;
@@ -59,8 +60,10 @@ public class BobListController extends HttpServlet{
 		pv.setStartPage(startPage);
 		pv.setEndPage(endPage);
 		
+		
 		//디비 다녀오기
-		List<BobstoryVo> voList = new BobstoryService().selectList(pv);
+		
+		 List<BobstoryVo> voList = new BobstoryService().selectList(pv);
 		
 		req.setAttribute("voList", voList);
 		req.setAttribute("pv", pv);

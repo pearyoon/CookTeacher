@@ -147,7 +147,6 @@ tbody tr td{
 /* 댓 글 */
 .form-table{
     display: flex;
-    justify-content: center;
 }
 
 .cmt_count{
@@ -169,7 +168,7 @@ tbody tr td{
     justify-content: space-between;
 }
 
-.cmt_txt{
+div.cmt_txt{
     display: flex;
     justify-content: center;
 }
@@ -179,15 +178,15 @@ tbody tr td{
     height: 100px;
 }
 
-.cmt_btn{
+#cmt_btn{
     height: 100px;
     color: #fff;
     background-color: #255D00;
     border-style: none;
-    border-radius: 7px;
+    border-radius: 9px;
 }
 
-.cmt_btn:hover{
+#cmt_btn:hover{
     background-color: #398209;
     border: 2px solid #FFD335;
 }

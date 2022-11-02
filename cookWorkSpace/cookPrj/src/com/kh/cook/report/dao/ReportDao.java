@@ -12,11 +12,11 @@ import com.kh.cook.report.vo.ReportVo;
 
 public class ReportDao {
 
-	//신고목록 조회
+	//신고게시글 조회
 	public List<ReportVo> selectReportList(Connection conn) {
 		//SQL
 		
-		String sql = "SELECT * FROM BOBSTORY WHERE REPORT_YN = 'Y' ORDER BY NO DESC";
+		String sql = "SELECT B.NO , M.NICK AS WRITER , MC.MENU_TYPE AS TYPE , B.TITLE , B.CONTENT , B.ENROLL_DATE , B.DELETE_YN , B.C_LIKE , B.MODIFY_DATE , B.VIEW_COUNT , B.REPORT_YN FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO JOIN MENU_CATE MC ON MC.MENU_CATE_NO = B.CATEGORY WHERE B.REPORT_YN = 'Y' ORDER BY NO DESC";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -31,13 +31,13 @@ public class ReportDao {
 				String no = rs.getString("NO"); 
 				String type = rs.getString("TYPE"); 
 				String writer = rs.getString("WRITER"); 
-				String reportTime = rs.getString("REPORT_TIME"); 
+				
 				
 				ReportVo vo = new ReportVo();
 				vo.setNo(no);
 				vo.setType(type);
 				vo.setWriter(writer);
-				vo.setReportTime(reportTime);
+				
 				
 				voList.add(vo);
 				
