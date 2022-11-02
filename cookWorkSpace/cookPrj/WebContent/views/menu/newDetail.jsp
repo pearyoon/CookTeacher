@@ -14,7 +14,7 @@
 <head>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta charset="UTF-8">
-<title>cookTeacher</title>
+<title>집밥쿡선생 :: 상세 레시피</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" defer src="/cookTeacher/resources/js/menu/detail.js"></script>
 
@@ -42,7 +42,7 @@
     <div id="container">
 
         <main>
-    
+
             <div id="recipe-detail">
                 <div id="resipe" >|&nbsp;&nbsp; <%=vo.getMenuName() %> &nbsp;&nbsp;|</div>
                 <hr width="60%" style="margin-bottom: 20px; margin-top: 20px;">
@@ -206,7 +206,7 @@
                         <div class="prd-all">
                             <div class="product">
                                 <a href="/cookTeacher/product/detail/productDetail?no=${prod.prodNo}">
-                                    <img src =" <c:url value = "/resources/img/product/"></c:url>${prod.imgPath}" alt="식재료게시판담당" width="100%" height="100%">
+                                    <img src =" <c:url value = "/upload/img/"></c:url>${prod.imgPath}" alt="식재료게시판담당" width="100%" height="100%">
                                 </a>
                              
                             </div>    
@@ -224,43 +224,18 @@
                     </c:forEach>		
                             </form>
 
-				<!--  -->
-				
-<!-- 				<tr style="text-align:center;">
-				    <td>
-				        <button type ="button" onclick="fnCalCount('p',this);">+</button>
-				        <input type="text" name="pop_out" value="1" readonly="readonly" style="text-align:center;"/>
-				        <button type="button" onclick="fnCalCount('m', this);">-</button>
-				    </td>
-				</tr>
-				
-				<script type="text/javascript">
-					function fnCalCount(type, ths){
-					    var $input = $(ths).parents("td").find("input[name='pop_out']");
-					    var tCount = Number($input.val());
-					    var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
-					    
-					    if(type=='p'){
-					        if(tCount < tEqCount) $input.val(Number(tCount)+1);
-					        
-					    }else{
-					        if(tCount >0) $input.val(Number(tCount)-1);    
-					        }
-					}
-				</script> -->
-				
-				
-
 
                 </div>
+                
+						
+			</div>
+                <div style="margin-left: 485px; margin-bottom: 20px">
+				<%if(loginMember != null && loginMember.getId().equals("admin01")){%>	
+				<button class="delete-btn" onclick="location.href='/cookTeacher/detail/delete?no=<%=vo.getNo()%>'">삭제하기</button>
+				<%}%>
             </div>
 
-
             </div>
-                
-                
-                
-                
                 
             </main>
             <!-- 인클루드 == 메인보다 밖에 있어야 함, 컨테이너 안에 있어야 함!-->

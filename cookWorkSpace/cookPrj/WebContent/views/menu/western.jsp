@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cookTeacher</title>
+<title>집밥쿡선생 :: 양식</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/menu/western.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">

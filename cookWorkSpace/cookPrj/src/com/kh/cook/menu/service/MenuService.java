@@ -308,6 +308,21 @@ public class MenuService {
 	
 	}
 
+	public int delete(String no) {
+		
+		Connection conn =  getConnection();
+		int result = new MenuDao().delete(conn, no);
+		System.out.println(no);
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+	
+		return result;
+	}
+
 	//nno -> no
 //	public List<ProductVo> selectNewProdList(String no) {
 //		

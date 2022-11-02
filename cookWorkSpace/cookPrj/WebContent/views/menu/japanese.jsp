@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cookTeacher</title>
+<title>집밥쿡선생 :: 일식</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/menu/japanese.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">

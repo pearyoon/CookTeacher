@@ -76,7 +76,7 @@ main div{
     width: 60vw;
     margin: auto;
     font-size: small;
-
+	line-height: 1.2em;
 }
 
 
@@ -261,6 +261,7 @@ pre{
 #prod-ment{
 	text-align: center;
 	font-size: small;
+	
 }
 
 #btn:hover{
@@ -299,5 +300,14 @@ pre{
 .btn btn-warning{
 	display: flex;
 	justify-content: center;
+}
+
+.delete-btn{
+	background-color: #FFD335;
+    color: #255D00;
+    border: 1px solid #255D00;
+    border-radius: 20%;
+    font-weight: 700;
+    font-size: medium;
 }
 
