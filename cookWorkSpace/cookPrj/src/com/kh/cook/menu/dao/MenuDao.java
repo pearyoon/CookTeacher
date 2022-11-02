@@ -73,7 +73,7 @@ public class MenuDao {
 	}
 
 	public List<ProductVo> selectProdList(Connection conn, String no) {
-		String sql = "SELECT DETAIL, CATE_NO, PROD_NO, PRICE, STOCK, WEIGHT, INFO, IMG_PATH4, IMG_PATH3, IMG_PATH, IMG_PATH2, NAME FROM PRODUCT WHERE PROD_NO IN( SELECT MP.PROD_NO FROM MENU M JOIN MENU_PROD MP ON M.NO = MP.NO WHERE MP.NO = ?)";
+		String sql = "SELECT DETAIL, CATE_NO, PROD_NO, PRICE, STOCK, WEIGHT, INFO, IMG_PATH4, IMG_PATH3, IMG_PATH, IMG_PATH2, NAME FROM PRODUCT WHERE PROD_NO IN( SELECT MP.PROD_NO FROM MENU M JOIN MENU_PROD MP ON M.NO = MP.NO WHERE MP.NO = ? )";
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -593,7 +593,7 @@ public class MenuDao {
 
 	public int insertRecipe(Connection conn, MenuWriteVo vo) {
 		//String sql = "INSERT INTO MENU( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ,IMG_PATH) VALUES (SEQ_MENU_NO.NEXTVAL, ? , '메뉴이름', '메뉴설명', '레시피' , 330 ,'재료', '한식레시피/kimchi_stew.png' ) ;";
-		String sql = "INSERT INTO MENU_WRITE( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ) VALUES (SEQ_MENU_WRITE_NO.NEXTVAL, ?, ?, ?, ? , ? ,?)";
+		String sql = "INSERT INTO MENU( NO ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,RECIPE ,CAL ,MENU_PROD ) VALUES (SEQ_MENU_NO.NEXTVAL, ?, ?, ?, ? , ? ,?)";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -618,7 +618,7 @@ public class MenuDao {
 	}
 
 	public int insertAttachment(Connection conn, MenuAttachmentVo menuAttachmentVo) {
-		String sql = "INSERT INTO MENUATTACHMENT ( NO , MENU_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_MENUATTACHMENT_NO.NEXTVAL, SEQ_MENU_WRITE_NO.CURRVAL , ? , ? , ?)";
+		String sql = "INSERT INTO MENUATTACHMENT ( NO , MENU_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_MENUATTACHMENT_NO.NEXTVAL, SEQ_MENU_NO.CURRVAL , ? , ? , ?)";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -718,8 +718,8 @@ public class MenuDao {
 	}
 
 	public List<MenuWriteVo> selectNewInList(Connection conn) {
-//		String sql = "SELECT * FROM MENU_WRITE ORDER BY NO";
-		String sql = "SELECT M.NO, M.MENU_NAME, M.MENU_INFO, A.CHANGE_NAME, A.FILE_PATH FROM MENU_WRITE M JOIN MENUATTACHMENT A ON M.NO = A.MENU_NO ORDER BY NO";
+//		String sql = "SELECT * FROM MENU ORDER BY NO";
+		String sql = "SELECT M.NO, M.MENU_NAME, M.MENU_INFO, A.CHANGE_NAME, A.FILE_PATH FROM MENU M JOIN MENUATTACHMENT A ON M.NO = A.MENU_NO ORDER BY NO DESC";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -775,9 +775,9 @@ public class MenuDao {
 	}
 
 	//등록레시피 디테일
-	public MenuWriteVo selectNewMenuOne(Connection conn, String Nno) {
+	public MenuWriteVo selectNewMenuOne(Connection conn, String no) {
 		
-		String sql = "SELECT * FROM MENU_WRITE WHERE NO = ?";
+		String sql = "SELECT * FROM MENU WHERE NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -785,7 +785,7 @@ public class MenuDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, Nno);
+			pstmt.setString(1, no);
 			
 			rs = pstmt.executeQuery();
 			
@@ -880,7 +880,7 @@ public class MenuDao {
 
 		public String[] selectProd(Connection conn, String Nno) {
 			
-			String sql = "SELECT MENU_PROD FROM MENU_WRITE WHERE NO = ?";
+			String sql = "SELECT MENU_PROD FROM MENU WHERE NO = ?";
 			
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -911,8 +911,56 @@ public class MenuDao {
 			
 			return cutProd;
 		}
+
+		// 문자열 -> 숫자 후 인서트
+		public int prodInsert(Connection conn, String no, String cutProd) {
+			
+			String sql = "INSERT INTO MENU_PROD(PROD_NO, NO)\r\n"
+					+ "VALUES((SELECT PROD_NO\r\n"
+					+ "FROM PRODUCT \r\n"
+					+ "WHERE NAME = ? \r\n"
+					+ "AND ROWNUM <= 1), ?)";
+		
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			String prodNo = cutProd;
+			
+			
+			try {
+				
+				System.out.println(cutProd);
+				System.out.println(no);
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, cutProd);
+				pstmt.setString(2, no);
+				
+				
+				
+				result = pstmt.executeUpdate();
+				
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
+			
+		}
+
+//		public List<ProductVo> selectNewProdList(Connection conn, String no) {
+//			String sql = "SELECT DETAIL, CATE_NO, PROD_NO, PRICE, STOCK, WEIGHT, INFO, IMG_PATH4, IMG_PATH3, IMG_PATH, IMG_PATH2, NAME FROM PRODUCT WHERE PROD_NO IN( SELECT MP.PROD_NO FROM MENU M JOIN MENU_PROD MP ON M.NO = MP.NO WHERE MP.NO = ?)";
+//			
+//			
+//			
+//			
+//		}
 	
-	
+		
 
 
 

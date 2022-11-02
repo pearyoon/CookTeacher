@@ -235,21 +235,41 @@ public class MenuService {
 		return writeList;
 	}
 
-	public MenuWriteVo selectNewMenuOne(String Nno) {
+	//Nno 다 no로 바꿈
+	public MenuWriteVo selectNewMenuOne(String no) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		MenuWriteVo vo = new MenuDao().selectNewMenuOne(conn, Nno);
+		MenuWriteVo vo = new MenuDao().selectNewMenuOne(conn, no);
 		
 		//메뉴Write 잘라서 가져오기!
+		String cutProd[] =  new MenuDao().selectProd(conn, no);
 
-		String cutProd[] =  new MenuDao().selectProd(conn, Nno);
+		boolean isCheck = false;
+		int cnt = 0;
+		
 
+		
 		for(int i=0; i < cutProd.length; i++) {
-			MenuWriteVo vo2 = new MenuWriteVo();
-			vo2.setMenuProd(cutProd[i]);
+			int result = new MenuDao().prodInsert(conn, no, cutProd[i]);
+			
+			if(result == 1) {
+				cnt += 1;
+				
+			}
+			
 		}
 		
-		System.out.println(cutProd[1]);
+		if(cnt == cutProd.length) {
+			JDBCTemplate.commit(conn);
+			//꺼내오기 작업은 여기서!!
+			
+			
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		
+
 		
 		JDBCTemplate.close(conn);
 		
@@ -287,6 +307,18 @@ public class MenuService {
 		return isCheck;
 	
 	}
+
+	//nno -> no
+//	public List<ProductVo> selectNewProdList(String no) {
+//		
+//		Connection conn = JDBCTemplate.getConnection();
+//		
+//		List<ProductVo> nProdList = new MenuDao().selectNewProdList(conn, no);
+//	
+//		JDBCTemplate.close(conn);
+//		
+//		return nProdList;
+//	}
 
 
 
