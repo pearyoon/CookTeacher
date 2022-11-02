@@ -44,7 +44,7 @@ public class BobCmtDao {
 	public List<BobCmtVo> selectList(Connection conn) {
 		//sql
 		
-		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER";
+		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER WHERE DELETE_YN = 'N'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

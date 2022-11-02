@@ -192,11 +192,11 @@
 													+'<span><a href="/cookTeacher/bobstory/cmt/edit">'+ '수정' + '</a></span>'
 													+' '
 													+'<span><a href="/cookTeacher/bobstory/cmt/delete">'+ '삭제' + '</a></span>'
-													+'<div style="border-bottom:1px solid #aaa; width:860px;"></div>'
+													+'<div style="border-bottom:1px solid #aaa; width:860px; height:5px;"></div>'
 													+'</div>'
 													
 											);
-												console.log(objList[i].writer);
+											console.log(objList[i].writer);
 										}
 										
 										console.log('성공');
@@ -214,6 +214,7 @@
 					<%for(int i = 0; i < cvo.size(); i++){ %>
 						<%if(cvo.get(i).getPostNo() == vo.getNo()){ %>
 							<div class="cmt_box">
+							<input type="hidden" value="<%=cvo.get(i).getCmtNo()%>" name="cmtNo">
 							<div class="cmt2Writer"><%=cvo.get(i).getWriter() %></div></div>
 							<div class="cmt2Content"><%=cvo.get(i).getWriter() %></div>
 							<button id="editbtn" onclick="location.href='/cookTeacher/bobstory/cmt/edit'">수정</button>

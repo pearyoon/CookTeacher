@@ -38,7 +38,7 @@ public class BobCmtWriteController extends HttpServlet{
 		//화면 선택
 		if(result == 1) {
 			//댓글 작성 성공
-			req.getSession().setAttribute("alertMsg", "댓글을 성공적으로 작성하였습니다.");
+			req.getSession().setAttribute("alertMsg", "댓글 작성 성공!!!");
 			req.setAttribute("cmtvo", cmtvo);
 			
 			//디비 가서 댓글들 조회 => voList
