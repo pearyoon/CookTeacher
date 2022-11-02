@@ -73,4 +73,8 @@ a:hover {
 }
 .main-menu-bar-items:hover{
 	background-color: #255D00;
+	box-shadow: 3px 3px #ffd335;
+}
+.main-menu-bar-items:hover>a{
+	color: white;
 }
