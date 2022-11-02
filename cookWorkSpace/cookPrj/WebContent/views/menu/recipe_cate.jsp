@@ -71,7 +71,7 @@
                 </div>
 
                 <!-- ------- -->
-                <div class="cate-name"><a href="<%=root %>/menu/banchan">< 반찬 ></a></div>
+                <div class="cate-name"><a href="<%=root %>/menu/banchan">- 반찬 -</a></div>
                 <div class="recipe-menu-area">
                 <div>
                     <a href="<%=root %>/menu/detail?no=11">
@@ -97,7 +97,7 @@
                 </div>
 
                 <!-- ------- -->
-                <div class="cate-name"><a href="<%=root %>/menu/japanese">< 일식 ></a></div>
+                <div class="cate-name"><a href="<%=root %>/menu/japanese">- 일식 -</a></div>
                 <div class="recipe-menu-area">
                 <div>
                     <a href="<%=root %>/menu/detail?no=21">
@@ -122,7 +122,7 @@
                 </div>
                 </div>
                 <!-- ------- -->
-                <div class="cate-name"><a href="<%=root %>/menu/chinese">< 중식 ></a></div>
+                <div class="cate-name"><a href="<%=root %>/menu/chinese">- 중식 -</a></div>
                 <div class="recipe-menu-area">
                 <div>
                     <a href="<%=root %>/menu/detail?no=31">
@@ -147,7 +147,7 @@
                 </div>
                 </div>
 
-                <div class="cate-name"><a href="<%=root %>/menu/western">< 양식 ></a></div>
+                <div class="cate-name"><a href="<%=root %>/menu/western">- 양식 -</a></div>
                 <div class="recipe-menu-area">
                 <div>
                     <a href="<%=root %>/menu/detail?no=41">
@@ -172,7 +172,7 @@
                 </div>
                 </div>
 
-                <div class="cate-name"><a href="<%=root %>/menu/dessert">< 디저트 ></a></div>
+                <div class="cate-name"><a href="<%=root %>/menu/dessert">- 디저트 -</a></div>
                 <div class="recipe-menu-area">
                 <div>
                     <a href="<%=root %>/menu/detail?no=51">

@@ -34,7 +34,7 @@
             <div id="recipe-newIn">
                 <div id="resipe" >|&nbsp;&nbsp; NEW RECIPE !  &nbsp;&nbsp;|</div>
                 <hr width="60%" style="margin-bottom: 10px; margin-top: 10px;">
-                <div id="ment"><label for="">쿡선생괴 함께 새로운 레시피로 함께헤요!</label></div>
+                <div id="ment"><label for="">쿡선생과 함께 새로운 레시피로 함께해요!</label></div>
                     
 			       <div id="gap"></div>
                     <hr width="60%" style="margin-bottom: 10px; margin-top: 10px;">

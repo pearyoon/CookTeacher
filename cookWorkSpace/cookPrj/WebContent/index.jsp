@@ -44,10 +44,14 @@
                               <img src="/cookTeacher/resources/img/메인1.png" style="width:1050px ; height:400px; ">
                             </div>
                             <div class="item">
-                              <img src="/cookTeacher/resources/img/메인2.png" style="width:1050px ; height:400px; ">
+                              <a href="<%=root %>/menu/detail?no=40">
+                              <img src="/cookTeacher/resources/img/best1.jpg" style="width:1050px ; height:400px; ">
+                              </a>
                             </div>
                             <div class="item">
+                            <a href="<%=root %>/menu/detail?no=26">
                               <img src="/cookTeacher/resources/img/best2.jpg" style="width:1050px ; height:400px; ">
+                            </a>  
                             </div>
                           </div>
                           <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -62,26 +66,36 @@
             </div>
             <div id="main-middle">
                <br><hr style="border-top:3px solid #eee">
-                <div id="recomm">쿡선생 PICK!</div>
-               <hr style="border-top:3px solid #eee"> 
+                <div id="recomm">쿡선생 PICK!<img alt="" src="/cookTeacher/resources/img/recipe.png" width="40px" height="43px" style="padding-top:10px; padding-left: 10px;" > </div>
+               <hr style="border-top:3px solid #eee; margin-bottom: 30px"> 
                 <div id="main-menu-area">
                     <div>
                         <a href="<%=root %>/menu/detail?no=41">
                             <img src="/cookTeacher/resources/img/양식레시피/토마토스파게티.jpg" alt="레시피게시판담당" width="100%" height="100%">
+                        <div class="main-reinfo">
                         </a>
-                        <div>토마토스파게티</div>
+                        양식이 끌리시나요? 간편하지만 맛있는!</div>
+                        <div class="main-recipe" >
+                        <img alt="" src="/cookTeacher/resources/img/check.png" style="width: 15px; height: 15px;">
+                        토마토스파게티</div>
                     </div>
                     <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/mapotofu.jpg" alt="레시피게시판담당" width="100%" height="100%">
+                        <a href="<%=root %>/menu/detail?no=9">
+                            <img src="/cookTeacher/resources/img/한식레시피/galbitang.png" alt="레시피게시판담당" width="100%" height="100%">
                         </a>
-                        <div>메뉴이름</div>
+                        <div class="main-reinfo">요즘처럼 쌀쌀한 날, 속은 따뜻하게~</div>
+                        <div class="main-recipe">
+                         <img alt="" src="/cookTeacher/resources/img/check.png" style="width: 15px; height: 15px;">
+                        갈비탕</div>
                     </div>
                     <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/마라샹궈.jpg" alt="레시피게시판담당" width="100%" height="100%">
+                        <a href="<%=root %>/menu/detail?no=16">
+                            <img src="/cookTeacher/resources/img/반찬 레시피/jangjolim.PNG" alt="레시피게시판담당" width="100%" height="100%">
                         </a>
-                        <div>메뉴이름</div>
+                        <div class="main-reinfo">반찬계의 괴도키드!!</div>
+                        <div class="main-recipe">
+                         <img alt="" src="/cookTeacher/resources/img/check.png" style="width: 15px; height: 15px;">
+                        장조림</div>
                     </div>
                 </div>
             </div>

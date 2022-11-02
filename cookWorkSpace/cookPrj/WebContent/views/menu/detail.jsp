@@ -153,7 +153,7 @@
                         <div style="border-top: 1px solid black; "></div>
 	               <div>    
 	               <!-- 수정한 부분 -->
-                   <form action="/cookTeacher/cart/add" method="post">
+                   <form style="margin-top: 20px; margin-bottom: 20px" action="/cookTeacher/cart/add" method="post">
                    <input id="btn" type="submit" class="btn btn-warning" style="font-size: 1.2rem; font-weight: 700;" value="비법퍼가기" onclick="cartInput()">
                         <!-- <label class="re-btn" style="font-size: large;">비법 퍼가기</label> -->
                         <label class="re-btn-click">퍼가요~♡</label>
@@ -201,49 +201,21 @@
                             	<!--  -->
                             
                             </div>
-
                             	
                         </div>
                     </c:forEach>		
                             </form>
 
-				<!--  -->
-				
-<!-- 				<tr style="text-align:center;">
-				    <td>
-				        <button type ="button" onclick="fnCalCount('p',this);">+</button>
-				        <input type="text" name="pop_out" value="1" readonly="readonly" style="text-align:center;"/>
-				        <button type="button" onclick="fnCalCount('m', this);">-</button>
-				    </td>
-				</tr>
-				
-				<script type="text/javascript">
-					function fnCalCount(type, ths){
-					    var $input = $(ths).parents("td").find("input[name='pop_out']");
-					    var tCount = Number($input.val());
-					    var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
-					    
-					    if(type=='p'){
-					        if(tCount < tEqCount) $input.val(Number(tCount)+1);
-					        
-					    }else{
-					        if(tCount >0) $input.val(Number(tCount)-1);    
-					        }
-					}
-				</script> -->
-				
-
-
 
                 </div>
             </div>
-
+            
+            <div style="margin-left: 452px; margin-bottom: 20px;">
+						<button>수정하기</button>
+						<button>삭제하기</button>
+			</div>
 
             </div>
-                
-                
-                
-                
                 
             </main>
             <!-- 인클루드 == 메인보다 밖에 있어야 함, 컨테이너 안에 있어야 함!-->
