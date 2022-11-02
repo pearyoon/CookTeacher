@@ -11,7 +11,14 @@ public class CSVo {
 	private String deleteYN;
 	private String editDate;
 	private String qnaCategory;
+	private String reOX;
 	
+	public String getReOX() {
+		return reOX;
+	}
+	public void setReOX(String reOX) {
+		this.reOX = reOX;
+	}
 	public String getWriter() {
 		return writer;
 	}
@@ -67,14 +74,16 @@ public class CSVo {
 	public void setQnaCategory(String qnaCategory) {
 		this.qnaCategory = qnaCategory;
 	}
+
+	
 	@Override
 	public String toString() {
 		return "CSVo [qnaNo=" + qnaNo + ", no=" + no + ", writer=" + writer + ", title=" + title + ", content="
 				+ content + ", qnaDate=" + qnaDate + ", deleteYN=" + deleteYN + ", editDate=" + editDate
-				+ ", qnaCategory=" + qnaCategory + "]";
+				+ ", qnaCategory=" + qnaCategory + ", reOX=" + reOX + "]";
 	}
 	public CSVo(String qnaNo, String no, String writer, String title, String content, String qnaDate, String deleteYN,
-			String editDate, String qnaCategory) {
+			String editDate, String qnaCategory, String reOX) {
 		super();
 		this.qnaNo = qnaNo;
 		this.no = no;
@@ -85,6 +94,7 @@ public class CSVo {
 		this.deleteYN = deleteYN;
 		this.editDate = editDate;
 		this.qnaCategory = qnaCategory;
+		this.reOX = reOX;
 	}
 	public CSVo() {
 		super();

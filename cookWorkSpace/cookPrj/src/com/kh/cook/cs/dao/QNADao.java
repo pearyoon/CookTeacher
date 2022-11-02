@@ -223,7 +223,7 @@ public class QNADao {
 		//마이페이지 문의내역 조회
 		public List<CSVo> selectMyQNAList(Connection conn, String no2) {
 			
-			String sql = "SELECT Q.QNA_NO,Q.NO ,M.NICK ,Q.TITLE ,Q.CONT ,Q.Q_DATE ,Q.DELETE_YN ,Q.EDIT_DATE ,Q.QNA_CATE FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO WHERE Q.DELETE_YN = 'N' AND Q.QNA_CATE = 'Q' AND Q.NO = ? ORDER BY Q.QNA_NO DESC";
+			String sql = "SELECT Q.QNA_NO,Q.NO ,M.NICK ,Q.TITLE ,Q.CONT ,Q.Q_DATE ,Q.DELETE_YN ,Q.EDIT_DATE ,Q.QNA_CATE,C.DELETE_YN CYN FROM QNA Q JOIN MEMBER M ON Q.NO = M.NO LEFT JOIN QNA_CMT C ON Q.QNA_NO = C.Q_POST_NO WHERE Q.DELETE_YN = 'N' AND Q.QNA_CATE = 'Q' AND Q.NO = ? ORDER BY Q.QNA_NO DESC";
 			
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -246,6 +246,7 @@ public class QNADao {
 					String deleteYN = rs.getString("DELETE_YN");
 					String editDate = rs.getString("EDIT_DATE");
 					String qnaCategory = rs.getString("QNA_CATE");
+					String reOX = rs.getString("CYN");
 					
 					CSVo vo = new CSVo();
 					vo.setQnaNo(qnaNo);
@@ -257,6 +258,7 @@ public class QNADao {
 					vo.setDeleteYN(deleteYN);
 					vo.setEditDate(editDate);
 					vo.setQnaCategory(qnaCategory);
+					vo.setReOX(reOX);
 					
 					voList.add(vo);
 				}
