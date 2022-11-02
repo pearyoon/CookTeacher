@@ -49,12 +49,12 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/login/cs/QnAhistory">
                                     문의내역
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/cs/QnA/write">
                                     문의하기
                                 </a>
                             </li>

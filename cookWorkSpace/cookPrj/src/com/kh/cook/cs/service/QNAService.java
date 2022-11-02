@@ -92,6 +92,7 @@ public class QNAService {
 		Connection conn = JDBCTemplate.getConnection();
 				
 		int result = dao.delete(conn, qno);
+		System.out.println(result + "서비스");
 		
 		if(result == 1) {
 			JDBCTemplate.commit(conn);
@@ -165,6 +166,7 @@ public class QNAService {
 	}
 
 	public int deletereply(String qno) {
+		
 		Connection conn = JDBCTemplate.getConnection();
 		
 		int result = dao.deletereply(conn, qno);

@@ -161,6 +161,7 @@ text-align: right;
 				</div>
 				<div id="writer">작성자 :</div>
 				<div class="write" id="writer" name="writer">관리자</div>
+				<div id="date" name="enrollDate"><%=cvo.getCmtDate() %></div>
 			</div>
 	
 			<div class="content-area">
