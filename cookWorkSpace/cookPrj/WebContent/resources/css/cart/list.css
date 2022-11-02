@@ -1,9 +1,11 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 * {
   box-sizing: border-box;
-  font-family: "NanumSquareRound";
+  font-family: 'Gowun Dodum', sans-serif !important ;
 }
+
 
 input[type="checkbox"]{
   margin: 0;

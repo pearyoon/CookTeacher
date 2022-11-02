@@ -15,7 +15,7 @@
 <meta charset="UTF-8">
 <title>집밥쿡선생 :: 마이페이지</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
-<link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/order/mainCopy.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 <link rel="stylesheet" href="/cookTeacher/resources/css/order/orderList.css">
@@ -134,8 +134,8 @@
                     </div>
                 </div>
             </div>
-            <%@include file="/views/common/footer.jsp"%>
         </div>
+        <%@include file="/views/common/footer.jsp"%>
     </div>
 
     <script>

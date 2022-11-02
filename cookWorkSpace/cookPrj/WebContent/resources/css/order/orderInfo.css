@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
 * {
   box-sizing: border-box;
-  font-family: "NanumSquareRound" !important;
+  font-family: 'Gowun Dodum', sans-serif !important ;
 }
 
 #container{
