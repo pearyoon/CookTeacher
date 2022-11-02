@@ -256,6 +256,7 @@ pre{
 	margin-bottom: 30px;
 	justify-content: center;
 	align-self: center;
+	line-height: 1.2em;
 }
 
 #prod-ment{
@@ -311,3 +312,6 @@ pre{
     font-size: medium;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
