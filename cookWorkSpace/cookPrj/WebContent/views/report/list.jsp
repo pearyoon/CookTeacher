@@ -11,31 +11,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>집밥 쿡선생 :: 신고 게시글 관리</title>
+<title>집밥 쿡선생 :: 신고 게시판</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/report/list.css">
 </head>
 <body>
 	<%@ include file="/views/common/header.jsp" %>
-	<div id="container">
-		<main>
+	<div id="container"> <!-- 컨테이너 -->
 			<br>
 			<br>
-			<h1 align="center">신고 게시판</h1>
+			<p>신고 게시판</p>
 			<br>
 			<br>
-			<table class="report-table">
+			<br>
+			<table class="table">
 				<thead>
-					<th>번호</th>
-					<th>유형</th>
-					<th>작성자</th>
+					<th scope="col">번호</th>
+					<th scope="col">유형</th>
+					<th scope="col">작성자</th>
 				</thead>
 				<tbody>
 				<%for(int i = 0; i < voList.size(); i++){%>
 					<tr align="center">
-						<th><%=voList.get(i).getNo() %></th>
-						<th><%=voList.get(i).getType()%></th>
-						<th><a href="<%=root%>/bobstory/detail?bno=<%=voList.get(i).getNo() %>"></a><%=voList.get(i).getWriter() %></th>
+						<td style="width: 150px;"><%=voList.get(i).getNo() %></td>
+						<td style="width: 150px;"><%=voList.get(i).getType() %></td>
+						<td style="width: 150px;"><a href="<%=root%>/bobstory/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getWriter() %></a></td>
 					</tr>
 				<%} %>	
 				</tbody>
@@ -44,7 +45,7 @@
 			<div id="page-area">
 			        	
 				<%if(pv.getStartPage() != 1){%>
-					<a href="/cookTeacher/report/list?pno=<%=pv.getStartPage()-1%>" class="btn">이전</a>
+					<a href="/cookTeacher/report/list?pno=<%=pv.getStartPage()-1%>" class="btn"><</a>
 				<%}%>
 			
 			
@@ -53,7 +54,7 @@
 				<%}%>
 				
 				<%if(pv.getEndPage() != pv.getMaxPage()){%>
-						<a href="/cookTeacher/report/list?pno=<%=pv.getEndPage()+1 %>" class="btn">다음</a>
+						<a href="/cookTeacher/report/list?pno=<%=pv.getEndPage()+1 %>" class="btn">></a>
 				<%}%>
 				
 				

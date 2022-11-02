@@ -20,7 +20,7 @@ public class BobCmtListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//페이지번호 가져오기
-		String bno = req.getParameter("bobNo");
+		String no = req.getParameter("no");
 		
 		//페이징처리
 		int listCount;
@@ -65,7 +65,7 @@ public class BobCmtListController extends HttpServlet{
 		req.setAttribute("pv", pv);
 		
 		//화면 선택
-		resp.sendRedirect("/cookTeacher/bobstory/detail?bno=" + bno);
+		resp.sendRedirect("/cookTeacher/report/list?no=" + no);
 		
 		
 	}

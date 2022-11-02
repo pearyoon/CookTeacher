@@ -32,9 +32,13 @@
 			<br>
 			<br>
 			<ul>
-				<li><a href="">댓글순</a></li>
+				<li><a href="">음식</a></li>
+				&nbsp;
+				<span> | </span>
 				&nbsp;
 				<li><a href="">추천순</a></li>
+				&nbsp;
+				<span> | </span>
 				&nbsp;
 				<li><a href="">조회순</a></li>
 			</ul>
