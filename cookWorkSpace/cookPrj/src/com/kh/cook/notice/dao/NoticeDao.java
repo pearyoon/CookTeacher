@@ -189,4 +189,25 @@ public class NoticeDao {
 		return result;
 	}
 
+	public int delete(String no, Connection conn) {
+		String sql = "UPDATE NOTICE SET DELETE_YN = 'Y' WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

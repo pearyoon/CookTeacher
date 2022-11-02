@@ -70,6 +70,20 @@ public class NoticeService {
 		
 		return result;
 	}
+	public int delete(String no) {
+		Connection conn = getConnection();
+		
+		int result = dao.delete(no, conn);
+		
+		if(result == 1) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
 	
 	
 }

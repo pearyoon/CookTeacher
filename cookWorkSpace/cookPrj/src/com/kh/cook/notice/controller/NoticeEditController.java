@@ -33,7 +33,7 @@ public class NoticeEditController extends HttpServlet{
 		vo.setNo(no);
 		vo.setTitle(title);
 		
-		NoticeVo nVo = new NoticeService().edit(vo);
+		int result = new NoticeService().edit(vo);
 		
 		req.getSession().setAttribute("alertMsg", "수정완료");
 	
