@@ -137,7 +137,8 @@ color: #000000;
 		
 			<div class="content-area">
 			<br>
-				<textarea name="content" rows="22" cols="80" style="resize:none;" required></textarea>
+				<textarea name="content" rows="12" cols="60" style="resize:none;" required>
+				</textarea>
 			<br>
 			</div>
 			

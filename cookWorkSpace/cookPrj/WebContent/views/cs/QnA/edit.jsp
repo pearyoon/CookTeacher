@@ -132,7 +132,7 @@ color: #000000;
 	
 			<div class="content-area">
 			<br>
-				<textarea name="content" rows="20" cols="80" style="resize:none;" required>
+				<textarea name="content" rows="12" cols="60" style="resize:none;" required>
 				<%= QNAvo.getContent() %>
 				</textarea>
 			<br><br>

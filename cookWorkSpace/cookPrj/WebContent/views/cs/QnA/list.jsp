@@ -47,7 +47,7 @@ color: #000000;
 
 /* 문의 리스트 */
 .title{
-	width: 600px;
+	width: 700px;
 	height: 35px;
 	margin: 0px auto;
 	display: grid;
@@ -59,7 +59,7 @@ color: #000000;
 	font-weight: bold;
 }
 .list{
-	width: 600px;
+	width: 700px;
 	height: 350px;
 	margin: 0px auto;
 	display: grid;
