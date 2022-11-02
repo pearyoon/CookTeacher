@@ -3,7 +3,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
 <%
 	List<ReviewVo> rvoList = (List<ReviewVo>)request.getAttribute("rvoList");
 	PageVo pv = (PageVo)request.getAttribute("pv");
@@ -23,6 +24,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/modify.css">
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/product/myReview.css">
+
 
 <style>
 #list-menu>li:nth-child(4)>a{
@@ -93,7 +95,7 @@
 				                    </tr>
 				                    </thead>
 				                    <tbody>
-				                    
+					                     
 								    	<%for(int i = 0; i < rvoList.size(); ++i){%>
 					               			<tr>
 		                                        <td>
@@ -105,6 +107,10 @@
 						            			
 					                        </tr>
 										<%}%>
+										
+										
+										
+			                    	
 										<%-- <tr>
 											<td>${review.content}</td>
 											<th>${review.reviewNo}</th>
@@ -115,6 +121,9 @@
 				                </table>
 				                <br>
 			                	<div id="page-area" style="text-align: center;">
+				                    	<c:if test="${empty rvoList}">
+					                        <div>작성 내역 없음</div>
+					                     </c:if>
 						        	<%if(pv.getStartPage() != 1){%>
 							        	<a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getStartPage()-1%>" class="btn">이전</a>
 						        	<%}%>
