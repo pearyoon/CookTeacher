@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>집밥쿡선생 :: 공지사항</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/notice/edit.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
