@@ -17,7 +17,7 @@
 .header-wrapper{
   display: flex;
   align-items: center;
-  margin-right: 230px;
+  margin-right: 330px;
 }
 
 .explain{
@@ -27,13 +27,19 @@
 }
 
 .dropdown{
-  width: 150px;
-  height: 50px;
+  width: 100px;
+  height: 30px;
   text-align: left;
+  font-size: 16px;
+  margin-top: 7px;
   border: 1px solid rgb(200, 200, 200);
   border-radius: 5px;
   cursor: pointer;
   display: inline-block;
+}
+
+.dropdown>section{
+  font-size: 16px;
 }
 
 .dropdown:focus{
