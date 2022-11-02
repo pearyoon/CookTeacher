@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
-
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 <link rel="stylesheet" href="/cookTeacher/resources/css/order/orderList.css">
 
 </head>
@@ -31,12 +31,12 @@
                     <div id="inner">
                         <ul id="list-menu">
                             <li class="non-clcik">
-                                <a href="/cookTeacher/mypage/member/check">
+                                <a href="<%=root %>/login/mypage/member/check">
                                     회원정보
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="/cookTeacher/order/mypage/orderlist">
+                                <a href="<%=root %>/order/mypage/orderlist">
                                     주문내역
                                 </a>
                             </li>
@@ -116,7 +116,12 @@
                                 </div>
                                 <div class="order-right">
                                     <div class="status">
-                                        <span>결제완료</span>
+                                        <c:if test="${orderItem.cancelYN eq 'Y'}">
+                                    <span class="shipping">결제취소</span>
+                                    </c:if>
+                                    <c:if test="${orderItem.cancelYN eq 'N'}">
+                                        <span class="shipping">결제완료</span>
+                                    </c:if>
                                     </div>
                                     <div class="ask">
                                         <button class="ask-btn"><a href="<%=root%>/cs/QnA/write">1:1문의하기</a></button>
@@ -129,9 +134,9 @@
                     </div>
                 </div>
             </div>
+            <%@include file="/views/common/footer.jsp"%>
         </div>
     </div>
-    <%@include file="/views/common/footer.jsp" %>
 
     <script>
 

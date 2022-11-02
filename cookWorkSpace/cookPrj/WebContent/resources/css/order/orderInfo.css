@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "NanumSquareRound" !important;
 }
 
 #container{
@@ -70,19 +71,24 @@
 .member-info>input{
   width: 400px;
   height: 25px;
+  border-radius: 4px;
+  border: 1px solid rgb(200, 200, 200);
   padding: 0;
   padding-left: 5px;
 }
 
 .search{
-  background-color: transparent;
-  border: 1px solid #255D00;
+  background-color: #255D00;
+  border: none;
+  color: white;
   margin-left: 10px;
+  padding: 4px 6px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
 .search:hover{
-  background: rgb(200, 200, 200);
+  background: #FFD335;
   color: black;
 }
 
@@ -91,10 +97,10 @@
 }
 
 .dropdown{
-  width: 500px;
+  width: 400px;
   height: 30px;
   text-align: left;
-  padding-left: 15px;
+  padding-left: 5px;
   border: 1px solid rgb(200, 200, 200);
   background-color: transparent;
   cursor: pointer;
@@ -211,21 +217,28 @@
 .save-point{
   display: inline-block;
   width: 100px;
+  height: 24px;
   margin-right: 5px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 4px;
   padding: 3px;
 }
 
 .total-dd>button{
-  font-size: 5px;
-  padding: 4px 4px;
-  background-color: transparent;
+  display: inline-block;
+  font-size: 12px;
+  height: 24px;
+  padding: 5px 5px;
+  background-color: #255D00;
+  color: white;
   border-radius: 4px;
   border: 1px solid  rgb(200, 200, 200);
   cursor: pointer;
   }
 
-.total-dd>button:active{
-  background-color:rgb(200, 200, 200);
+.total-dd>button:hover{
+  background: #FFD335;
+  color: black;
 }
 
 .payment-method{
@@ -297,13 +310,14 @@ input[type="radio"] + label {
   height: 350px;
   border: 1px solid gray;
   border-radius: 13px;
-  margin-top: 65px;
+  margin-top: 40px;
   margin-left: 30px;
+  margin-bottom: 30px;
 }
 
 #order-price .price{
   width: 100%;
-  height: 50px;
+  height: 40px;
   font-size: 16px;
   padding: 0 12px;
   display: flex;
@@ -346,7 +360,7 @@ input[type="radio"] + label {
   font-weight: 700;
 }
 
-#order-price>input{
+#order-price>button{
   width: 90%;
   margin: 0 auto;
   display: block;
@@ -361,7 +375,7 @@ input[type="radio"] + label {
   cursor: pointer;
 }
 
-#order-price>input:hover{
+#order-price>button:hover{
   background: #FFD335;
   color: black;
 }

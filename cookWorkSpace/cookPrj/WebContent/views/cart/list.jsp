@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
     <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/cart/list.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 

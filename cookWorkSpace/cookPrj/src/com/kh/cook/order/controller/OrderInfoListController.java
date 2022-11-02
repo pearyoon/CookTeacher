@@ -32,9 +32,10 @@ public class OrderInfoListController extends HttpServlet{
 		// 회원번호 가져오기
 		String no = loginMember.getNo();
 		
-		
+		// 주문 정보 조회하기
 		List<OrderListVo> orderList = new OrderService().selectOrderInfoList(no);
 		
+		// JSP로 보내주기
 		req.setAttribute("orderList", orderList);
 		req.getRequestDispatcher("/views/order/orderList.jsp").forward(req, resp);
 		

@@ -85,15 +85,19 @@ function changeCnt(prodNo, var_cnt){
               prodNo,
               cnt: changed_cnt // 넘겨줄 데이터
           },
-          success: function(){    // 성공하면 실행할 함수
-            $(`input[value=`+ prodNo +`]`).siblings('.count-wrapper').find('.count').text(changed_cnt)
+          success: function(result){    // 성공하면 실행할 함수
+            console.log(result)
+            if (result != 0) {
+                $(`input[value=`+ prodNo +`]`).siblings('.count-wrapper').find('.count').text(changed_cnt)
+    
+                let itemPrice = $(`input[value=`+ prodNo +`]`).siblings('input[name=itemPrice]').val();
+                let totalPrice = itemPrice * changed_cnt;
+                $(`input[value=`+ prodNo +`]`).siblings('input[name=price]').val(totalPrice)
+                $(`input[value=`+ prodNo +`]`).siblings('.price').find('span').text(totalPrice.toLocaleString());
+    
+                cookCheck();
 
-            let itemPrice = $(`input[value=`+ prodNo +`]`).siblings('input[name=itemPrice]').val();
-            let totalPrice = itemPrice * changed_cnt;
-            $(`input[value=`+ prodNo +`]`).siblings('input[name=price]').val(totalPrice)
-            $(`input[value=`+ prodNo +`]`).siblings('.price').find('span').text(totalPrice.toLocaleString());
-
-            cookCheck();
+            }
           }
       });
   }
