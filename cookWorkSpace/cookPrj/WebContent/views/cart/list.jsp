@@ -60,7 +60,7 @@
                                             <img src="<c:url value="/resources/img/product/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
                                         </div>
                                         <div class="product-name">
-                                            <a href="#">${cartItem.name}</a>
+                                            <a href="<c:url value="/product/detail/productDetail?no=${cartItem.prodNo}"/>" alt="${cartItem.name}">${cartItem.name}</a>
                                         </div>
                                         <div class="count-wrapper">
                                             <button type="button" class="minus" onclick="changeCnt(${cartItem.prodNo}, -1)"></button>

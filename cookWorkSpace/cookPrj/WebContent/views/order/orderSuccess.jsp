@@ -33,7 +33,7 @@
                         </div>
                         <div class="order-price">
                             <p>결제 금액 : </p>
-                            <p>${totalPrice}원</p>
+                            <p><fmt:formatNumber value="${totalPrice}" pattern="#,###"/>원</p>
                         </div>
                         <div class="notice">
                             <span>&#183; [배송준비중] 이전일 때 주문내역 상세페이지에서 주문 취소가 가능합니다.</span>

@@ -75,6 +75,7 @@
   background-image: url(../../img/icons/장바구니.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-position-y: 100px;
 }
 
 .none-cart>p{

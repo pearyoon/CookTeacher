@@ -36,7 +36,7 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/cookTeacher/order/mypage/orderlist">
                                     주문내역
                                 </a>
                             </li>
@@ -51,12 +51,12 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/login/cs/QnAhistory">
                                     문의내역
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/cs/QnA/write">
                                     문의하기
                                 </a>
                             </li>
@@ -80,9 +80,10 @@
                     <div id="board-container">
                         <div class="empty">
                             <c:if test="${empty orderList}">
-                                    <div class="none-cart">
-                                        <p>주문내역이 없습니다.</p></div>
-                                </c:if>
+                                <div class="none-cart">
+                                    <p>주문내역이 없습니다.</p>
+                                </div>
+                            </c:if>
                         </div>
                         <c:forEach items="${orderList}" var="orderItem">
                             <fmt:parseDate value="${orderItem.payDate}" var="payDate" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -110,7 +111,7 @@
                                     </dl>
                                     <dl class="order-dl">
                                         <dt class="order-dt">결제금액</dt>
-                                        <dd class="order-dd">${orderItem.sum}원</dd>
+                                        <dd class="order-dd"><fmt:formatNumber value="${orderItem.sum}" pattern="#,###"/>원</dd>
                                     </dl>
                                 </div>
                                 <div class="order-right">
@@ -129,8 +130,8 @@
                 </div>
             </div>
         </div>
-        <%@include file="/views/common/footer.jsp" %>
     </div>
+    <%@include file="/views/common/footer.jsp" %>
 
     <script>
 

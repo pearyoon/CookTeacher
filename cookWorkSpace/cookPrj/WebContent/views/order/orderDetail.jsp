@@ -1,3 +1,4 @@
+<%@page import="com.kh.cook.order.vo.OrderListVo"%>
 <%@page import="com.kh.cook.order.vo.PaymentVo"%>
 <%@page import="com.kh.cook.order.vo.OrderDetailVo"%>
 <%@page import="java.util.List"%>
@@ -40,7 +41,7 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="/cookTeacher/order/mypage/orderlist/orderDetail">
+                                <a href="/cookTeacher/order/mypage/orderlist">
                                     주문내역
                                 </a>
                             </li>
@@ -55,12 +56,12 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/login/cs/QnAhistory">
                                     문의내역
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/cs/QnA/write">
                                     문의하기
                                 </a>
                             </li>
@@ -82,15 +83,15 @@
                         
                     <div>
                     <div id="board-container"> 
+                            <c:forEach items="${orderlist}" var="orderItem">
                         <div class="board-wrapper">
                             <div class="thumb">
-                                <img src="../../resources/img/product/청양고추.jpg" alt="청양고추">
+                               <img src="<c:url value="/resources/img/product/" />${orderItem.imgPath}" alt="${orderItem.name}">
                             </div>
-                            <c:forEach items="${orderlist}" var="orderItem">
                             <div class="productName">
-                                <a href="">청양고추</a>
+                                <a href="<c:url value="/product/detail/productDetail?no=${orderItem.prodNo}"/>" alt="${orderItem.name}">${orderItem.name}</a>
                                 <div class="productPrice">
-                                    <span class="price"><fmt:formatNumber value="${orderItem.getPrice()}" pattern="#,###"/>원</span>
+                                    <span class="price"><fmt:formatNumber value="${Integer.parseInt(orderItem.getPrice()) * Integer.parseInt(orderItem.cnt)}" pattern="#,###"/>원</span>
                                     <span class="cnt">${orderItem.cnt}개</span>
                                 </div>
                                 
@@ -139,7 +140,7 @@
                                 </li>
                                 <li class="list">
                                     <span class="listName">적립금액</span>
-                                    <span class="pay-info">5<span>원</span></span>
+                                    <span class="pay-info">${orderInfo.point}<span>원</span></span>
                                 </li>
                                 <li class="list">
                                     <span class="listName">결제방법</span>

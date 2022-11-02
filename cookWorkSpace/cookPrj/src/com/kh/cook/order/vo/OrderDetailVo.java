@@ -6,13 +6,15 @@ public class OrderDetailVo {
 	
 	}
 
-	public OrderDetailVo(String no, String prodNo, String orderNo, String cnt, String price) {
-		super();
+	public OrderDetailVo(String no, String prodNo, String orderNo, String cnt, String price, String name,
+			String imgPath) {
 		this.no = no;
 		this.prodNo = prodNo;
 		this.orderNo = orderNo;
 		this.cnt = cnt;
 		this.price = price;
+		this.name = name;
+		this.imgPath = imgPath;
 	}
 
 	private String no;
@@ -20,6 +22,8 @@ public class OrderDetailVo {
 	private String orderNo;
 	private String cnt;
 	private String price;
+	private String name;
+	private String imgPath;
 	
 	public String getNo() {
 		return no;
@@ -61,11 +65,28 @@ public class OrderDetailVo {
 		this.price = price;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderDetailVo [no=" + no + ", prodNo=" + prodNo + ", orderNo=" + orderNo + ", cnt=" + cnt + ", price="
-				+ price + "]";
+				+ price + ", name=" + name + ", imgPath=" + imgPath + "]";
 	}
+
 	
 	
 }

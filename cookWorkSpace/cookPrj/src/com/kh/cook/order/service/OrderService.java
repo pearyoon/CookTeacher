@@ -70,8 +70,10 @@ public class OrderService {
 		}
 		// 포인트
 		if(point != null && !point.equals("")) {
-			totalPrice -= Integer.parseInt(point);
+			int usePoint = totalPrice - Integer.parseInt(point);
+			int memberPoint = cartMember.getPoint() - usePoint;
 		}
+		
 		
 		double rate = 0;
 		
@@ -93,6 +95,7 @@ public class OrderService {
 		}
 		
 		int earn = (int)(totalPrice * rate);
+		int totalPoint = cartMember.getPoint() + earn;
 	
 		Connection conn = getConnection();
 		
