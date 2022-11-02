@@ -20,10 +20,12 @@ public class BobCmtEditController extends HttpServlet{
 		
 		//데이터 꺼내기
 		String comment = req.getParameter("comment");
+		String cmtNo = req.getParameter("cmtNo");
 		String bobNo = req.getParameter("bobNo");
 		
 		BobCmtVo vo = new BobCmtVo();
 		vo.setCmt(comment);
+		vo.setCmtNo(cmtNo);
 		
 		//디비
 		int result = new BobCmtService().edit(vo);

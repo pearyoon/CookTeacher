@@ -234,6 +234,31 @@ public class BobstoryService {
 		return result;
 	}
 
+	//좋아요 순 조회
+	public List<BobstoryVo> selectLikeList(PageVo pv) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<BobstoryVo> likeList = dao.selectLikeList(conn, pv);
+		
+		JDBCTemplate.close(conn);
+		
+		return likeList;
+		
+	}
+
+	//조회순 조회
+	public List<BobstoryVo> selectViewList(PageVo pv) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<BobstoryVo> viewList = dao.selectViewList(conn, pv);
+		
+		JDBCTemplate.close(conn);
+		
+		return viewList;
+	}
+
 
 	
 

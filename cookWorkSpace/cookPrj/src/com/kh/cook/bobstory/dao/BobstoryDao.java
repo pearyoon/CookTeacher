@@ -182,7 +182,7 @@ public class BobstoryDao {
 	public int insertAttachment(Connection conn, AttachmentVo avo) {
 		//SQL
 		
-		String sql = "INSERT INTO BOBATTACHMENT ( NO ,BOARD_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_ATTACHMENT_NO.NEXTVAL , SEQ_BOBSTORY_NO.CURRVAL , ? , ? , ? )";
+		String sql = "INSERT INTO BOBATTACHMENT ( NO ,BOARD_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_BOBATTACHMENT_NO.NEXTVAL , SEQ_BOBSTORY_NO.CURRVAL , ? , ? , ? )";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -559,6 +559,139 @@ public class BobstoryDao {
 		}
 		
 		return voList;
+		
+	}
+
+	//좋아요 순 조회
+	public List<BobstoryVo> selectLikeList(Connection conn, PageVo pv) {
+		//sql
+		
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , T.* FROM (SELECT B.NO ,MC.MENU_TYPE AS CATEGORY ,B.TITLE ,B.CONTENT ,B.ENROLL_DATE ,B.DELETE_YN ,B.C_LIKE ,B.MODIFY_DATE ,B.VIEW_COUNT ,B.REPORT_YN ,M.NICK AS WRITER FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO JOIN MENU_CATE MC ON B.CATEGORY = MC.MENU_CATE_NO WHERE B.DELETE_YN = 'N' AND B.REPORT_YN = 'N' ORDER BY B.C_LIKE DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<BobstoryVo> likeList = new ArrayList<BobstoryVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
+			int end = start + pv.getBoardLimit() + 1;
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				//rs -> vo
+				String no= rs.getString("NO");
+				String writer= rs.getString("WRITER");
+				String category= rs.getString("CATEGORY");
+				String title= rs.getString("TITLE");
+				String content= rs.getString("CONTENT");
+				String enrollDate= rs.getString("ENROLL_DATE").substring(0, 10);
+				String deleteYn= rs.getString("DELETE_YN");
+				String cLike= rs.getString("C_LIKE");
+				String modifyDate= rs.getString("MODIFY_DATE");
+				String viewCount= rs.getString("VIEW_COUNT");
+				String reportYn= rs.getString("REPORT_YN");
+				
+				//vo -> list
+				BobstoryVo vo = new BobstoryVo();
+				vo.setNo(no);
+				vo.setWriter(writer);
+				vo.setCategory(category);
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setEnrollDate(enrollDate);
+				vo.setDeleteYn(deleteYn);
+				vo.setcLike(cLike);
+				vo.setModifyDate(modifyDate);
+				vo.setViewCount(viewCount);
+				vo.setReportYn(reportYn);
+				
+				
+				likeList.add(vo);
+				
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return likeList;
+		
+	}
+
+	//조회순 조회
+	public List<BobstoryVo> selectViewList(Connection conn, PageVo pv) {
+		
+		String sql = "SELECT * FROM ( SELECT ROWNUM AS RNUM , T.* FROM (SELECT B.NO ,MC.MENU_TYPE AS CATEGORY ,B.TITLE ,B.CONTENT ,B.ENROLL_DATE ,B.DELETE_YN ,B.C_LIKE ,B.MODIFY_DATE ,B.VIEW_COUNT ,B.REPORT_YN ,M.NICK AS WRITER FROM BOBSTORY B JOIN MEMBER M ON B.WRITER = M.NO JOIN MENU_CATE MC ON B.CATEGORY = MC.MENU_CATE_NO WHERE B.DELETE_YN = 'N' AND B.REPORT_YN = 'N' ORDER BY B.VIEW_COUNT DESC ) T ) WHERE RNUM BETWEEN ? AND ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<BobstoryVo> viewList = new ArrayList<BobstoryVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int start = (pv.getCurrentPage() - 1) * pv.getBoardLimit() + 1;
+			int end = start + pv.getBoardLimit() + 1;
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				//rs -> vo
+				String no= rs.getString("NO");
+				String writer= rs.getString("WRITER");
+				String category= rs.getString("CATEGORY");
+				String title= rs.getString("TITLE");
+				String content= rs.getString("CONTENT");
+				String enrollDate= rs.getString("ENROLL_DATE").substring(0, 10);
+				String deleteYn= rs.getString("DELETE_YN");
+				String cLike= rs.getString("C_LIKE");
+				String modifyDate= rs.getString("MODIFY_DATE");
+				String viewCount= rs.getString("VIEW_COUNT");
+				String reportYn= rs.getString("REPORT_YN");
+				
+				//vo -> list
+				BobstoryVo vo = new BobstoryVo();
+				vo.setNo(no);
+				vo.setWriter(writer);
+				vo.setCategory(category);
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setEnrollDate(enrollDate);
+				vo.setDeleteYn(deleteYn);
+				vo.setcLike(cLike);
+				vo.setModifyDate(modifyDate);
+				vo.setViewCount(viewCount);
+				vo.setReportYn(reportYn);
+				
+				
+				viewList.add(vo);
+				
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return viewList;
 		
 	}
 

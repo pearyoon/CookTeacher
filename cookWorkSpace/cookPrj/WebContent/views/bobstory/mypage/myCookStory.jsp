@@ -76,7 +76,7 @@
 				                    <tr id="table-head">
 				                        <th scope="col" class="th-num">번호</th>
 				                        <th scope="col" class="th-title">작성자</th>
-				                        <th scope="col" class="th-content">내용</th>
+				                        <th scope="col" class="th-content">제목</th>
 				                        <th scope="col" class="th-date">작성일시</th>
 				                    </tr>
 				                    </thead>
@@ -86,7 +86,7 @@
 					               			<tr>
 		                                        <td><%= voList.get(i).getNo() %></td>
 		                                        <td><%= voList.get(i).getWriter() %></td>
-		                                        <td><%= voList.get(i).getContent() %></td>
+		                                        <td><a href="<%=root%>/bobstory/detail?bno=<%=voList.get(i).getNo() %>"><%=voList.get(i).getTitle() %></a></td>
 		                                        <td><%= voList.get(i).getEnrollDate() %></td>
 						            			
 					                        </tr>

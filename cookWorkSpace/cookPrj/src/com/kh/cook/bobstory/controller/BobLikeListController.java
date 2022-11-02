@@ -13,17 +13,14 @@ import com.kh.cook.bobstory.service.BobstoryService;
 import com.kh.cook.bobstory.vo.BobstoryVo;
 import com.kh.cook.bobstory.vo.PageVo;
 
-@WebServlet(urlPatterns = "/bobstory/list")
-public class BobListController extends HttpServlet{
+@WebServlet(urlPatterns = "/bobstory/list/like")
+public class BobLikeListController extends HttpServlet{
 
-	//게시판 조회
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		
+		String cLike = req.getParameter("cLike");
 		
-		String category = req.getParameter("category");
-
 		//페이징처리
 		int listCount;
 		int currentPage;
@@ -66,7 +63,7 @@ public class BobListController extends HttpServlet{
 		
 		//디비 다녀오기
 		
-		 List<BobstoryVo> voList = new BobstoryService().selectList(pv);
+		 List<BobstoryVo> voList = new BobstoryService().selectLikeList(pv);
 		
 		req.setAttribute("voList", voList);
 		req.setAttribute("pv", pv);
@@ -74,6 +71,4 @@ public class BobListController extends HttpServlet{
 		//화면 선택
 		req.getRequestDispatcher("/views/bobstory/list.jsp").forward(req, resp);
 	}
-
-	
 }

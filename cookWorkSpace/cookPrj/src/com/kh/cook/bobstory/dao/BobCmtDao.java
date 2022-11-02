@@ -44,7 +44,7 @@ public class BobCmtDao {
 	public List<BobCmtVo> selectList(Connection conn) {
 		//sql
 		
-		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER";
+		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER WHERE DELETE_YN = 'N'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -161,6 +161,46 @@ public class BobCmtDao {
 		}
 		
 		return result;
+	}
+
+	//댓글 셀렉트
+	public List<BobCmtVo> selectBobCmt(Connection conn) {
+		
+		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER JOIN BOBSTORY B ON B.NO = BC.POST_NO WHERE B.NO = BC.POST_NO";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BobCmtVo> cmtList = new ArrayList<BobCmtVo>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs= pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String cmtNo = rs.getString("CMT_NO");
+				String postNo = rs.getString("POST_NO");
+				String writer = rs.getString("WRITER");
+				String cmt = rs.getString("CMT");
+				
+				BobCmtVo vo = new BobCmtVo();
+				vo.setCmtNo(cmtNo);
+				vo.setPostNo(postNo);
+				vo.setWriter(writer);
+				vo.setCmt(cmt);
+				
+				cmtList.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return cmtList;
+		
 	}
 
 

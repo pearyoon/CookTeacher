@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.cook.bobstory.service.BobCmtService;
 import com.kh.cook.bobstory.service.BobstoryService;
 import com.kh.cook.bobstory.vo.AttachmentVo;
@@ -30,6 +31,7 @@ public class BobDetailController extends HttpServlet{
 		BobstoryVo vo = new BobstoryService().selectOne(bno);
 		AttachmentVo attachmentVo = new BobstoryService().selectAttachment(bno);
 		List<BobCmtVo> cvo = new BobCmtService().selectBobCmt(bno);
+		System.out.println("cvo ::: "+cvo);
 		//cmtvo 를 가져와서 cvo.postno랑 일치 시켜야함
 		
 		//화면 선택

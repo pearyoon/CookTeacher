@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.kh.cook.bobstory.vo.BobCmtVo"%>
 <%@page import="com.kh.cook.bobstory.vo.AttachmentVo"%>
 <%@page import="com.kh.cook.bobstory.vo.BobstoryVo"%>
@@ -12,8 +13,7 @@
 	if(attVo == null){
 		attVo = new AttachmentVo();
 	}
-	BobCmtVo cvo = (BobCmtVo)request.getAttribute("cmtvo");
-
+	List<BobCmtVo> cvo = (List<BobCmtVo>)request.getAttribute("cvo"); 
 %>  
 <!DOCTYPE html>
 <html>
@@ -183,20 +183,20 @@
 									},
 									success : function(result){
 										const objList = JSON.parse(result);
-										console.log(objList);
+										console.log(objList.length);
 										for(var i = 0; i < objList.length; i++){
-											$('#cmt_wrap').eq(i).prepend(
+											$('#cmt_wrap').eq(0).prepend(
 													'<div class="cmt_box">'
 													+'<div class="cmt2Writer" style="font-size : 14px; height:40px; line-height:30px">' + objList[i].writer + '</div>'
 													+'<div class="cmt2Content" style = "height:70px; borderL:0; line-height:50px" >' + objList[i].cmt + '</div>'
 													+'<span><a href="/cookTeacher/bobstory/cmt/edit">'+ '수정' + '</a></span>'
 													+' '
 													+'<span><a href="/cookTeacher/bobstory/cmt/delete">'+ '삭제' + '</a></span>'
-													+'<div style="border-bottom:1px solid #aaa; width:860px;"></div>'
+													+'<div style="border-bottom:1px solid #aaa; width:860px; height:5px;"></div>'
 													+'</div>'
 													
 											);
-	
+											console.log(objList[i].writer);
 										}
 										
 										console.log('성공');
@@ -211,14 +211,17 @@
 				</div><!-- cmt container-->
 				<br>
 				<div id="cmt_wrap">
-					<%while(vo.getNo() == cvo.getPostNo()){ %>
+					<%for(int i = 0; i < cvo.size(); i++){ %>
+						<%if(cvo.get(i).getPostNo() == vo.getNo()){ %>
 							<div class="cmt_box">
-							<div class="cmt2Writer"><%=cvo.getWriter() %></div></div>
-							<div class="cmt2Content"><%=cvo.getCmt() %></div>
+							<input type="hidden" value="<%=cvo.get(i).getCmtNo()%>" name="cmtNo">
+							<div class="cmt2Writer"><%=cvo.get(i).getWriter() %></div></div>
+							<div class="cmt2Content"><%=cvo.get(i).getWriter() %></div>
 							<button id="editbtn" onclick="location.href='/cookTeacher/bobstory/cmt/edit'">수정</button>
 							<button id="deletebtn" onclick="location.href='/cookTeacher/bobstory/cmt/delete'">삭제</button>
 							&nbsp;<span><a href="/cookTeacher/bobstory/cmt/edit">수정</a></span>
 							<span><a href="/cookTeacher/bobstory/cmt/delete">삭제</a></span>
+						<%} %>
 					<%} %>
 				</div>
 				
