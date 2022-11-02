@@ -95,5 +95,19 @@ public class BobCmtService {
 		return list;
 		
 	}
+
+	//게시글 조회하면서 댓글 조회
+	public List<BobCmtVo> selectBobCmt(String bno) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<BobCmtVo> list = new BobCmtDao().selectBobCmt(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+		
+		
+	}
 	
 }

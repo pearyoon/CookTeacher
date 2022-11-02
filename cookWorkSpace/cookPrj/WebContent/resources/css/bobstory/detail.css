@@ -18,6 +18,10 @@
 
 /* 쿡 스톨히 */
 
+#main-wrap{
+    margin-bottom: 50px;
+}
+
 div>p{
     margin-left: 430px;
     width: 125px;
@@ -191,6 +195,11 @@ div.cmt_txt{
     border: 2px solid #FFD335;
 }
 
+#cmt_wrap{
+    height: 100%;
+    overflow: hidden;
+}
+
 .cmt_box{
     width: 1000px;
     height: 150px;
@@ -203,7 +212,7 @@ div.cmt_txt{
     line-height: 30px;
 }
 
-.cmt2Comment{
+div.cmt2Comment{
     height: 70px;
     width: 900px;
     border: 0;
