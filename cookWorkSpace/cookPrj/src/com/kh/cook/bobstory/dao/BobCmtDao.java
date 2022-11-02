@@ -41,22 +41,26 @@ public class BobCmtDao {
 	}
 
 	//댓글 목록 조회
-	public List<BobCmtVo> selectList(Connection conn) {
+	public BobCmtVo selectList(Connection conn, BobCmtVo cmtvo) {
 		//sql
 		
-		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER WHERE DELETE_YN = 'N'";
+		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER WHERE DELETE_YN = 'N' AND BC.POST_NO = ? AND BC.WRITER =? AND BC.CMT = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<BobCmtVo> cmtList = new ArrayList<BobCmtVo>();
+		BobCmtVo vo = new BobCmtVo();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setString(1, cmtvo.getPostNo());
+			pstmt.setString(2, cmtvo.getWriter());
+			pstmt.setString(3, cmtvo.getCmt());
+			
 			
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				//rs -> vo
 				String cmtNo = rs.getString("CMT_NO");
 				String postNo = rs.getString("POST_NO");
@@ -64,14 +68,12 @@ public class BobCmtDao {
 				String cmt = rs.getString("CMT");
 				
 				//vo -> list
-				BobCmtVo vo = new BobCmtVo();
+				vo = new BobCmtVo();
 				vo.setCmtNo(cmtNo);
 				vo.setPostNo(postNo);
 				vo.setWriter(writer);
 				vo.setCmt(cmt);
 
-				
-				cmtList.add(vo);
 			}
 			
 		} catch (SQLException e) {
@@ -81,7 +83,7 @@ public class BobCmtDao {
 			JDBCTemplate.close(pstmt);
 		}
 		
-		return cmtList;
+		return vo;
 	}
 
 	//댓글 갯수 조회
@@ -164,9 +166,9 @@ public class BobCmtDao {
 	}
 
 	//댓글 셀렉트
-	public List<BobCmtVo> selectBobCmt(Connection conn) {
+	public List<BobCmtVo> selectBobCmt(Connection conn, String bno) {
 		
-		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER JOIN BOBSTORY B ON B.NO = BC.POST_NO WHERE B.NO = BC.POST_NO";
+		String sql = "SELECT BC.CMT_NO ,BC.POST_NO ,M.NICK AS WRITER ,BC.CMT FROM BOBSTORY_CMT BC JOIN MEMBER M ON M.NO = BC.WRITER JOIN BOBSTORY B ON B.NO = BC.POST_NO WHERE B.NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -174,6 +176,8 @@ public class BobCmtDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bno);
 			
 			rs= pstmt.executeQuery();
 			

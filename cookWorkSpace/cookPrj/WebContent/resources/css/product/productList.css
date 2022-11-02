@@ -78,3 +78,8 @@ a:hover {
 .main-menu-bar-items:hover>a{
 	color: white;
 }
+
+/*카피*/
+.main-menu-bar-items>a {
+    font-weight: bold;
+}

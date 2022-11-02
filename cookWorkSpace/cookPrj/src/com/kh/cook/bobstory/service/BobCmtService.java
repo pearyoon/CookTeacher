@@ -84,11 +84,11 @@ public class BobCmtService {
 	}
 
 	//댓글 리스트 조회
-	public List<BobCmtVo> selectBobCmtList() {
+	public BobCmtVo selectBobCmtList(BobCmtVo cmtvo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		List<BobCmtVo> list = new BobCmtDao().selectList(conn);
+		BobCmtVo list = new BobCmtDao().selectList(conn, cmtvo);
 		
 		JDBCTemplate.close(conn);
 		
@@ -101,7 +101,7 @@ public class BobCmtService {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		List<BobCmtVo> list = new BobCmtDao().selectBobCmt(conn);
+		List<BobCmtVo> list = new BobCmtDao().selectBobCmt(conn, bno);
 		
 		JDBCTemplate.close(conn);
 		

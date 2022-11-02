@@ -1,7 +1,14 @@
 @import "/cookTeacher/resources/css/reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+*{
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
 /* 헤더 전체 박스 */
 div{
     box-sizing: border-box;
+    
 }
 
 button{
