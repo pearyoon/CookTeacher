@@ -137,10 +137,10 @@ color: black;
 						  if (result.isConfirmed) {
 							  
 							  
-							    Swal.fire(
-							      '등록하였습니다!',
-						    	  'success'
-						  	  ).then( ()=> {document.querySelector('#fff').submit();} );
+							  Swal.fire({
+		                            icon: 'success',
+		                            text: '등록되었습니다.',
+		                      }).then( ()=> {document.querySelector('#fff').submit();} );
 						  }
 					  });
 					

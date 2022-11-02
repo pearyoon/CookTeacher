@@ -97,7 +97,7 @@ color: #000000;
 			<div id="qna">FAQ 자주묻는질문</div>
 		</div>
 		
-		<form action="" method="post">
+		<form id="fff" action="" method="post" onsubmit="return upload();">
 			<div class="title-area">
 				<!-- 문의 작성 -->
 					제목 : <input type="text" id="title" name="title"  value="<%= FAQvo.getTitle() %>">
@@ -132,10 +132,10 @@ color: #000000;
 					  if (result.isConfirmed) {
 						  
 						  
-						    Swal.fire(
-						      '수정하였습니다!',
-					    	  'success'
-					  	  ).then( ()=> {document.querySelector('#fff').submit();} );
+						  Swal.fire({
+	                            icon: 'success',
+	                            text: '수정되었습니다.',
+	                      }).then( ()=> {document.querySelector('#fff').submit();} );
 					  }
 				  });
 				

@@ -46,6 +46,8 @@
                         <span>목록</span>
                     </button>
                 </div>
+                
+                <%	if(loginMember != null && loginMember.getId().equals("admin01")){ %>
                 <div class="update-btn">
                     <button id="edit" type="button">
                         <span>수정</span>
@@ -54,6 +56,7 @@
                         <span>삭제</span>
                     </button>
                 </div>
+                <% } %>
 
 
             </div>
