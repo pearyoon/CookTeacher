@@ -65,7 +65,7 @@
     		
     		let memberId = $('#memberId').val();
             let memberPwd = $('#memberPwd').val();
-            let idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+            let idReg = /^(?=.*[a-z])(?=.*[0-9]).{6,20}$/;;
             let pwdReg = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
             
             if(!idReg.test(memberId) && !pwdReg.test(memberPwd)){

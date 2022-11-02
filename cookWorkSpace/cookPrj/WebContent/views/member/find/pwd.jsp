@@ -79,7 +79,7 @@
         $('#memberId').keyup(function(){
 
             const memberId = $('#memberId').val();
-            const idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+            const idReg = /^(?=.*[a-z])(?=.*[0-9]).{6,20}$/;;
             
             if(!idReg.test(memberId)){
                 $('#hidden-name').text("가입시 등록한 아이디를 입력해주세요.");

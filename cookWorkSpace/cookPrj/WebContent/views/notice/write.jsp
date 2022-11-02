@@ -68,6 +68,7 @@
             
             if(title==""){
                 Swal.fire({
+                    confirmButtonColor: '#255D00',
                     icon: 'error',
                     text: '제목을 작성해주세요.',
                 });
@@ -77,6 +78,7 @@
             
             if(content == ""){
                 Swal.fire({
+                    confirmButtonColor: '#255D00',
                     icon: 'error',
                     text: '내용을 작성해주세요.',
                 });

@@ -55,7 +55,7 @@
 					<button type="button" >
 						<span>취소</span>
 					</button>
-					<button type="submit">
+					<button id="fff" type="submit">
 						<span>탈퇴</span>
 					</button>
 				</div>
@@ -76,6 +76,7 @@
 
 		function quitCheck(){
 
+
 			const pwdReg = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
 			const pwd = $('#memberPwd').val();
 
@@ -91,6 +92,7 @@
 		
 
 		$('button[type="button"]').click(function(){
+
 			window.location.href = "/cookTeacher/login/mypage/member/check";
 		});
 		

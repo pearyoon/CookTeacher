@@ -72,7 +72,7 @@
                 title: '현재 게시글 삭제하시겠습니까?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
+                confirmButtonColor: '#255D00',
                 cancelButtonColor: '#d33',
                 confirmButtonText: '삭제',
                 cancelButtonText: '취소' 

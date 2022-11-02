@@ -121,16 +121,34 @@
     padding: 10px 0px;
 }
 
+.join-bottom>div{
+    padding: 0px 5px;
+}
+
 button[type=submit]{
     display: block;
     padding: 0px 10px;
     text-align: center;
     overflow: hidden;
-    width: 300px;
+    width: 145px;
     height: 56px;
     border-radius: 3px;
     color: rgb(255, 255, 255);
     background-color: #255D00;
     border: 0px none; 
+    cursor: pointer;   
+}
+
+button[type=button]{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 145px;
+    height: 56px;
+    border-radius: 3px;
+    color: #255D00;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #255D00;
     cursor: pointer;   
 }

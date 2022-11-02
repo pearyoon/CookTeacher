@@ -27,7 +27,7 @@ public class MemberModifyController extends HttpServlet{
 		
 		String no = loginMember.getNo();
 		String id = req.getParameter("memberId");
-		String pwd = req.getParameter("memberPwd");
+		String pwd = req.getParameter("memberPwd1");
 		String name = req.getParameter("memberName");
 		String nick = req.getParameter("memberNick");
 		String email = req.getParameter("email");
@@ -36,13 +36,17 @@ public class MemberModifyController extends HttpServlet{
 		String detailAddr = req.getParameter("detailAddr");
 		String profile = req.getParameter("profileUrl");
 		
-		if(pwd == null) {
+		System.out.println(pwd);
+		System.out.println(loginMember.getPwd());
+		
+		if(pwd == "") {
 			pwd = loginMember.getPwd();
 		}
 		
 		if(profile == null) {
 			profile = "";
 		}
+		
 		
 		MemberVo vo = new MemberVo();
 		
@@ -55,7 +59,6 @@ public class MemberModifyController extends HttpServlet{
 		vo.setAddr(addr+","+detailAddr);
 		vo.setProfile(profile);
 		
-		System.out.println(profile);
 		
 		MemberVo updateMember = new MemberService().modify(vo);
 		
