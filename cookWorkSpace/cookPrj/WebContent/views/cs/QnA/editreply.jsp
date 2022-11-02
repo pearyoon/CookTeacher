@@ -103,7 +103,7 @@ color: black;
 			<div id="qna">QnA</div>
 		</div>
 		
-		<form id="fff" action="/cookTeacher/cs/QnA/reply" method="post" onsubmit="return upload();">
+		<form id="fff" action="/cookTeacher/cs/QnA/editreply" method="post" onsubmit="return upload();">
 			<div class="title-area">
 				<!-- 문의 작성 -->
 					제목 : RE) <%=QNAvo.getTitle() %>

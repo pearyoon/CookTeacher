@@ -344,7 +344,7 @@ public class QNADao {
 		//답변 수정
 		public int updateReplyOne(Connection conn, CSCommentVo cvo) {
 			
-			String sql = "UPDATE QNA_CMT SET CMT = ? WHERE Q_POST_NO = ?";
+			String sql = "UPDATE QNA_CMT SET CMT = ? WHERE Q_POST_NO = ? AND DELETE_YN='N'";
 			PreparedStatement pstmt = null;
 			int result = 0;
 			
@@ -372,14 +372,13 @@ public class QNADao {
 
 		public int deletereply(Connection conn, String qno) {
 
-			String sql = "UPDATE QNA_CMT SET DELETE_YN = 'Y' WHERE QNA_NO = ?";
+			String sql = "UPDATE QNA_CMT SET DELETE_YN = 'Y' WHERE Q_POST_NO = ? AND DELETE_YN='N'";
 			
 			PreparedStatement pstmt = null;
 			int result = 0;
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
-				
 				pstmt.setString(1, qno);
 				
 				result = pstmt.executeUpdate();

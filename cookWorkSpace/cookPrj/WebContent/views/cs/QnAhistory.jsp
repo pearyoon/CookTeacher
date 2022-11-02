@@ -61,32 +61,32 @@
                     <div id="inner">
                         <ul id="list-menu">
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root %>/login/mypage/member/check">
                                     회원정보
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/order/mypage/orderlist">
                                     주문내역
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/bobstory/mypage/myCookStory">
                                     쿡스토리
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/product/mypage/myReview">
                                     리뷰조회
                                 </a>
                             </li>
-                            <li class="/cookTeacher/views/cs/QnAhistory">
-                                <a href="">
+                            <li class="non-clcik">
+                                <a href="<%=root%>/login/cs/QnAhistory">
                                     문의내역
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="<%=root%>/cs/QnA/write">
                                     문의하기
                                 </a>
                             </li>
