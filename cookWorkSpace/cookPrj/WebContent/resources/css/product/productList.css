@@ -64,3 +64,13 @@ margin-bottom: 30px;
 a:hover {
   color : black;
 }
+
+.main-menu-bar-items>a{
+    font-weight: 500;
+}
+.main-menu-bar-items>a:hover{
+    color: white;
+}
+.main-menu-bar-items:hover{
+	background-color: #255D00;
+}

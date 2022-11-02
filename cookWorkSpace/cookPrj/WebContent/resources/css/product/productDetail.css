@@ -325,3 +325,14 @@ button[disabled], input[disabled] {
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1
 }
+
+#write-bttn {
+    background-color: #FFD335;
+    border-radius: 10px;
+    height: 25px;
+    letter-spacing: 1px;
+}
+#write-bttn:hover {
+    background-color: #255D00;
+    color: white;
+}

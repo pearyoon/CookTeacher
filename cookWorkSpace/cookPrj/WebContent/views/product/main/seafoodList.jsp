@@ -27,7 +27,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/product/seafoodList.css">
-
+<style>
+#here{
+	color: white;
+}
+</style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
@@ -41,8 +45,8 @@
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>
                     </div>
-                    <div class="main-menu-bar-items" style="background-color: #255D00; box-shadow: 3px 3px #FFD335;">
-                        <a href="/cookTeacher/product/main/seafoodList">해산물</a>
+                    <div id="here" class="main-menu-bar-items" style="background-color: #255D00; box-shadow: 3px 3px #FFD335;">
+                        <a href="/cookTeacher/product/main/seafoodList" style="color: white;">해산물</a>
                     </div>
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/meatEggList">육류 / 계란</a>
@@ -61,7 +65,7 @@
                     </div>
                 </div>
             
-                <hr><div style="font-size: 20px; font-weight: 700; ">[ 해산물 ]</div><hr>
+                <hr><div style="font-size: 20px; font-weight: 700; ">[ 해산물 ]&nbsp;&nbsp;<img src="/cookTeacher/resources/img/seafood.png" style="height:4%; width:4%"></div><hr>
                 <br><br>
                 <div class="main-prod-area">
                		<%for(int i = 0; i < voList.size(); ++i){%>

@@ -24,7 +24,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/product/productList.css">
-
+<style>
+.main-menu-bar-items>a{
+    font-weight: 500;
+}
+.main-menu-bar-items>a:hover{
+    color: white;
+}
+.main-menu-bar-items:hover{
+	background-color: #255D00;
+}
+</style>
 
 </head>
 <body>
@@ -59,7 +69,7 @@
                     </div>
                     
                 </div>
-                   <hr><div style="font-size: 20px; font-weight: 700; ">[ 카테고리 선택 ]</div>
+                   <hr><div style="font-size: 20px; font-weight: 700; ">[ 카테고리 선택 ]&nbsp;&nbsp;<img src="/cookTeacher/resources/img/shopping-bag.png" style="height:4%; width:4%"></div>
                 <hr>
                 <br><br>
                 <div class="main-prod-area">

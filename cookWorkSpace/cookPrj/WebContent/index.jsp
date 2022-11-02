@@ -3,7 +3,6 @@
 <%@page import="com.kh.cook.menu.vo.MenuVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%
 	List<MenuVo> recommList = (List<MenuVo>)request.getAttribute("recommList");
 %>
@@ -12,62 +11,69 @@
 <head>
 <meta charset="UTF-8">
 <title>집밥쿡선생</title>
+<!-- Bootstrap cdn 설정 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+a:hover{
+    text-decoration: none;
+}
+.main-menu-bar-items>a{
+    font-weight: 500;
+}
+.main-menu-bar-items>a:hover{
+    color: white;
+}
+.main-menu-bar-items:hover{
+	background-color: #255D00;
+}
+
+</style>
+
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
+         <!-- <h1 align="center" style="font-size: 2rem"><img src="/cookTeacher/resources/img/thumbs-up.png" style="height:3%; width:3%">&nbsp;&nbsp;쿡선생 추천</h1> --> 
             <div id="slide-area">
-<%--                  <%for(int i=0; i<3; i++ ){%>
-		                 <div class="slide-items">
-		                    <a href="cookTeacher/menu/detail?no=<%=recommList.get(i).getNo()%>">
-		                        <img src="/cookTeacher/resources/img/<%=recommList.get(i).getImgPath()%>" alt="조회수높은레시피띄어주기(레시피게시판담당)" width="1050px" height="400px">
-		                    </a>
-		                </div>
-                		
-                	<%}%> --%>
-                
-  				<div class="slide-items">
-                    <a href="">
-                        <img src="/cookTeacher/resources/img/test2.jpg" alt="조회수높은레시피띄어주기(레시피게시판담당)" width="1050px" height="400px">
-                    </a>
-                </div>
                 <div class="slide-items">
-                    <a href="">
-                        <img src="/cookTeacher/resources/img/test3.jpg" alt="조회수높은레시피띄어주기(레시피게시판담당)" width="1050px" height="400px">
-                    </a>
-                </div> 
-
+                    <div style="width: 1050px; height: 400px; ">
+                        <div id="carousel-example-generic" class="carousel slide" >
+                          <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                          </ol>
+                          <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                              <img src="/cookTeacher/resources/img/test.jpg" style="width:1050px ; height:400px; ">
+                            </div>
+                            <div class="item">
+                              <img src="/cookTeacher/resources/img/main_steak.jpg" style="width:1050px ; height:400px; ">
+                            </div>
+                            <div class="item">
+                              <img src="/cookTeacher/resources/img/cookTeacher_main_banner_yellow.png" style="width:1050px ; height:400px; ">
+                            </div>
+                          </div>
+                          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          </a>
+                          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                          </a>
+                        </div>
+                      </div>
+                </div>
             </div>
-
-            <div id="slide-btn-area">
-                <button id="slide-btn1"></button>
-                <button id="slide-btn2"></button>
-                <button id="slide-btn3"></button>
-            </div>
-    
-    
-            <script>
-                const btn1 = document.querySelector('#slide-btn1');
-                btn1.addEventListener('click',function(){
-                    document.querySelector('#slide-area').style.transform= 'translate(0)';
-                })
-                const btn2 = document.querySelector('#slide-btn2');
-                btn2.addEventListener('click',function(){
-                    document.querySelector('#slide-area').style.transform = 'translate(-1050px)';
-                })
-                
-                const btn3 = document.querySelector('#slide-btn3');
-                btn3.addEventListener('click',function(){
-                    document.querySelector('#slide-area').style.transform = 'translate(-2100px)';
-                })
-            </script>
-    
-    
             <div id="main-middle">
                 <div>레시피</div>
                 <div id="main-menu-area">
@@ -91,9 +97,9 @@
                     </div>
                 </div>
             </div>
-            <br><hr>
+            <br><hr style="border-top:3px solid #eee">
             <div id="main-bottom">
-                <div>식재료 쇼핑</div><br><hr>
+                <div>식재료 쇼핑 <img src="/cookTeacher/resources/img/online-shopping.png" style="height:5%; width:5%"></div><hr style="border-top:3px solid #eee">
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>
@@ -174,13 +180,19 @@
                         <div id="prod_price">5,200원</div>
                     </div>
                 </div>
-                     
             </div>
-
         </main>
 		<%@include file="/views/common/footer.jsp" %>
     </div>
-    
-
+        <script>
+           $(function(){
+             $('#carousel-example-generic').carousel({
+               interval: 2200,
+               pause: "hover",
+               wrap: true,
+               keyboard : true
+             });
+           });
+         </script>
 </body>
 </html>
