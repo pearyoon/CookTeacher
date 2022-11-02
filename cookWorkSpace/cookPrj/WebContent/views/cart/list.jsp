@@ -13,7 +13,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>cookTeacher</title>
+    <title>집밥쿡선생 :: 장바구니</title>
     <!-- 경로 체크 필수 -->
     <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
     <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
