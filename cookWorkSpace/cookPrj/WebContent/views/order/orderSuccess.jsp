@@ -4,6 +4,26 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	int totalPrice = (int) request.getAttribute("totalPrice");
+    MemberVo cartMember = (MemberVo) request.getAttribute("cartMember");
+    
+    double rate = 0;
+	
+    // 회원 등급에 따른 적립 포인트
+    switch(cartMember.getGrade()) {
+    
+    case "1": 
+        rate = 0.01;
+        break;
+        
+    case "2":
+        rate = 0.03;
+        break;
+        
+    case "3":
+        rate = 0.05;
+        break;
+    
+    }
 %>
 
 <!DOCTYPE html>
@@ -15,6 +35,7 @@
     <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
     <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
     <link rel="stylesheet" href="../resources/css/order/orderSuccess.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 </head>
 <body>
     <%@include file="/views/common/header.jsp" %> 
@@ -35,9 +56,10 @@
                             <p>결제 금액 : </p>
                             <p><fmt:formatNumber value="${totalPrice}" pattern="#,###"/>원</p>
                         </div>
-                        <div class="point">
+                        <c:set var="memberRate" value="<%=rate%>"/>
+                        <div class="order-price">
                             <p>적립포인트 : </p>
-                            <p><fmt:formatNumber value="${totalPoint}" pattern="#,###"/>원</p>
+                            <p><fmt:formatNumber value="${totalPrice * memberRate}" pattern="#,###" />원</p>
                         </div>
                         <div class="notice">
                             <span>&#183; [배송준비중] 이전일 때 주문내역 상세페이지에서 주문 취소가 가능합니다.</span>

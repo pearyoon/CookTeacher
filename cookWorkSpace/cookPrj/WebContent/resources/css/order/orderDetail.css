@@ -1,3 +1,7 @@
+*{
+  font-family: "NanumSquareRound";
+}
+
 #list-menu>li:nth-child(2)>a {
   background-color: rgb(250, 250, 250);
   color: #255D00;
@@ -130,6 +134,11 @@
 .product-cancel:hover{
   background: #FFD335;
   color: black;
+}
+
+.product-cancel:disabled:hover {
+  background: white;
+  color: rgb(200, 200, 200);
 }
 
 .notice{

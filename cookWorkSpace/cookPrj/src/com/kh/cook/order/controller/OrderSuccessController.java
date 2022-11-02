@@ -27,18 +27,25 @@ public class OrderSuccessController extends HttpServlet {
 		String no = loginMember.getNo();
 		
 		
-		// 장바구니 목록 가져오기
+		// 선택된 상품 목록 가져오기
 		String[] check = req.getParameterValues("check");
+		// 사용된 포인트 가져오기
 		String usePoint = req.getParameter("usePoint");
+		// 결제 수단 가져오기
 		String payment = req.getParameter("payment");
 
-		// 디비 다녀오기
+		// 회원 정보 가져오기
 		MemberVo cartMember = new OrderService().checkCartMember(no, check);
+		// 선택된 상품 정보 가져오기
 		List<CartItemVo> cartList = new OrderService().selectCartList(no, check);
+		// 주문 생성(결제 정보, 주문내역)
 		int totalPrice = new OrderService().insertOrder(cartMember, cartList, usePoint, payment);
 		
+		// 성공하면
 		if(totalPrice != -1) {
+			// JSP에 정보 넘겨주기
 			req.setAttribute("totalPrice", totalPrice);
+			req.setAttribute("cartMember", cartMember);
 			req.getRequestDispatcher("/views/order/orderSuccess.jsp").forward(req, resp);
 		}else{
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);

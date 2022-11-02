@@ -36,7 +36,7 @@ public class AddCartController extends HttpServlet{
     	String cnt[]  = req.getParameterValues("cnt");
 		String memberNo = loginMember.getNo();
 		
-		// 데이터 뭉치기
+		// vo에 담아서
 		List<CartVo> list = new ArrayList<CartVo>();
 
     	for(int i=0; i< prodNo.length; i++) {
@@ -45,20 +45,23 @@ public class AddCartController extends HttpServlet{
     		vo.setCnt(cnt[i]);
     		vo.setNo(memberNo);
     		
+    		// 리스트에 넣어주기
     		list.add(vo);
-    		
     	}
 
-		// 서비스 다녀오기
+		// 장바구니 서비스 다녀오기
 		int result = new CartService().addCart(list);
 
 		// 화면 보여주기
+		// 성공이면
 		if(result == 1) {
+			// 장바구니 페이지로 이동
 			req.setAttribute("cartMsg", true);
 			resp.sendRedirect("/cookTeacher/cart/list");
 		}else {
+			// 실패면 에러페이지로 이동
 			req.setAttribute("errorMsg", "잠시 후 다시 이용해주세요");
-			req.getRequestDispatcher("/views/member/login.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 
 	}

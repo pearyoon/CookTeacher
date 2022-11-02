@@ -138,7 +138,7 @@ public class CartDao {
 		
 	}
 	
-	// 장바구니 중복 체크
+	// 장바구니에 있는 상품이 중복 되어 있는지 체크
 	public CartVo checkCart(Connection conn, CartVo vo) {
 		
 		String sql = "SELECT NO, PROD_NO, CNT FROM CART WHERE NO = ? AND PROD_NO = ? AND PAYMENT_YN = 'N'";

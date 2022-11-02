@@ -116,7 +116,7 @@ public class OrderDao {
 		
 	}
 
-	// 주문 내역 만들기
+	// 주문 생성 해주기
 	public int insertOrder(Connection conn, MemberVo cartMember, String point, int totalPrice, int earn) {
 
 		String sql = "INSERT INTO \"ORDER\" (NO, MEMBER_NO, POINT, USE_POINT, SUM, NAME, ADDR, PHONE) VALUES (SEQ_ORDER_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
@@ -227,7 +227,7 @@ public class OrderDao {
 
 	// 주문 번호 / 결제 금액 가져오기
 	public OrderVo selectorderInfo(Connection conn, String no) {
-		String sql = "SELECT NO, MEMBER_NO, POINT, USE_POINT, SUM, NAME, ADDR, PHONE FROM \"ORDER\" WHERE NO = ?";
+		String sql = "SELECT NO, MEMBER_NO, POINT, USE_POINT, SUM, NAME, ADDR, PHONE, CANCEL_YN FROM \"ORDER\" WHERE NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -249,6 +249,7 @@ public class OrderDao {
 				String name = rs.getString("NAME");
 				String addr = rs.getString("ADDR");
 				String phone = rs.getString("PHONE");
+				String cancelYN = rs.getString("CANCEL_YN");
 				
 				vo = new OrderVo();
 				vo.setNo(orderNo);
@@ -259,6 +260,7 @@ public class OrderDao {
 				vo.setName(name);
 				vo.setAddr(addr);
 				vo.setPhone(phone);
+				vo.setCancelYN(cancelYN);
 			}
 			
 		} catch (SQLException e) {

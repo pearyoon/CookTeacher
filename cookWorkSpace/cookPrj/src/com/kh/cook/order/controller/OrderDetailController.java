@@ -32,12 +32,17 @@ public class OrderDetailController extends HttpServlet {
 		// 주문 번호 가져오기
 		String num = req.getParameter("num");
 		
+		// 주문한 상품 정보 가져오기
 		List<OrderDetailVo> orderlist = new OrderService().selectOrderList(no,num);
+		// 주문 정보 가져오기
 		OrderVo orderInfo = new OrderService().selectOrderInfo(num);
+		// 결제 정보 가져오기
 		PaymentVo paymentInfo = new OrderService().selectPaymentInfo(num);
-		 
+		
+		// 주문한 사람과 로그인 한 사람의 memberNo가 같은지 비교
 		String memberNo = orderInfo.getMemberNo();
 		if(no.equals(memberNo)) {
+			// JSP로 넘겨주기
 			req.setAttribute("orderlist", orderlist);
 			req.setAttribute("orderInfo", orderInfo);
 			req.setAttribute("paymentInfo", paymentInfo);
@@ -45,6 +50,7 @@ public class OrderDetailController extends HttpServlet {
 			req.getRequestDispatcher("/views/order/orderDetail.jsp").forward(req, resp);
 			 
 		}else {
+			// 일치하지 않으면 로그인 페이지로 넘겨주기
 			resp.sendRedirect("/cookTeacher/member/login");
 		}
 		 

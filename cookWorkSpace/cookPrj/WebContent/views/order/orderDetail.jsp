@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/order/orderDetail.css">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -96,20 +98,27 @@
                                 </div>
                                 
                             </div>
-                            <span class="shipping">결제완료</span>
-                            <div class="cartWrap">
+                            <c:if test="${orderInfo.cancelYN eq 'Y'}">
+                             <span class="shipping">결제취소</span>
+                            </c:if>
+                            <c:if test="${orderInfo.cancelYN eq 'N'}">
+                                <span class="shipping">결제완료</span>
+                            </c:if>
+                            
+                            <form class="cartWrap" action="/cookTeacher/cart/add" method="POST">
                                 <button class="cartAdd-btn">
                                     <span>장바구니 담기</span>
                                 </button>
-                            </div>
+                                <input type="hidden" name="prodNo" value="${orderItem.prodNo}">
+                                <input type="hidden" name="cnt" value="1">
+                            </form>
                         </div>
                             </c:forEach>
-                        <form action="/cookTeacher/order/delete" class="btn-wrapper" method="post">
-                            <button class="product-cancel" onclick="cancel()">
+                        <div class="btn-wrapper">
+                            <button class="product-cancel" onclick="cancel(${orderInfo.no})" <c:if test="${orderInfo.cancelYN eq 'Y'}">disabled</c:if>>
                                 <span>전체 상품 주문 취소</span>
                             </button>
-                            <input type="hidden" value="${ov.getNo()}">
-                        </form>
+                        </div>
                         <span class="notice">주문취소는 [주문완료] 상태일 경우에만 가능합니다.</span>
                         <div class="payment-info">
                             <div class="payment-header">
@@ -202,7 +211,7 @@
         <%@include file="/views/common/footer.jsp" %>
     </div>
 
-    <script>
+    <script src="../../../resources/js/order/orderDetail.js">
 
 
     </script>
