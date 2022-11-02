@@ -39,6 +39,9 @@
                        <a href="<%=root%>/report/list">신고관리</a>
                        <span>|</span>
                        <a href="<%=root %>/admin/member/list?member=all&pno=1">회원조회</a>
+                       <span>|</span>
+                       <a href="<%=root %>/cs/QnA/list">문의관리</a>
+                       
                        
                    <%} else {%>
                     <a href="<%=root %>/member/join">회원가입</a>

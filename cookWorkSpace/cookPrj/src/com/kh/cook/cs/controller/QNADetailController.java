@@ -34,12 +34,12 @@ public class QNADetailController extends HttpServlet{
 		if(isAdmin || loginMember != null && loginMember.getNo().equals(QNAvo.getNo())) {
 			req.setAttribute("QNAvo", QNAvo);
 			req.setAttribute("cvo", cvo);
-			req.setAttribute("msg","문의 작성자만 열람 가능합니다.");
 			req.getRequestDispatcher("/views/cs/QnA/detail.jsp").forward(req, resp);
 		} else {
 			//관리자 아닐 때
-			req.setAttribute("msg","권한이 없습니다.");
-			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+			s.setAttribute("alertMsg","작성자 본인만 열람 가능합니다.");
+			req.setAttribute("alertMsg","작성자 본인만 열람 가능합니다.");
+			resp.sendRedirect("/cookTeacher/cs/QnA/list");
 		}
 		
 		

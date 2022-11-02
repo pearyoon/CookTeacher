@@ -142,7 +142,7 @@ color: #000000;
 			</div>
 			
 			<div id="writebtn">
-				<input type="button" name="" id="" value="취소" onclick="cancel();">
+				<input type="button" name="" id="" value="취소" onclick="history.back(-1)">
 				<input type="submit" value="등록">
 			</div>
 			
@@ -169,25 +169,16 @@ color: #000000;
 					  if (result.isConfirmed) {
 						  
 						  
-						    Swal.fire(
-						      '등록하였습니다!',
-					    	  'success'
-					  	  ).then( ()=> {document.querySelector('#fff').submit();} );
+						    Swal.fire Swal.fire({
+	                            icon: 'success',
+	                            text: '등록하였습니다.',
+		                    }).then( ()=> {document.querySelector('#fff').submit();} );
 					  }
 				  });
 				
 				  return false;
 			}//upload end
 
-			
-			/* function upload(){
-				if(confirm("등록하시겠습니까?")){
-					return true;
-				}else{
-					alert("작성을 취소합니다.");
-					return false;
-				}
-			} */
 			
 			function cancel(){
 				Swal.fire({
