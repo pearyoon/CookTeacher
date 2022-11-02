@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
-<link rel="stylesheet" href="../../resources/css/order/orderList.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/order/orderList.css">
 
 </head>
 <body>
@@ -78,21 +78,27 @@
                         </div>
                     </div>
                     <div id="board-container">
-                        <fmt:parseDate value="${orderList.payDate}" var="payDate" pattern="yyyy.MM.dd HH:mm:ss" />
+                        <div class="empty">
+                            <c:if test="${empty orderList}">
+                                    <div class="none-cart">
+                                        <p>주문내역이 없습니다.</p></div>
+                                </c:if>
+                        </div>
                         <c:forEach items="${orderList}" var="orderItem">
+                            <fmt:parseDate value="${orderItem.payDate}" var="payDate" pattern="yyyy-MM-dd HH:mm:ss" />
                         <div class="order-info">
                             <div class="order-header">
-                                <span><fmt:formatDate value="${payDate}" pattern="yyyy-MM-dd" /></span>
-                                <a href="../../views/order/orderDetail.jsp">주문내역 상세보기</a>
+                                <span><fmt:formatDate value="${payDate}" pattern="yyyy-MM-dd"/></span>
+                                <a href="/cookTeacher/order/mypage/orderlist/orderDetail?num=${orderItem.getNo()}">주문내역 상세보기</a>
                             </div>
                             <div class="order-info-wrapper">
                                 <div class="thumb">
-                                    <img src="../../resources/img/product/apple.png" alt="사과">
+                                    <img src="<c:url value="/resources/img/product/" />${orderItem.imgPath}" alt="${orderItem.name}">
                                 </div>
                                 <div class="order-list">
                                     <dl class="order-dl">
                                         <dt class="order-dt">상품명</dt>
-                                        <dd class="order-dd">${orderItem.name}외 2건</dd>
+                                        <dd class="order-dd">${orderItem.name}<c:if test="${orderItem.cnt > 1}">외 ${Integer.parseInt(orderItem.cnt)-1}건</c:if></dd>
                                     </dl>
                                     <dl class="order-dl">
                                         <dt class="order-dt">주문번호</dt>
@@ -109,7 +115,7 @@
                                 </div>
                                 <div class="order-right">
                                     <div class="status">
-                                        <span>배송중</span>
+                                        <span>결제완료</span>
                                     </div>
                                     <div class="ask">
                                         <button class="ask-btn"><a href="">1:1문의하기</a></button>

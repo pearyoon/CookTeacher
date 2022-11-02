@@ -1,6 +1,8 @@
 package com.kh.cook.cart.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,24 +32,30 @@ public class AddCartController extends HttpServlet{
 		}
 		
 		// 입력된 식재료를 가져오기
-		String prodNo = req.getParameter("prodNo");
-		String cnt = req.getParameter("cnt");
+		String prodNo[] = req.getParameterValues("prodNo");
+    	String cnt[]  = req.getParameterValues("cnt");
 		String memberNo = loginMember.getNo();
 		
 		// 데이터 뭉치기
-		CartVo vo = new CartVo();
-		vo.setProdNo(prodNo);
-		vo.setNo(memberNo);
-		vo.setCnt(cnt);
+		List<CartVo> list = new ArrayList<CartVo>();
+
+    	for(int i=0; i< prodNo.length; i++) {
+    		CartVo vo = new CartVo();
+    		vo.setProdNo(prodNo[i]);
+    		vo.setCnt(cnt[i]);
+    		vo.setNo(memberNo);
+    		
+    		list.add(vo);
+    		
+    	}
 
 		// 서비스 다녀오기
-		int result = new CartService().addCart(vo);
+		int result = new CartService().addCart(list);
 
 		// 화면 보여주기
 		if(result == 1) {
 			req.setAttribute("cartMsg", true);
-			req.setAttribute("vo", vo);
-			req.getRequestDispatcher("/views/cart/list.jsp").forward(req, resp);
+			resp.sendRedirect("/cookTeacher/cart/list");
 		}else {
 			req.setAttribute("errorMsg", "잠시 후 다시 이용해주세요");
 			req.getRequestDispatcher("/views/member/login.jsp").forward(req, resp);

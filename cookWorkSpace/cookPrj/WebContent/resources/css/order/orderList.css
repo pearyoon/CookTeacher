@@ -71,6 +71,19 @@
   border-bottom: none;
 } */
 
+.none-cart{
+  background-image: url(../../img/icons/장바구니.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.none-cart>p{
+  text-align: center;
+  padding-top: 150px;
+  margin-bottom: 100px;
+  color: gray;
+}
+
 .thumb{
   padding-top: 10px;
   padding-bottom: 10px;

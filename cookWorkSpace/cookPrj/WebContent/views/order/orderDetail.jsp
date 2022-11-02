@@ -1,7 +1,16 @@
+<%@page import="com.kh.cook.order.vo.PaymentVo"%>
+<%@page import="com.kh.cook.order.vo.OrderDetailVo"%>
+<%@page import="java.util.List"%>
+<%@page import="com.kh.cook.order.vo.OrderVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String view = (String)request.getAttribute("view");
+	OrderVo orderInfo = (OrderVo)request.getAttribute("orderInfo");
+	List<OrderDetailVo> orderlist = (List<OrderDetailVo>) request.getAttribute("orderlist");
+	PaymentVo paymentInfo = (PaymentVo) request.getAttribute("paymentInfo");
 %>
 
 <!DOCTYPE html>
@@ -13,7 +22,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/mypage/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 
-<link rel="stylesheet" href="../../resources/css/order/orderDetail.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/order/orderDetail.css">
 
 </head>
 <body>
@@ -63,7 +72,7 @@
                            <h2 id="head-aticle">주문 내역 상세</h2>
                         </div>
                         <div class="order-header">
-                            <h3 class="orderNo">주문번호 22797152599</h3>
+                            <h3 class="orderNo">주문번호 ${orderInfo.no}</h3>
                             <span class="askQnA">배송 또는 상품에 문제가 있나요?
                                 <a href="">1:1 문의하기
                                     <img src="../../resources/img/icons/right-arrow.png" alt="문의하기" class="askImg">
@@ -77,43 +86,56 @@
                             <div class="thumb">
                                 <img src="../../resources/img/product/청양고추.jpg" alt="청양고추">
                             </div>
+                            <c:forEach items="${orderlist}" var="orderItem">
                             <div class="productName">
                                 <a href="">청양고추</a>
                                 <div class="productPrice">
-                                    <span class="price">3000원</span>
-                                    <span class="cnt">1개</span>
+                                    <span class="price"><fmt:formatNumber value="${orderItem.getPrice()}" pattern="#,###"/>원</span>
+                                    <span class="cnt">${orderItem.cnt}개</span>
                                 </div>
                                 
                             </div>
-                            <span class="shipping">배송완료</span>
+                            <span class="shipping">결제완료</span>
                             <div class="cartWrap">
                                 <button class="cartAdd-btn">
                                     <span>장바구니 담기</span>
                                 </button>
                             </div>
                         </div>
-                        <div class="btn-wrapper">
-                            <button class="product-cancel">
+                            </c:forEach>
+                        <form action="/cookTeacher/order/delete" class="btn-wrapper" method="post">
+                            <button class="product-cancel" onclick="cancel()">
                                 <span>전체 상품 주문 취소</span>
                             </button>
-                        </div>
+                            <input type="hidden" value="${ov.getNo()}">
+                        </form>
                         <span class="notice">주문취소는 [주문완료] 상태일 경우에만 가능합니다.</span>
                         <div class="payment-info">
                             <div class="payment-header">
                                 <h3>결제정보</h3>
                             </div>
+                            
+                            <c:set var="prodPrice" value="0"/>
+                            <c:forEach items="${orderlist}" var="orderItem">
+                            <c:set var="prodPrice" value="${prodPrice + Integer.parseInt(orderItem.price) * Integer.parseInt(orderItem.cnt)}" />
+                            </c:forEach>
+                            <c:set var="deliveryFee" value="0" />
+                             <c:if test="${prodPrice <= 30000}">
+	                              <c:set var="deliveryFee" value="2500" />
+                             </c:if>
+                            
                             <ul>
                                 <li class="list">
                                     <span class="listName">상품금액</span>
-                                    <span class="pay-info">3000<span>원</span></span>
+                                    <span class="pay-info"><fmt:formatNumber value="${prodPrice}" pattern="#,###"/><span>원</span></span>
                                 </li>
                                 <li class="list">
                                     <span class="listName">배송비</span>
-                                    <span class="pay-info">2500<span>원</span></span>
+                                    <span class="pay-info"><fmt:formatNumber value="${deliveryFee}" pattern="#,###"/><span>원</span></span>
                                 </li>
                                 <li class="list">
                                     <span class="listName">결제금액</span>
-                                    <span class="pay-info">5500<span>원</span></span>
+                                    <span class="pay-info"><fmt:formatNumber value="${orderInfo.sum}" pattern="#,###"/><span>원</span></span>
                                 </li>
                                 <li class="list">
                                     <span class="listName">적립금액</span>
@@ -121,7 +143,7 @@
                                 </li>
                                 <li class="list">
                                     <span class="listName">결제방법</span>
-                                    <span class="pay-info">카카오페이</span>
+                                    <span class="pay-info">${paymentInfo.payment}</span>
                                 </li>
                             </ul>
                         </div>
@@ -133,15 +155,16 @@
                             <ul>
                                 <li class="list">
                                     <span class="info-name">주문번호</span>
-                                    <span class="info">22797152599</span>
+                                    <span class="info">${orderInfo.no}</span>
                                 </li>
                                 <li class="list">
                                     <span class="info-name">보내는분</span>
-                                    <span class="info">홍길동</span>
+                                    <span class="info">${orderInfo.name}</span>
                                 </li>
                                 <li class="list">
+                                <fmt:parseDate value="${paymentInfo.payDate}" var="payDate" pattern="yyyy-MM-dd HH:mm:ss" />
                                     <span class="info-name">결제일시</span>
-                                    <span class="info">2022-10-31 22:00:00</span>
+                                    <span class="info"><fmt:formatDate value="${payDate}" pattern="yyyy-MM-dd"/></span>
                                 </li>
                             </ul>
                         </div>
@@ -153,15 +176,15 @@
                             <ul>
                                 <li class="list">
                                     <span class="info-name">받는분</span>
-                                    <span class="info">홍길동</span>
+                                    <span class="info">${orderInfo.name}</span>
                                 </li>
                                 <li class="list">
                                     <span class="info-name">핸드폰</span>
-                                    <span class="info">010-1111-1111</span>
+                                    <span class="info">${orderInfo.phone}</span>
                                 </li>
                                 <li class="list">
                                     <span class="info-name">주소</span>
-                                    <span class="info">강남구 테헤란로 111-111</span>
+                                    <span class="info">${orderInfo.addr}</span>
                                 </li>
                                 <li class="list">
                                     <span class="info-name">받으실 장소</span>

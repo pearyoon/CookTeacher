@@ -65,7 +65,9 @@ public class OrderService {
 			int sum = Integer.parseInt(item.getPrice()) * Integer.parseInt(item.getCnt());
 			totalPrice += sum;
 		}
-		
+		if(totalPrice < 30000) {
+			totalPrice += 2500;
+		}
 		// 포인트
 		if(point != null && !point.equals("")) {
 			totalPrice -= Integer.parseInt(point);
@@ -124,7 +126,11 @@ public class OrderService {
 		}
 		
 		close(conn);
-		return result;
+		if(result == 1) {
+			return totalPrice;
+		}else {
+			return -1;
+		}
 		
 	}
  
@@ -181,6 +187,18 @@ public class OrderService {
 		close(conn);
 		
 		return orderList;
+		
+	}
+
+	public int deleteOrder(String orderNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.deleteOrder(conn, orderNo);
+		
+		close(conn);
+		
+		return result;
 		
 	}
 

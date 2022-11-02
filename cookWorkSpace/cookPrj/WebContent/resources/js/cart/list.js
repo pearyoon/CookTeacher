@@ -31,12 +31,12 @@ function deleteList() {
       },
       success: function (x){
         const resultList = JSON.parse(x);
-
         for (let i = 0; i < resultList.length; i++) {
             $(`input[value=`+ resultList[i] +`]`).parent().remove()
         }
-        
-    } 
+        checkEmpty();
+        cookCheck();
+    }
   })
      
   
@@ -54,8 +54,17 @@ function deleteOne(prodNo) {
       success: function (result){
           
         $(`input[value=`+ prodNo +`]`).parent().remove() // 페이지 새로고침
+        checkEmpty();
+        cookCheck();
       }  
   })
+}
+
+function checkEmpty(){
+    if(!document.querySelectorAll('li.product').length){
+        const area = document.querySelector('#product-area>.empty')
+        area.innerHTML = '<div class="none-cart"><p>장바구니에 담긴 상품이 없습니다.</p></div>'
+    }
 }
 
 // 개수 수정

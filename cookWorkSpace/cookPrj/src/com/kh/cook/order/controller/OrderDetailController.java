@@ -33,21 +33,20 @@ public class OrderDetailController extends HttpServlet {
 		String num = req.getParameter("num");
 		
 		List<OrderDetailVo> orderlist = new OrderService().selectOrderList(no,num);
-		 OrderVo orderInfo = new OrderService().selectOrderInfo(num);
-		 PaymentVo paymentInfo = new OrderService().selectPaymentInfo(num);
+		OrderVo orderInfo = new OrderService().selectOrderInfo(num);
+		PaymentVo paymentInfo = new OrderService().selectPaymentInfo(num);
 		 
-		 String memberNo = orderInfo.getMemberNo();
-		 
-		 if(no == memberNo) {
-			 req.setAttribute("orderlist", orderlist);
-			 req.setAttribute("orderInfo", orderInfo);
-			 req.setAttribute("paymentInfo", paymentInfo);
+		String memberNo = orderInfo.getMemberNo();
+		if(no.equals(memberNo)) {
+			req.setAttribute("orderlist", orderlist);
+			req.setAttribute("orderInfo", orderInfo);
+			req.setAttribute("paymentInfo", paymentInfo);
 			 
-			 req.getRequestDispatcher("/views/order/orderDetail.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/order/orderDetail.jsp").forward(req, resp);
 			 
-		 }else {
-			 resp.sendRedirect("/cookTeacher/member/login");
-		 }
+		}else {
+			resp.sendRedirect("/cookTeacher/member/login");
+		}
 		 
 		
 	}
