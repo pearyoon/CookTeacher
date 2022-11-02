@@ -30,6 +30,7 @@ public class BobDetailController extends HttpServlet{
 		BobstoryVo vo = new BobstoryService().selectOne(bno);
 		AttachmentVo attachmentVo = new BobstoryService().selectAttachment(bno);
 		List<BobCmtVo> cvo = new BobCmtService().selectBobCmt(bno);
+		System.out.println("cvo ::: "+cvo);
 		//cmtvo 를 가져와서 cvo.postno랑 일치 시켜야함
 		
 		//화면 선택

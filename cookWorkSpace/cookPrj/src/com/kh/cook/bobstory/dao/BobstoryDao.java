@@ -182,7 +182,7 @@ public class BobstoryDao {
 	public int insertAttachment(Connection conn, AttachmentVo avo) {
 		//SQL
 		
-		String sql = "INSERT INTO BOBATTACHMENT ( NO ,BOARD_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_ATTACHMENT_NO.NEXTVAL , SEQ_BOBSTORY_NO.CURRVAL , ? , ? , ? )";
+		String sql = "INSERT INTO BOBATTACHMENT ( NO ,BOARD_NO ,ORIGIN_NAME ,CHANGE_NAME ,FILE_PATH ) VALUES ( SEQ_BOBATTACHMENT_NO.NEXTVAL , SEQ_BOBSTORY_NO.CURRVAL , ? , ? , ? )";
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
