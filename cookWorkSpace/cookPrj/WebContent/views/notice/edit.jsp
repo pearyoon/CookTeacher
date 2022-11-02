@@ -22,7 +22,7 @@
             <div class="edit-middle">
                 <form action="/cookTeacher/admin/notice/edit" method="POST" onsubmit="return check();">
                     <div class="flex-box">
-                        <input type="hidden" value="${vo.no}">
+                        <input type="hidden" name="no" value="${vo.no}">
                         <div>
                             <label for="title">제목</label>
                         </div>

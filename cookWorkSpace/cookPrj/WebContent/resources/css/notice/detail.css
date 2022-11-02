@@ -67,8 +67,7 @@
     display: flex;
     width: 100%;
     padding: 20px 0px;
-    -webkit-box-pack: end;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .detail-btn>div{
@@ -76,6 +75,11 @@
     padding-bottom: 50px;
 }
 
+.update-btn{
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+}
 
 .detail-btn button{
     display: block;
