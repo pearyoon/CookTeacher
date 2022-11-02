@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 :: 글쓰기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
-<link rel="stylesheet" href="/cookTeacher/resources/css/notice/edit.css">
+<link rel="stylesheet" href="/cookTeacher/resources/css/notice/write.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 </head>
 <body>
@@ -20,23 +23,23 @@
                 </div>
             </div>
             <div class="edit-middle">
-                <form action="/cookTeacher/admin/notice/edit" method="POST" onsubmit="return check();">
+                <form action="/cookTeacher/admin/notice/write" method="post" onsubmit="return check();">
                     <div class="flex-box">
-                        <input type="hidden" value="${vo.no}">
                         <div>
                             <label for="title">제목</label>
                         </div>
                         <div>
-                            <input id="title" type="text" name="title" value="${vo.title}">
+                            <input id="title" type="text" name="title">
                         </div>
                     </div>
                     <div class="flex-box">
-                        <div id="content-top">
+                        <div>
                             <label for="content">내용</label>
                         </div>
                         <div>
                             <div id="content-area">
-                                <textarea id="content" name="content">${vo.content}</textarea>
+                                <textarea id="content" name="content"></textarea>
+
                             </div>
                         </div>
                     </div>
@@ -45,7 +48,7 @@
                             <span>취소</span>
                         </button>
                         <button type="submit">
-                            <span>수정</span>
+                            <span>등록</span>
                         </button>
                     </div>
 
@@ -53,14 +56,33 @@
 
             </div>
         </div>
-
+		
 
         <%@include file="/views/common/footer.jsp" %>
     </div>
+
     <script>
-        $('#edit').click(function(){
-            window.location.href = "/cookTeacher/admin/notice/edit?no=${vo.no}";
-        });
+        function check(){
+            const title = $('#title').val();
+            const content = $('#content').val();
+            
+            if(title==""){
+                Swal.fire({
+                    icon: 'error',
+                    text: '제목을 작성해주세요.',
+                });
+
+            	return false;
+            }
+            
+            if(content == ""){
+                Swal.fire({
+                    icon: 'error',
+                    text: '내용을 작성해주세요.',
+                });
+            	return false;
+            }
+        }
     </script>
 </body>
 </html>

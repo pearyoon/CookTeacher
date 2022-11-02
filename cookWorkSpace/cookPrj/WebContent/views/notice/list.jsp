@@ -69,7 +69,7 @@
         <c:if test="${loginMember.adminYn eq 'Y' }">
 	       	<div class="detail-btn">
 	            <div>
-	                <button id="edit" type="button">
+	                <button id="write" type="button">
 	                    <span>작성</span>
 	                </button>
 	            </div>
@@ -90,6 +90,10 @@
                window.location.href="/cookTeacher/notice/list?pno=${pVo.currentPage+1}";
        	});
        
+        $('#write').click(function(){
+            window.location.href="/cookTeacher/admin/notice/write";
+        });
+
 	</script>
  
     

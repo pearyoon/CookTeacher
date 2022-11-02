@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/notice/detail.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <%@ include file="/views/common/header.jsp" %>
@@ -53,5 +56,10 @@
 
         <%@include file="/views/common/footer.jsp" %>
     </div>
+    <script>
+        $('#edit').click(function(){
+            window.location.href = "/cookTeacher/admin/notice/edit?no=${vo.no}";
+        });
+    </script>
 </body>
 </html>
