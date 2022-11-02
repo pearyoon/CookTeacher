@@ -30,7 +30,8 @@
         <main>
         <hr>
             <div id="main-bottom">
-            <img src="https://product-image.kurly.com/cdn-cgi/image/width=1050,format=auto/banner/event/80b00ad6-ac3a-4005-b023-645fca0620ec.jpg">
+<!--             <img src="https://product-image.kurly.com/cdn-cgi/image/width=1050,format=auto/banner/event/80b00ad6-ac3a-4005-b023-645fca0620ec.jpg"> -->
+		         <img src="/cookTeacher/upload/img/product_main4.png" style="width:1050px;">
             <!-- <div id="main-title">카테고리 선택</div> -->
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">

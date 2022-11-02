@@ -119,15 +119,9 @@
                             		
                             	</form>
                             	
-			                   <!-- <script type="text/javascript">
+			                  <!--  <script type="text/javascript">
 								function addCart(){
-									Swal.fire({
-										  position: 'top',
-										  icon: 'success',
-										  title: '장바구니에 담겼습니다.',
-										  showConfirmButton: false,
-										  timer: 1000000
-										})
+									
 								}
 			                   </script> -->
 			                   
