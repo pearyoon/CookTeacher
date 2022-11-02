@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.cook.member.service.AdminService;
 import com.kh.cook.member.service.MemberService;
 import com.kh.cook.member.vo.MemberVo;
 @WebServlet(urlPatterns = "/admin/member/detail")

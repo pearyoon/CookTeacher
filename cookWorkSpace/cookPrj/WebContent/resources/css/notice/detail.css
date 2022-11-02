@@ -1,0 +1,91 @@
+#container>div{
+    box-sizing: border-box;
+    
+}
+
+#container{
+    position: absolute;
+    padding-bottom: 50px;
+    top: 250px;
+    left: 50%;
+    transform: translate(-50%);
+    
+}
+
+.detail-wrap{
+    width: 820px;
+    margin: 0px auto;
+}
+
+.detail-top{
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 50px;
+}
+
+.detail-top>div{
+    font-weight: 700;
+    font-size: 28px;
+    color: rgb(51, 51, 51);
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+.detail-middle{
+    margin-top: 20px;
+    border-top: 2px solid rgb(51, 51, 51);
+    color: rgb(51, 51, 51);
+}
+
+.flex-box{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(244, 244, 244);
+}
+
+.flex-box>div:first-child{
+    width: 130px;
+    padding: 13px 0px 13px 20px;
+    background-color: rgb(247, 245, 248);
+    border-top: 1px solid rgb(244, 244, 244);
+    text-align: left;
+    font-weight: 500;
+}
+
+.flex-box>div:last-child{
+    padding-left: 25px;
+    align-self: center;
+}
+
+.content-area{
+    padding: 30px 10px 100px;
+    border-bottom: 1px solid rgb(128, 128, 128);
+}
+
+.detail-btn{
+    display: flex;
+    width: 100%;
+    padding: 20px 0px;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+}
+
+.detail-btn>div{
+    margin: 5px;
+    padding-bottom: 50px;
+}
+
+
+.detail-btn button{
+    display: block;
+    padding: 0px,10px;
+    text-align: center;
+    overflow: hidden;
+    width: 120px;
+    height: 42px;
+    border-radius: 0px;
+    color: rgb(255, 255, 255);
+    background-color: #255D00;
+    border: 0px none;
+}

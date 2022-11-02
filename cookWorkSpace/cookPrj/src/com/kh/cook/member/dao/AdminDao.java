@@ -1,4 +1,4 @@
-package com.kh.cook.member.controller;
+package com.kh.cook.member.dao;
 
 import static com.kh.cook.common.JDBCTemplate.close;
 
