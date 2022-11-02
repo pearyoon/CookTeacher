@@ -12,7 +12,7 @@
 <head>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta charset="UTF-8">
-<title>cookTeacher</title>
+<title>집밥쿡선생 :: 상세 레시피</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" defer src="/cookTeacher/resources/js/menu/detail.js"></script>
 
@@ -189,7 +189,8 @@
                         <div class="prd-all">
                             <div class="product">
                                 <a href="/cookTeacher/product/detail/productDetail?no=${prod.prodNo}">
-                                    <img src =" <c:url value = "/resources/img/product/"></c:url>${prod.imgPath}" alt="식재료게시판담당" width="100%" height="100%">
+                                <!--  -->
+                                    <img src =" <c:url value = "/upload/img/"></c:url>${prod.imgPath}" alt="식재료게시판담당" width="100%" height="100%">
                                 </a>
                              
                             </div>    
@@ -210,9 +211,12 @@
                 </div>
             </div>
             
-            <div style="margin-left: 452px; margin-bottom: 20px;">
-						<button>수정하기</button>
-						<button>삭제하기</button>
+            <div style="margin-left: 485px; margin-bottom: 20px;">
+						
+						<%if(loginMember != null && loginMember.getId().equals("admin01")){%>	
+						<button class="delete-btn" onclick="location.href='/cookTeacher/detail/delete?no=3'">삭제하기</button>
+						
+						<%}%>
 			</div>
 
             </div>

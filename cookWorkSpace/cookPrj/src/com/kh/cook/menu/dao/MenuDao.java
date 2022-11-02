@@ -27,7 +27,7 @@ public class MenuDao {
 	//
 	public MenuVo selectMenuOne(Connection conn, String no) {
 		
-		String sql = "SELECT RECIPE ,MENU_PROD ,CAL ,RECOMMEND ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,IMG_PATH FROM MENU WHERE NO = ?";
+		String sql = "SELECT RECIPE ,MENU_PROD ,CAL ,RECOMMEND ,MENU_CATE_NO ,MENU_NAME ,MENU_INFO ,IMG_PATH FROM MENU WHERE NO = ? AND STATUS = 'O'";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -134,7 +134,7 @@ public class MenuDao {
 	
 	//디저트 리스트 조회
 	public List<MenuVo> selectDessertList(Connection conn) {
-		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 6 ORDER BY NO";
+		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 6 AND STATUS = 'O' ORDER BY NO ";
 		
 		
 		PreparedStatement pstmt = null;
@@ -183,7 +183,7 @@ public class MenuDao {
 	
 	//한식 리스트 조회
 	public List<MenuVo> selectKoreanList(Connection conn) {
-		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 1 ORDER BY NO";
+		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 1 AND STATUS = 'O' ORDER BY NO";
 		
 		
 		PreparedStatement pstmt = null;
@@ -234,7 +234,7 @@ public class MenuDao {
 
 	//반찬 리스트
 	public List<MenuVo> selectBanchanList(Connection conn) {
-		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 2 ORDER BY NO";
+		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 2 AND STATUS = 'O' ORDER BY NO";
 		
 		
 		PreparedStatement pstmt = null;
@@ -284,7 +284,7 @@ public class MenuDao {
 
 	//일식 리스트
 	public List<MenuVo> selectJapaneseList(Connection conn) {
-		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 3 ORDER BY NO";
+		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 3 AND STATUS = 'O' ORDER BY NO";
 		
 		
 		PreparedStatement pstmt = null;
@@ -333,7 +333,7 @@ public class MenuDao {
 	
 	//중식 리스트
 	public List<MenuVo> selectChineseList(Connection conn) {
-		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 4 ORDER BY NO";
+		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 4 AND STATUS = 'O' ORDER BY NO";
 		
 		
 		PreparedStatement pstmt = null;
@@ -384,7 +384,7 @@ public class MenuDao {
 	
 	//양식 리스트
 	public List<MenuVo> selectWesternList(Connection conn) {
-		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 5 ORDER BY NO";
+		String sql = "SELECT * FROM MENU WHERE MENU_CATE_NO = 5 AND STATUS = 'O' ORDER BY NO";
 		
 		
 		PreparedStatement pstmt = null;
@@ -719,7 +719,7 @@ public class MenuDao {
 
 	public List<MenuWriteVo> selectNewInList(Connection conn) {
 //		String sql = "SELECT * FROM MENU ORDER BY NO";
-		String sql = "SELECT M.NO, M.MENU_NAME, M.MENU_INFO, A.CHANGE_NAME, A.FILE_PATH FROM MENU M JOIN MENUATTACHMENT A ON M.NO = A.MENU_NO ORDER BY NO DESC";
+		String sql = "SELECT M.NO, M.MENU_NAME, M.MENU_INFO, A.CHANGE_NAME, A.FILE_PATH FROM MENU M JOIN MENUATTACHMENT A ON M.NO = A.MENU_NO WHERE M.STATUS = 'O' ORDER BY NO DESC";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -777,7 +777,7 @@ public class MenuDao {
 	//등록레시피 디테일
 	public MenuWriteVo selectNewMenuOne(Connection conn, String no) {
 		
-		String sql = "SELECT * FROM MENU WHERE NO = ?";
+		String sql = "SELECT * FROM MENU WHERE NO = ? AND STATUS = 'O' ";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -790,6 +790,7 @@ public class MenuDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				String no2 = rs.getString("NO");
 				String recipe = rs.getString("RECIPE");
 				String menuProd = rs.getString("MENU_PROD");
 				String cal = rs.getString("CAL");
@@ -800,6 +801,7 @@ public class MenuDao {
 	
 				
 				vo = new MenuWriteVo();
+				vo.setNo(no2);
 				vo.setRecipe(recipe);
 				vo.setMenuProd(menuProd);
 				vo.setCal(cal);
@@ -950,6 +952,29 @@ public class MenuDao {
 			
 			return result;
 			
+		}
+
+		//기존 레시피 삭제
+		public int delete(Connection conn, String no) {
+			
+			String sql = "UPDATE MENU SET STATUS = 'X' WHERE NO = ?";
+			
+			PreparedStatement pstmt = null;
+			int result = 0;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, no);
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
 		}
 
 //		public List<ProductVo> selectNewProdList(Connection conn, String no) {
