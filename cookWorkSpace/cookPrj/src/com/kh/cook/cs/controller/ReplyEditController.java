@@ -40,7 +40,7 @@ public class ReplyEditController extends HttpServlet{
 			
 		} else {
 			//관리자 아닐 때
-			req.setAttribute("msg","권한이 없습니다.");
+			req.setAttribute("alertMsg","권한이 없습니다.");
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 		
