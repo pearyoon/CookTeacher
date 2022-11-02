@@ -53,41 +53,41 @@ public class NewMenuDetailController extends HttpServlet{
 		 
     }
     
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	
-    	HttpSession s = req.getSession();
-    	
-    	HttpSession member = req.getSession();
-		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
-    	
-    	//일단 .prodNo 이랑 
-    	//넘버를 어떻게:?
-    	String prodNo = req.getParameter("prodNo");
-    	String prodCnt = req.getParameter("prodCnt");
-    	String memberNo = loginMember.getNo();
-    	
-    	CartVo vo = new CartVo();
-    	vo.setProdNo(prodNo);
-    	vo.setCnt(prodCnt);
-    	vo.setNo(memberNo);
-    	
-    	
-    	
-    	int prodCart = new CartService().addCart(vo);
-    	//int prodCart = new MenuService().cartInput(mcv);
-    	
-    	
-    	if(prodCart == 1) {
-    		s.setAttribute("alertMsg", "장바구니 담기 성공!");
-    		req.setAttribute("prodCart", prodCart);
-    		resp.sendRedirect("/cookTeacher/cart/list");
-    	}else {
-    		System.out.println("네 장바구니 담기 실패임다^^");
-    	}
-
-    	
-    
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//    	
+//    	HttpSession s = req.getSession();
+//    	
+//    	HttpSession member = req.getSession();
+//		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
+//    	
+//    	//일단 .prodNo 이랑 
+//    	//넘버를 어떻게:?
+//    	String prodNo = req.getParameter("prodNo");
+//    	String prodCnt = req.getParameter("prodCnt");
+//    	String memberNo = loginMember.getNo();
+//    	
+//    	CartVo vo = new CartVo();
+//    	vo.setProdNo(prodNo);
+//    	vo.setCnt(prodCnt);
+//    	vo.setNo(memberNo);
+//    	
+//    	
+//    	
+//    	int prodCart = new CartService().addCart(vo);
+//    	//int prodCart = new MenuService().cartInput(mcv);
+//    	
+//    	
+//    	if(prodCart == 1) {
+//    		s.setAttribute("alertMsg", "장바구니 담기 성공!");
+//    		req.setAttribute("prodCart", prodCart);
+//    		resp.sendRedirect("/cookTeacher/cart/list");
+//    	}else {
+//    		System.out.println("네 장바구니 담기 실패임다^^");
+//    	}
+//
+//    	
+//    
+//    }
 
 }

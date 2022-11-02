@@ -153,7 +153,7 @@
                         <div style="border-top: 1px solid black; "></div>
 	               <div>    
 	               <!-- 수정한 부분 -->
-                   <form action="/cookTeacher/menu/detail" method="post">
+                   <form action="/cookTeacher/cart/add" method="post">
                    <input id="btn" type="submit" class="btn btn-warning" style="font-size: 1.2rem; font-weight: 700;" value="비법퍼가기" onclick="cartInput()">
                         <!-- <label class="re-btn" style="font-size: large;">비법 퍼가기</label> -->
                         <label class="re-btn-click">퍼가요~♡</label>
@@ -197,7 +197,7 @@
                                 <input type="checkbox" name="prodNo" value="${prod.prodNo}" > ${prod.name} / ${prod.weight}
                                 <pre ><fmt:formatNumber value="${prod.price}" pattern="#,###"/>원</pre>
                                 <!-- prodCnt -> cnt로 수정 될 수 있음! -->
-                               	수량 : <input type="number" name="prodCnt" value="1" style="width: 20px; margin-bottom: 10px">
+                               	수량 : <input type="number" name="cnt" value="1" style="width: 20px; margin-bottom: 10px">
                             	<!--  -->
                             
                             </div>
