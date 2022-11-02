@@ -143,4 +143,50 @@ public class NoticeDao {
 		
 	}
 
+	public int write(NoticeVo vo, Connection conn) {
+		String sql = "INSERT INTO NOTICE VALUES(SEQ_NOTICE_NO.NEXTVAL, ?,?,?,SYSDATE,'N',SYSDATE)";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getWriter());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setString(3, vo.getContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateOne(NoticeVo vo, Connection conn) {
+		String sql = "UPDATE NOTICE SET TITLE = ?, CONTENT = ? WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setString(3, vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

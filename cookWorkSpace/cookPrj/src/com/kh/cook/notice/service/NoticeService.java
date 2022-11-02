@@ -39,5 +39,37 @@ public class NoticeService {
 		
 		return vo;
 	}
+	public int write(NoticeVo vo) {
+		Connection conn = getConnection();
+		
+		int result = dao.write(vo,conn);
+		
+		if(result == 1) {
+			commit(conn);
+
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	public int edit(NoticeVo vo) {
+		Connection conn = getConnection();
+		
+		int result = dao.updateOne(vo, conn);
+		
+		if(result == 1) {
+			commit(conn);
+			
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+	
 	
 }
