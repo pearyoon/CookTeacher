@@ -143,7 +143,7 @@
 						<%}%>
 						</span>
 							<div class="cmt_txt">
-								<textarea name="comment" id="cmt_content" cols="125" rows="4" placeholder="회원 간의 불편함을 주는 댓글은 자제해주시고 따뜻한 댓글 부탁드립니다.
+								<textarea name="comment" id="cmt_content" cols="100" rows="4" placeholder="회원 간의 불편함을 주는 댓글은 자제해주시고 따뜻한 댓글 부탁드립니다.
 																			게시물에 문제가 있다면 신고 또는 정중하게 이의제기 해주시길 바랍니다."></textarea>
 								&nbsp;<button id="cmt_btn"><span>등록</span></button>
 							</div>
