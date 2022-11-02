@@ -23,16 +23,14 @@ public class BobCmtWriteController extends HttpServlet{
 		String bobno = req.getParameter("bobNo");
 		String writerNo = req.getParameter("writerNo");
 		String comment = req.getParameter("comment");
-		System.out.println("bobno ::: " + bobno);
-		System.out.println("writerNo ::: "+writerNo);
-		System.out.println("comment ::: "+comment);
+
 		
 		//데이터 뭉치기
 		BobCmtVo cmtvo = new BobCmtVo();
 		cmtvo.setPostNo(bobno);
 		cmtvo.setWriter(writerNo);
 		cmtvo.setCmt(comment);
-		System.out.println("cmtvo ::: "+cmtvo);
+
 		
 		//디비 다녀오기
 		int result = new BobCmtService().writeCmt(cmtvo);
@@ -46,7 +44,7 @@ public class BobCmtWriteController extends HttpServlet{
 			//디비 가서 댓글들 조회 => voList
 			//int cmtCnt = new BobCmtService().selectCount();
 			List<BobCmtVo> voList = new BobCmtService().selectBobCmtList();
-			System.out.println("voList ::: "+voList);
+
 			resp.setContentType("text/plain; charset=UTF-8;");
 			Gson gson = new Gson();
 			resp.getWriter().write(gson.toJson(voList));

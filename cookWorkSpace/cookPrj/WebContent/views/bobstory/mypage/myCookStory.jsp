@@ -1,6 +1,8 @@
 <%@page import="com.kh.cook.bobstory.vo.PageVo"%>
 <%@page import="com.kh.cook.bobstory.vo.BobstoryVo"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -34,7 +36,7 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="<%=root%>/mypage/member/orderlist">
+                                <a href="<%=root%>/order/mypage/orderlist">
                                     주문내역
                                 </a>
                             </li>
@@ -49,12 +51,12 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/cookTeacher/login/cs/QnAhistory">
                                     문의내역
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/cookTeacher/cs/QnA/write">
                                     문의하기
                                 </a>
                             </li>
@@ -93,6 +95,9 @@
 				                </table>
 				                <br>
 			                	<div id="page-area" style="text-align: center;">
+			                		<c:if test="${empty voList}">
+			                		<p>작성한 글이 없습니다.</p>
+			                		</c:if>
 						        	<%if(pv.getStartPage() != 1){%>
 							        	<a href="/cookTeacher/bobstory/mypage/myCookStory?pno=<%=pv.getStartPage()-1%>" class="btn"><</a>
 						        	<%}%>
