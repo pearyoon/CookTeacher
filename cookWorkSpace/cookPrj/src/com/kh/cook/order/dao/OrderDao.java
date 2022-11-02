@@ -272,7 +272,7 @@ public class OrderDao {
 	
 	// 주문 내역에서 내역번호 / 식재료 번호 / 주문 번호 
 	public List<OrderDetailVo> selectOrderDetail(Connection conn, String num) {
-		String sql = "SELECT NO, PROD_NO, ORDER_NO, CNT, PRICE FROM ORDER_DETAIL WHERE ORDER_NO = ?";
+		String sql = "SELECT D.NO, D.PROD_NO, D.ORDER_NO, D.CNT, D.PRICE, P.NAME, P.IMG_PATH FROM ORDER_DETAIL D JOIN PRODUCT P ON P.PROD_NO = D.PROD_NO WHERE ORDER_NO = ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -287,17 +287,21 @@ public class OrderDao {
 			
 			while(rs.next()) {
 				String no = rs.getString("NO");
-				String prodNo = rs.getString("PROD_NO");
+				String prodNum = rs.getString("PROD_NO");
 				String orderNo = rs.getString("ORDER_NO");
 				String cnt = rs.getString("CNT");
 				String price = rs.getString("PRICE");
+				String name = rs.getString("NAME");
+				String imgPath = rs.getString("IMG_PATH");
 				
 				OrderDetailVo vo = new OrderDetailVo();
 				vo.setNo(no);
-				vo.setProdNo(prodNo);
+				vo.setProdNo(prodNum);
 				vo.setOrderNo(num);
 				vo.setCnt(cnt);
 				vo.setPrice(price);
+				vo.setName(name);
+				vo.setImgPath(imgPath);
 				
 				list.add(vo);
 				

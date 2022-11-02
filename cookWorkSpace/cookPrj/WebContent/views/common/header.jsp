@@ -74,7 +74,7 @@
                     <%} %>
                         <div>
                             <a href="<%=root%>/cart/list">
-                                <img src="<%=root%>/resources/img/icons/cart.png" alt="장바구니" width="50px" height="50px">
+                                <img src="<%=root%>/resources/img/icons/장바구니.svg" alt="장바구니" width="50px" height="50px">
                             </a>
                         </div>
                     </div>
