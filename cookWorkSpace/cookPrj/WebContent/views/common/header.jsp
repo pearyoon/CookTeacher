@@ -14,7 +14,10 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script><!-- 알람 -->
 	<script>
 		<%if(alertMsg != null) {%>
-			Swal.fire('<%=alertMsg%>')
+            Swal.fire({
+            confirmButtonColor: '#255D00',
+            title: '<%=alertMsg%>',
+          });
 		<%} %>
 	</script>
 

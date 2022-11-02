@@ -17,6 +17,13 @@ import com.kh.cook.member.vo.MemberVo;
 public class MemberMypageController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		HttpSession ss = req.getSession();
+		MemberVo loginMember = (MemberVo)ss.getAttribute("loginMember");
+		
+		MemberVo vo = new MemberService().selectOne(loginMember);
+		
+		ss.setAttribute("loginMember", vo);
 		req.getRequestDispatcher("/views/common/mypage.jsp").forward(req, resp);
 	}
 	@Override

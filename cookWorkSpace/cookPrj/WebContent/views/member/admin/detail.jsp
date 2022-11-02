@@ -109,7 +109,12 @@
 
                     </div>
                     <div class="join-bottom">
-                        <button type="submit">수정하기</button>
+                        <div>
+                            <button type="button" onclick="back();">목록</button>
+                        </div>
+                        <div>
+                            <button type="submit">수정하기</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -141,7 +146,11 @@
         		return false;
         	}
         	
-        	return true;
+
+        }
+
+        function back(){
+            window.location.href = "/cookTeacher/admin/member/list?member=all&pno=1";
         }
 
         const gradeArr = $('.option');

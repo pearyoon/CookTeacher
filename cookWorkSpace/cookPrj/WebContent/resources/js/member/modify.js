@@ -153,12 +153,14 @@ function checkNick(){
                     $('#dupNick-btn').addClass('non-check');
             
                     Swal.fire({
+                        confirmButtonColor: '#255D00',
                         icon: 'success',
                         text: '사용 가능한 닉네임입니다.',
                       });
 					nickck = true;
 				} else{
                     Swal.fire({
+                        confirmButtonColor: '#255D00',
                         icon: 'error',
                         text: '중복 닉네임입니다.',
                       });
@@ -174,6 +176,7 @@ function checkNick(){
 
     }else{
         Swal.fire({
+            confirmButtonColor: '#255D00',
             icon: 'error',
             text: '2자 이상의 닉네임을 입력해주세요.',
           });
@@ -202,6 +205,8 @@ function checkEmail(){
                     $('#dupEmail-btn').addClass('non-check');
                     
                     Swal.fire({
+                        confirmButtonColor: '#255D00',
+
                         icon: 'success',
                         text: '사용 가능한 이메일입니다.',
                       });
@@ -209,6 +214,8 @@ function checkEmail(){
 
                 }else{
                     Swal.fire({
+                        confirmButtonColor: '#255D00',
+
                         icon: 'error',
                         text: '사용 불가능한 이메일입니다.',
                       });
@@ -224,6 +231,7 @@ function checkEmail(){
   
     }else{
         Swal.fire({
+            confirmButtonColor: '#255D00',
             icon: 'error',
             text: '이메일의 형식을 맞춰주세요.',
           });
@@ -282,6 +290,7 @@ $('#detailAddr').keyup(function(){
 function checkModify(){
     if(!pwd1ck){
         Swal.fire({
+            confirmButtonColor: '#255D00',
             icon: 'error',
             text: '비밀번호는 영문 숫자 특수문자 조합의 8자 이상입니다.',
           });
@@ -290,6 +299,7 @@ function checkModify(){
 
     if(!pwd2ck){
         Swal.fire({
+            confirmButtonColor: '#255D00',
             icon: 'error',
             text: '비밀번호가 일치하지 않습니다.',
           });
@@ -298,6 +308,7 @@ function checkModify(){
     
     if(!nickck){
         Swal.fire({
+            confirmButtonColor: '#255D00',
             icon: 'error',
             text: '닉네임을 입력해주세요.',
           });
@@ -306,6 +317,7 @@ function checkModify(){
 
     if(!emailck){
         Swal.fire({
+            confirmButtonColor: '#255D00',
             icon: 'error',
             text: '이메일 중복확인을 해주세요.',
           });
@@ -314,6 +326,7 @@ function checkModify(){
 
     if(!phoneck){
         Swal.fire({
+            confirmButtonColor: '#255D00',
             icon: 'error',
             text: '휴대폰 번호를 입력해주세요.',
           });
@@ -322,6 +335,7 @@ function checkModify(){
 
     if(!addrck){
         Swal.fire({
+            confirmButtonColor: '#255D00',
             icon: 'error',
             text: '주소를 입력해주세요.',
           });
