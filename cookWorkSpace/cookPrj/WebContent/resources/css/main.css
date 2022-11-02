@@ -178,5 +178,7 @@ a:hover{
 .main-recipe{
 	font-weight: 580;
 }
-
-
+/*카피카피*/
+.main-menu-bar-items>a {
+    font-weight: bold;
+}

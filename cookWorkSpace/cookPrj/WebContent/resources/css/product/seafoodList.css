@@ -82,3 +82,11 @@ a:hover {
 .main-menu-bar-items:hover>a{
 	color: white;
 }
+
+/*카피*/
+/* #here.main-menu-bar-items>a{
+    font-weight: bold;
+} */
+.main-menu-bar-items>a{
+	font-weight: bold;
+}

@@ -38,16 +38,15 @@ public class BobCmtWriteController extends HttpServlet{
 		//화면 선택
 		if(result == 1) {
 			//댓글 작성 성공
-			req.getSession().setAttribute("alertMsg", "댓글 작성 성공!!!");
 			req.setAttribute("cmtvo", cmtvo);
 			
 			//디비 가서 댓글들 조회 => voList
 			//int cmtCnt = new BobCmtService().selectCount();
-			List<BobCmtVo> voList = new BobCmtService().selectBobCmtList();
+			BobCmtVo vo = new BobCmtService().selectBobCmtList(cmtvo);
 
 			resp.setContentType("text/plain; charset=UTF-8;");
 			Gson gson = new Gson();
-			resp.getWriter().write(gson.toJson(voList));
+			resp.getWriter().write(gson.toJson(vo));
 		}else {
 			//댓글 작성 실패
 			req.setAttribute("msg", "댓글 작성에 실패했습니다.");

@@ -183,12 +183,11 @@
 									},
 									success : function(result){
 										const objList = JSON.parse(result);
-										console.log(objList.length);
-										for(var i = 0; i < objList.length; i++){
-											$('#cmt_wrap').eq(0).prepend(
+										console.log(objList);
+											$('#cmt_wrap').prepend(
 													'<div class="cmt_box">'
-													+'<div class="cmt2Writer" style="font-size : 14px; height:40px; line-height:30px">' + objList[i].writer + '</div>'
-													+'<div class="cmt2Content" style = "height:70px; borderL:0; line-height:50px" >' + objList[i].cmt + '</div>'
+													+'<div class="cmt2Writer" style="font-size : 14px; height:40px; line-height:30px">' + objList.writer + '</div>'
+													+'<div class="cmt2Content" style = "height:70px; borderL:0; line-height:50px" >' + objList.cmt + '</div>'
 													+'<span><a href="/cookTeacher/bobstory/cmt/edit">'+ '수정' + '</a></span>'
 													+' '
 													+'<span><a href="/cookTeacher/bobstory/cmt/delete">'+ '삭제' + '</a></span>'
@@ -196,10 +195,8 @@
 													+'</div>'
 													
 											);
-											console.log(objList[i].writer);
-										}
-										
-										console.log('성공');
+
+										Swal.fire('댓글 작성 성공');
 									},
 									error : function(){
 										alert('ajax error');
@@ -211,18 +208,17 @@
 				</div><!-- cmt container-->
 				<br>
 				<div id="cmt_wrap">
+				<%if(cvo != null){ %>
 					<%for(int i = 0; i < cvo.size(); i++){ %>
-						<%if(cvo.get(i).getPostNo() == vo.getNo()){ %>
 							<div class="cmt_box">
 							<input type="hidden" value="<%=cvo.get(i).getCmtNo()%>" name="cmtNo">
 							<div class="cmt2Writer"><%=cvo.get(i).getWriter() %></div></div>
-							<div class="cmt2Content"><%=cvo.get(i).getWriter() %></div>
-							<button id="editbtn" onclick="location.href='/cookTeacher/bobstory/cmt/edit'">수정</button>
-							<button id="deletebtn" onclick="location.href='/cookTeacher/bobstory/cmt/delete'">삭제</button>
+							<div class="cmt2Content"><%=cvo.get(i).getCmt() %></div>
 							&nbsp;<span><a href="/cookTeacher/bobstory/cmt/edit">수정</a></span>
 							<span><a href="/cookTeacher/bobstory/cmt/delete">삭제</a></span>
-						<%} %>
+							<div style="border-bottom:1px solid #aaa; width:860px; height:5px;"></div>
 					<%} %>
+				<%} %>
 				</div>
 				
 			</div>
