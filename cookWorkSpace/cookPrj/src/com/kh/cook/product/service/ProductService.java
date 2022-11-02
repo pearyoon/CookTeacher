@@ -366,6 +366,24 @@ public class ProductService  {
 	}
 
 
+	public int deleteProduct(ProductVo vo) {
+		Connection conn = getConnection();
+		
+		int result = dao.deleteProduct(conn, vo);
+		
+		System.out.println("dao쪽 result:" + result);
+		
+		if(result == 1) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	
+	}
+
+
 
 
 

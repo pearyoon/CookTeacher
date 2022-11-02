@@ -44,7 +44,7 @@
                         <a href="/cookTeacher/product/main/meatEggList">육류 / 계란</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/product/main/noodleBreadList">면류 / 빵류</a>
+                        <a href="/cookTeacher/product/main/noodleBreadList">면 / 베이커리</a>
                     </div>
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/dairyList">유제품</a>

@@ -95,7 +95,6 @@
 				                    </tr>
 				                    </thead>
 				                    <tbody>
-					                     
 								    	<%for(int i = 0; i < rvoList.size(); ++i){%>
 					               			<tr>
 		                                        <td>
@@ -104,13 +103,8 @@
 		                                        <td><%= rvoList.get(i).getName() %></td>
 		                                        <td><%= rvoList.get(i).getContent() %></td>
 		                                        <td><%= rvoList.get(i).getEnrollDate() %></td>
-						            			
 					                        </tr>
 										<%}%>
-										
-										
-										
-			                    	
 										<%-- <tr>
 											<td>${review.content}</td>
 											<th>${review.reviewNo}</th>
@@ -122,7 +116,7 @@
 				                <br>
 			                	<div id="page-area" style="text-align: center;">
 				                    	<c:if test="${empty rvoList}">
-					                        <div>작성 내역 없음</div>
+					                        <div>리뷰 작성 내역이 없습니다.</div>
 					                     </c:if>
 						        	<%if(pv.getStartPage() != 1){%>
 							        	<a href="/cookTeacher/product/mypage/myReview?pno=<%=pv.getStartPage()-1%>" class="btn">이전</a>

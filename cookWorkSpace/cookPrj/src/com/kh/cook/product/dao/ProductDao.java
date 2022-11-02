@@ -1128,5 +1128,31 @@ public class ProductDao {
 	
 	}
 
+	//관리자 상품 삭제
+	public int deleteProduct(Connection conn, ProductVo vo) {
+		
+		String sql = "DELETE FROM PRODUCT WHERE CATE_NO = ? AND NAME = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getCateNo());
+			pstmt.setString(2, vo.getName());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
 
 }

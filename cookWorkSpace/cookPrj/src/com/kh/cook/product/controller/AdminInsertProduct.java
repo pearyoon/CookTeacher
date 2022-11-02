@@ -81,9 +81,6 @@ public class AdminInsertProduct extends HttpServlet {
 		vo.setStock(stock);
 		vo.setImgPath(avo.getChangeName());
 		
-		
-		
-		
 		//디비 다녀오기
 		int result = new ProductService().insertProduct(vo,avo);
 		int prodNo = new ProductService().findProdNo(vo);

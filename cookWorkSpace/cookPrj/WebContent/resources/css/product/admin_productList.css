@@ -55,7 +55,13 @@ margin-bottom: 30px;
 button.btnMain {
   position: absolute;
   top: 90px;
-  left : 440px; 
+  left : 390px; 
+}
+
+button.btnMain2 {
+  position: absolute;
+  top: 90px;
+  left : 550px; 
 }
 
 .main-prod-area{
