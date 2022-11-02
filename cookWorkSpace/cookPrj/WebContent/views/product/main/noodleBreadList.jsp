@@ -38,7 +38,7 @@
             <img src="https://product-image.kurly.com/category/banner/pc/bca0156a-d599-4bf1-9a74-520a184d13ac.jpg">
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/product/main/fruitVegeList">과일 / 채소</a>
+                        <a href="/cookTeacher/product/main/fruitVegeList">과일/채소</a>
                     </div>
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/seafoodList">해산물</a>
