@@ -55,7 +55,7 @@ main div{
     width: 1050px;
     /* height: 600px; */
     text-align: center;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 #main-middle>div:first-child{
     margin-bottom: 15px;
@@ -168,3 +168,15 @@ a:hover{
 .main-menu-bar-items:hover>a{
 	color: white;
 }
+
+.main-reinfo{
+	font-size: small;
+	color: gray;
+	
+}
+
+.main-recipe{
+	font-weight: 580;
+}
+
+
