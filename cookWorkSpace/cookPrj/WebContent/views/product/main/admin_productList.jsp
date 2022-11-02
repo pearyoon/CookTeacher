@@ -36,6 +36,7 @@
             <div id="main-bottom">
             <img src="/cookTeacher/resources/img/product/admin_gray.png" height="200px" width="1050px">
             <button class="btnMain" type="button" onclick="location.href='/cookTeacher/product/main/admin_insertProduct'">식재료 등록하기</button>
+            <button class="btnMain2" type="button" onclick="location.href='/cookTeacher/product/main/admin_deleteProduct'">식재료 삭제하기</button>
             <!-- <div id="main-title">카테고리 선택</div> -->
                 <div id="main-menu-bar">
                     <div class="main-menu-bar-items">
@@ -48,7 +49,7 @@
                         <a href="/cookTeacher/product/main/meatEggList">육류 / 계란</a>
                     </div>
                     <div class="main-menu-bar-items">
-                        <a href="/cookTeacher/product/main/noodleBreadList">면류 / 빵류</a>
+                        <a href="/cookTeacher/product/main/noodleBreadList">면 / 베이커리</a>
                     </div>
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/dairyList">유제품</a>

@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <!-- 수량 버튼 -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -28,13 +29,29 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
+.swal2-icon.swal2-question.swal2-icon-show {
+    animation: swal2-animate-error-icon .5s;
+    border: .25em solid rgba(165,220,134,.3);
+}
+.swal2-icon.swal2-question.swal2-icon-show .swal2-icon-content {
+    animation: swal2-animate-question-mark .8s;
+    color: #a4db86;
+}
+.swal2-styled.swal2-confirm {
+    border: 0;
+    border-radius: 10px;
+    background: initial;
+    background-color: #7066e0;
+    color: #fff;
+    font-size: 1em;
+}
 </style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>
     <div id="container">
         <main>
-            <form action="/cookTeacher/cart/add" method="post">
+            <form id="cartGogosing" action="/cookTeacher/cart/add" method="post" onsubmit="return addCart();">
             <div id="main-middle">
             <hr><br><br>
                 <div id="product-name"></div>
@@ -102,12 +119,8 @@
                                                     <div class="updown">
                                                     <input type="number" name="cnt" id="p_num1" size="3" maxlength="3" class="p_num" value="1" min="1" max="100" onkeyup="javascript:basket.changePNum(1);" style="width: 35px; margin-bottom: 35px ">
                                                     </div>
-                                                    
-                                                    
                                                 </div>
-                                                
                                                 <%-- <div class="sum" name="totalSum"><br><%= vo.getPrice() %>원</div> --%>
-                                                
                                             </div>
                                         </div>
                                 </form>
@@ -115,18 +128,43 @@
                             <br><br><br><br><br><br><br><br>
                             <div class="inner">
                             	<!-- <form action="/cookTeacher/cart/list" method="get"> -->
-                            		<input type="submit" onclick="" class="cart-button css-1qirdbn e4nu7ef3" radius="3" value="장바구니 담기">
-                            		
+                            		<input type="submit" onclick="addCart();" class="cart-button css-1qirdbn e4nu7ef3" radius="3" value="장바구니 담기">
                             	</form>
-                            	
-			                  <!--  <script type="text/javascript">
+			                  <script type="text/javascript">
 								function addCart(){
-									
-								}
-			                   </script> -->
-			                   
-			                 
-			                            	
+									if("${vo.stock}"=="0"){
+										Swal.fire('⛔️재고가 없습니다.⛔️')
+										return false;
+									}
+									const cnt = $("#p_num1").val();
+									const stock = "${vo.stock}";
+									console.log(stock);
+									if(stock<cnt){
+										Swal.fire('재고수량 이상을 담을 수 없습니다.')
+										return false;
+									}
+					                Swal.fire({
+					                  title: '장바구니에 담으시겠습니까?',
+					                  icon: 'question',
+					                  showCancelButton: true,
+					                  confirmButtonColor: '#255D00',
+									  cancelButtonColor: '#FFD335',
+					                  confirmButtonText: '네',
+					                  cancelButtonText: '아니오',
+					                  })
+					                  .then((result)=>{
+					                      console.log(result);
+					                      if (result.isConfirmed) {
+					                          Swal.fire({
+					                                icon: 'success',
+					                                text: '장바구니에 담겼습니다!',
+					                                confirmButtonColor: '#255D00',
+					                              }).then( ()=> {document.querySelector('#cartGogosing').submit();} );
+					                      }
+					                  });
+					                  return false;
+					            }//upload end
+			                   </script>
                             </div>
                         </div>
                     </div>
@@ -249,6 +287,7 @@
 			  imageWidth: 300,
 			  imageHeight: 200,
 			  imageAlt: 'Custom image',
+			  confirmButtonColor: '#FFD335',
 			})
 		<%} %>
 	</script>

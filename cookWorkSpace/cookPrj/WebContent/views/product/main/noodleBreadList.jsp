@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cookTeacher</title>
+<title>집밥쿡선생 :: 쇼핑</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
@@ -47,7 +47,7 @@
                         <a href="/cookTeacher/product/main/meatEggList">육류 / 계란</a>
                     </div>
                     <div class="main-menu-bar-items" style="background-color: #255D00; box-shadow: 3px 3px #FFD335;">
-                        <a href="/cookTeacher/product/main/noodleBreadList" style="color: white;">면류 / 빵류</a>
+                        <a href="/cookTeacher/product/main/noodleBreadList" style="color: white;">면 / 베이커리</a>
                     </div>
                     <div class="main-menu-bar-items">
                         <a href="/cookTeacher/product/main/dairyList">유제품</a>
@@ -59,7 +59,7 @@
                         <a href="/cookTeacher/product/main/etcList">기타</a>
                     </div>
                 </div>
-                <hr><div style="font-size: 20px; font-weight: 700; ">[ 면류 / 빵류 ]&nbsp;&nbsp;<img src="/cookTeacher/resources/img/ramen.png" style="height:4%; width:4%"></div>
+                <hr><div style="font-size: 20px; font-weight: 700; ">[ 면 / 베이커리 ]&nbsp;&nbsp;<img src="/cookTeacher/resources/img/ramen.png" style="height:4%; width:4%"></div>
                 <hr>
                 <br><br>
                 <div class="main-prod-area">
