@@ -1,6 +1,7 @@
 package com.kh.cook.bobstory.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.cook.bobstory.service.BobCmtService;
 import com.kh.cook.bobstory.vo.BobCmtVo;
 
@@ -21,14 +23,16 @@ public class BobCmtWriteController extends HttpServlet{
 		String bobno = req.getParameter("bobNo");
 		String writerNo = req.getParameter("writerNo");
 		String comment = req.getParameter("comment");
-
+		System.out.println("bobno ::: " + bobno);
+		System.out.println("writerNo ::: "+writerNo);
+		System.out.println("comment ::: "+comment);
 		
 		//데이터 뭉치기
 		BobCmtVo cmtvo = new BobCmtVo();
 		cmtvo.setPostNo(bobno);
 		cmtvo.setWriter(writerNo);
 		cmtvo.setCmt(comment);
-		
+		System.out.println("cmtvo ::: "+cmtvo);
 		
 		//디비 다녀오기
 		int result = new BobCmtService().writeCmt(cmtvo);
@@ -38,7 +42,14 @@ public class BobCmtWriteController extends HttpServlet{
 			//댓글 작성 성공
 			req.getSession().setAttribute("alertMsg", "댓글을 성공적으로 작성하였습니다.");
 			req.setAttribute("cmtvo", cmtvo);
-			resp.getWriter().write("성공~");
+			
+			//디비 가서 댓글들 조회 => voList
+			//int cmtCnt = new BobCmtService().selectCount();
+			List<BobCmtVo> voList = new BobCmtService().selectBobCmtList();
+			System.out.println("voList ::: "+voList);
+			resp.setContentType("text/plain; charset=UTF-8;");
+			Gson gson = new Gson();
+			resp.getWriter().write(gson.toJson(voList));
 		}else {
 			//댓글 작성 실패
 			req.setAttribute("msg", "댓글 작성에 실패했습니다.");
