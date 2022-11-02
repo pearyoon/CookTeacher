@@ -27,18 +27,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="/cookTeacher/resources/css/product/admin_productList.css">
-<style>
-.main-menu-bar-items>a{
-    font-weight: 500;
-}
-.main-menu-bar-items>a:hover{
-    color: white;
-}
-.main-menu-bar-items:hover{
-	background-color: #255D00;
-	color: white;
-}
-</style>
 </head>
 <body>
    <%@include file="/views/common/header.jsp" %>

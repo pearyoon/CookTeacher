@@ -43,7 +43,7 @@
                     <div id="inner">
                         <ul id="list-menu">
                             <li class="non-clcik">
-                                <a href="/member/modify">
+                                <a href="/cookTeacher/mypage/member/check">
                                     회원정보
                                 </a>
                             </li>
@@ -53,22 +53,22 @@
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/cookTeacher/bobstory/mypage/myCookStory">
                                     쿡스토리
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/cookTeacher/product/mypage/myReview">
                                     리뷰조회
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/cookTeacher/login/cs/QnAhistory">
                                     문의내역
                                 </a>
                             </li>
                             <li class="non-clcik">
-                                <a href="">
+                                <a href="/cookTeacher/cs/QnA/write">
                                     문의하기
                                 </a>
                             </li>
