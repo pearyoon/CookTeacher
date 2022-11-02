@@ -76,7 +76,7 @@
                                         <div class="info-list">상세주소</div>
                                         <div class="member-info">
                                             <input class="member-info" id="detailAddr"
-                                                value="${cartMember.getDetailAddr()}" readonly>
+                                                value="${cartMember.getDetailAddr()}" placeholder="나머지 주소를 입력해주세요." readonly>
                                         </div>
                                     </li>
                                     <li>

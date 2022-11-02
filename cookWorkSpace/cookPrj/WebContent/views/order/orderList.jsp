@@ -71,9 +71,9 @@
                         </div>
                         <div class="period">
                             <select class="dropdown">
-                                <option>3개월</option>
-                                <option>6개월</option>
-                                <option>1년</option>
+                                <option class="option">3개월</option>
+                                <option class="option">6개월</option>
+                                <option class="option">1년</option>
                             </select>
                         </div>
                     </div>
