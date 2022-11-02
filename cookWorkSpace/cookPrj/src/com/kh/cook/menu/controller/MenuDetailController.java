@@ -52,55 +52,55 @@ public class MenuDetailController extends HttpServlet{
 
     }
     
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	
-    	HttpSession s = req.getSession();
-    	
-    	HttpSession member = req.getSession();
-		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
-    	
-    	//일단 .prodNo 이랑 
-    	//넘버를 어떻게:?
-    	String prodNo[] = req.getParameterValues("prodNo");
-    	String prodCnt[]  = req.getParameterValues("prodCnt");
-    	String memberNo = loginMember.getNo();
-    	
-
-    	
-    	List<CartVo> cartList = new ArrayList<CartVo>();
-    	
-    	for(int i=0; i< prodNo.length; i++) {
-    		CartVo vo = new CartVo();
-    		vo.setProdNo(prodNo[i]);
-    		vo.setCnt(prodCnt[i]);
-    		vo.setNo(memberNo);
-    		
-    		cartList.add(vo);
-    		
-    	}
-    	
-    	System.out.println(prodCnt);
-    	
-    	
-    	if(loginMember == null) {
-    		req.getRequestDispatcher("/member/login").forward(req, resp);
-    	}
-    	
-    	//int prodCart = new CartService().addCart(vo, prodNo);
-    	boolean isCheck = new MenuService().addCart(cartList);
-    	
-    	
-    	if(isCheck) {
-    		s.setAttribute("alertMsg", "장바구니 담기 성공!");
-//    		req.setAttribute("prodCart", prodCart);
-    		resp.sendRedirect("/cookTeacher/cart/list");
-    	}else {
-    		System.out.println("네 장바구니 담기 실패임다^^");
-    	}
-
-    	
-    
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//    	
+//    	HttpSession s = req.getSession();
+//    	
+//    	HttpSession member = req.getSession();
+//		MemberVo loginMember = (MemberVo) member.getAttribute("loginMember");
+//    	
+//    	//일단 .prodNo 이랑 
+//    	//넘버를 어떻게:?
+//    	String prodNo[] = req.getParameterValues("prodNo");
+//    	String prodCnt[]  = req.getParameterValues("prodCnt");
+//    	String memberNo = loginMember.getNo();
+//    	
+//
+//    	
+//    	List<CartVo> cartList = new ArrayList<CartVo>();
+//    	
+//    	for(int i=0; i< prodNo.length; i++) {
+//    		CartVo vo = new CartVo();
+//    		vo.setProdNo(prodNo[i]);
+//    		vo.setCnt(prodCnt[i]);
+//    		vo.setNo(memberNo);
+//    		
+//    		cartList.add(vo);
+//    		
+//    	}
+//    	
+//    	System.out.println(prodCnt);
+//    	
+//    	
+//    	if(loginMember == null) {
+//    		req.getRequestDispatcher("/member/login").forward(req, resp);
+//    	}
+//    	
+//    	//int prodCart = new CartService().addCart(vo, prodNo);
+//    	boolean isCheck = new MenuService().addCart(cartList);
+//    	
+//    	
+//    	if(isCheck) {
+//    		s.setAttribute("alertMsg", "장바구니 담기 성공!");
+////    		req.setAttribute("prodCart", prodCart);
+//    		resp.sendRedirect("/cookTeacher/cart/list");
+//    	}else {
+//    		System.out.println("네 장바구니 담기 실패임다^^");
+//    	}
+//
+//    	
+//    
+//    }
 
 }

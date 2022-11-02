@@ -22,21 +22,7 @@
 <link rel="stylesheet" href="/cookTeacher/resources/css/main.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<style>
-a:hover{
-    text-decoration: none;
-}
-.main-menu-bar-items>a{
-    font-weight: 500;
-}
-.main-menu-bar-items>a:hover{
-    color: white;
-}
-.main-menu-bar-items:hover{
-	background-color: #255D00;
-}
 
-</style>
 
 </head>
 <body>
@@ -55,13 +41,13 @@ a:hover{
                           </ol>
                           <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                              <img src="/cookTeacher/resources/img/test.jpg" style="width:1050px ; height:400px; ">
+                              <img src="/cookTeacher/resources/img/메인1.png" style="width:1050px ; height:400px; ">
                             </div>
                             <div class="item">
-                              <img src="/cookTeacher/resources/img/main_steak.jpg" style="width:1050px ; height:400px; ">
+                              <img src="/cookTeacher/resources/img/메인2.png" style="width:1050px ; height:400px; ">
                             </div>
                             <div class="item">
-                              <img src="/cookTeacher/resources/img/cookTeacher_main_banner_yellow.png" style="width:1050px ; height:400px; ">
+                              <img src="/cookTeacher/resources/img/best2.jpg" style="width:1050px ; height:400px; ">
                             </div>
                           </div>
                           <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -75,13 +61,15 @@ a:hover{
                 </div>
             </div>
             <div id="main-middle">
-                <div>레시피</div>
+               <br><hr style="border-top:3px solid #eee">
+                <div id="recomm">쿡선생 PICK!</div>
+               <hr style="border-top:3px solid #eee"> 
                 <div id="main-menu-area">
                     <div>
-                        <a href="">
-                            <img src="/cookTeacher/resources/img/돼지고기청경채볶음.jpg" alt="레시피게시판담당" width="100%" height="100%">
+                        <a href="<%=root %>/menu/detail?no=41">
+                            <img src="/cookTeacher/resources/img/양식레시피/토마토스파게티.jpg" alt="레시피게시판담당" width="100%" height="100%">
                         </a>
-                        <div>메뉴이름</div>
+                        <div>토마토스파게티</div>
                     </div>
                     <div>
                         <a href="">
