@@ -35,6 +35,10 @@
                             <p>결제 금액 : </p>
                             <p><fmt:formatNumber value="${totalPrice}" pattern="#,###"/>원</p>
                         </div>
+                        <div class="point">
+                            <p>적립포인트 : </p>
+                            <p><fmt:formatNumber value="${totalPoint}" pattern="#,###"/>원</p>
+                        </div>
                         <div class="notice">
                             <span>&#183; [배송준비중] 이전일 때 주문내역 상세페이지에서 주문 취소가 가능합니다.</span>
                             <span>&#183; 주문/배송 및 기타 문의가 있을 경우, 1:1 문의에 남겨주시면 신속히 해결해드리겠습니다.</span>

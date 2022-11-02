@@ -94,7 +94,7 @@
                             </div>
                             <div class="order-info-wrapper">
                                 <div class="thumb">
-                                    <img src="<c:url value="/resources/img/product/" />${orderItem.imgPath}" alt="${orderItem.name}">
+                                    <img src="<c:url value="/upload/img/" />${orderItem.imgPath}" alt="${orderItem.name}">
                                 </div>
                                 <div class="order-list">
                                     <dl class="order-dl">
@@ -119,7 +119,7 @@
                                         <span>결제완료</span>
                                     </div>
                                     <div class="ask">
-                                        <button class="ask-btn"><a href="">1:1문의하기</a></button>
+                                        <button class="ask-btn"><a href="<%=root%>/cs/QnA/write">1:1문의하기</a></button>
                                     </div>
                                 </div>
                             </div>

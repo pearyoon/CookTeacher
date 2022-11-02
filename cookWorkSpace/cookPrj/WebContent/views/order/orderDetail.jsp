@@ -75,8 +75,8 @@
                         <div class="order-header">
                             <h3 class="orderNo">주문번호 ${orderInfo.no}</h3>
                             <span class="askQnA">배송 또는 상품에 문제가 있나요?
-                                <a href="">1:1 문의하기
-                                    <img src="../../resources/img/icons/right-arrow.png" alt="문의하기" class="askImg">
+                                <a href="<%=root%>/cs/QnA/write">1:1 문의하기
+                                    <img src="/cookTeacher/resources/img/icons/right-arrow.png" alt="문의하기" class="askImg">
                                 </a>
                             </span>
                         </div>
@@ -86,7 +86,7 @@
                             <c:forEach items="${orderlist}" var="orderItem">
                         <div class="board-wrapper">
                             <div class="thumb">
-                               <img src="<c:url value="/resources/img/product/" />${orderItem.imgPath}" alt="${orderItem.name}">
+                               <img src="<c:url value="/upload/img/" />${orderItem.imgPath}" alt="${orderItem.name}">
                             </div>
                             <div class="productName">
                                 <a href="<c:url value="/product/detail/productDetail?no=${orderItem.prodNo}"/>" alt="${orderItem.name}">${orderItem.name}</a>

@@ -27,7 +27,7 @@ public class AddCartController extends HttpServlet{
 		
 		// 회원이 아니면 로그인 페이지로 이동
 		if(loginMember == null) {
-			resp.sendRedirect("/member/login");
+			resp.sendRedirect("/cookTeacher/member/login");
 			return;
 		}
 		

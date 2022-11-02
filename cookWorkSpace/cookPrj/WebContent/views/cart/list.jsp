@@ -57,7 +57,7 @@
                                     <li class="product">
                                         <input type="checkbox" name="check" value="${cartItem.prodNo}" onchange="cookCheckOne()">
                                         <div class="thumb">
-                                            <img src="<c:url value="/resources/img/product/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
+                                            <img src="<c:url value="/upload/img/"></c:url>${cartItem.imgPath}" alt="${cartItem.name}">
                                         </div>
                                         <div class="product-name">
                                             <a href="<c:url value="/product/detail/productDetail?no=${cartItem.prodNo}"/>" alt="${cartItem.name}">${cartItem.name}</a>
