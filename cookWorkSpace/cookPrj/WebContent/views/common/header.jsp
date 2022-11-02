@@ -43,7 +43,7 @@
                     <a href="<%=root %>/member/login">로그인</a>
                    <%} %>
                        <span>|</span>
-                    <a href="<%=root %>/notice/list">공지사항</a>
+                    <a href="<%=root %>/notice/list?pno=1">공지사항</a>
                 
     
                 </div>
@@ -55,14 +55,19 @@
                         <div>집밥Cook선생</div>
                     </div>
                     <div id="header-search-area">
-                        <!-- <input type="text" name="search" placeholder="검색어를 입력해주세요.">
-                        <button><img src="/cookTeacher/resources/img/icons/search.png" alt="검색아이콘" width="100%" height="100%"></button> -->
+
                     </div>
-                    <div id="header-member-area">
-                        <div>
-                            <img src="/cookTeacher/upload/profile/member_profile.gif" alt="" width="50px">
-                        </div>
-                    <%if(loginMember != null) {%>
+                    <div id="header-member-area">    
+                    <%if(loginMember != null) {
+                    	if(loginMember.getProfile() != null){%>
+	                    	<div>
+	                            <img src="<%=loginMember.getProfile() %>" alt="<%=loginMember.getNick() %>" width="50px">
+	                        </div>
+						<%}else { %>
+							<div>
+	                            <img src="/cookTeacher/upload/profile/member_profile.gif" alt="기본프로필" width="50px">
+	                        </div>
+	                    	<%} %>    	                    
                         <div><%=loginMember.getNick() %> 님</div>
                     <%} else{%>
                         <div></div>

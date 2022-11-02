@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.cook.common.PageVo;
 import com.kh.cook.common.Paging;
+import com.kh.cook.member.service.AdminService;
 import com.kh.cook.member.vo.MemberVo;
 @WebServlet(urlPatterns = "/admin/member/list")
 public class AdminMemberListController extends HttpServlet{

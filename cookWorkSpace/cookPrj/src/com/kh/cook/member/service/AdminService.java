@@ -1,4 +1,4 @@
-package com.kh.cook.member.controller;
+package com.kh.cook.member.service;
 
 import static com.kh.cook.common.JDBCTemplate.close;
 import static com.kh.cook.common.JDBCTemplate.commit;
@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.kh.cook.common.PageVo;
-import com.kh.cook.member.service.MemberService;
+import com.kh.cook.member.dao.AdminDao;
 import com.kh.cook.member.vo.MemberVo;
 
 public class AdminService {

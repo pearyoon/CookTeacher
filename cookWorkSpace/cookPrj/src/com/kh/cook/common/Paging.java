@@ -2,7 +2,7 @@ package com.kh.cook.common;
 
 import java.util.List;
 
-import com.kh.cook.member.controller.AdminService;
+import com.kh.cook.member.service.AdminService;
 import com.kh.cook.member.vo.MemberVo;
 
 public class Paging {
