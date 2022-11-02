@@ -194,13 +194,13 @@
                                 </a>
                              
                             </div>    
-                            <div style="margin-top : 10px" class="prod-price">
+                            <div style="margin-top : 10px; line-height: 1.3em; font-size: 16px;" class="prod-price">
                                 <input type="checkbox" name="prodNo" value="${prod.prodNo}" > ${prod.name} / ${prod.weight}
-                                <pre ><fmt:formatNumber value="${prod.price}" pattern="#,###"/>원</pre>
+                                <p><fmt:formatNumber value="${prod.price}" pattern="#,###"/>원</p>
                                 <!-- prodCnt -> cnt로 수정 될 수 있음! -->
-                               	수량 : <input type="number" name="cnt" value="1" style="width: 20px; margin-bottom: 10px">
+                               	수량 : <input type="number" name="cnt" value="1" min="1" style="width: 35px; height:18px; margin-bottom: 10px">
                             	<!--  -->
-                            
+                            	
                             </div>
                             	
                         </div>

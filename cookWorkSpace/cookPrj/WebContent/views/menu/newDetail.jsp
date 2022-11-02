@@ -212,7 +212,7 @@
                             </div>    
                             <div style="margin-top : 10px" class="prod-price">
                                 <input type="checkbox" name="prodNo" value="${prod.prodNo}" > ${prod.name} / ${prod.weight}
-                                <pre ><fmt:formatNumber value="${prod.price}" pattern="#,###"/>원</pre>
+                                <p><fmt:formatNumber value="${prod.price}" pattern="#,###"/>원</p>
                                 <!-- 데이터 넘길 때 produckCnt로 넘기면 될듯? -->
                                	수량 : <input type="number" name="cnt" value="1" style="width: 20px; margin-bottom: 10px">
                             	<!--  -->
