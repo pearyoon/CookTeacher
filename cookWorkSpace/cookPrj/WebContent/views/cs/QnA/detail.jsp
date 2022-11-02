@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA 글 상세조회</title>
+<title>집밥쿡선생 :: 고객센터</title>
 <link rel="stylesheet" href="/cookTeacher/resources/css/header.css">
 <link rel="stylesheet" href="/cookTeacher/resources/css/footer.css">
 <style>
