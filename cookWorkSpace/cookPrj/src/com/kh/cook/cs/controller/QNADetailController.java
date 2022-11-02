@@ -19,7 +19,6 @@ public class QNADetailController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	String qnaNo = req.getParameter("no");
-	System.out.println(qnaNo);
 	
 	CSVo QNAvo = new QNAService().selectQNAone(qnaNo);
 	CSCommentVo cvo = new QNAService().selectReplyOne(qnaNo);

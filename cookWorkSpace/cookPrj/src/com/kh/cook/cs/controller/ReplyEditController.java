@@ -32,6 +32,7 @@ public class ReplyEditController extends HttpServlet{
 			
 			CSVo QNAvo = new QNAService().selectQNAone(Qno);
 			CSCommentVo cvo = new QNAService().selectReplyOne(Qno);
+			System.out.println(Qno);
 			
 			req.setAttribute("QNAvo", QNAvo);
 			req.setAttribute("cvo", cvo);
@@ -40,6 +41,7 @@ public class ReplyEditController extends HttpServlet{
 		} else {
 			//관리자 아닐 때
 			req.setAttribute("msg","권한이 없습니다.");
+			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
 		}
 		
 	
@@ -55,8 +57,10 @@ public class ReplyEditController extends HttpServlet{
 		
 		cvo.setCmtContent(content);
 		cvo.setQpostNo(Qno);
+		System.out.println(cvo);
 		
 		int result = new QNAService().editreply(cvo);
+		System.out.println(result);
 		
 		if(result == 1) {
 			resp.sendRedirect("/cookTeacher/cs/QnA/detail?no="+ Qno);

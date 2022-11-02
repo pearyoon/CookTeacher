@@ -114,7 +114,7 @@ color: black;
 			</div>
 			
 			<div id="writebtn">
-				<input type="button" name="" id="" value="취소" onclick="cancel();">
+				<input type="button" name="" id="" value="취소" onclick="history.back(-1)">
 				<input type="submit" value="등록">
 			</div>
 			
@@ -144,15 +144,6 @@ color: black;
 					
 					  return false;
 				}//upload end
-
-				
-				function cancel(){
-					Swal.fire({
-                       title: '등록 취소',
-                       icon: 'info',
-                    });
-					location.href="/cookTeacher/cs/QnA/detail?=no<%= QNAvo.getQnaNo() %>"
-				}
 			</script>
 		</form>
 		<%@include file="/views/common/footer.jsp" %>

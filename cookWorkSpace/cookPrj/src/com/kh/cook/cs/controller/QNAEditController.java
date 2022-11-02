@@ -33,13 +33,12 @@ public class QNAEditController extends HttpServlet{
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String Qno = req.getParameter("no");
-		System.out.println(Qno);
+		
 		CSVo QNAvo = new CSVo();
 		
 		QNAvo.setTitle(title);
 		QNAvo.setContent(content);
 		QNAvo.setQnaNo(Qno);
-		System.out.println(Qno);
 		
 		int result = new QNAService().edit(QNAvo);
 		

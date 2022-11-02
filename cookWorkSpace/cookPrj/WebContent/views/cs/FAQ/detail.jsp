@@ -108,8 +108,8 @@ color: #000000;
 		
 	<%	if(loginMember != null && loginMember.getId().equals("admin01")){ %>
 	<div id=writebtn>
-		<button type="button" onclick="location.href='/cookTeacher/cs/QnA/edit?no=<%= FAQvo.getQnaNo() %>';">수정</button>
-		<button type="button" onclick="location.href='/cookTeacher/cs/QnA/delete?no=<%= FAQvo.getQnaNo() %>';">삭제</button>
+		<button type="button" onclick="location.href='/cookTeacher/cs/FAQ/edit?no=<%= FAQvo.getQnaNo() %>';">수정</button>
+		<button type="button" onclick="location.href='/cookTeacher/cs/FAQ/delete?no=<%= FAQvo.getQnaNo() %>';">삭제</button>
 	</div>			
 	<% } %>
 		

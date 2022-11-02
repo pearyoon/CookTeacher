@@ -148,7 +148,36 @@ public class QNAService {
 
 	//답변 수정
 	public int editreply(CSCommentVo cvo) {
-		return 0;
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.updateReplyOne(conn, cvo);
+		System.out.println(result);
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
+
+	public int deletereply(String qno) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = dao.deletereply(conn, qno);
+		
+		if(result == 1) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
 	}
 	
 	
