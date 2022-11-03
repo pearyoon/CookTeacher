@@ -86,7 +86,7 @@
                             </div>
                             <div class="btn-area">
                                 <button class="grade-btn" type="button">
-                                    <span>등급확인</span>
+                                    등급확인
                                 </button>
                             </div>
                         </div>

@@ -45,10 +45,10 @@
 				</div>
 				<div class="bottom">
 					<button type="button" onclick="findPwdBtn();">
-						<span>비밀번호 찾기</span>
+						비밀번호 찾기
 					</button>
 					<button type="button" onclick="loginBtn();">
-						<span>로그인</span>
+						로그인
 					</button>
 				</div>
 			</div>

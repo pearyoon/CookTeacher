@@ -1,4 +1,5 @@
 
+
 #container>div{
     box-sizing: border-box;
 }
@@ -57,7 +58,7 @@
 }
 
 .join-items label{
-    font-weight: 500;
+    font-weight: 800;
     color: rgb(51, 51, 51);
     line-height: 20px;
 }
@@ -76,7 +77,7 @@
     padding: 0px 11px 1px 15px;
     border-radius: 4px;
     border: 1px solid rgb(221, 221, 221);
-    font-weight: 400;
+    font-weight: 600;
     font-size: 15px;
     line-height: 1.5;
     color: rgb(51, 51, 51);
@@ -101,6 +102,7 @@
     background-color: rgb(255, 255, 255);
     border: 1px solid #255D00;
     cursor: pointer;
+    font-size: 15px;
 }
 
 
@@ -163,3 +165,4 @@ button[type=submit]{
     color: #fff;
     font-size: 1em;
 }
+

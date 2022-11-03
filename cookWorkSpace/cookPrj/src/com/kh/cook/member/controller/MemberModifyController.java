@@ -43,9 +43,9 @@ public class MemberModifyController extends HttpServlet{
 			pwd = loginMember.getPwd();
 		}
 		
-		if(profile == null) {
-			profile = "";
-		}
+//		if(profile == null) {
+//			profile = "";
+//		}
 		
 		
 		MemberVo vo = new MemberVo();
