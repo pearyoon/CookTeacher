@@ -161,6 +161,7 @@ button.swal2-confirm.swal2-styled {
 									const cnt = $("#p_num1").val();
 									const stock = "${vo.stock}";
 									console.log(stock);
+                                    console.log(cnt);
 									if(stock<cnt){
 										Swal.fire('재고수량 이상을 담을 수 없습니다.')
 										return false;
