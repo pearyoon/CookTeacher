@@ -74,6 +74,7 @@ main{
     background-color: rgb(255, 255, 255);
     border: 1px solid #255D00;
     margin-bottom: 10px;
+    font-size: 12px;
 }
 
 .bottom>button:last-child{
@@ -87,10 +88,6 @@ main{
     color: #fff;
     background-color: #255D00;
     border: 0 none;
+    font-size: 12px;
 }
 
-.bottom span{
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 500;
-}

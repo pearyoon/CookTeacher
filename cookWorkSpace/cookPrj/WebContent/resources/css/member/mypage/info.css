@@ -80,10 +80,7 @@
     border: 0px none;
     width: 120px;
     border-radius: 3px;
-}
-
-.btn-area span{
-    display: inline-block;
     font-size: 16px;
     font-weight: 500;
 }
+

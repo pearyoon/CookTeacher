@@ -86,10 +86,10 @@
 									</div>
 									<div class="profile-btn">
 										<button type="button" id="upload-btn">
-											<span>등록</span>
+											등록
 										</button>
 										<button type="button" id="delete-btn">
-											<span>삭제</span>
+											삭제
 										</button>
 									</div>
 								</div>
@@ -231,10 +231,10 @@
 								</div>
 						        <div id="btn">
 						            <button id="quit" type="button">
-						                <span>탈퇴하기</span>
+						                탈퇴하기
 						            </button>
 						            <button id="edit" type="submit">
-						                <span>회원정보수정</span>
+						                회원정보수정
 						            </button>
 						        </div>
 						    </form>

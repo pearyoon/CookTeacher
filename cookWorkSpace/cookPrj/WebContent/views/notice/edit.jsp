@@ -21,12 +21,13 @@
             </div>
             <div class="edit-middle">
                 <form action="/cookTeacher/admin/notice/edit" method="POST" onsubmit="return check();">
+                    <input type="hidden" name="no" value="${vo.no}">
+                    
                     <div class="flex-box">
-                        <input type="hidden" name="no" value="${vo.no}">
-                        <div>
+                        <div id="title-wrap">
                             <label for="title">제목</label>
                         </div>
-                        <div>
+                        <div id="title-input-wrap">
                             <input id="title" type="text" name="title" value="${vo.title}">
                         </div>
                     </div>
