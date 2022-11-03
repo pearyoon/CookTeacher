@@ -32,12 +32,12 @@
 						</tr>
 						<tr class="ta-2">
 						<td class="t-wr"><p><%=vo.getWriter()%></p></td>
-						<td class="t-da"><%=vo.getEnrollDate()%></td>
+						<td class="t-da" ><%=vo.getEnrollDate()%></td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><textarea name="content" cols="110" rows="25"><%=vo.getContent()%></textarea></td>
+							<td colspan="2"><textarea name="content" cols="110" rows="25"><%=vo.getContent()%></textarea></td>
 						</tr>
 					</tbody>
 				</table>

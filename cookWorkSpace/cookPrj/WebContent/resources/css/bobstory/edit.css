@@ -53,8 +53,9 @@ thead input{
 .t-ti{
     font-size: 20px;
     font-weight: 600;
-    padding-top: 15px;
+    padding-top: 10px;
     padding-left: 20px;
+    padding-bottom: 10px;
 }
 .t-cl{
     width: 80px;
@@ -63,27 +64,20 @@ thead input{
 .t-cl p{
     font-weight: 600;
 }
-.t-vc{
-    width: 80px;
-    text-align: center;
-    padding-bottom: 10px;
-}
-.t-vc p{
-    font-weight: 600;
-}
 .ta-2{
     margin: 0 auto;
     height: 30px;
 }
 .t-wr{
-    padding-top: 7px;
-    padding-left: 30px;
+    width: 400px;
+    padding-top: 10px;
+    padding-left: 25px;
 }
 .t-wr p {
     font-weight: 600;
 }
 .t-da{
-    width: 100px;
+    width: 200px;
     text-align: end;
 }
 textarea{
