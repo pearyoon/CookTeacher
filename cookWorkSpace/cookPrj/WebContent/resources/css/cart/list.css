@@ -58,8 +58,9 @@ input[type="checkbox"]{
 }
 
 .delete>input{
-  background-color: transparent;
-  border: 1px solid rgb(200, 200, 200);
+  background-color: #255D00;
+  color: white;
+  border: none;
   cursor: pointer;
   height: 30px;
   border-radius: 5px;
@@ -68,8 +69,9 @@ input[type="checkbox"]{
   margin-left: 50px;
 }
 
-.delete>input:active{
-  background-color:rgb(200, 200, 200);
+.delete>input:hover{
+  background: #FFD335;
+  color: black;
 }
 
 #product-area{
@@ -125,7 +127,7 @@ input[type="checkbox"]{
 
 .product-name{
   font-size: 16px;
-  width: 370px;
+  width: 340px;
 }
 
 .count-wrapper{
@@ -166,7 +168,7 @@ input[type="checkbox"]{
 }
 
 .price{
-  width: 75px;
+  width: 90px;
   margin-right: 16px;
   text-align: right;
 }
