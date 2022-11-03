@@ -329,7 +329,7 @@ input[type=number]::-webkit-inner-spin-button {
 #write-bttn {
     background-color: #FFD335;
     border-radius: 10px;
-    height: 25px;
+    height: 30px;
     letter-spacing: 1px;
 }
 #write-bttn:hover {

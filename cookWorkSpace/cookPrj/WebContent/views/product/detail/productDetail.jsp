@@ -41,9 +41,24 @@
     border: 0;
     border-radius: 10px;
     background: initial;
-    background-color: #7066e0;
+    background-color: #255D00;
     color: #fff;
     font-size: 1em;
+}
+button.swal2-confirm.swal2-styled {
+    background-color: #255D00;
+}
+.swal2-actions {
+    display: flex;
+    z-index: 1;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin: 1.25em auto 0;
+    padding: 0;
+    border-color: white;
 }
 </style>
 </head>
@@ -120,11 +135,11 @@
                                                     </div>  -->
                                                     <br><br><br>
                                                     <div class="inner">
-						                                <%= vo.getStock() %>
+						                                <%= vo.getStock() %>개
 						                            </div>
                                                    <br><br><br>
                                                     <div class="updown">
-                                                    <input type="number" name="cnt" id="p_num1" style="width: 45px;" class="p_num" value="1" min="1" max="1000" onkeyup="javascript:basket.changePNum(1);" style="width: 35px; margin-bottom: 35px ">
+                                                    <input type="number" name="cnt" id="p_num1" style="width: 47px; height: 25px;" class="p_num" value="1" min="1" max="1000" onkeyup="javascript:basket.changePNum(1);" style="width: 35px; margin-bottom: 35px ">
                                                     </div>
                                                 </div>
                                                 <%-- <div class="sum" name="totalSum"><br><%= vo.getPrice() %>원</div> --%>
@@ -276,17 +291,11 @@
                                 </table>
                                 <br>
                                 <a href="/cookTeacher/product/detail/ReviewWrite?rno=<%=vo.getProdNo() %>">
-                                    <input type="button" value="작성하기" id="write-bttn">
+                                    <input type="button" value="작성하기" id="write-bttn" style="font-size: 15px;">
                                 </a>
                             </div> 
                         </div>
             </div>
-            <br><br>
-            <div style="margin-left: 485px; margin-bottom: 20px;">
-				<%if(loginMember != null && loginMember.getId().equals("admin01")){%>	
-				<button class="delete-btn" onclick="location.href='/cookTeacher/product/admin_delete?no=<%=vo.getProdNo()%>'">삭제하기</button>
-				<%}%>
-			</div>
         </main>
 		<%@include file="/views/common/footer.jsp" %>
     </div>
